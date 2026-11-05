@@ -1,0 +1,11 @@
+{
+  "servers": {
+    "graphify": {
+      "type": "http",
+      "url": "http://localhost:8080/mcp",
+      "headers": {
+        "X-API-Key": "${env:GRAPHIFY_API_KEY}"
+      }
+    }
+  }
+}

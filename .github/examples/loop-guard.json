@@ -1,0 +1,15 @@
+{
+  "version": "1.0.0",
+  "description": "Contador del presupuesto de esfuerzo: veredicto contable por intento repetido (exit code 0 continua, 1 modo-plan, 2 tope-emergencia) desde un ledger en .ops/loop-guard.json (estado de sesion, no versionar).",
+  "usage": {
+    "bump": "node .github/tools/loop-guard.mjs bump --accion <retry-command|rewrite-file|reread-docs|fix-error> --objetivo <objetivo> [--evidencia <texto>]",
+    "status": "node .github/tools/loop-guard.mjs status [--objetivo <objetivo>]",
+    "close": "node .github/tools/loop-guard.mjs mark-closed --objetivo <objetivo>"
+  },
+  "thresholds": { "plan": 3, "emergency": 10 },
+  "exitCodes": { "0": "continua", "1": "modo-plan (consultar al usuario, sin herramientas)", "2": "tope-emergencia (cerrar el turno con informe y plan)" },
+  "notes": [
+    "Ledger en .ops/loop-guard.json: anadirlo a .gitignore del repo destino (estado de sesion).",
+    "Unica excepcion para reintentar sin bump: red o builds largos en curso, maximo 2, luego tope-emergencia."
+  ]
+}

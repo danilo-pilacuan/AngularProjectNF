@@ -1,0 +1,13 @@
+{
+  "name": "projecthub-workspace",
+  "version": "0.0.0",
+  "private": true,
+  "description": "Orquestador del workspace multirepo de ProjectHub. El codigo de app vive en los repos hermanos (shell, mfe-*, shared-lib, ui-lib, deploy, backend).",
+  "scripts": {
+    "bootstrap": "node tools/bootstrap-repos.mjs",
+    "build": "node tools/run-all.mjs build",
+    "test": "node tools/run-all.mjs test",
+    "lint": "node tools/run-all.mjs lint",
+    "start": "node tools/start-dev.mjs"
+  }
+}

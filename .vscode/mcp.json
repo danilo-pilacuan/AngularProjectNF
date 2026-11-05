@@ -1,0 +1,15 @@
+{
+  "servers": {
+    "graphify": {
+      "type": "http",
+      "url": "http://localhost:19211/mcp",
+      "headers": {
+        "X-API-Key": "${env:GRAPHIFY_API_KEY}"
+      }
+    },
+    "mcp-memgraph": {
+      "type": "http",
+      "url": "http://localhost:19212/mcp/"
+    }
+  }
+}

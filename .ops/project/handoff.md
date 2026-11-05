@@ -1,0 +1,84 @@
+---
+id: project-handoff
+tipo: Guide
+type: Guide
+title: Handoff - contexto de continuidad entre sesiones
+description: Documento de soporte para pasar contexto completo a una sesion nueva; el agente lo actualiza al cierre de cada tarea.
+estado: vigente
+dueno: rol:agente
+fecha: 2026-11-05T19:55:00Z
+updated: 2026-11-05T19:55:00Z
+relaciona: [ops-readme, project-readme]
+status: stable
+---
+
+Documento de soporte (no es codigo): condensa el estado del producto, el
+entorno local, los comandos de verificacion y el trabajo pendiente para que
+una sesion nueva retome el desarrollo sin reexplorar el repositorio.
+La politica de mantenimiento vive en las instrucciones del agente del repo
+(seccion "Session handoff policy").
+
+Regla: `.ops` organiza y enlaza; la fuente de verdad del avance es
+`PROGRESS.md`. Este handoff resume, no duplica el detalle.
+
+## Secciones (orden fijo, mantener al rellenar)
+
+1. Header (blockquote): fecha real de hoy, rama activa y estado del arbol con hashes de commits relevantes.
+2. Estado del producto: que es el sistema, fase/release actual, logros recientes.
+3. Como usarlo: orden de lectura handoff -> PROGRESS.md -> especificacion de la fase activa.
+4. Entorno local: servicios, puertos, env, credenciales demo, limitaciones del entorno (no defectos del producto).
+5. Como levantar y verificar: comandos compose/test/E2E, que exige rebuild vs hot reload.
+6. Mapa de documentos: tabla de documentos de soporte y cuando se actualiza cada uno.
+7. Trabajo en curso y pendiente: lista priorizada; cada item indica si necesita codigo. Si un item se corta por bucle de reintentos (presupuesto de esfuerzo), indicar donde quedo, intentos gastados y que se pidio al usuario.
+8. Historial de sesiones: una fila por sesion (alcance y resultado).
+
+Bootstrap: copiar este archivo a `.ops/project/` del nuevo repo y rellenar
+las secciones 2-8; la estructura y las reglas son reutilizables tal cual.
+
+---
+
+## Estado actual (2026-11-05)
+
+> Fecha: 2026-11-05. Rama: n/a en la raiz (orquestador); cada repo del multirepo tiene la suya
+> (main, initial commit + cambios de fase 0 sin commitear). Estado: fase 0 implementada y
+> verificada (IMPL-001 + IMPL-002); pendiente commits por repo y revision humana.
+
+2. **Estado del producto:** ProjectHub, sistema documental para gobernar proyectos de software
+   (ciclo de vida de 9 etapas, gates, matriz de responsabilidades, Gantt propio). Fase 0
+   (fundaciones) implementada: 7 repos Angular 22 con Native Federation operativa (dev
+   4300-4304, Docker 4400-4404), dominio puro en `@projecthub/shared` con 31 tests en verde,
+   stack Docker verificado de punta a punta.
+
+4. **Entorno local:** Windows, node v24.21.0, npm 11.19.0, Docker 29.8.2. Rango 4200-4204
+   ocupado en el host: desarrollo en 4300-4304, Docker en 4400-4404 (DEC-001). TypeScript debe
+   ser 6.0.x (peer de @angular/build@22.2.4). `.env` de raiz es de graphify (no tocar);
+   `deploy/graphify/` es infraestructura existente ajena a la app. Dev servers vivos en
+   4300-4304 (procesos node independientes); stack Docker `projecthub-*` en 4400-4404.
+
+5. **Como levantar y verificar:**
+   - Dev: `npm start` en la raiz (o `npx ng serve --port 430x` por repo). Verificar
+     `http://localhost:430x/remoteEntry.json` (200) y navegacion desde 4300.
+   - Docker: `docker compose -f deploy/projecthub/docker-compose.yml up -d --build`.
+     Verificar remoteEntry 200 en 4400-4404, manifest con URLs 440x, navegacion a las 4
+     rutas, F5 en /governance y consola sin errores CORS ni singletons duplicados.
+   - Tests de dominio: `npm test` en `shared-lib` (vitest, 31 tests).
+   - Tras cambiar `shared-lib` o `ui-lib`: `npx ng build` en la lib antes de servir las apps
+     (las consumen por `file:../<lib>/dist/...`).
+
+7. **Trabajo en curso y pendiente:**
+   - Commits por repo (Conventional Commits, ASCII, trailer Co-authored-by). No necesita
+     codigo; pendiente de instruccion o cierre de fase.
+   - Fase 1 (stores + sesion) segun plan: stores de dominio como instancia unica resuelta
+     por InjectionToken; al importar `@projecthub/shared` en apps, agregarla al shared
+     config de cada federation config (hoy Angular/rxjs/tslib ya son singletons).
+   - Correccion de AGENTS.md seccion 1 (Estructura): pendiente de instruccion explicita del
+     propietario (el rulebook no se modifica sin que lo pida). No necesita codigo.
+
+8. **Historial de sesiones:**
+
+| fecha | alcance | resultado |
+|---|---|---|
+| 2026-11-05 | Bootstrap `.ops` (OKF 0.2), REQ-001..011, plan 9 fases, BL-001..013, DEC-001/002, scaffold de referencia Angular 22 | hecho |
+| 2026-11-05 | Pivote multirepo (DEC-003): correccion de especificaciones (funcionalidades 8.1, plan, backlog, fase-0, IMPL-001/002), limpieza de `projecthub-ref/` | hecho |
+| 2026-11-05 | IMPL-001: 7 repos multirepo + federacion operativa (dev 4300-4304, fix ngDevMode, smoke completo) + deploy Docker 4400-4404 (Dockerfiles, nginx SPA+CORS, compose, manifest 440x) verificado de punta a punta | hecho |
+| 2026-11-05 | IMPL-002: dominio puro en shared-lib (catalogos, errores, ciclo de vida, matriz 9x10, modelos, calculos) + 31 tests vitest en verde + build de lib | hecho |
