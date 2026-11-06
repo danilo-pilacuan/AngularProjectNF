@@ -155,3 +155,18 @@ Log de avance dia a dia. Fuente de verdad del avance; `.ops` lo organiza y enlaz
   4 remotes con provideHttpClient. Fix NG0203: sincronizarStores debe correr en contexto de
   inyeccion (TestBed.runInInjectionContext en tests). shared-lib 130/130, builds de los 5 apps
   verdes. Pendiente: escrituras via API (hoy solo lectura inicial).
+
+## 2026-11-06 (fase 13.4: escrituras del frontend persistidas)
+
+- Backend: GET/PUT /api/sincronizacion. El PUT reemplaza el estado completo
+  (5 colecciones) validando forma (listas, ids unicos) y modelos Pydantic;
+  persiste por el repositorio (memoria o Postgres). 6 tests nuevos: 82/82.
+- shared-lib: SincronizadorEscrituras con effect() sobre las senales de los
+  stores, debounce 400ms (runOutsideAngular), single-flight y reprogramacion
+  si hubo cambios durante el envio. 2 tests: 132/132.
+- Cableado en shell y 4 remotes (factory que llama observar()); builds 5/5.
+- Verificado E2E parcial: uvicorn 8111 -> GET /api/sincronizacion con las 5
+  colecciones de semilla; PUT vacio reemplaza el estado (comportamiento
+  esperado del re-sync total, cubierto por test roundtrip camelCase).
+- Pendiente en la fase: refresco de stores desde respuesta del servidor y
+  verificacion E2E con navegador contra dist.
