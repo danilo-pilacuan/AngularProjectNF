@@ -121,3 +121,21 @@ Log de avance dia a dia. Fuente de verdad del avance; `.ops` lo organiza y enlaz
     de singletons duplicados ni errores.
 - ngDevMode reincidio al ejecutar el build prod del shell con dev servers vivos: aplicada
   la leccion documentada (reiniciar los 5 dev servers tras alternar builds prod/dev).
+
+## 2026-11-06 (sesion RC2->RC3, continuacion)
+
+- Migracion Angular Material (DEC-005) completada: skip list de Native Federation corregido
+  (los wildcards NO funcionan; predicados funcion `(pkg) => pkg.startsWith('@angular-devkit')`,
+  `'@schematics/'`, `'source-map-support'`, `'oxc-parser'` y exacto `'@angular/cdk/schematics'`
+  - el secondary toxico re-exporta @schematics/angular con builtins node). Builds prod de los
+  5 apps verdes. Tests de los 4 remotes arreglados: NG0203 MAT_CARD_CONFIG por doble
+  instancia de @angular/material en el grafo de test (via @projecthub/ui file: junction);
+  fix con `dedupe: ['@angular/material', '@angular/cdk', ...]` en `vitest-base.config.mts`
+  de los 4 remotes. Suites finales: shell 15/15, shared-lib 125/125, ui-lib 21/21,
+  mfe-projects 26/26, mfe-reports 5/5, mfe-admin 13/13, mfe-governance 3/3.
+- Backend FastAPI: 68 tests verdes verificados (pytest --tb=no en .venv).
+- DEC-006 registrada (orden del propietario): persistencia del backend con PostgreSQL 17 en
+  contenedor Docker (compose en backend/, puerto host 5433, volumen nombrado, healthcheck,
+  DATABASE_URL, fallback en memoria). docs/funcionalidades.md: seccion 13 Backend nueva
+  (13.1 API 68 tests verdes; 13.2 PostgreSQL/Docker planificado; 13.3 HttpClient en stores);
+  10.3 en curso; orden de implementacion con fase 10 backend.

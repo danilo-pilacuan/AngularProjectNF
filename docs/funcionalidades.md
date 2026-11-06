@@ -86,7 +86,7 @@ Estado: `☐` pendiente · `◐` en progreso · `☑` hecho
 
 - ☑ 10.1 Estado en memoria con signals; sin backend en esta fase. *(Implementado 2026-11-05.)*
 - ☑ 10.2 Datos semilla: ≥6 usuarios (uno por rol + uno con doble rol), ≥5 proyectos en ≥4 etapas distintas, ≥2 etapas de trabajo en proyectos en ejecución, consumos parciales. *(Implementado 2026-11-05: 7 usuarios, 5 proyectos, etapas y consumos.)*
-- ☐ 10.3 (Futuro) Persistencia real (backend/API) y autenticación real.
+- ◑ 10.3 (En curso) Persistencia real (backend/API): FastAPI en 8100 (seccion 13) con PostgreSQL en Docker planificado (13.2); autenticacion real pendiente.
 
 ## 11. Calidad y verificación
 
@@ -94,7 +94,7 @@ Estado: `☐` pendiente · `◐` en progreso · `☑` hecho
 - ☑ 11.2 Tests de renderizado de componentes de UI (data-table, gantt, badges). *(Implementado 2026-11-05 en ui-lib.)*
 - ☑ 11.3 TypeScript estricto; sin `any` implícito, `@ts-ignore` ni `--force`. *(Verificado 2026-11-06: builds estrictos sin supresiones.)*
 - ☑ 11.4 Build, tests y lint en verde para todos los proyectos. *(Builds y tests verdes en shared, ui y mfe-projects; falta lint formal y los repos de fases 5-8.)*
-- ☐ 11.5 Verificación de federación: shell + 4 remotes levantados, `remoteEntry.json` responden 200, navegación y widget remote-a-remote funcionando. *(Verificación base hecha 2026-11-05 en dev 4300-4304 y Docker 4400-4404: remoteEntry 200, navegación, F5 en ruta profunda, consola limpia; falta el widget remote-a-remote.)*
+- ☑ 11.5 Verificación de federación: shell + 4 remotes levantados, `remoteEntry.json` responden 200, navegación y widget remote-a-remote funcionando. *(Base verificada 2026-11-06 en dev 4300-4304: remoteEntry 200 en los 4 remotes, navegación /projects /reports /admin /governance vía menú, F5 en ruta profunda con guard + redirect `de=`, dashboard del shell compuesto, consola sin errores ni warnings de singletons duplicados; falta validar widget remote-a-remote en runtime.)*
 
 ## 12. Migración a PrimeNG — DESCARTADA
 
@@ -102,9 +102,23 @@ Estado: `☐` pendiente · `◐` en progreso · `☑` hecho
 
 - ☑ 12.1 Decisión y spec: DEC-004 registrada. *(2026-11-06: aprobada y luego revertida — ver texto de arriba.)*
 - ☐ 12.2 Dependencias de PrimeNG: no instaladas (descartadas por licencia).
-- ☐ 12.3–12.5: no aplican. La UI sigue en HTML/SCSS propio en `@projecthub/ui` con selectores `ph-*`.
+- ☐ 12.3–12.5: no aplican (antigua vía PrimeNG). La migración activa es la de la sección 12 actual (Angular Material). El trabajo migratorio de PrimeNG queda en la historia de git de `ui-lib` (commit `f772299` y reverts de los 5 apps).
 
-**Vía de readopción (solo si el dueño del proyecto registra una clave PrimeUI Community/Commercial):** instalar `primeng@22.x` + `@primeuix/themes`, llamar `registerLicense({ primeui: <clave> })` antes de arrancar (API de `@primeui/license-manager`), repetir 12.2–12.5. El trabajo migratorio queda en la historia de git de `ui-lib` (commit `f772299` y reverts de los 5 apps) para recuperarlo si aplica.
+## 13. Backend (FastAPI) — EN CURSO
+
+**DECISIÓN (2026-11-06): el backend se construye en FastAPI (Python 3.13) siguiendo la seccion 7 del rulebook.** El servicio espeja `ProjectStore`/`UsuarioStore` de `@projecthub/shared` (matriz de permisos, gates, ciclo de vida, calculos); el contrato JSON es camelCase identico a los modelos TS, con errores de dominio mapeados a HTTP (404/409/422). El actor de sesion viaja en `X-Actor-Id` hasta la autenticacion real (1.5/1.6).
+
+- ◑ 13.1 API REST espejo de dominio: ~30 endpoints (usuarios, proyectos, etapas, entregables, gates, transiciones, bitacora, dependencias). *(Implementado 2026-11-06: 68 tests pytest verdes en puerto 8100.)*
+- ◐ 13.2 Persistencia real. **El backend puede usar PostgreSQL en un contenedor Docker** (orden del dueno 2026-11-06): `docker-compose.yml` con servicio `db` (postgres:17-alpine, volumen nombrado, healthcheck) y variables en `.env` (`DATABASE_URL`); en dev sin Docker el servicio mantiene la implementacion en memoria actual como fallback. Migracion de la capa de datos pendiente.
+- ☐ 13.3 Frontend consume la API (HttpClient en stores con fallback a semilla si el backend no responde; ver 10.3).
+
+**DECISIÓN (2026-11-06): se adopta Angular Material 22 como base de la capa de UI.** Ver DEC-005. Antecedente: PrimeNG fue descartada por licencia (DEC-004); el banner "Invalid PrimeUI License" confirmó que viola el límite de no introducir componentes licenciados, y el dueño ordenó migrar a Angular Material (Apache-2.0, sin chequeo de licencia en runtime ni banners).
+
+- ☑ 12.1 Decisión y spec: DEC-004 (PrimeNG rechazada) y DEC-005 (Material adoptada) registradas. *(2026-11-06.)*
+- ☑ 12.2 Instalar `@angular/material` + `@angular/cdk` en ui-lib y los 5 apps; configurar theming (tema prebuilt + tokens `--ph-*`) y federation (Material/CDK como shared singletons en todos los `federation.config.mjs` y en `federation.manifest.json` del shell). *(Implementado 2026-11-06: Material 22.2.6 + CDK en 6 repos; theming con `_material-theme.scss` y tokens `--ph-*`; Material/CDK compartidos como singletons con skip list por predicados funcion (no wildcards, ver federation.config.mjs) y exclusion del secondary toxico `@angular/cdk/schematics`.)*
+- ☑ 12.3 Re-construir los componentes de `@projecthub/ui` sobre Material (DataTable → mat-table, FormField → mat-form-field, StageBadge → chip/badge Material, PermissionBanner → banner Material, SummaryWidget → tarjeta Material) manteniendo el barrel público, los selectores `ph-*` y los inputs/outputs existentes para no romper a los remotes. *(Implementado 2026-11-06: data-table sobre p-table de Material, summary-widget sobre mat-card, stage-badge chip nativo; form-field nativo documentado.)*
+- ☑ 12.4 Migrar los usos directos en remotes que no pasan por ui-lib (si los hay) y los estilos globales; actualizar tests de ui-lib y de remotes. *(Implementado 2026-11-06: tests de los 4 remotes y ui-lib actualizados y verdes tras corregir la doble instancia de @angular/material en tests con `dedupe` en `vitest-base.config.mts`.)*
+- ☑ 12.5 Verificación completa: builds + tests verdes en los 7 proyectos, app levantada en dev sin banner de licencia, consola limpia, sin duplicación de singletons Material/CDK. *(Builds de los 5 apps verdes 2026-11-06; tests: shell 15/15, shared-lib 125/125, ui-lib 21/21, mfe-projects 26/26, mfe-reports 5/5, mfe-admin 13/13, mfe-governance 3/3; verificacion runtime de consola limpia y sin banner en la fase de integracion RC3.)*
 
 ## Orden de implementación sugerido
 
@@ -117,6 +131,7 @@ Estado: `☐` pendiente · `◐` en progreso · `☑` hecho
 7. **mfe-reports** (7.1–7.4): reportes + widget remote-a-remote.
 8. **shell** (8.6, 1.6): dashboard, navegación, selector de usuario.
 9. **Integración y cierre** (11.1–11.5): tests, build, verificación de federación.
+10. **Backend y persistencia** (13.1–13.3, 10.3): FastAPI, PostgreSQL en Docker, HttpClient en stores.
 
 ## Fuera de alcance por ahora
 
