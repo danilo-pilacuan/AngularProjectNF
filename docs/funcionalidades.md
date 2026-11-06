@@ -96,15 +96,15 @@ Estado: `☐` pendiente · `◐` en progreso · `☑` hecho
 - ☑ 11.4 Build, tests y lint en verde para todos los proyectos. *(Builds y tests verdes en shared, ui y mfe-projects; falta lint formal y los repos de fases 5-8.)*
 - ☐ 11.5 Verificación de federación: shell + 4 remotes levantados, `remoteEntry.json` responden 200, navegación y widget remote-a-remote funcionando. *(Verificación base hecha 2026-11-05 en dev 4300-4304 y Docker 4400-4404: remoteEntry 200, navegación, F5 en ruta profunda, consola limpia; falta el widget remote-a-remote.)*
 
-## 12. Migración a PrimeNG
+## 12. Migración a PrimeNG — DESCARTADA
 
-Base de UI según DEC-004: PrimeNG es la librería de componentes principal; los componentes de `@projecthub/ui` se reconstruyen sobre sus primitivas en lugar de HTML/SCSS propio. El Gantt queda como excepción (SVG/CSS propio: PrimeNG no ofrece Gantt). El Gantt no depende de PrimeNG.
+**DECISIÓN FINAL (2026-11-06): se descarta PrimeNG.** Diagnóstico: PrimeNG 22 vanilla incorpora `@primeui/license-manager` desde v22 (confirmado por el mantenedor: "As of PrimeNG v22, the library has moved to PrimeUI... which is now a commercial library"). `providePrimeNG` ejecuta `verifyLicense()` en runtime y, sin clave PrimeUI registrada, imprime el warning `[PrimeUI] PrimeUI license is not configured.` y muestra el banner visible **"Invalid PrimeUI License"**. Existe un tier *community* pero exige cuenta en primeui.dev y una clave firmada; fuera de los límites del proyecto (solo se autorizó primeng vanilla sin licencias). La migración se revirtió: ui-lib vuelve a HTML/SCSS propio, los 5 apps vuelven a su `app.config` anterior y se desinstalaron `primeng` y `@primeuix/themes` de los 6 repos. Ver DEC-004 (estado: Rechazada).
 
-- ☑ 12.1 Decisión y spec: DEC-004 (PrimeNG como base de UI) registrada y sección de alcance de migración en este documento. *(2026-11-06.)*
-- ☑ 12.2 Dependencias: `primeng`, `@angular/cdk` y preset de tema (`@primeuix/themes`) instalados en `ui-lib` y los 5 apps, en versión alineada con Angular 22. *(2026-11-06: primeng 22.1.4, @angular/cdk 22.2.6, @primeuix/themes 3.1.0.)*
-- ☑ 12.3 `@projecthub/ui` migrado sobre primitivas PrimeNG manteniendo API pública (selectores, inputs/outputs y estilos `ph-*`): DataTable → p-table (unstyled, filas/encabezado/vacío por templates), FormField → control nativo proyectado reestilizado con tokens `--p-*` (los remotes no importan PrimeNG: DEC-004), PermissionBanner → p-message, StageBadge → p-tag, SummaryWidget → p-card. GanttChart sin cambios. *(2026-11-06: 18/18 tests de ui-lib en verde.)*
-- ☐ 12.4 Theme PrimeNG (preset Aura, darkModeSelector `system`) provisto en los 5 apps vía `providePrimeNG`; consola sin warnings de duplicados ni de singletons. *(Código provisto en los 5 app.config + singleton primeng/@primeuix/themes en federation; falta verificación en dev.)*
-- ☐ 12.5 Verificación de la migración: build y tests en verde en los 7 repos; visual básica de tablas, formularios, badges, banners y tarjetas en dev 4300-4304. *(Builds y tests en verde en los 7 repos 2026-11-06: 176 tests; falta visual en dev 4300-4304.)*
+- ☑ 12.1 Decisión y spec: DEC-004 registrada. *(2026-11-06: aprobada y luego revertida — ver texto de arriba.)*
+- ☐ 12.2 Dependencias de PrimeNG: no instaladas (descartadas por licencia).
+- ☐ 12.3–12.5: no aplican. La UI sigue en HTML/SCSS propio en `@projecthub/ui` con selectores `ph-*`.
+
+**Vía de readopción (solo si el dueño del proyecto registra una clave PrimeUI Community/Commercial):** instalar `primeng@22.x` + `@primeuix/themes`, llamar `registerLicense({ primeui: <clave> })` antes de arrancar (API de `@primeui/license-manager`), repetir 12.2–12.5. El trabajo migratorio queda en la historia de git de `ui-lib` (commit `f772299` y reverts de los 5 apps) para recuperarlo si aplica.
 
 ## Orden de implementación sugerido
 
