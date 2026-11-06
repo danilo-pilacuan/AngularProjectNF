@@ -110,7 +110,7 @@ Estado: `☐` pendiente · `◐` en progreso · `☑` hecho
 
 - ◑ 13.1 API REST espejo de dominio: ~30 endpoints (usuarios, proyectos, etapas, entregables, gates, transiciones, bitacora, dependencias). *(Implementado 2026-11-06: 68 tests pytest verdes en puerto 8100.)*
 - ◐ 13.2 Persistencia real. **El backend puede usar PostgreSQL en un contenedor Docker** (orden del dueno 2026-11-06): `docker-compose.yml` con servicio `db` (postgres:17-alpine, volumen nombrado, healthcheck) y variables en `.env` (`DATABASE_URL`); en dev sin Docker el servicio mantiene la implementacion en memoria actual como fallback. Migracion de la capa de datos pendiente.
-- ☐ 13.3 Frontend consume la API (HttpClient en stores con fallback a semilla si el backend no responde; ver 10.3).
+- ◑ 13.3 Frontend consume la API (HttpClient en stores con fallback a semilla si el backend no responde; ver 10.3). *(Implementado 2026-11-06: ApiEnlaceService + sincronizarStores en @projecthub/shared, APP_INITIALIZER en shell y remotes; escrituras aun locales.)*
 
 **DECISIÓN (2026-11-06): se adopta Angular Material 22 como base de la capa de UI.** Ver DEC-005. Antecedente: PrimeNG fue descartada por licencia (DEC-004); el banner "Invalid PrimeUI License" confirmó que viola el límite de no introducir componentes licenciados, y el dueño ordenó migrar a Angular Material (Apache-2.0, sin chequeo de licencia en runtime ni banners).
 

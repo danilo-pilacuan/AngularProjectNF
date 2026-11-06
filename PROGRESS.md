@@ -139,3 +139,19 @@ Log de avance dia a dia. Fuente de verdad del avance; `.ops` lo organiza y enlaz
   DATABASE_URL, fallback en memoria). docs/funcionalidades.md: seccion 13 Backend nueva
   (13.1 API 68 tests verdes; 13.2 PostgreSQL/Docker planificado; 13.3 HttpClient en stores);
   10.3 en curso; orden de implementacion con fase 10 backend.
+
+## 2026-11-06 (fase 13: persistencia y http-stores)
+
+- 13.2 Persistencia PostgreSQL completada: app/almacen.py (RepositorioPostgres con psycopg3,
+  JSONB camelCase, upsert ON CONFLICT, re-sync total; RepositorioMemoria como default),
+  inyeccion en ServicioProyectos sin cambiar sus 42 metodos, _crear_repositorio() en main.py
+  con DATABASE_URL y fallback a memoria, docker-compose.yml (postgres:17-alpine, host 5433),
+  requirements + psycopg[binary]. Tests 76/76 con roundtrip real (BD efimera projecthub_test);
+  smoke HTTP contra Postgres OK (GET/POST persisten).
+- RC3 cerrada: rama RC3/dev + tag rc3 en los 9 repos (8 submodulos + meta).
+- 13.3 http-stores completado: ApiEnlaceService (timeout 2500ms, X-Actor-Id, API_BASE_URL,
+  disponibilidad con listeners), sincronizarStores() (5 colecciones -> stores, fallback a
+  semilla), cargarDesdeBackend en ProjectStore/UsuarioStore, provideAppInitializer en shell y
+  4 remotes con provideHttpClient. Fix NG0203: sincronizarStores debe correr en contexto de
+  inyeccion (TestBed.runInInjectionContext en tests). shared-lib 130/130, builds de los 5 apps
+  verdes. Pendiente: escrituras via API (hoy solo lectura inicial).
