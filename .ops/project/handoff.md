@@ -40,14 +40,18 @@ las secciones 2-8; la estructura y las reglas son reutilizables tal cual.
 ## Estado actual (2026-11-05)
 
 > Fecha: 2026-11-05. Rama: n/a en la raiz (orquestador); cada repo del multirepo tiene la suya
-> (main, initial commit + cambios de fase 0 sin commitear). Estado: fase 0 implementada y
-> verificada (IMPL-001 + IMPL-002); pendiente commits por repo y revision humana.
+> (main). Estado: fases 0-7 implementadas; fase 8 (integracion) en curso: 169 tests verdes y
+> 7 builds prod exit 0; smoke dev/docker con codigo actual y verificacion en navegador
+> pendientes; revision humana pendiente para estados `verificado`.
 
 2. **Estado del producto:** ProjectHub, sistema documental para gobernar proyectos de software
-   (ciclo de vida de 9 etapas, gates, matriz de responsabilidades, Gantt propio). Fase 0
-   (fundaciones) implementada: 7 repos Angular 22 con Native Federation operativa (dev
-   4300-4304, Docker 4400-4404), dominio puro en `@projecthub/shared` con 31 tests en verde,
-   stack Docker verificado de punta a punta.
+   (ciclo de vida de 9 etapas, gates, matriz de responsabilidades, Gantt propio). Fases 0-7
+   implementadas: 7 repos Angular 22 con Native Federation (dev 4300-4304, Docker 4400-4404),
+   dominio puro en `@projecthub/shared` (98 tests), stores por InjectionToken, ui-lib con
+   componentes base, mfe-projects (portafolio/detalle/etapas/presupuesto), mfe-admin
+   (usuarios/roles/matriz), mfe-reports (reportes + widget remote-a-remote), mfe-governance
+   (gates/entregables + GateStatusWidget), shell con Dashboard de 3 widgets federados,
+   UserSwitcher y RemoteFallback.
 
 4. **Entorno local:** Windows, node v24.21.0, npm 11.19.0, Docker 29.8.2. Rango 4200-4204
    ocupado en el host: desarrollo en 4300-4304, Docker en 4400-4404 (DEC-001). TypeScript debe
@@ -57,20 +61,27 @@ las secciones 2-8; la estructura y las reglas son reutilizables tal cual.
 
 5. **Como levantar y verificar:**
    - Dev: `npm start` en la raiz (o `npx ng serve --port 430x` por repo). Verificar
-     `http://localhost:430x/remoteEntry.json` (200) y navegacion desde 4300.
-   - Docker: `docker compose -f deploy/projecthub/docker-compose.yml up -d --build`.
-     Verificar remoteEntry 200 en 4400-4404, manifest con URLs 440x, navegacion a las 4
-     rutas, F5 en /governance y consola sin errores CORS ni singletons duplicados.
-   - Tests de dominio: `npm test` en `shared-lib` (vitest, 31 tests).
+     `http://localhost:430x/remoteEntry.json` (200) y navegacion desde 4300. Tras alternar
+     builds prod/dev, reiniciar los 5 dev servers (import map viejo -> ngDevMode).
+   - Docker: `docker compose -f deploy/projecthub/docker-compose.yml build 2>&1 |
+     Tee-Object -FilePath .dev-logs/docker-build.log` y luego `up -d`. Verificar
+     antiguedad de imagenes (`docker images`), remoteEntry 200 en 4400-4404, manifest con
+     URLs 440x, navegacion a las 4 rutas, F5 en /governance y consola sin errores.
+   - Tests: `npm test` por repo (vitest). Totales de referencia: shared-lib 98, ui-lib 18,
+     mfe-projects 26, mfe-admin 13, mfe-reports 5, mfe-governance 3, shell 6 = 169.
    - Tras cambiar `shared-lib` o `ui-lib`: `npx ng build` en la lib antes de servir las apps
      (las consumen por `file:../<lib>/dist/...`).
+   - Politica de comandos: `.ops/development/command-safety.md` (prohibido descartar
+     salida de evidencia; builds largos con log; evidencia etiquetada por stack).
 
 7. **Trabajo en curso y pendiente:**
-   - Commits por repo (Conventional Commits, ASCII, trailer Co-authored-by). No necesita
-     codigo; pendiente de instruccion o cierre de fase.
-   - Fase 1 (stores + sesion) segun plan: stores de dominio como instancia unica resuelta
-     por InjectionToken; al importar `@projecthub/shared` en apps, agregarla al shared
-     config de cada federation config (hoy Angular/rxjs/tslib ya son singletons).
+   - Fase 8 (integracion): smoke dev 4300-4304 y docker 4400-4404 con el codigo actual
+     (tras rebuild de imagenes), verificacion en navegador del dashboard (3 widgets,
+     UserSwitcher, F5 en ruta profunda, consola limpia). Necesita ejecucion, no codigo.
+   - Commit pendiente: tools/start-dev.mjs (fix readFileSync) + docs de politica
+     (.ops/development/) y actualizacion de plan/handoff/PROGRESS.
+   - Revision humana de estados `implementado` -> `verificado` (fases 0-7). No necesita
+     codigo; la evidencia esta en PROGRESS.md.
    - Correccion de AGENTS.md seccion 1 (Estructura): pendiente de instruccion explicita del
      propietario (el rulebook no se modifica sin que lo pida). No necesita codigo.
 
@@ -78,6 +89,9 @@ las secciones 2-8; la estructura y las reglas son reutilizables tal cual.
 
 | fecha | alcance | resultado |
 |---|---|---|
+| 2026-11-05 (1) | Bootstrap .ops, plan de 9 fases, pivote multirepo (DEC-003) | fase 0: 7 repos + federacion + dominio (31 tests) + Docker 4400-4404 verificados |
+| 2026-11-05 (2) | Fases 1-7: dominio completo, stores, ui-lib, 4 MFEs, shell dashboard | 169 tests verdes, 7 builds prod exit 0; fix start-dev.mjs; commits 86a4567, b5bfb26, 7ae2a6a, ac51a34 |
+| 2026-11-05 (3) | Politica de comandos, rebuild Docker con salida visible, docs de trazabilidad | command-safety.md creado; plan/handoff/PROGRESS actualizados; rebuild en curso con log |---|
 | 2026-11-05 | Bootstrap `.ops` (OKF 0.2), REQ-001..011, plan 9 fases, BL-001..013, DEC-001/002, scaffold de referencia Angular 22 | hecho |
 | 2026-11-05 | Pivote multirepo (DEC-003): correccion de especificaciones (funcionalidades 8.1, plan, backlog, fase-0, IMPL-001/002), limpieza de `projecthub-ref/` | hecho |
 | 2026-11-05 | IMPL-001: 7 repos multirepo + federacion operativa (dev 4300-4304, fix ngDevMode, smoke completo) + deploy Docker 4400-4404 (Dockerfiles, nginx SPA+CORS, compose, manifest 440x) verificado de punta a punta | hecho |

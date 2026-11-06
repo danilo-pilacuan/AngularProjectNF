@@ -1,7 +1,7 @@
 // Starts shell + remotes dev servers in parallel (ports 4300-4304, DEC-001).
 // Usage: node tools/start-dev.mjs
 import { spawn } from 'node:child_process';
-import { existsSync, readdirSync } from 'node:fs';
+import { existsSync, readFileSync, readdirSync } from 'node:fs';
 import { join } from 'node:path';
 
 const root = new URL('..', import.meta.url).pathname.replace(/^\/([A-Za-z]:)/, '$1');

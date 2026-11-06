@@ -51,3 +51,56 @@ Log de avance dia a dia. Fuente de verdad del avance; `.ops` lo organiza y enlaz
   en los remoteEntry. Al importar la lib, agregarla al shared config de cada federation
   config.
 - Siguiente paso: commits por repo; luego fase 1 (stores + sesion) segun plan.
+
+## Fases 1-7 (registro consolidado de sesiones previas)
+
+- Fase 1 (dominio): ciclo de vida completo de 9 etapas con transiciones y retrocesos
+  acotados, gates de etapa (checklist de entregables + aprobaciones), matriz de permisos
+  9x10, errores de dominio con mensajes en espanol. Todo en `@projecthub/shared`.
+- Fase 2 (stores y sesion): ProjectStore y stores acompanantes como instancia unica
+  resuelta por InjectionToken; sesion simulada con usuario activo; datos semilla.
+- Fase 3 (ui-lib): componentes base de presentacion (SummaryWidget y acompanantes) con
+  tema SCSS compartido; Gantt propio en SVG/CSS (sin librerias externas, decision del
+  proyecto).
+- Fase 4 (mfe-projects): portafolio, detalle de proyecto, etapas de trabajo, presupuesto
+  y ProjectSummaryWidget federado. Fix NG0203 en tests de widgets con signals:
+  vitest-base.config.mts + `"runnerConfig": true` en el target test de angular.json.
+- Fase 5 (mfe-admin): usuarios, roles y matriz de responsabilidades.
+- Fase 6 (mfe-reports): reportes y PortfolioKpiWidget (remote a remote, consume
+  ProjectStore compartido).
+- Fase 7 (shell): Dashboard con 3 widgets federados (mfe-projects, mfe-reports,
+  mfe-governance) via loadRemoteModule + NgComponentOutlet con fallback por celda;
+  UserSwitcher (selector de usuario activo, solo usuarios activos, badges de rol);
+  RemoteFallback para degradacion elegante de remotes caidos; rutas con helper
+  remoteConFallback(). GateStatusWidget creado en mfe-governance y expuesto como
+  './Widget'. Commits: 86a4567 (mfe-governance), b5bfb26 (mfe-reports), 7ae2a6a (shell),
+  ac51a34 (docs raiz).
+- Integracion (fase 8, parcial): tests verdes en los 7 repos: shared-lib 98, ui-lib 18,
+  mfe-projects 26, mfe-admin 13, mfe-reports 5, mfe-governance 3, shell 6 = 169 tests.
+  Builds prod exit 0 en los 7.
+- Fix real en tools/start-dev.mjs: usaba readFileSync sin importarlo (ReferenceError al
+  filtrar repos con package.json). Corregido; pendiente de commit.
+- Leccion ngDevMode (reincidencia): dev servers vivos desde antes de un build prod sirven
+  el import map viejo con chunks de prod -> ReferenceError: ngDevMode is not defined.
+  Tras alternar builds prod/dev, reiniciar los 5 dev servers o limpiar
+  node_modules/.cache/native-federation.
+
+## 2026-11-05 (sesion actual)
+
+- Hallazgo de puertos (feedback del propietario): la evidencia mezclaba stacks sin
+  etiquetar. Contrato vigente (DEC-001): dev = 4300-4304 (npm), docker = 4400-4404
+  (compose). Verificado con docker ps: los contenedores projecthub-* llevaban 4 horas
+  arriba con imagenes construidas ANTES de las fases 5-7 -> el navegador en 4400 mostraba
+  contenido viejo. Causa documentada, no bug de la app.
+- Politica de proteccion de comandos (pedido del propietario): creada
+  `.ops/development/command-safety.md` (arbol development nuevo). Prohibido descartar
+  salida que se espera observar (2>&1 | Out-Null); builds largos con Tee-Object a
+  .dev-logs/; exit code no sustituye a la salida; evidencia etiquetada por stack;
+  verificar antiguedad/hash del artefacto antes de juzgar un stack.
+- Rebuild Docker re-ejecutado con salida visible: `docker compose build 2>&1 |
+  Tee-Object -FilePath .dev-logs/docker-build.log` (log en .dev-logs/docker-build.log).
+  Estado previo verificado: contenedores e imagenes con 4h de antiguedad (el rebuild
+  interrumpido no habia dejado nada).
+- Pendiente: up -d del stack, smoke docker 4400-4404 (remoteEntry 200, navegacion, F5),
+  smoke dev 4300-4304 tras reinicio de servers, verificacion en navegador del dashboard,
+  commit de tools/start-dev.mjs + docs, actualizacion de plan.md y handoff.
