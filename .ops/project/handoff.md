@@ -37,13 +37,13 @@ las secciones 2-8; la estructura y las reglas son reutilizables tal cual.
 
 ---
 
-## Estado actual (2026-11-05)
+## Estado actual (2026-11-06, fase 14)
 
-> Fecha: 2026-11-05. Rama: n/a en la raiz (orquestador); cada repo del multirepo tiene la suya
-> (main). Estado: fases 0-7 implementadas; fase 8 (integracion) con verificacion E2E completa
-> en dev (4300-4304) y docker (4400-4404): 169 tests verdes, 7 builds prod exit 0, navegacion,
-> F5 en ruta profunda, dashboard con 3 widgets, sesion compartida via store, consola limpia.
-> Pendiente: revision humana para estados `verificado`.
+> Fecha: 2026-11-06. Rama: n/a en la raiz (orquestador); cada repo del multirepo tiene la suya
+> (RC4/dev). Estado: fases 0-8 + 13 (backend FastAPI/Postgres, http-stores, escrituras
+> persistidas) + 14 (autenticacion real JWT) implementadas. Backend 101/101, shared-lib
+> 148/148, shell 20/20, apps 5/5 builds verdes; E2E con navegador verificado.
+> Pendiente: revision humana para estados `verificado` y gestion de contrasenas (14.5).
 
 2. **Estado del producto:** ProjectHub, sistema documental para gobernar proyectos de software
    (ciclo de vida de 9 etapas, gates, matriz de responsabilidades, Gantt propio). Fases 0-7
@@ -76,14 +76,15 @@ las secciones 2-8; la estructura y las reglas son reutilizables tal cual.
      salida de evidencia; builds largos con log; evidencia etiquetada por stack).
 
 7. **Trabajo en curso y pendiente:**
-   - Fase 8 (integracion): verificacion de punta a punta completada en ambos stacks
-     (dev 4300-4304 y docker 4400-4404): remoteEntry 200, navegacion a las 4 rutas, F5 en
-     ruta profunda, dashboard con 3 widgets, UserSwitcher con reaccion del remote via
-     store compartido, consola limpia. Pendiente de revision humana para `verificado`.
-   - Revision humana de estados `implementado` -> `verificado` (fases 0-8). No necesita
-     codigo; la evidencia esta en PROGRESS.md.
-   - Backend FastAPI (item 10.3): placeholder documentado en `backend/README.md`; sin
-     codigo. Requiere instruccion del propietario para arrancar.
+   - Gestion de contrasenas (14.5): credenciales hoy en memoria del proceso,
+     sembradas con AUTH_CONTRASENA_DEMO (por defecto projecthub-demo); falta
+     endpoint de cambio y persistencia en tabla propia. Requiere DEC del
+     propietario. Necesita codigo.
+   - Revision humana de estados `implementado` -> `verificado` (fases 0-14).
+     No necesita codigo; la evidencia esta en PROGRESS.md.
+   - Docker (4400-4404) sin reconstruir desde fase 14: las imagenes no incluyen
+     la fase de autenticacion ni la pantalla de login. Necesita rebuild si se
+     quiere verificar el stack Docker.
    - Correccion de AGENTS.md seccion 1 (Estructura): pendiente de instruccion explicita del
      propietario (el rulebook no se modifica sin que lo pida). No necesita codigo.
 
@@ -98,3 +99,5 @@ las secciones 2-8; la estructura y las reglas son reutilizables tal cual.
 | 2026-11-05 | Pivote multirepo (DEC-003): correccion de especificaciones (funcionalidades 8.1, plan, backlog, fase-0, IMPL-001/002), limpieza de `projecthub-ref/` | hecho |
 | 2026-11-05 | IMPL-001: 7 repos multirepo + federacion operativa (dev 4300-4304, fix ngDevMode, smoke completo) + deploy Docker 4400-4404 (Dockerfiles, nginx SPA+CORS, compose, manifest 440x) verificado de punta a punta | hecho |
 | 2026-11-05 | IMPL-002: dominio puro en shared-lib (catalogos, errores, ciclo de vida, matriz 9x10, modelos, calculos) + 31 tests vitest en verde + build de lib | hecho |
+| 2026-11-06 (fase 13.4, cierre) | Refresco de stores desde respuesta del servidor (supresion de eco por identidad), provider `proporcionarSincronizacionBackend()` (fix NG0203), restauracion de exposes federados perdidos en shell y 4 remotes, E2E con navegador contra dev 4300-4304 + backend 8100/Postgres (creacion de proyecto via UI, persistencia, recuperacion tras F5) | hecho: shared-lib 137/137, apps 5/5 verdes, builds prod 5/5; commits shared-lib feat + 5 apps fix. Leccion: cambiar exposes de `federation.config.mjs` exige reiniciar dev servers |
+| 2026-11-06 (fase 14, autenticacion real) | Backend auth (login JWT HS256, /me, PBKDF2, credenciales demo, Bearer prioridad sobre X-Actor-Id), AutenticacionService/TokenAlmacen en shared-lib, Bearer automatico en ApiEnlaceService, pantalla /login + guard + cierre de sesion en shell, fix de tests hermeticos (conftest DATABASE_URL), E2E navegador completa (login, F5, escritura persistida con token, logout) | hecho: backend 101/101, shared-lib 148/148, shell 20/20, remotes y ui-lib verdes, builds 5/5; docs/funcionalidades.md 14.1-14.4 y plan.md actualizados |

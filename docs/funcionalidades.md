@@ -86,7 +86,7 @@ Estado: `☐` pendiente · `◐` en progreso · `☑` hecho
 
 - ☑ 10.1 Estado en memoria con signals; sin backend en esta fase. *(Implementado 2026-11-05.)*
 - ☑ 10.2 Datos semilla: ≥6 usuarios (uno por rol + uno con doble rol), ≥5 proyectos en ≥4 etapas distintas, ≥2 etapas de trabajo en proyectos en ejecución, consumos parciales. *(Implementado 2026-11-05: 7 usuarios, 5 proyectos, etapas y consumos.)*
-- ◑ 10.3 (En curso) Persistencia real (backend/API): FastAPI en 8100 (seccion 13) con PostgreSQL en Docker planificado (13.2); autenticacion real pendiente.
+- ☑ 10.3 Persistencia real (backend/API): FastAPI en 8100 (seccion 13) con PostgreSQL en Docker (13.2); HttpClient en stores (13.3); escrituras persistidas (13.4); autenticacion real (seccion 14, 2026-11-06).
 
 ## 11. Calidad y verificación
 
@@ -109,9 +109,9 @@ Estado: `☐` pendiente · `◐` en progreso · `☑` hecho
 **DECISIÓN (2026-11-06): el backend se construye en FastAPI (Python 3.13) siguiendo la seccion 7 del rulebook.** El servicio espeja `ProjectStore`/`UsuarioStore` de `@projecthub/shared` (matriz de permisos, gates, ciclo de vida, calculos); el contrato JSON es camelCase identico a los modelos TS, con errores de dominio mapeados a HTTP (404/409/422). El actor de sesion viaja en `X-Actor-Id` hasta la autenticacion real (1.5/1.6).
 
 - ◑ 13.1 API REST espejo de dominio: ~30 endpoints (usuarios, proyectos, etapas, entregables, gates, transiciones, bitacora, dependencias). *(Implementado 2026-11-06: 68 tests pytest verdes en puerto 8100.)*
-- ◐ 13.2 Persistencia real. **El backend puede usar PostgreSQL en un contenedor Docker** (orden del dueno 2026-11-06): `docker-compose.yml` con servicio `db` (postgres:17-alpine, volumen nombrado, healthcheck) y variables en `.env` (`DATABASE_URL`); en dev sin Docker el servicio mantiene la implementacion en memoria actual como fallback. Migracion de la capa de datos pendiente.
+- ☑ 13.2 Persistencia real. **El backend puede usar PostgreSQL en un contenedor Docker** (orden del dueno 2026-11-06): `docker-compose.yml` con servicio `db` (postgres:17-alpine, volumen nombrado, healthcheck) y variables en `.env` (`DATABASE_URL`); en dev sin Docker el servicio mantiene la implementacion en memoria actual como fallback. Migracion de la capa de datos pendiente. *(Implementado 2026-11-06: app/almacen.py RepositorioPostgres con psycopg3, JSONB camelCase, re-sync total y fallback a memoria; 76/76 tests con roundtrip real sobre BD efimera.)*
 - ◑ 13.3 Frontend consume la API (HttpClient en stores con fallback a semilla si el backend no responde; ver 10.3). *(Implementado 2026-11-06: ApiEnlaceService + sincronizarStores en @projecthub/shared, APP_INITIALIZER en shell y remotes; escrituras aun locales.)*
-- ◑ 13.4 Escrituras del frontend persistidas en el backend. *(Implementado 2026-11-06: endpoints GET/PUT /api/sincronizacion (re-sync total validado en servidor) + SincronizadorEscrituras con debounce 400ms y reintento; backend 82/82, shared-lib 132/132. El push reemplaza el estado completo del servidor con el del cliente, que ya valida las mismas reglas de dominio.)*
+- ◑ 13.4 Escrituras del frontend persistidas en el backend. *(Implementado 2026-11-06: endpoints GET/PUT /api/sincronizacion (re-sync total validado en servidor) + SincronizadorEscrituras con debounce 400ms y reintento; backend 82/82, shared-lib 132/132. El push reemplaza el estado completo del servidor con el del cliente, que ya valida las mismas reglas de dominio. Cierre 2026-11-06: refresco de stores desde la respuesta del servidor con supresion de eco por identidad de referencias, provider `proporcionarSincronizacionBackend()` (corrige NG0203), exposes federados './Widget' restaurados y E2E con navegador verificado: creacion de proyecto via UI, persistencia en backend (Postgres) y recuperacion tras F5; shared-lib 137/137, apps 5/5 verdes.)*
 
 **DECISIÓN (2026-11-06): se adopta Angular Material 22 como base de la capa de UI.** Ver DEC-005. Antecedente: PrimeNG fue descartada por licencia (DEC-004); el banner "Invalid PrimeUI License" confirmó que viola el límite de no introducir componentes licenciados, y el dueño ordenó migrar a Angular Material (Apache-2.0, sin chequeo de licencia en runtime ni banners).
 
@@ -120,6 +120,16 @@ Estado: `☐` pendiente · `◐` en progreso · `☑` hecho
 - ☑ 12.3 Re-construir los componentes de `@projecthub/ui` sobre Material (DataTable → mat-table, FormField → mat-form-field, StageBadge → chip/badge Material, PermissionBanner → banner Material, SummaryWidget → tarjeta Material) manteniendo el barrel público, los selectores `ph-*` y los inputs/outputs existentes para no romper a los remotes. *(Implementado 2026-11-06: data-table sobre p-table de Material, summary-widget sobre mat-card, stage-badge chip nativo; form-field nativo documentado.)*
 - ☑ 12.4 Migrar los usos directos en remotes que no pasan por ui-lib (si los hay) y los estilos globales; actualizar tests de ui-lib y de remotes. *(Implementado 2026-11-06: tests de los 4 remotes y ui-lib actualizados y verdes tras corregir la doble instancia de @angular/material en tests con `dedupe` en `vitest-base.config.mts`.)*
 - ☑ 12.5 Verificación completa: builds + tests verdes en los 7 proyectos, app levantada en dev sin banner de licencia, consola limpia, sin duplicación de singletons Material/CDK. *(Builds de los 5 apps verdes 2026-11-06; tests: shell 15/15, shared-lib 125/125, ui-lib 21/21, mfe-projects 26/26, mfe-reports 5/5, mfe-admin 13/13, mfe-governance 3/3; verificacion runtime de consola limpia y sin banner en la fase de integracion RC3.)*
+
+## 14. Autenticación real — EN CURSO
+
+**DECISIÓN (2026-11-06): la sesion real se implementa con JWT HS256 firmado por el backend (PyJWT) y contrasena con hash PBKDF2-HMAC-SHA256 (stdlib), sin dependencias licenciadas.** El token viaja en `Authorization: Bearer` en todas las llamadas; `X-Actor-Id` queda como fallback de compatibilidad con la sesion simulada. Sin backend disponible la app opera en modo demo (sesion simulada, selector de usuario) por la degradacion elegante del rulebook.
+
+- ☑ 14.1 Backend: POST `/api/auth/login` (credenciales validadas, token JWT con sub y exp 7 dias), GET `/api/auth/me`; credenciales demo sembradas de forma perezosa (env `AUTH_CONTRASENA_DEMO`, por defecto `projecthub-demo`) y asignadas a usuarios nuevos; `AUTH_SECRET` por entorno con secreto efimero y warning si falta. *(Implementado 2026-11-06: backend 101/101 tests.)*
+- ☑ 14.2 Frontend: `AutenticacionService` en @projecthub/shared (login, restauracion de sesion via `/me` en el initializer, cierre), `TokenAlmacen` en localStorage, Bearer automatico en `ApiEnlaceService`; el actor de las escrituras (13.4) es el usuario de la sesion activa. *(Implementado 2026-11-06: shared-lib 148/148 tests.)*
+- ☑ 14.3 Shell: pantalla `/login`, `sesionGuard` redirige a `/login` con backend disponible (y al dashboard en modo demo), area de sesion con usuario autenticado + Cerrar sesion (el selector de usuarios solo en demo). *(Implementado 2026-11-06: shell 20/20 tests.)*
+- ☑ 14.4 Verificacion E2E con navegador (dev 4300-4304 + backend 8100/Postgres): redireccion a /login, error de credenciales, login real, restauracion tras F5, creacion de proyecto via UI persistida con Bearer y cierre de sesion. *(2026-11-06.)*
+- ☐ 14.5 Gestion de contrasenas (cambio de contrasena, credenciales persistidas en tabla propia); hoy la credencial demo vive en memoria del proceso y no hay endpoint de cambio. DEC pendiente.
 
 ## Orden de implementación sugerido
 
@@ -132,7 +142,8 @@ Estado: `☐` pendiente · `◐` en progreso · `☑` hecho
 7. **mfe-reports** (7.1–7.4): reportes + widget remote-a-remote.
 8. **shell** (8.6, 1.6): dashboard, navegación, selector de usuario.
 9. **Integración y cierre** (11.1–11.5): tests, build, verificación de federación.
-10. **Backend y persistencia** (13.1–13.3, 10.3): FastAPI, PostgreSQL en Docker, HttpClient en stores.
+10. **Backend y persistencia** (13.1–13.4, 10.3): FastAPI, PostgreSQL en Docker, HttpClient en stores.
+11. **Autenticacion real** (14.1–14.5): login JWT en backend, pantalla de login en el shell, Bearer en el enlace HTTP.
 
 ## Fuera de alcance por ahora
 

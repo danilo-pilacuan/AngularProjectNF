@@ -170,3 +170,70 @@ Log de avance dia a dia. Fuente de verdad del avance; `.ops` lo organiza y enlaz
   esperado del re-sync total, cubierto por test roundtrip camelCase).
 - Pendiente en la fase: refresco de stores desde respuesta del servidor y
   verificacion E2E con navegador contra dist.
+
+## 2026-11-06 (fase 13.4, cierre: refresco de stores + exposes + E2E navegador)
+
+- shared-lib: `aplicarRespuesta()` aplica el estado del backend a UsuarioStore y
+  ProjectStore tras cada push exitoso. Supresion de eco por identidad de
+  referencias (`esEcoDelServidor` + campo `aplicada`): un flag booleano no
+  funciona porque los effects no corren sincronos con la escritura de la senal.
+- Nuevo provider `proporcionarSincronizacionBackend()`: ENVIRONMENT_INITIALIZER
+  (observar()) + provideAppInitializer (sincronizarStores + preparar()),
+  capturando la referencia del servicio antes del await. Corrige el NG0203
+  "SincronizadorEscrituras injection failed" del arranque en el navegador.
+  shared-lib: 137/137 tests, build ok.
+- Fix critico: los 4 remotes y el shell servian `remoteEntry.json` con
+  `exposes: []`. Los `exposes` de `federation.config.mjs` se habian perdido
+  ('./Module' en los 4; './Widget' en mfe-projects, mfe-reports y
+  mfe-governance). Restaurados; el dashboard volvio a componer los 3 widgets.
+- Verificacion E2E con navegador (dev 4300-4304, backend 8100/Postgres):
+  dashboard con los 3 widgets, sesion Diana Admin (rol Admin visible),
+  navegacion a /projects con los 6 proyectos de semilla, creacion de
+  "Proyecto E2E sincronizacion" via UI -> PUT persistido en el backend
+  (GET /api/sincronizacion lo devuelve, presupuesto 120000000),
+  recarga F5: el proyecto sigue y el dashboard muestra 6 de 7 activos
+  (recuperacion desde el servidor funciona). 404 residuales en consola son
+  recursos del dev server, no de la app.
+- Tests/apps: shell 15/15, mfe-projects 5 archivos, mfe-reports 5, mfe-admin 3,
+  mfe-governance 2 (todos verdes); builds de produccion 5/5.
+- Commits: shared-lib feat (refresco + provider), 5 apps fix (provider +
+  exposes restaurados).
+- Leccion nueva: cambiar `federation.config.mjs` (exposes) exige reiniciar los
+  dev servers; el remoteEntry.json se genera al arranque, no en watch.
+
+## 2026-11-06 (fase 14: autenticacion real + cierre documental)
+
+- Cierre documental pendiente: commit del backend (load_dotenv + python-dotenv,
+  ya estaba en el arbol sin commit). Bug corregido en el camino: load_dotenv()
+  restauraba DATABASE_URL desde .env dentro de los tests de API y estos mutaban
+  la BD dev de Postgres (409 en transiciones). Fix: tests/conftest.py fija
+  DATABASE_URL="" (load_dotenv no sobreescribe variables existentes). 101/101.
+- Fase 14 (10.3, autenticacion real) implementada:
+  - Backend: app/auth.py (PBKDF2-HMAC-SHA256 stdlib, 240k iteraciones; JWT
+    HS256 con PyJWT; credenciales en memoria sembradas de forma perezosa con
+    AUTH_CONTRASENA_DEMO), POST /api/auth/login, GET /api/auth/me, Bearer con
+    prioridad sobre X-Actor-Id (compatibilidad), CORS + Authorization.
+    tests/test_auth.py: 19 tests nuevos (101/101). Smoke HTTP real: login,
+    me, 401/403/422.
+  - shared-lib: AutenticacionService (login, restaurarSesion via /me en el
+    initializer, cerrarSesion), TokenAlmacen (localStorage), Bearer automatico
+    en ApiEnlaceService, SesionStore.registrarUsuario, actor de escrituras
+    (13.4) = usuario de la sesion. 148/148 tests.
+  - shell: pantalla /login, sesionGuard redirige a /login con backend
+    disponible (al dashboard en modo demo, degradacion elegante), area de
+    sesion con usuario autenticado + Cerrar sesion (selector de usuarios solo
+    en demo). 20/20 tests.
+  - Builds prod de los 5 apps exit 0; tests de los 4 remotes y ui-lib verdes
+    (26/5/13/3/21).
+  - E2E con navegador (dev 4300-4304 + backend 8100/Postgres): /projects sin
+    sesion redirige a /login?de=%2Fprojects; contrasena incorrecta muestra
+    "Correo o contrasena incorrectos."; login Diana Admin reanuda el destino;
+    F5 restaura sesion via /api/auth/me; creacion de "Proyecto E2E
+    autenticacion" via UI persistida en el backend con Bearer (verificada por
+    GET /api/proyectos); Cerrar sesion vuelve a /login y borra el token.
+  - Limitacion documentada (14.5, DEC pendiente): credenciales en memoria del
+    proceso; sin endpoint de cambio de contrasena. AUTH_SECRET del .env de
+    dev (gitignored); en prod debe definirse o los tokens no sobreviven al
+    reinicio.
+- Commits: backend (load_dotenv, conftest, auth), shared-lib (autenticacion),
+  shell (login + guard + user-switcher). Push pendiente al cierre.

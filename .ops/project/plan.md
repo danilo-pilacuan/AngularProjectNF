@@ -7,7 +7,7 @@ description: Fases de implementacion con alcance y estado; el detalle de tareas 
 estado: vigente
 dueno: rol:propietario
 fecha: 2026-11-05T19:55:00Z
-updated: 2026-11-06T00:15:00Z
+updated: 2026-11-06T22:10:00Z
 relaciona: [project-readme, implementations-readme, DEC-004]
 status: stable
 sources: [{ id: rulebook, resource: docs/funcionalidades.md, title: Funcionalidades - ProjectHub }]
@@ -26,7 +26,12 @@ Fases derivadas del "Orden de implementacion sugerido" de `docs/funcionalidades.
 | 6 | mfe-reports: reportes + widget remote-a-remote (7.1-7.4) | implementado |
 | 7 | shell: dashboard, navegacion, selector de usuario (8.6, 1.6) | implementado |
 | 8 | Integracion y cierre: tests, build, verificacion de federacion (11.1-11.5) | implementado |
-| M | Fase intermedia (DEC-004): migracion de `@projecthub/ui` a PrimeNG como base de componentes (12.1-12.5) | en progreso |
+| 9 | Angular Material como base de UI (DEC-005; PrimeNG descartada por licencia, DEC-004) | implementado |
+| 10 | Backend FastAPI + PostgreSQL en Docker (13.1-13.2) | implementado |
+| 11 | http-stores: lectura inicial desde la API (13.3) | implementado |
+| 12 | Escrituras del frontend persistidas (13.4) | implementado |
+| 13 | Autenticacion real: login JWT, pantalla de login, Bearer (14.1-14.4) | implementado |
+| 14 | Gestion de contrasenas persistida (14.5, DEC pendiente) | pendiente |
 
 Nota de verificacion: los estados `implementado` quedan pendientes de revision humana
 para subir a `verificado`; la evidencia (tests, builds, smokes por stack) esta en
