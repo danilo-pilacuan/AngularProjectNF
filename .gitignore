@@ -54,13 +54,5 @@ Thumbs.db
 # Session logs
 .dev-logs/
 
-# Nested multirepo workspaces (DEC-003: un repo Git por desarrollo)
-/shell/
-/mfe-projects/
-/mfe-reports/
-/mfe-admin/
-/mfe-governance/
-/shared-lib/
-/ui-lib/
-/deploy/
-/backend/
+# Nested multirepo workspaces (DEC-003): registrados como submodulos Git
+# (ver .gitmodules); ya no se ignoran porque el padre los rastrea por gitlink.

@@ -1,0 +1,27 @@
+[submodule "shared-lib"]
+	path = shared-lib
+	url = https://github.com/danilo-pilacuan/shared-lib.git
+[submodule "ui-lib"]
+	path = ui-lib
+	url = https://github.com/danilo-pilacuan/ui-lib.git
+[submodule "shell"]
+	path = shell
+	url = https://github.com/danilo-pilacuan/shell.git
+[submodule "mfe-projects"]
+	path = mfe-projects
+	url = https://github.com/danilo-pilacuan/mfe-projects.git
+[submodule "mfe-reports"]
+	path = mfe-reports
+	url = https://github.com/danilo-pilacuan/mfe-reports.git
+[submodule "mfe-admin"]
+	path = mfe-admin
+	url = https://github.com/danilo-pilacuan/mfe-admin.git
+[submodule "mfe-governance"]
+	path = mfe-governance
+	url = https://github.com/danilo-pilacuan/mfe-governance.git
+[submodule "deploy"]
+	path = deploy
+	url = https://github.com/danilo-pilacuan/deploy.git
+[submodule "backend"]
+	path = backend
+	url = https://github.com/danilo-pilacuan/backend.git
