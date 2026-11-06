@@ -25,12 +25,14 @@ Fases derivadas del "Orden de implementacion sugerido" de `docs/funcionalidades.
 | 5 | mfe-admin: usuarios y matriz (1.1, 1.3, 1.4, 1.7, 1.8) | implementado |
 | 6 | mfe-reports: reportes + widget remote-a-remote (7.1-7.4) | implementado |
 | 7 | shell: dashboard, navegacion, selector de usuario (8.6, 1.6) | implementado |
-| 8 | Integracion y cierre: tests, build, verificacion de federacion (11.1-11.5) | en-curso |
+| 8 | Integracion y cierre: tests, build, verificacion de federacion (11.1-11.5) | implementado |
 
 Nota de verificacion: los estados `implementado` quedan pendientes de revision humana
 para subir a `verificado`; la evidencia (tests, builds, smokes por stack) esta en
-PROGRESS.md. La fase 8 esta en curso: 169 tests verdes y 7 builds prod exit 0; falta
-smoke dev/docker con el codigo actual y verificacion en navegador del dashboard.
+PROGRESS.md. La fase 8 cerro con verificacion E2E en ambos stacks: 169 tests verdes,
+7 builds prod exit 0, navegacion y F5 en ruta profunda en dev (4300-4304) y docker
+(4400-4404), dashboard con 3 widgets federados, sesion compartida via store y consola
+limpia (sin singletons duplicados).
 
 Nota de entorno: el rango 4200-4204 esta ocupado en el host; los puertos de desarrollo se
 desplazan (ver `.ops/project/handoff.md`, seccion 4). Los puertos de referencia del rulebook

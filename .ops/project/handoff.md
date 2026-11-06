@@ -40,9 +40,10 @@ las secciones 2-8; la estructura y las reglas son reutilizables tal cual.
 ## Estado actual (2026-11-05)
 
 > Fecha: 2026-11-05. Rama: n/a en la raiz (orquestador); cada repo del multirepo tiene la suya
-> (main). Estado: fases 0-7 implementadas; fase 8 (integracion) en curso: 169 tests verdes y
-> 7 builds prod exit 0; smoke dev/docker con codigo actual y verificacion en navegador
-> pendientes; revision humana pendiente para estados `verificado`.
+> (main). Estado: fases 0-7 implementadas; fase 8 (integracion) con verificacion E2E completa
+> en dev (4300-4304) y docker (4400-4404): 169 tests verdes, 7 builds prod exit 0, navegacion,
+> F5 en ruta profunda, dashboard con 3 widgets, sesion compartida via store, consola limpia.
+> Pendiente: revision humana para estados `verificado`.
 
 2. **Estado del producto:** ProjectHub, sistema documental para gobernar proyectos de software
    (ciclo de vida de 9 etapas, gates, matriz de responsabilidades, Gantt propio). Fases 0-7
@@ -75,13 +76,14 @@ las secciones 2-8; la estructura y las reglas son reutilizables tal cual.
      salida de evidencia; builds largos con log; evidencia etiquetada por stack).
 
 7. **Trabajo en curso y pendiente:**
-   - Fase 8 (integracion): smoke dev 4300-4304 y docker 4400-4404 con el codigo actual
-     (tras rebuild de imagenes), verificacion en navegador del dashboard (3 widgets,
-     UserSwitcher, F5 en ruta profunda, consola limpia). Necesita ejecucion, no codigo.
-   - Commit pendiente: tools/start-dev.mjs (fix readFileSync) + docs de politica
-     (.ops/development/) y actualizacion de plan/handoff/PROGRESS.
-   - Revision humana de estados `implementado` -> `verificado` (fases 0-7). No necesita
+   - Fase 8 (integracion): verificacion de punta a punta completada en ambos stacks
+     (dev 4300-4304 y docker 4400-4404): remoteEntry 200, navegacion a las 4 rutas, F5 en
+     ruta profunda, dashboard con 3 widgets, UserSwitcher con reaccion del remote via
+     store compartido, consola limpia. Pendiente de revision humana para `verificado`.
+   - Revision humana de estados `implementado` -> `verificado` (fases 0-8). No necesita
      codigo; la evidencia esta en PROGRESS.md.
+   - Backend FastAPI (item 10.3): placeholder documentado en `backend/README.md`; sin
+     codigo. Requiere instruccion del propietario para arrancar.
    - Correccion de AGENTS.md seccion 1 (Estructura): pendiente de instruccion explicita del
      propietario (el rulebook no se modifica sin que lo pida). No necesita codigo.
 
@@ -91,7 +93,7 @@ las secciones 2-8; la estructura y las reglas son reutilizables tal cual.
 |---|---|---|
 | 2026-11-05 (1) | Bootstrap .ops, plan de 9 fases, pivote multirepo (DEC-003) | fase 0: 7 repos + federacion + dominio (31 tests) + Docker 4400-4404 verificados |
 | 2026-11-05 (2) | Fases 1-7: dominio completo, stores, ui-lib, 4 MFEs, shell dashboard | 169 tests verdes, 7 builds prod exit 0; fix start-dev.mjs; commits 86a4567, b5bfb26, 7ae2a6a, ac51a34 |
-| 2026-11-05 (3) | Politica de comandos, rebuild Docker con salida visible, docs de trazabilidad | command-safety.md creado; plan/handoff/PROGRESS actualizados; rebuild en curso con log |---|
+| 2026-11-05 (3) | Politica de comandos, rebuild Docker, fix de rutas del shell, verificacion E2E | command-safety.md; .dockerignore con **/ (contexto 1.7GB -> ~4 min); fix NG04014 en shell (342593b); verificado dev y docker de punta a punta; commits raiz 9a50792 |---|
 | 2026-11-05 | Bootstrap `.ops` (OKF 0.2), REQ-001..011, plan 9 fases, BL-001..013, DEC-001/002, scaffold de referencia Angular 22 | hecho |
 | 2026-11-05 | Pivote multirepo (DEC-003): correccion de especificaciones (funcionalidades 8.1, plan, backlog, fase-0, IMPL-001/002), limpieza de `projecthub-ref/` | hecho |
 | 2026-11-05 | IMPL-001: 7 repos multirepo + federacion operativa (dev 4300-4304, fix ngDevMode, smoke completo) + deploy Docker 4400-4404 (Dockerfiles, nginx SPA+CORS, compose, manifest 440x) verificado de punta a punta | hecho |

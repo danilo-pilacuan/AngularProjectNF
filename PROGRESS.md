@@ -101,6 +101,23 @@ Log de avance dia a dia. Fuente de verdad del avance; `.ops` lo organiza y enlaz
   Tee-Object -FilePath .dev-logs/docker-build.log` (log en .dev-logs/docker-build.log).
   Estado previo verificado: contenedores e imagenes con 4h de antiguedad (el rebuild
   interrumpido no habia dejado nada).
-- Pendiente: up -d del stack, smoke docker 4400-4404 (remoteEntry 200, navegacion, F5),
-  smoke dev 4300-4304 tras reinicio de servers, verificacion en navegador del dashboard,
-  commit de tools/start-dev.mjs + docs, actualizacion de plan.md y handoff.
+- Fix de .dockerignore: los patrones sin `**/` no excluyen node_modules anidados de cada
+  repo del multirepo -> contexto de build de ~1.7GB y 200s+ solo transfiriendo. Con
+  `**/node_modules` etc., el build completo de 5 imagenes baja a ~4 minutos.
+- Bug real corregido en shell (commit 342593b): `remoteConFallback()` devolvia `Routes`
+  (arreglo) y el punto de uso lo expandia con spread dentro del objeto de ruta
+  `{ path: 'projects', ...[...] }` -> propiedades indice en vez de fusion: NG04014
+  "Invalid configuration of route 'projects'" y main vacio en rutas de remotes. Los 6
+  tests del shell pasaban porque probaban el arreglo interno, no el punto de uso. Fix:
+  devolver `Route` (objeto). Leccion: el spread de arreglos dentro de objetos no fusiona.
+- Verificacion de punta a punta tras el fix:
+  - dev (4300-4304): remoteEntry 200 en los 5; /governance con F5 directo renderiza el
+    remote; tests shell 6/6; build prod exit 0.
+  - docker (4400-4404): imagenes reconstruidas (antiguedad < 1 min al verificar);
+    remoteEntry 200 en los 5; navegacion a /, /projects, /reports, /admin, /governance;
+    F5 en /governance; dashboard con los 3 widgets federados con datos; UserSwitcher
+    cambia sesion y mfe-admin reacciona via store compartido (Nuevo usuario/Acciones
+    aparecen con Diana Admin; Ivan Inactivo sin boton Desactivar); consola sin warnings
+    de singletons duplicados ni errores.
+- ngDevMode reincidio al ejecutar el build prod del shell con dev servers vivos: aplicada
+  la leccion documentada (reiniciar los 5 dev servers tras alternar builds prod/dev).
