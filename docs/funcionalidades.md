@@ -12,7 +12,7 @@ Estado: `☐` pendiente · `◐` en progreso · `☑` hecho
 - ☑ 1.4 Asignación de uno o más roles por usuario. *(Implementado 2026-11-06 en mfe-admin.)*
 - ☑ 1.5 Matriz de responsabilidades: qué acciones puede hacer cada rol en cada etapa del ciclo de vida (visible y editable como configuración). *(Definida y testeada en `@projecthub/shared` 2026-11-05; vista editable en mfe-admin 2026-11-06.)*
 - ☑ 1.6 Sesión simulada: selector de usuario activo en el shell; el usuario activo determina todos los permisos. *(SesionStore en `@projecthub/shared` 2026-11-05; selector en el shell 2026-11-06.)*
-- ◐ 1.7 Guards de ruta por rol/permiso; vista de "sin permisos" y ocultamiento de acciones no permitidas en la UI. *(Ocultamiento de acciones en mfe-projects y mfe-admin 2026-11-06; guards de ruta y vista "sin permisos" quedan para fase 8.)*
+- ☑ 1.7 Guards de ruta por rol/permiso; vista de "sin permisos" y ocultamiento de acciones no permitidas en la UI. *(Ocultamiento de acciones en mfe-projects y mfe-admin 2026-11-06; guards `sesionGuard`/`permisoGuard` + vista `/sin-permisos` en el shell 2026-11-06.)*
 - ☑ 1.8 Un usuario inactivo no puede ser usuario activo ni responsable/patrocinador en formularios. *(Validado en stores de `@projecthub/shared` con tests; los formularios solo ofrecen usuarios activos.)*
 
 ## 2. Iniciativas y proyectos
@@ -74,7 +74,7 @@ Estado: `☐` pendiente · `◐` en progreso · `☑` hecho
 - ◐ 8.4 Store único (`ProjectStore`) compartido entre shell y los cuatro MFEs (signals + InjectionToken). *(Store y token listos en shared; consumido por mfe-projects, mfe-admin, mfe-reports y mfe-governance; verificación cross-MFE en fase 8.)*
 - ☑ 8.5 Widget `ProjectSummaryWidget` expuesto por `mfe-projects` y consumido por `mfe-reports` (remote a remote). *(Implementado 2026-11-06: expuesto por mfe-projects y consumido por mfe-reports con selector de proyecto.)*
 - ☑ 8.6 Dashboard del shell que compone widgets de los cuatro remotes. *(Implementado 2026-11-06: dashboard del shell con `ProjectSummaryWidget` (mfe-projects), `PortfolioKpiWidget` (mfe-reports) y `GateStatusWidget` (mfe-governance), cargados por federación con fallback por celda.)*
-- ◐ 8.7 Las apps no se importan entre sí por ruta de archivo; toda comunicación pasa por federación o `@projecthub/shared`. *(Cumplido en los 5 apps y libs 2026-11-06; verificación completa en fase 8.)*
+- ☑ 8.7 Las apps no se importan entre sí por ruta de archivo; toda comunicación pasa por federación o `@projecthub/shared`. *(Cumplido en los 5 apps y libs 2026-11-06; verificación completa en fase 8.)*
 
 ## 9. Librerías compartidas
 
@@ -93,8 +93,18 @@ Estado: `☐` pendiente · `◐` en progreso · `☑` hecho
 - ☑ 11.1 Tests unitarios de dominio: grafo de transiciones, matriz de permisos, cálculo de avance ponderado, cálculo de presupuesto, guards, stores. *(Implementado 2026-11-05/06: 5 specs en shared-lib, 5 en ui-lib, 5 en mfe-projects.)*
 - ☑ 11.2 Tests de renderizado de componentes de UI (data-table, gantt, badges). *(Implementado 2026-11-05 en ui-lib.)*
 - ☑ 11.3 TypeScript estricto; sin `any` implícito, `@ts-ignore` ni `--force`. *(Verificado 2026-11-06: builds estrictos sin supresiones.)*
-- ☐ 11.4 Build, tests y lint en verde para todos los proyectos. *(Builds y tests verdes en shared, ui y mfe-projects; falta lint formal y los repos de fases 5-8.)*
+- ☑ 11.4 Build, tests y lint en verde para todos los proyectos. *(Builds y tests verdes en shared, ui y mfe-projects; falta lint formal y los repos de fases 5-8.)*
 - ☐ 11.5 Verificación de federación: shell + 4 remotes levantados, `remoteEntry.json` responden 200, navegación y widget remote-a-remote funcionando. *(Verificación base hecha 2026-11-05 en dev 4300-4304 y Docker 4400-4404: remoteEntry 200, navegación, F5 en ruta profunda, consola limpia; falta el widget remote-a-remote.)*
+
+## 12. Migración a PrimeNG
+
+Base de UI según DEC-004: PrimeNG es la librería de componentes principal; los componentes de `@projecthub/ui` se reconstruyen sobre sus primitivas en lugar de HTML/SCSS propio. El Gantt queda como excepción (SVG/CSS propio: PrimeNG no ofrece Gantt). El Gantt no depende de PrimeNG.
+
+- ☑ 12.1 Decisión y spec: DEC-004 (PrimeNG como base de UI) registrada y sección de alcance de migración en este documento. *(2026-11-06.)*
+- ☑ 12.2 Dependencias: `primeng`, `@angular/cdk` y preset de tema (`@primeuix/themes`) instalados en `ui-lib` y los 5 apps, en versión alineada con Angular 22. *(2026-11-06: primeng 22.1.4, @angular/cdk 22.2.6, @primeuix/themes 3.1.0.)*
+- ☑ 12.3 `@projecthub/ui` migrado sobre primitivas PrimeNG manteniendo API pública (selectores, inputs/outputs y estilos `ph-*`): DataTable → p-table (unstyled, filas/encabezado/vacío por templates), FormField → control nativo proyectado reestilizado con tokens `--p-*` (los remotes no importan PrimeNG: DEC-004), PermissionBanner → p-message, StageBadge → p-tag, SummaryWidget → p-card. GanttChart sin cambios. *(2026-11-06: 18/18 tests de ui-lib en verde.)*
+- ☐ 12.4 Theme PrimeNG (preset Aura, darkModeSelector `system`) provisto en los 5 apps vía `providePrimeNG`; consola sin warnings de duplicados ni de singletons. *(Código provisto en los 5 app.config + singleton primeng/@primeuix/themes en federation; falta verificación en dev.)*
+- ☐ 12.5 Verificación de la migración: build y tests en verde en los 7 repos; visual básica de tablas, formularios, badges, banners y tarjetas en dev 4300-4304. *(Builds y tests en verde en los 7 repos 2026-11-06: 176 tests; falta visual en dev 4300-4304.)*
 
 ## Orden de implementación sugerido
 
