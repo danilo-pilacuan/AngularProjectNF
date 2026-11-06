@@ -56,7 +56,7 @@ Estado: `☐` pendiente · `◐` en progreso · `☑` hecho
 - ☑ 6.2 Eje temporal con marcas (días/semanas según el rango) y etiquetas de etapa. *(Implementado 2026-11-05.)*
 - ☑ 6.3 Barra muestra avance de la etapa (relleno proporcional). *(Implementado 2026-11-05.)*
 - ☑ 6.4 Implementación propia (SVG/CSS) en la librería de UI, sin librerías de terceros. *(Implementado 2026-11-05.)*
-- ☐ 6.5 (Futuro) Dependencias entre etapas (fin-inicio) con flechas.
+- ☑ 6.5 Dependencias entre etapas (fin-inicio) con flechas. *(Implementado 2026-11-06: reglas puras en `@projecthub/shared` (auto-dependencia, duplicados, prerequisito inexistente/otro proyecto, ciclos DFS, prerequisito 100% para avance>0, eliminación bloqueada), UI con checkboxes en formulario de etapas y columna "Depende de", flechas SVG en `ph-gantt-chart` (trazo rojo discontinuo si el prerequisito está incompleto), store y backend FastAPI espejo con 25 tests.)*
 
 ## 7. Reportes y diagramas
 
@@ -64,7 +64,7 @@ Estado: `☐` pendiente · `◐` en progreso · `☑` hecho
 - ☑ 7.2 Avance por proyecto (ranking). *(Implementado 2026-11-06 en mfe-reports.)*
 - ☑ 7.3 Presupuesto asignado vs. consumido por proyecto. *(Implementado 2026-11-06 en mfe-reports.)*
 - ☑ 7.4 Reportes de solo lectura, recalculados a partir del estado actual (nunca editables a mano). *(Implementado 2026-11-06: mfe-reports solo lee del `ProjectStore` compartido.)*
-- ☐ 7.5 (Futuro) Exportación de reportes (CSV/PDF).
+- ☑ 7.5 Exportación de reportes (CSV/PDF). *(Implementado 2026-11-06 CSV: exportación de portafolio, ranking de avance y presupuesto por proyecto desde mfe-reports, con generación en `@projecthub/shared` y tests; PDF queda como item futuro.)*
 
 ## 8. Arquitectura y federación
 
