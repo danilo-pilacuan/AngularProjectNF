@@ -43,7 +43,9 @@ las secciones 2-8; la estructura y las reglas son reutilizables tal cual.
 > (RC4/dev). Estado: fases 0-8 + 13 + 14 + 14.5 (credenciales persistidas en tabla propia,
 > cambio de contrasena, /perfil) implementadas. Backend test_auth 23/23, shared-lib 152/152;
 > E2E navegador verificado en dev (8100) y Docker (4400). Pendiente: revision humana para
-> estados `verificado` y servicio de API en el compose de Docker.
+> estados `verificado` y servicio de API en el compose de Docker. Migracion
+> Angular Material 12.5 completada y verificada E2E (12/12 demo). Nueva deuda:
+> rutas planas /api/etapas, /api/entregables, /api/bitacora (404 en runtime).
 
 2. **Estado del producto:** ProjectHub, sistema documental para gobernar proyectos de software
    (ciclo de vida de 9 etapas, gates, matriz de responsabilidades, Gantt propio). Fases 0-7
@@ -89,6 +91,13 @@ las secciones 2-8; la estructura y las reglas son reutilizables tal cual.
      quiere verificar el stack Docker.
    - Correccion de AGENTS.md seccion 1 (Estructura): pendiente de instruccion explicita del
      propietario (el rulebook no se modifica sin que lo pida). No necesita codigo.
+   - Rutas planas faltantes en el backend (detectado en E2E 2026-11-07, 24 peticiones
+     404 en runtime): shared-lib Sincronizacion consume `GET /api/etapas`,
+     `GET /api/entregables` y `GET /api/bitacora`, pero el backend solo expone
+     las versiones por proyecto (`/api/proyectos/{id}/etapas`, etc.). Los
+     remotes degradan con elegancia (sin excepciones). Necesita codigo: o el
+     backend agrega listas planas, o el servicio sincroniza agregando por
+     proyecto.
 
 8. **Historial de sesiones:**
 
@@ -104,3 +113,4 @@ las secciones 2-8; la estructura y las reglas son reutilizables tal cual.
 | 2026-11-06 (fase 13.4, cierre) | Refresco de stores desde respuesta del servidor (supresion de eco por identidad), provider `proporcionarSincronizacionBackend()` (fix NG0203), restauracion de exposes federados perdidos en shell y 4 remotes, E2E con navegador contra dev 4300-4304 + backend 8100/Postgres (creacion de proyecto via UI, persistencia, recuperacion tras F5) | hecho: shared-lib 137/137, apps 5/5 verdes, builds prod 5/5; commits shared-lib feat + 5 apps fix. Leccion: cambiar exposes de `federation.config.mjs` exige reiniciar dev servers |
 | 2026-11-06 (fase 14, autenticacion real) | Backend auth (login JWT HS256, /me, PBKDF2, credenciales demo, Bearer prioridad sobre X-Actor-Id), AutenticacionService/TokenAlmacen en shared-lib, Bearer automatico en ApiEnlaceService, pantalla /login + guard + cierre de sesion en shell, fix de tests hermeticos (conftest DATABASE_URL), E2E navegador completa (login, F5, escritura persistida con token, logout) | hecho: backend 101/101, shared-lib 148/148, shell 20/20, remotes y ui-lib verdes, builds 5/5; docs/funcionalidades.md 14.1-14.4 y plan.md actualizados |
 | 2026-11-07 (migracion Material por componentes) | Cierre 12.5 por repo: ui-lib 9b8c11b, mfe-projects 7c915f6, mfe-admin d3d90ba, mfe-reports d9fe54c, mfe-governance 800a575, shell a057140 (mat-select/mat-button/ph-form-field + dedupe Material en vitest) | hecho: shell 20/20 tests, build 150.99 kB, arbol limpio en 9 repos; PROGRESS.md actualizado |
+| 2026-11-07 (verificacion federada post-Material) | E2E Playwright tras a057140: fix de dev server obsoleto (chunk con UserSwitcher antiguo), relanzamiento ng serve 4300, 12/12 comprobaciones demo OK (mat-select, overlay, cambio de usuario, 4 rutas sin fallback, F5 profundo, consola limpia); detectadas rutas planas 404 del backend | hecho: evidencia en PROGRESS.md y session files; deuda de rutas registrada en pendientes |
