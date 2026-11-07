@@ -37,13 +37,13 @@ las secciones 2-8; la estructura y las reglas son reutilizables tal cual.
 
 ---
 
-## Estado actual (2026-11-06, fase 14)
+## Estado actual (2026-11-07, fase 14.5)
 
-> Fecha: 2026-11-06. Rama: n/a en la raiz (orquestador); cada repo del multirepo tiene la suya
-> (RC4/dev). Estado: fases 0-8 + 13 (backend FastAPI/Postgres, http-stores, escrituras
-> persistidas) + 14 (autenticacion real JWT) implementadas. Backend 101/101, shared-lib
-> 148/148, shell 20/20, apps 5/5 builds verdes; E2E con navegador verificado.
-> Pendiente: revision humana para estados `verificado` y gestion de contrasenas (14.5).
+> Fecha: 2026-11-07. Rama: n/a en la raiz (orquestador); cada repo del multirepo tiene la suya
+> (RC4/dev). Estado: fases 0-8 + 13 + 14 + 14.5 (credenciales persistidas en tabla propia,
+> cambio de contrasena, /perfil) implementadas. Backend test_auth 23/23, shared-lib 152/152;
+> E2E navegador verificado en dev (8100) y Docker (4400). Pendiente: revision humana para
+> estados `verificado` y servicio de API en el compose de Docker.
 
 2. **Estado del producto:** ProjectHub, sistema documental para gobernar proyectos de software
    (ciclo de vida de 9 etapas, gates, matriz de responsabilidades, Gantt propio). Fases 0-7
@@ -76,11 +76,13 @@ las secciones 2-8; la estructura y las reglas son reutilizables tal cual.
      salida de evidencia; builds largos con log; evidencia etiquetada por stack).
 
 7. **Trabajo en curso y pendiente:**
-   - Gestion de contrasenas (14.5): credenciales hoy en memoria del proceso,
-     sembradas con AUTH_CONTRASENA_DEMO (por defecto projecthub-demo); falta
-     endpoint de cambio y persistencia en tabla propia. Requiere DEC del
-     propietario. Necesita codigo.
-   - Revision humana de estados `implementado` -> `verificado` (fases 0-14).
+   - Servicio de API dentro del compose de Docker (4400-4404): hoy los
+     frontends construidos llaman a `http://localhost:8100` por defecto
+     (`API_BASE_URL`, shared-lib/api-enlace.ts); el nginx del shell no
+     proxifica `/api` (POST responde 405 via SPA fallback). Hace falta un
+     servicio `api` en `deploy/projecthub/docker-compose.yml` + override de
+     `API_BASE_URL` por build/runtime. Necesita codigo.
+   - Revision humana de estados `implementado` -> `verificado` (fases 0-14.5).
      No necesita codigo; la evidencia esta en PROGRESS.md.
    - Docker (4400-4404) sin reconstruir desde fase 14: las imagenes no incluyen
      la fase de autenticacion ni la pantalla de login. Necesita rebuild si se

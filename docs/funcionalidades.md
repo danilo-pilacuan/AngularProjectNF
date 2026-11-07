@@ -129,7 +129,7 @@ Estado: `☐` pendiente · `◐` en progreso · `☑` hecho
 - ☑ 14.2 Frontend: `AutenticacionService` en @projecthub/shared (login, restauracion de sesion via `/me` en el initializer, cierre), `TokenAlmacen` en localStorage, Bearer automatico en `ApiEnlaceService`; el actor de las escrituras (13.4) es el usuario de la sesion activa. *(Implementado 2026-11-06: shared-lib 148/148 tests.)*
 - ☑ 14.3 Shell: pantalla `/login`, `sesionGuard` redirige a `/login` con backend disponible (y al dashboard en modo demo), area de sesion con usuario autenticado + Cerrar sesion (el selector de usuarios solo en demo). *(Implementado 2026-11-06: shell 20/20 tests.)*
 - ☑ 14.4 Verificacion E2E con navegador (dev 4300-4304 + backend 8100/Postgres): redireccion a /login, error de credenciales, login real, restauracion tras F5, creacion de proyecto via UI persistida con Bearer y cierre de sesion. *(2026-11-06.)*
-- ☐ 14.5 Gestion de contrasenas (cambio de contrasena, credenciales persistidas en tabla propia); hoy la credencial demo vive en memoria del proceso y no hay endpoint de cambio. DEC pendiente.
+- ☑ 14.5 Gestion de contrasenas (cambio de contrasena, credenciales persistidas en tabla propia). Credenciales en tabla `credenciales` de PostgreSQL (DEC-007), endpoint `PUT /api/auth/contrasena` (401 actual incorrecta, 422 minimo 8 caracteres), renombre de credencial al cambiar correo, pantalla `/perfil` en el shell. *(Implementado 2026-11-07: backend test_auth 23/23, shared-lib 152/152, shell build verde; E2E navegador en Docker 4400: cambio via UI, re-login con la nueva, 401 con actual incorrecta, F5 en /perfil, restauracion demo.)*
 
 ## Orden de implementación sugerido
 

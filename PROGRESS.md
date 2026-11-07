@@ -237,3 +237,45 @@ Log de avance dia a dia. Fuente de verdad del avance; `.ops` lo organiza y enlaz
     reinicio.
 - Commits: backend (load_dotenv, conftest, auth), shared-lib (autenticacion),
   shell (login + guard + user-switcher). Push pendiente al cierre.
+
+## 2026-11-07
+
+- Fase 14.5 (gestion de contrasenas persistida) implementada de punta a punta,
+  cerrando la DEC pendiente como DEC-007 (credenciales en tabla propia).
+  - Backend: `ServicioCredenciales` respaldado por repositorio (Postgres con
+    DATABASE_URL, memoria como fallback); metodos autenticar/registrar/cambiar/
+    renombrar/sincronizar_con_usuarios; politica LONGITUD_MINIMA_CONTRASENA=8.
+    Endpoint `PUT /api/auth/contrasena` (401 CONTRASENA_ACTUAL_INVALIDA, 422
+    VALIDACION). Al editar el correo de un usuario la credencial se renombra;
+    al escribir el estado se limpian huerfanos. Tabla `credenciales(correo PK,
+    hash)` creada por `crear_esquema()`; `main.py` construye el repositorio y
+    lo inyecta tarde en el servicio (`asignar_credenciales`).
+  - Frontend: `AutenticacionService.cambiarContrasena(actual, nueva)` en
+    shared-lib (maneja las dos formas de error: {codigo,mensaje} raiz y
+    {detail:{...}} de HTTPException); pantalla `/perfil` en el shell con
+    validacion cliente (longitud, coincidencia) y mensajes de error/exito;
+    boton "Cambiar contrasena" en el area de sesion real del UserSwitcher.
+    Rebuild de shared-lib dist (las apps la consumen por file:../dist).
+  - Verificacion (evidencia por stack, politica de ahorro del propietario:
+    corridas puntuales, no suites repetidas):
+    - Tests puntuales: backend tests/test_auth.py 23/23 (incluye 4 nuevos de
+      cambio de contrasena) y tests/test_api.py 1/1; shared-lib 152/152.
+    - E2E dev (curl contra 8100 + Postgres 5433 via docker compose): login
+      demo -> cambio 200 -> login nueva 200 -> login vieja 401 -> restaurar.
+      Persistencia probada matando y reiniciando uvicorn: la nueva clave
+      siguio validando tras el reinicio.
+    - E2E Docker (build shell en imagen 2026-11-07, stack 4400-4404): probes
+      200 en / y remoteEntry de 4401-4404; con navegador en 4400: cambio por
+      UI, logout, re-login con la nueva, error 401 visible con actual
+      incorrecta, F5 en /perfil (sesion restaurada), restauracion a demo via
+      UI y verificacion final del login demo contra 8100.
+  - Nota de arquitectura verificada en Docker: el compose 4400-4404 no tiene
+    servicio de API; los frontend usan `API_BASE_URL` por defecto
+    (http://localhost:8100, shared-lib/api-enlace.ts). El stack Docker consume
+    el backend del host (DEC-002); `/api` en el nginx del shell no existe y
+    responde 405 a POST (SPA fallback). Registrar servicio API en el compose
+    queda como trabajo pendiente.
+  - Docs: DEC-007, plan.md fase 14 implementado, funcionalidades.md 14.5
+    marcado, handoff.md actualizado.
+- Commits: backend (feat credenciales persistidas), shared-lib (feat cambio),
+  shell (feat perfil), raiz (docs de fase 14.5). Push pendiente al cierre.

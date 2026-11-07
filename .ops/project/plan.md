@@ -31,7 +31,7 @@ Fases derivadas del "Orden de implementacion sugerido" de `docs/funcionalidades.
 | 11 | http-stores: lectura inicial desde la API (13.3) | implementado |
 | 12 | Escrituras del frontend persistidas (13.4) | implementado |
 | 13 | Autenticacion real: login JWT, pantalla de login, Bearer (14.1-14.4) | implementado |
-| 14 | Gestion de contrasenas persistida (14.5, DEC pendiente) | pendiente |
+| 14 | Gestion de contrasenas persistida (14.5, DEC-007) | implementado |
 
 Nota de verificacion: los estados `implementado` quedan pendientes de revision humana
 para subir a `verificado`; la evidencia (tests, builds, smokes por stack) esta en
