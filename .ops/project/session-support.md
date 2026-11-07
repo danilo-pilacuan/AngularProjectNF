@@ -41,3 +41,17 @@ trabaja en cada sesion (no que se construye). El agente lo lee al abrir sesion.
 - Servidores para E2E: levantar con salida a `_servelogs/` o background con log, verificar
   con sonda curl, y detenerlos (Stop-Process por PID) al terminar la verificacion.
 - No dejar watchers activos al cerrar la sesion.
+
+## Aprendizajes fase 14.5 (2026-11-07)
+- Servicios: el token SIEMPRE se lee de TokenAlmacen (fuente de verdad), nunca
+  del signal espejo; el signal solo se refresca por metodos del servicio.
+- Specs Angular: correr con `npx ng test --watch=false` (CI=true). Vitest crudo
+  falla con "describe is not defined" (sin TestBed): 20 falsos fallos.
+- Docker: @projecthub/shared es singleton federado que entrega el HOST; un fix
+  de shared-lib exige reconstruir SOLO la imagen shell (remotes consumen la
+  copia del host en runtime). Compose devuelve exit 1 por progreso en stderr:
+  verificar con docker images/docker ps.
+- Lint: ningun repo tiene script lint (el build estricto cubre tipos).
+- Login API: campo del body es `contrasena` (no `password`); nginx shell no
+  proxia /api (POST cae en SPA fallback -> 405). Brecha API-en-compose queda
+  como trabajo pendiente en handoff.md.
