@@ -277,5 +277,12 @@ Log de avance dia a dia. Fuente de verdad del avance; `.ops` lo organiza y enlaz
     queda como trabajo pendiente.
   - Docs: DEC-007, plan.md fase 14 implementado, funcionalidades.md 14.5
     marcado, handoff.md actualizado.
+- Certificacion (REL-001, .ops/operations/releases.md): corrida consolidada
+    unica backend pytest 105/105 y shared-lib ng test 152/152; fix detectado
+    por los tests y corregido: cambiarContrasena leia el token del signal
+    espejo y no de TokenAlmacen (el guard fallaba si el token se escribio
+    fuera del servicio); rebuild de shared-lib dist, imagen shell y smoke
+    /perfil en 4400. Lint: sin script en los repos (el build estricto cubre
+    tipos); sin suites repetidas por la politica de ahorro del propietario.
 - Commits: backend (feat credenciales persistidas), shared-lib (feat cambio),
   shell (feat perfil), raiz (docs de fase 14.5). Push pendiente al cierre.
