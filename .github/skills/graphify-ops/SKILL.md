@@ -31,6 +31,27 @@ Si el servicio no esta corriendo, el grafo degrada a cache de consulta: trabaja 
 leyendo el codigo directamente; el kit funciona completo sin el y ninguna tarea se bloquea
 por el grafo.
 
+## Primera instalacion y arranque de sesion
+
+En un repo con el kit recien instalado (o al abrir sesion), verifica el indice antes de razonar sobre
+el codigo; esta secuencia es obligatoria en desarrollo agentico activo, no un paso opcional:
+
+1. `node tools/build-graphify.mjs status` — primero diagnostica, no adivines.
+2. Sin `graphify-out/graph.json`: si `status` reporta servicios caidos, `node tools/build-graphify.mjs up`
+   antes de indexar; despues `node tools/build-graphify.mjs extract` (las tools MCP fallan o devuelven
+   vacio sin grafo). En instalacion nueva el grafo NO se genera solo: sin este paso, graphify queda
+   en adorno (caso AngularNF con rc.7).
+3. Con `graph.json` existente: si el reporte de frescura muestra mas de ~1 h desde el ultimo
+   commit (o la sesion anterior toco codigo indexado), `node tools/build-graphify.mjs update`
+   (incremental, sin LLM). Criterio de `update`: tras CUALQUIER tarea que tocara codigo o docs
+   indexados, no solo "cambios grandes" — el grafo obsoleto hace que las respuestas citen
+   simbolos que ya no existen.
+
+Esta verificacion es parte del arranque, no una alternativa de degradacion: con servicios caidos
+`up` los levanta; solo si el repo no hospeda los servicios, degrada a leer directo. La version del
+kit instalada vive en `.github/KIT_VERSION` (escrita por el instalador); si falta, la instalacion
+fue manual: registra la version usada en `PROGRESS.md`.
+
 ## Como se conecta el kit
 
 El kit NO provisiona el servicio: se conecta a una instancia ya levantada y estable.
@@ -67,8 +88,9 @@ El kit NO provisiona el servicio: se conecta a una instancia ya levantada y esta
 
 ## Sincronizacion
 
-Tras cambios de codigo relevantes, re-genera el grafo antes de razonar sobre el (requiere el
-servicio levantado; ver `deploy/graphify/README.md`):
+Tras cualquier tarea que tocara codigo o docs indexados, re-genera el grafo antes de razonar sobre
+el (requiere el servicio levantado; ver `deploy/graphify/README.md`). No esperes a un "cambio
+grande": el criterio es por tarea tocada, no por tamano del diff.
 
 ```
 node tools/build-graphify.mjs update    # incremental (codigo, sin LLM)

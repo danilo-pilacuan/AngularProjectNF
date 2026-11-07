@@ -25,6 +25,16 @@ const repoRoot = basename(toolsParent) === '.github' ? dirname(toolsParent) : to
 const deploySrc = join(repoRoot, 'deploy', 'graphify');
 const deployOut = join(deploySrc, 'dist');
 
+// Lectura uniforme de KEY=valor de un .env (resolvePorts la usa; checkEnv
+// mantiene sus propios regex para distinguir falta de archivo de falta de valor).
+function readEnvValue(path, key) {
+  if (!path || !existsSync(path)) return null;
+  const line = readFileSync(path, 'utf8').split(/\r?\n/)
+    .find((l) => new RegExp(`^\\s*${key}\\s*=\\s*(\\S.*)$`).test(l));
+  if (!line) return null;
+  return line.match(new RegExp(`^\\s*${key}\\s*=\\s*(\\S.*)$`))[1].trim().replace(/^["']|["']$/g, '');
+}
+
 // Puertos para el smoke: los del .env resuelto mandan (compose los usa para
 // publicar); el entorno del proceso es el fallback.
 function resolvePorts() {
@@ -258,5 +268,22 @@ if (cmd === 'up') {
 } else if (cmd === 'status') {
   emitDist();
   compose(['ps']);
+  // Frescura del grafo: sin esto, status solo dice "servicios vivos" y el grafo
+  // puede estar semanas detras del codigo sin que nadie lo note (el MCP sirve
+  // el archivo que hay, aunque este obsoleto). Mide la antiguedad del
+  // graph.json y la compara con el ultimo commit del repo indexado.
+  const graphPath = join(repoRoot, 'graphify-out', 'graph.json');
+  if (existsSync(graphPath)) {
+    const ageH = ((Date.now() - statSync(graphPath).mtimeMs) / 3600000).toFixed(1);
+    console.log(`grafo: graphify-out/graph.json presente, generado hace ${ageH} h`);
+    try {
+      const head = spawnSync('git', ['-C', repoRoot, 'log', '-1', '--format=%h %cs'], { encoding: 'utf8' });
+      if (head.status === 0 && head.stdout.trim()) {
+        console.log(`grafo: ultimo commit del workspace: ${head.stdout.trim()} (corre "node tools/build-graphify.mjs update" si el grafo quedo detras)`);
+      }
+    } catch { /* git ausente o no es repo: la antiguedad ya se reporto */ }
+  } else {
+    console.log('grafo: SIN graphify-out/graph.json (corre "node tools/build-graphify.mjs extract")');
+  }
   await smoke();
 }

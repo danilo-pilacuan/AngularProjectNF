@@ -29,6 +29,15 @@ Si Memgraph no esta corriendo, el grafo degrada a cache de consulta: trabaja com
 los archivos de `.ops` directamente; el kit funciona completo sin el y ninguna tarea se bloquea
 por el grafo.
 
+## Primera instalacion y arranque de sesion
+
+En un repo con el kit recien instalado (o al abrir sesion), alinea el indice antes de razonar sobre
+`.ops`: si Memgraph esta corriendo y el grafo esta vacio (ningun nodo `:Doc`), corre el importer
+`node .github/tools/ops-graph.mjs .ops` para cargarlo; tras crear, mover o renombrar documentos,
+re-sincroniza (cuesta segundos). Esta verificacion es parte del arranque en desarrollo agentico
+activo, no un paso opcional. La version del kit instalada vive en `.github/KIT_VERSION` (escrita
+por el instalador); si falta, la instalacion fue manual: registra la version usada en `PROGRESS.md`.
+
 ## Modelo del grafo
 
 - Nodo `(:Doc {id, tipo, estado, title, file})`: un documento de `.ops` con `id` en frontmatter.
@@ -40,12 +49,14 @@ por el grafo.
 ## Sincronizacion
 
 Tras crear, mover o renombrar documentos de `.ops`, re-sincroniza el indice (requiere Memgraph
-corriendo en `bolt://localhost:7687`, p. ej. via Docker):
+corriendo; el importer resuelve el destino como `--bolt` si viene, si no `MEMGRAPH_BOLT_PORT`
+del `.env` del repo, si no `bolt://localhost:7687` — misma precedencia que el resto del kit):
 
 ```
 node .github/tools/ops-graph.mjs .ops
 ```
 
+La salida imprime el destino resuelto y su origen (`MEMGRAPH_BOLT_PORT del .env` o `default`).
 Si el repo no tiene Memgraph, omite este paso: el Markdown sigue siendo la fuente.
 
 ## Queries utiles

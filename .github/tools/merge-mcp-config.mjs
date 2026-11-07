@@ -16,8 +16,32 @@ function option(name, fallback) {
 }
 
 const dest = resolve(option('--dest', process.cwd()));
-const graphifyPort = option('--graphify-port', '8080');
-const memgraphPort = option('--memgraph-port', '8000');
+
+function readEnvValue(envPath, name) {
+  if (!existsSync(envPath)) return null;
+  const line = readFileSync(envPath, 'utf8')
+    .split(/\r?\n/)
+    .find((l) => new RegExp(`^\\s*${name}\\s*=\\s*(\\S.*)$`).test(l));
+  if (!line) return null;
+  const m = line.match(new RegExp(`^\\s*${name}\\s*=\\s*(\\S.*)$`));
+  return m[1].trim().replace(/^["']|["']$/g, '');
+}
+
+// Puertos: el flag explícito manda; si el instalador no pasó uno, se hereda el
+// puerto ya fijado en el .env del destino (fuente de verdad de los servicios
+// corriendo). Cae al default solo en instalaciones limpias. Sin esto, una
+// reinstalación sin flags regenera mcp.json con los puertos por defecto y
+// desconecta los MCP del editor aunque los servicios sigan en otros puertos.
+function resolvePort(flagName, envName, fallback) {
+  const flag = option(flagName, null);
+  if (flag) return flag;
+  const fromEnv = readEnvValue(join(dest, '.env'), envName);
+  if (fromEnv) return fromEnv;
+  return fallback;
+}
+
+const graphifyPort = resolvePort('--graphify-port', 'GRAPHIFY_PORT', '8080');
+const memgraphPort = resolvePort('--memgraph-port', 'MEMGRAPH_HTTP_PORT', '8000');
 const vscodeDir = join(dest, '.vscode');
 const configPath = join(vscodeDir, 'mcp.json');
 
@@ -74,13 +98,7 @@ function setEnvKeyUserScope(name, value) {
 }
 
 function readEnvKey(envPath, name) {
-  if (!existsSync(envPath)) return null;
-  const line = readFileSync(envPath, 'utf8')
-    .split(/\r?\n/)
-    .find((l) => new RegExp(`^\\s*${name}\\s*=\\s*(\\S.*)$`).test(l));
-  if (!line) return null;
-  const m = line.match(new RegExp(`^\\s*${name}\\s*=\\s*(\\S.*)$`));
-  return m[1].trim().replace(/^["']|["']$/g, '');
+  return readEnvValue(envPath, name);
 }
 
 const graphifyKey = readEnvKey(join(dest, '.env'), 'GRAPHIFY_API_KEY');

@@ -1,0 +1,52 @@
+ INFO  Removed unused dependencies.
+ INFO  [Federation SSE] Local reloader initialized with endpoint /@angular-architects/native-federation:build-notifications
+ INFO  Building federation artifacts
+ NOTE  Skip packages you don't want to share in your federation config
+ INFO  Bundling external npm packages with bundle type 'browser-shared'
+ INFO  Checksum of browser-angular_common matched, re-using cached externals.
+ INFO  Checksum of browser-angular_core matched, re-using cached externals.
+ INFO  Checksum of browser-angular_platform_browser matched, re-using cached externals.
+ INFO  Checksum of browser-angular_router matched, re-using cached externals.
+ INFO  Checksum of browser-rxjs matched, re-using cached externals.
+ INFO  Checksum of browser-tslib matched, re-using cached externals.
+> Building...
+√ Building...
+Initial chunk files | Names           |  Raw size
+styles.css          | styles          | 599 bytes | 
+main.js             | main            | 380 bytes | 
+polyfills.js        | polyfills       | 152 bytes | 
+
+                    | Initial total   |   1.13 kB
+
+Lazy chunk files    | Names           |  Raw size
+chunk-BIWXUYD5.js   | bootstrap       |  27.38 kB | 
+chunk-KZVRYUIG.js   | sin-permisos    |   5.45 kB | 
+chunk-YCR3F7U4.js   | remote-fallback |   3.78 kB | 
+chunk-VUJOFXKG.js   | -               | 987 bytes | 
+
+Application bundle generation complete. [7.887 seconds] - 2026-11-06T08:19:44.945Z
+
+Watch mode enabled. Watching for file changes...
+NOTE: Raw file sizes do not reflect development server per-request transformations.
+[2m3:19:45 a. m.[22m [36m[1m[vite][22m[39m [90m[2m(client)[22m[39m Re-optimizing dependencies because lockfile has changed
+  [32m➜[39m  [1mLocal[22m:   [36mhttp://localhost:[1m4300[22m/[39m
+> Changes detected. Rebuilding...
+√ Changes detected. Rebuilding...
+Application bundle generation failed. [1.508 seconds] - 2026-11-06T09:27:02.686Z
+
+> Changes detected. Rebuilding...
+√ Changes detected. Rebuilding...
+Application bundle generation failed. [0.183 seconds] - 2026-11-06T09:27:53.502Z
+
+> Changes detected. Rebuilding...
+√ Changes detected. Rebuilding...
+Application bundle generation failed. [0.127 seconds] - 2026-11-06T09:27:57.854Z
+
+> Changes detected. Rebuilding...
+√ Changes detected. Rebuilding...
+Application bundle generation failed. [1.631 seconds] - 2026-11-06T09:38:59.294Z
+
+> Changes detected. Rebuilding...
+√ Changes detected. Rebuilding...
+Application bundle generation failed. [1.351 seconds] - 2026-11-06T10:03:41.472Z
+

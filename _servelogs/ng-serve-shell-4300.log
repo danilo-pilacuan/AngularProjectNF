@@ -1,0 +1,148 @@
+﻿ INFO  Removed unused dependencies.
+ INFO  [Federation SSE] Local reloader initialized with endpoint /@angular-architects/native-federation:build-notifications
+ INFO  Building federation artifacts
+ NOTE  Skip packages you don't want to share in your federation config
+ INFO  Bundling external npm packages with bundle type 'browser-shared'
+ INFO  Checksum of browser-shared matched, re-using cached externals.
+ INFO  Checksum of browser-angular_cdk matched, re-using cached externals.
+ INFO  Checksum of browser-angular_common matched, re-using cached externals.
+ INFO  Checksum of browser-angular_core matched, re-using cached externals.
+ INFO  Checksum of browser-angular_material matched, re-using cached externals.
+ INFO  Checksum of browser-angular_platform_browser matched, re-using cached externals.
+ INFO  Checksum of browser-angular_router matched, re-using cached externals.
+ INFO  Checksum of browser-rxjs matched, re-using cached externals.
+ INFO  Checksum of browser-tslib matched, re-using cached externals.
+> Building...
+√ Building...
+Initial chunk files | Names           |  Raw size
+styles.css          | styles          |   9.09 kB | 
+main.js             | main            | 380 bytes | 
+polyfills.js        | polyfills       | 152 bytes | 
+
+                    | Initial total   |   9.63 kB
+
+Lazy chunk files    | Names           |  Raw size
+chunk-ETK55VVT.js   | bootstrap       |  27.82 kB | 
+chunk-KZVRYUIG.js   | sin-permisos    |   5.45 kB | 
+chunk-YCR3F7U4.js   | remote-fallback |   3.78 kB | 
+chunk-VUJOFXKG.js   | -               | 987 bytes | 
+
+Application bundle generation complete. [2.567 seconds] - 2026-11-06T10:20:24.774Z
+
+Watch mode enabled. Watching for file changes...
+NOTE: Raw file sizes do not reflect development server per-request transformations.
+  [32m➜[39m  [1mLocal[22m:   [36mhttp://localhost:[1m4300[22m/[39m
+node.exe : [2m5:21:14 a. m.[22m [31m[1m[vite][22m[39m [31m[2m(client)[22m[39m [2m[console.error] [22mERROR 
+Error: NG0203: The `SincronizadorEscrituras2` token injection failed. `inject()` function must be called from an 
+injection context such as a constructor, a factory function, a field initializer, or a function used with 
+`runInInjectionContext`. Find more at https://v22.angular.dev/errors/NG0203
+En línea: 1 Carácter: 1
++ & "C:\nvm4w\nodejs/node.exe" "C:\nvm4w\nodejs/node_modules/npm/bin/np ...
++ ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+    + CategoryInfo          : NotSpecified: ([2m5:21:14 a. ...v/errors/NG0203:String) [], RemoteException
+    + FullyQualifiedErrorId : NativeCommandError
+ 
+    at injectInjectorOnly (http://localhost:4300/chunk-DKGPSPHQ.js:672:11)
+    at ɵɵinject (http://localhost:4300/chunk-DKGPSPHQ.js:689:59)
+    at inject (http://localhost:4300/chunk-DKGPSPHQ.js:698:10)
+    at http://localhost:4300/chunk-ETK55VVT.js:334:7
+    at async Promise.all (index 0)
+[2m5:21:14 a. m.[22m [31m[1m[vite][22m[39m [31m[2m(client)[22m[39m [2m[console.error] [22mError: NG0203: 
+The `SincronizadorEscrituras2` token injection failed. `inject()` function must be called from an injection context 
+such as a constructor, a factory function, a field initializer, or a function used with `runInInjectionContext`. Find 
+more at https://v22.angular.dev/errors/NG0203
+    at injectInjectorOnly (http://localhost:4300/chunk-DKGPSPHQ.js:672:11)
+    at ɵɵinject (http://localhost:4300/chunk-DKGPSPHQ.js:689:59)
+    at inject (http://localhost:4300/chunk-DKGPSPHQ.js:698:10)
+    at http://localhost:4300/chunk-ETK55VVT.js:334:7
+    at async Promise.all (index 0)
+[2m5:21:14 a. m.[22m [31m[1m[vite][22m[39m [31m[2m(client)[22m[39m [2m[console.error] [22mERROR Error: 
+NG0203: The `SincronizadorEscrituras2` token injection failed. `inject()` function must be called from an injection 
+context such as a constructor, a factory function, a field initializer, or a function used with 
+`runInInjectionContext`. Find more at https://v22.angular.dev/errors/NG0203
+    at injectInjectorOnly (http://localhost:4300/chunk-DKGPSPHQ.js:672:11)
+    at ɵɵinject (http://localhost:4300/chunk-DKGPSPHQ.js:689:59)
+    at inject (http://localhost:4300/chunk-DKGPSPHQ.js:698:10)
+    at http://localhost:4300/chunk-ETK55VVT.js:334:7
+    at async Promise.all (index 0)
+[2m5:21:14 a. m.[22m [31m[1m[vite][22m[39m [31m[2m(client)[22m[39m [2m[console.error] [22mError: NG0203: 
+The `SincronizadorEscrituras2` token injection failed. `inject()` function must be called from an injection context 
+such as a constructor, a factory function, a field initializer, or a function used with `runInInjectionContext`. Find 
+more at https://v22.angular.dev/errors/NG0203
+    at injectInjectorOnly (http://localhost:4300/chunk-DKGPSPHQ.js:672:11)
+    at ɵɵinject (http://localhost:4300/chunk-DKGPSPHQ.js:689:59)
+    at inject (http://localhost:4300/chunk-DKGPSPHQ.js:698:10)
+    at http://localhost:4300/chunk-ETK55VVT.js:334:7
+    at async Promise.all (index 0)
+[2m5:24:41 a. m.[22m [31m[1m[vite][22m[39m [31m[2m(client)[22m[39m [2m[console.error] [22mERROR Error: 
+NG0203: The `SincronizadorEscrituras2` token injection failed. `inject()` function must be called from an injection 
+context such as a constructor, a factory function, a field initializer, or a function used with 
+`runInInjectionContext`. Find more at https://v22.angular.dev/errors/NG0203
+    at injectInjectorOnly (http://localhost:4300/chunk-DKGPSPHQ.js:672:11)
+    at ɵɵinject (http://localhost:4300/chunk-DKGPSPHQ.js:689:59)
+    at inject (http://localhost:4300/chunk-DKGPSPHQ.js:698:10)
+    at http://localhost:4300/chunk-ETK55VVT.js:334:7
+    at async Promise.all (index 0)
+[2m5:24:41 a. m.[22m [31m[1m[vite][22m[39m [31m[2m(client)[22m[39m [2m[console.error] [22mERROR Error: 
+NG0203: The `SincronizadorEscrituras2` token injection failed. `inject()` function must be called from an injection 
+context such as a constructor, a factory function, a field initializer, or a function used with 
+`runInInjectionContext`. Find more at https://v22.angular.dev/errors/NG0203
+    at injectInjectorOnly (http://localhost:4300/chunk-DKGPSPHQ.js:672:11)
+    at ɵɵinject (http://localhost:4300/chunk-DKGPSPHQ.js:689:59)
+    at inject (http://localhost:4300/chunk-DKGPSPHQ.js:698:10)
+    at http://localhost:4300/chunk-ETK55VVT.js:334:7
+    at async Promise.all (index 0)
+[2m5:24:41 a. m.[22m [31m[1m[vite][22m[39m [31m[2m(client)[22m[39m [2m[console.error] [22mError: NG0203: 
+The `SincronizadorEscrituras2` token injection failed. `inject()` function must be called from an injection context 
+such as a constructor, a factory function, a field initializer, or a function used with `runInInjectionContext`. Find 
+more at https://v22.angular.dev/errors/NG0203
+    at injectInjectorOnly (http://localhost:4300/chunk-DKGPSPHQ.js:672:11)
+    at ɵɵinject (http://localhost:4300/chunk-DKGPSPHQ.js:689:59)
+    at inject (http://localhost:4300/chunk-DKGPSPHQ.js:698:10)
+    at http://localhost:4300/chunk-ETK55VVT.js:334:7
+    at async Promise.all (index 0)
+[2m5:24:41 a. m.[22m [31m[1m[vite][22m[39m [31m[2m(client)[22m[39m [2m[console.error] [22mError: NG0203: 
+The `SincronizadorEscrituras2` token injection failed. `inject()` function must be called from an injection context 
+such as a constructor, a factory function, a field initializer, or a function used with `runInInjectionContext`. Find 
+more at https://v22.angular.dev/errors/NG0203
+    at injectInjectorOnly (http://localhost:4300/chunk-DKGPSPHQ.js:672:11)
+    at ɵɵinject (http://localhost:4300/chunk-DKGPSPHQ.js:689:59)
+    at inject (http://localhost:4300/chunk-DKGPSPHQ.js:698:10)
+    at http://localhost:4300/chunk-ETK55VVT.js:334:7
+    at async Promise.all (index 0)
+[2m8:19:19 a. m.[22m [31m[1m[vite][22m[39m [31m[2m(client)[22m[39m [2m[console.error] [22mERROR Error: 
+NG0203: The `SincronizadorEscrituras2` token injection failed. `inject()` function must be called from an injection 
+context such as a constructor, a factory function, a field initializer, or a function used with 
+`runInInjectionContext`. Find more at https://v22.angular.dev/errors/NG0203
+    at injectInjectorOnly (http://localhost:4300/chunk-DKGPSPHQ.js:672:11)
+    at ɵɵinject (http://localhost:4300/chunk-DKGPSPHQ.js:689:59)
+    at inject (http://localhost:4300/chunk-DKGPSPHQ.js:698:10)
+    at http://localhost:4300/chunk-ETK55VVT.js:334:7
+    at async Promise.all (index 0)
+[2m8:19:19 a. m.[22m [31m[1m[vite][22m[39m [31m[2m(client)[22m[39m [2m[console.error] [22mERROR Error: 
+NG0203: The `SincronizadorEscrituras2` token injection failed. `inject()` function must be called from an injection 
+context such as a constructor, a factory function, a field initializer, or a function used with 
+`runInInjectionContext`. Find more at https://v22.angular.dev/errors/NG0203
+    at injectInjectorOnly (http://localhost:4300/chunk-DKGPSPHQ.js:672:11)
+    at ɵɵinject (http://localhost:4300/chunk-DKGPSPHQ.js:689:59)
+    at inject (http://localhost:4300/chunk-DKGPSPHQ.js:698:10)
+    at http://localhost:4300/chunk-ETK55VVT.js:334:7
+    at async Promise.all (index 0)
+[2m8:19:19 a. m.[22m [31m[1m[vite][22m[39m [31m[2m(client)[22m[39m [2m[console.error] [22mError: NG0203: 
+The `SincronizadorEscrituras2` token injection failed. `inject()` function must be called from an injection context 
+such as a constructor, a factory function, a field initializer, or a function used with `runInInjectionContext`. Find 
+more at https://v22.angular.dev/errors/NG0203
+    at injectInjectorOnly (http://localhost:4300/chunk-DKGPSPHQ.js:672:11)
+    at ɵɵinject (http://localhost:4300/chunk-DKGPSPHQ.js:689:59)
+    at inject (http://localhost:4300/chunk-DKGPSPHQ.js:698:10)
+    at http://localhost:4300/chunk-ETK55VVT.js:334:7
+    at async Promise.all (index 0)
+[2m8:19:19 a. m.[22m [31m[1m[vite][22m[39m [31m[2m(client)[22m[39m [2m[console.error] [22mError: NG0203: 
+The `SincronizadorEscrituras2` token injection failed. `inject()` function must be called from an injection context 
+such as a constructor, a factory function, a field initializer, or a function used with `runInInjectionContext`. Find 
+more at https://v22.angular.dev/errors/NG0203
+    at injectInjectorOnly (http://localhost:4300/chunk-DKGPSPHQ.js:672:11)
+    at ɵɵinject (http://localhost:4300/chunk-DKGPSPHQ.js:689:59)
+    at inject (http://localhost:4300/chunk-DKGPSPHQ.js:698:10)
+    at http://localhost:4300/chunk-ETK55VVT.js:334:7
+    at async Promise.all (index 0)
