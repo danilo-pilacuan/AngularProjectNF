@@ -286,3 +286,20 @@ Log de avance dia a dia. Fuente de verdad del avance; `.ops` lo organiza y enlaz
     tipos); sin suites repetidas por la politica de ahorro del propietario.
 - Commits: backend (feat credenciales persistidas), shared-lib (feat cambio),
   shell (feat perfil), raiz (docs de fase 14.5). Push pendiente al cierre.
+
+## 2026-11-07 (migracion Material por componentes, cierre 12.5)
+
+- Complemento de la migracion Angular Material (DEC-005): las paginas que
+  quedaban en HTML nativo migraron a componentes Material, repo por repo:
+  ui-lib 9b8c11b (PromptDialogService @Injectable), mfe-projects 7c915f6,
+  mfe-admin d3d90ba, mfe-reports d9fe54c, mfe-governance 800a575 (layout
+  con nav + router-outlet y placeholder con mat-card), shell a057140.
+- shell (a057140): user-switcher con mat-select (opcion Sin sesion disabled,
+  seleccionar() publico) y mat-button; login y perfil con ph-form-field
+  (DEC-005) + input matInput + mat-flat-button; dashboard con mat-select de
+  proyecto. Fix de tests: dedupe de @angular/material y @angular/cdk en
+  vitest-base.config.mts (NG0203 por doble Angular via @projecthub/ui).
+  Header/nav se mantienen con anchors semanticos (sin beneficio Material).
+- Verificacion: shell 20/20 tests, build prod OK (150.99 kB). Suites de
+  remotes/ui-lib/shared-lib verdes en sus commits. Estado git limpio en los
+  9 repos; sin push (politica del propietario).
