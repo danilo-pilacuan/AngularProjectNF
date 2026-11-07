@@ -303,3 +303,15 @@ Log de avance dia a dia. Fuente de verdad del avance; `.ops` lo organiza y enlaz
 - Verificacion: shell 20/20 tests, build prod OK (150.99 kB). Suites de
   remotes/ui-lib/shared-lib verdes en sus commits. Estado git limpio en los
   9 repos; sin push (politica del propietario).
+
+- Verificacion federada E2E (post a057140, sesion 2026-11-07): el dev server
+  del shell servia un build desactualizado (chunk con UserSwitcher en select
+  nativo); reinicio y relanzamiento de ng serve --port 4300 lo resolvio.
+  Playwright headless en modo demo: 12/12 OK (mat-select/mat-form-field en
+  user-switcher, 7 opciones en overlay CDK, cambio de usuario refleja en UI,
+  /projects /reports /admin /governance sin fallback, F5 en ruta profunda
+  /governance/decisiones OK, consola sin errores Angular ni singletons
+  duplicados). Deuda no bloqueante: 24 peticiones 404 en runtime porque
+  Sincronizacion consume /api/etapas, /api/entregables y /api/bitacora planas
+  que el backend no expone (los remotes degradan con elegancia). Informe en
+  session files (e2e-informe-2026-11-07.md).
