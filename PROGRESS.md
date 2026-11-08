@@ -2,6 +2,20 @@
 
 Log de avance dia a dia. Fuente de verdad del avance; `.ops` lo organiza y enlaza.
 
+## 2026-11-08 (iteracion 21: E2E de filtros de listas)
+
+- Cierre de la iteracion que quedo en curso por reinicio del equipo: dev servers 4300-4304 y
+  backend 8100 verificados en pie, rerun de files/e2e-filtros.mjs (sesion anterior) -> 12/12
+  comprobaciones OK: login Diana, portafolio 16 filas, filtro etapa=Planteamiento deja solo
+  proyectos en Planteamiento, busqueda sin coincidencias muestra estado vacio, restauracion
+  de filtros devuelve el listado completo, documentos cambia gate y tabla al cambiar de
+  proyecto (16 opciones), bitacora filtra por proyecto (2 selects, filas solo del elegido),
+  usuarios 7 filas + formulario Nuevo usuario con 6 mat-checkbox de roles, consola sin
+  errores de Angular ni singletons duplicados y 0 recursos >= 400 (NG0956 incluido).
+- Sin cambios de codigo: la iteracion valida filtros ya implementados. docs/funcionalidades.md
+  2.3 actualizado con la validacion runtime. Scripts E2E viven en files/ de sesion (decision
+  de usuario, no commiteados).
+
 ## 2026-11-08 (iteracion 19: E2E de flujos de escritura por UI)
 
 - Primera bateria E2E que cubre escritura (no solo lectura): e2e-flujos.mjs, 14 checks,

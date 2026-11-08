@@ -19,7 +19,7 @@ Estado: `☐` pendiente · `◐` en progreso · `☑` hecho
 
 - ☑ 2.1 Crear iniciativa/proyecto: nombre (único), descripción, patrocinador, presupuesto estimado, fecha objetivo. Nace en etapa Planteamiento. *(Implementado 2026-11-06: formulario en mfe-projects + `ProjectStore.crearProyecto`.)*
 - ☑ 2.2 Listado del portafolio: tabla con nombre, patrocinador, etapa actual, % de avance, presupuesto, estado. *(Implementado 2026-11-06.)*
-- ☑ 2.3 Filtros por etapa y estado; búsqueda por nombre (parcial, insensible a mayúsculas). *(Implementado 2026-11-06.)*
+- ☑ 2.3 Filtros por etapa y estado; búsqueda por nombre (parcial, insensible a mayúsculas). *(Implementado 2026-11-06. Validación runtime 2026-11-08: E2E de filtros 12/12 — filtro etapa deja solo proyectos de esa etapa, búsqueda sin coincidencias muestra estado vacío, restaurar filtros devuelve el listado completo, filtro de proyecto en documentos y bitácora actualiza contenido, consola limpia incl. NG0956.)*
 - ☑ 2.4 Detalle del proyecto: descripción, etapas, Gantt, presupuesto, bitácora. *(Implementado 2026-11-06; bitácora del detalle con fecha y hora formateadas (IntlFormat.fechaHora), autor resuelto y tipo etiquetado 2026-11-08.)*
 - ☑ 2.5 Edición de proyecto (nombre, descripción, fecha objetivo) con nombre único. *(Implementado 2026-11-06: formulario reutilizado en modo edición.)*
 - ☑ 2.6 Cancelar proyecto (solo Admin/Sponsor, desde cualquier etapa distinta de Cierre); proyecto cancelado no admite transiciones. *(Implementado 2026-11-06 en detalle + store.)*
