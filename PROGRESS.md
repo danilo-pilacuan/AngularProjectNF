@@ -2,6 +2,30 @@
 
 Log de avance dia a dia. Fuente de verdad del avance; `.ops` lo organiza y enlaza.
 
+## 2026-11-08 (iteracion 23: regresion E2E de flujos de escritura)
+
+- Justificacion: la iteracion 22 modifico las paginas exactas que recorre
+  e2e-flujos.mjs (portafolio, detalle, etapas). Rerun completo para descartar
+  regresiones de producto tras el cambio de forma de las filas del portafolio
+  (patrocinadorId + nombre resuelto).
+- Resultado: 14/14 comprobaciones OK sobre shell 4300 + API 8100 (Playwright
+  headless). Flujo verificado de punta a punta: formulario Nuevo proyecto ->
+  redireccion al detalle -> etapa "Fase E2E" creada y visible -> persiste tras
+  F5 (push /api/sincronizacion + rehidratacion) -> entregable "Acta E2E 19"
+  cargado y pendiente -> autoaprobacion rechazada con banner de dominio (Diana
+  es autora) -> Aprobar visible para Sergio Sponsor (matriz 1.5) -> pill
+  "Aprobado" y aprobador resuelto por nombre -> tarjeta Gate de etapa con
+  resumen (Cerrado, faltan por cargar: 1) -> /projects/nuevo sin sesion
+  redirige a /login?de=%2Fprojects%2Fnuevo -> consola sin errores de Angular
+  ni singletons duplicados, 0 recursos >= 400.
+- Dato extra: el gate informo "Aprobados: 0 / Pendientes de aprobacion: 0 /
+  Faltan por cargar: 1" (el entregable aprobado pertenece a otra etapa del
+  mismo proyecto), coherente con el dominio.
+- Sin cambios de codigo: la iteracion valida la iteracion 22 en runtime.
+  Verificacion adicional con navegador integrado registrada en la iteracion
+  22; esta iteracion usa Playwright headless (directiva del dueno: browser +
+  playwright).
+
 ## 2026-11-08 (iteracion 22: nombres de usuario resueltos en la UI)
 
 - Defecto de produccion detectado en revision de codigo: portafolio, detalle y CSV mostraban
