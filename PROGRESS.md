@@ -543,3 +543,21 @@ Siguiente deuda: lint formal (11.4): ningun repo frontend tiene eslint ni script
   en proyecto-detalle.spec.ts (Diana Admin, 20 de ago de 2026, sin 'u-admin' ni ISO crudo).
 - Verificacion: mfe-governance 20/20, mfe-projects 26/26 (vitest), builds y lint exit 0
   en ambos. Commits: mfe-projects 14d1eec, mfe-governance 01ef742 (feat, sin push).
+
+## 2026-11-08 (iteracion 6: e2e federado de bitacora + nav del remote)
+- Hallazgo estructural: en modo federado el app.html del remote mfe-governance nunca se
+  renderiza; el shell monta las rutas expuestas ("./Module") directamente en su router,
+  de modo que el nav standalone (Documentos/Bitacora) solo existia en el remote aislado.
+  Corollario de Native Federation, no un bug: el nav real de secciones debe vivir en las
+  paginas del remote.
+- mfe-governance: componente app-nav-governance (src/app/shared) con RouterLink +
+  RouterLinkActive y un signal activo derivado de router.events (NavigationEnd); colocado
+  al inicio de las paginas Documentos y Bitacora. Test propio con provideRouter de rutas
+  de prueba (el primero fallaba porque /governance/bitacora no existia en el router vacio).
+- E2E federado (session-state files/e2e-bitacora.mjs, Playwright headless contra el shell
+  4300): 11/11 comprobaciones OK. Incluye descarga real del CSV (evento download, nombre
+  bitacora-2026-11-07-2316.csv) y proteccion de ruta profunda sin sesion: el shell
+  redirige a /login?de=/governance/bitacora antes de que el remote renderice su banner.
+  Leccion de sondas: imprimir 200+ chars del body y comparar en minusculas.
+- Verificacion: mfe-governance 22/22 (vitest), build exit 0, lint exit 0. Commit
+  mfe-governance 0103a1a (feat). Sin push.
