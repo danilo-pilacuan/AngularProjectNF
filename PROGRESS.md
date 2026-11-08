@@ -500,3 +500,6 @@ Siguiente deuda: lint formal (11.4): ningun repo frontend tiene eslint ni script
 - Verificacion: mfe-governance 11/11 (vitest), build y lint exit 0, shared-lib
   153/153. Commits: shared-lib fe863d0 (feat), mfe-governance b7c5acc (feat
   governance). Sin push.
+
+## 2026-11-08 (iteracion 2: mat-checkbox en dependencias de etapa)
+- proyecto-detalle de mfe-projects: checkbox nativo de dependencias reemplazado por mat-checkbox (patron de mfe-admin/usuarios). Ajuste de CSS del bloque dependencias. mfe-projects 26/26 tests, build y lint verdes. Commit be5afd3. Cierra el ultimo hallazgo de la auditoria Material (12.4).
