@@ -2,6 +2,20 @@
 
 Log de avance dia a dia. Fuente de verdad del avance; `.ops` lo organiza y enlaza.
 
+## 2026-11-08 (iteracion 11: tabla de presupuesto sobre ph-data-table)
+
+- Auditoria Material transversal (12.3/1.7): los botones de todos los remotes ya usan
+  mat-button/mat-flat-button; quedaban 2 tablas nativas (presupuesto en mfe-reports y
+  matriz en mfe-admin).
+- `ph-data-table` (ui-lib) gana input `pie` opcional: renderiza una mat-footer-row que
+  reutiliza las plantillas #cell de las columnas; oculta el pie si no se pasa. 2 tests
+  nuevos (34/34 en ui-lib). Commit ui-lib 8148391.
+- Presupuesto (mfe-reports) migrado de tabla nativa a ph-data-table con pie de totales;
+  se conservan los resaltados negativa/positiva por plantilla. Commit mfe-reports 671dca1.
+- Verificacion: ui-lib 34/34 + build + lint exit 0; mfe-reports 5/5 + build + lint exit 0.
+- Pendiente iteracion 12: matriz de mfe-admin (tabla cruzada con th por fila; requiere
+  evaluar si mat-table aporta o si conserva su maquetacion).
+
 ## 2026-11-08 (iteracion 10: fechaHora en IntlFormat)
 
 - `IntlFormat` de ui-lib gana `fechaHora()` (fecha + hora:minuto) y `fechaHoraSegundos()`
