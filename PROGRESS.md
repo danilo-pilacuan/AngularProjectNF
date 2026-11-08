@@ -2,6 +2,31 @@
 
 Log de avance dia a dia. Fuente de verdad del avance; `.ops` lo organiza y enlaza.
 
+## 2026-11-08 (iteracion 19: E2E de flujos de escritura por UI)
+
+- Primera bateria E2E que cubre escritura (no solo lectura): e2e-flujos.mjs, 14 checks,
+  Playwright headless sobre shell 4300 + backend 8100. Flujo verificado de extremo a extremo:
+  login Diana (Admin) -> crear proyecto "PH-E2E Flujo" por formulario (validaciones activas,
+  redireccion a /projects/detalle/:id) -> crear etapa "Fase E2E" (2 inputs date + mat-select
+  responsable) -> persistencia de la etapa tras F5 (push a /api/sincronizacion + rehidratacion)
+  -> cargar entregable "Acta E2E 19" en /governance (queda pendiente) -> autoaprobacion
+  rechazada con mensaje de dominio ("El autor de un entregable no puede aprobar su propio
+  documento" en ph-permission-banner danger) -> cerrar sesion -> login sergio (Sponsor) ->
+  Aprobar visible por matriz 1.5 -> pill Aprobado + aprobador resuelto -> tarjeta Gate de etapa
+  visible -> proteccion /projects/nuevo sin sesion (redirige a /login) -> consola sin errores
+  NG0 ni singletons duplicados, 0 recursos >= 400.
+- Hallazgos: (a) la ruta de Documentos es /governance (path '' del remote); /governance/
+  documentos no existe y el shell hace fallback silencioso al dashboard, leccion para
+  diagnosticar: verificar URL antes de asumir bug de producto; (b) quirks de Playwright sobre
+  Material: opciones deshabilitadas de mat-select llevan aria-disabled="true" (no
+  mat-mdc-option-disabled), patron fiable click-select -> wait -> click-opcion-por-texto ->
+  wait; (c) sin bug de producto: los 6 fallos iniciales eran URLs erroneas del script.
+- Regresion: e2e-bitacora 11/11 OK durante el diagnostico. Estado: bateria de escritura 14/14.
+  Scripts viven en files/ de sesion (no commiteados por decision de usuario).
+- Nota de proceso: sin navegador integrado ni Playwright MCP disponibles en la sesion, los
+  e2e-*.mjs (playwright-core headless) son la unica via de verificacion de navegador; se usan
+  como bateria al cerrar iteracion y sondeos minimos solo para diagnostico.
+
 ## 2026-11-08 (iteracion 16: chips restantes sobre ph-pill)
 
 - Unificacion completa del patron pill/chip: los chips de conteo del gate (documentos.html:
