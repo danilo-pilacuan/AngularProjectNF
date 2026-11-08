@@ -91,31 +91,13 @@ las secciones 2-8; la estructura y las reglas son reutilizables tal cual.
      salida de evidencia; builds largos con log; evidencia etiquetada por stack).
 
 7. **Trabajo en curso y pendiente:**
-   - Lint formal (deuda 11.4) -> hecho (2026-11-08): eslint 9 + typescript-eslint 8 +
-     angular-eslint 22 con flat config en los 7 repos frontend; lint+tests+build verdes y
-     commit por repo. Prefijos documentados: `ph` = API publica (widgets federados,
-     componentes de ui-lib), `app` = resto. Lint backend tambien hecho (ruff 0.17.4,
-     backend 5ba04b5, check exit 0 + pytest 109/109). Queda: decidir si el gate de lint
-     entra en el DoD de verificacion (seccion 5).
-   - Rebuild demo Docker con el fix del widget -> hecho (2026-11-08): las
-     imagenes 440x ya contenian REMOTE_MODULE_LOADER (grep dentro de las
-     imagenes), contenedores recreados con `docker compose up -d` y E2E demo
-     SHELL=4400 8/8 OK (login real, F5, consola limpia).
+   - Iteracion 21 (E2E de filtros de listas) -> HECHA (2026-11-08): rerun de
+     files/e2e-filtros.mjs tras reinicio del equipo, 12/12 OK (portafolio,
+     documentos, bitacora, usuarios, consola limpia incl. NG0956). Sin cambios
+     de codigo; docs/funcionalidades.md 2.3 actualizado; commit raiz a586d91.
    - Revision humana de estados `implementado` -> `verificado` (fases 0-14.5,
      demo Docker y fix del widget). No necesita codigo; la evidencia esta en
      PROGRESS.md.
-   - Iteracion 21 (E2E de filtros de listas) -> EN CURSO, cortada por reinicio
-     del equipo a peticion del usuario (2026-11-08). Script files/e2e-filtros.mjs
-     en files/ de sesion: portafolio (filtro etapa, busqueda sin coincidencias,
-     restauracion), documentos (cambio de proyecto actualiza gate y tabla),
-     bitacora (filtro por proyecto), usuarios (filas + formulario con roles) y
-     consola limpia (NG0956 incluido). Primera corrida 7/9 con dos fallos del
-     script ya corregidos (la asercion de etapa mezclaba badges de estado; la
-     lectura de mat-option tras cerrarse el overlay daba timeout). Lint de los 7
-     repos frontend verdes durante la iteracion. Pendiente al retomar: relanzar
-     dev servers 4300-4304 (`npm start` en la raiz) y backend (docker compose up
-     -d en deploy/ para 8100), rerun e2e-filtros.mjs y, si queda verde, cerrar la
-     iteracion con commits/docs como en la 20.
    - Cerrado (2026-11-08): widget remote-a-remote (mfe-reports ->
      ProjectSummaryWidget de mfe-projects) colgaba en "Cargando widget...".
      Causa: copia del runtime NF sin inicializar enlineada en el chunk
@@ -147,6 +129,7 @@ las secciones 2-8; la estructura y las reglas son reutilizables tal cual.
 | 2026-11-08 (widget remote-a-remote) | Fix definitivo del hang del widget federado remote a remote: token REMOTE_MODULE_LOADER en @projecthub/shared (patron SESION_STORE), providers en los 5 app.config, consumidores via remoteModuleLoader() con validacion de export; descartado compartir el runtime NF (rompe boot dev). Evidencia: 10 chunks expuestos sin runtime, tests 219/219 + backend 109/109, E2E dev 4300 8/8 con login real y F5 | hecho: commits shared-lib 7e840ec, shell 58661b5, mfe-reports 8b5481a, mfe-projects 85b9fee, mfe-admin 50dc27e, mfe-governance 71d2ec5; E2E actualizado a login real (token JWT persiste, el modo demo no) |
 | 2026-11-08 (lint backend ruff) | Cierre de la deuda 11.4 en el backend: pyproject.toml con ruff 0.17.4 (E/F/I/B/UP, line 120, B008 extendido para Depends de FastAPI), 121 -> 0 errores (E402 logger, UP031 f-strings con textos de error intactos, ruff format en 10 archivos), pytest 109/109 tras el formato, ruff>=0.17 en requirements.txt | hecho: commit backend 5ba04b5; lint formal cerrado en los 8 repos |
 | 2026-11-08 (validacion en demo Docker) | El fix REMOTE_MODULE_LOADER validado en la demo prod-like 4400: imagenes 440x ya contienen el token (verificado con grep dentro de imagenes shell y mfe-reports), contenedores recreados con up -d; E2E demo 8/8 con login real (dashboard 4 widgets, widget remote a remote con avance Intl, F5, consola limpia, 0 recursos >= 400) | hecho: sin cambios de codigo; evidencia en PROGRESS.md 2026-11-08 |
+| 2026-11-08 (iteracion 21: E2E filtros) | Rerun de e2e-filtros.mjs tras reinicio del equipo: 12/12 OK (portafolio con filtro etapa y busqueda, documentos cambia gate/tabla, bitacora filtra por proyecto, usuarios + formulario roles, consola limpia incl. NG0956, 0 recursos >= 400) | hecho: docs/funcionalidades.md 2.3 actualizado; commit raiz a586d91 |
 | 2026-11-08 (lint formal 7 repos) | eslint 9 + angular-eslint 22 (flat config) en shell, mfe-projects, mfe-reports, mfe-admin, mfe-governance, shared-lib y ui-lib; fixes de imports sin uso y hosts de spec a app-*; en ui-lib, configs duales de directive-selector (atributo camelCase + elemento kebab-case anidados en un arreglo) para validar la @Directive ph-data-table-column. Lint+tests+build verdes en los 7; tests 237 frontend sin cambio | hecho: commits shell 8ef80c9, mfe-projects ec15cff, mfe-reports 0e81473, mfe-admin 8e0df10, mfe-governance daf2e3f, shared-lib b1a671b, ui-lib 15b77bf; pendiente lint backend (ruff) |
 | 2026-11-08 (pagina documentos/gates) | Primera pagina real de mfe-governance: Documentos y entregables (filtro de proyecto, tarjeta de gate con aprobados/pendientes/faltantes, tabla con aprobacion por matriz, carga v1 pendiente, casos limite autor-propio y proyecto no activo). Dominio: EstadoGate.aprobados en shared con test | hecho: mfe-governance 11/11 (antes 2), build+lint exit 0, shared-lib 153/153; commits shared-lib fe863d0, mfe-governance b7c5acc |
 | 2026-11-08 (iteraciones 2-3: Material y store unico) | mat-checkbox para dependencias de etapa en proyecto-detalle (ultimo control nativo, cierra 12.4); E2E federado del store unico 7/7 (sesion compartida, lecturas cross-MFE, escritura en mfe-projects visible en /reports/presupuesto, consola limpia) y segunda corrida idempotente 7/7; proyecto de prueba cancelado via API | hecho: 8.4 marcado con evidencia; commits mfe-projects be5afd3, raiz docs 8b71e43 + commit de esta sesion |
