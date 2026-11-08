@@ -102,6 +102,15 @@ las secciones 2-8; la estructura y las reglas son reutilizables tal cual.
      salida de evidencia; builds largos con log; evidencia etiquetada por stack).
 
 7. **Trabajo en curso y pendiente:**
+   - Iteracion 47 (sesion expirada) -> HECHA (2026-11-08): contrato 401
+     SESION_INVALIDA en backend (obtener_actor, token invalido o usuario
+     eliminado), deteccion en ApiEnlaceService (limpia token +
+     onSesionExpirada), AutenticacionService.expiraciones(), redireccion
+     shell a /login?expirada=1 con aviso en pantalla. Backend 132/132,
+     shared-lib 174/174, shell 28/28, lint raiz verde. Commits backend
+     5e46a39, shared-lib 5932430, shell d2e608e, docs raiz 5febf62.
+     Pendiente de rebuild demo (los contenedores 4400-4404 siguen con la
+     shared-lib anterior); no bloquea dev.
    - Iteracion 46 (regresion integral) -> HECHA (2026-11-08): tests de los
      6 repos frontend en verde, builds exit 0, lint raiz exit 0. Sin
      cambios de codigo.
@@ -274,3 +283,4 @@ las secciones 2-8; la estructura y las reglas son reutilizables tal cual.
 | 44 | 2026-11-08 | CI del backend: .github/workflows/backend-ci.yml (pytest + ruff, Python 3.14, cache pip, memoria) con triggers push/PR en backend/ | hecho: commit raiz f332a25 | Agente |
 | 45 | 2026-11-08 | Manejo del 429 en la UI: AutenticacionService.mapearError mapea 429 -> LIMITE_INTENTOS con el mensaje del backend; test nuevo en autenticacion.spec.ts; demo reconstruida y E2E: 401x5 -> 429 con mensaje correcto | hecho: shared-lib 172/172 + build dist; estado demo intacto | Agente |
 | 46 | 2026-11-08 | Barrido integral de regresion tras el ciclo de seguridad: ng test en los 6 repos frontend (todos los archivos en verde), npm run build exit 0 en los 6, lint raiz exit 0; backend 131/131 | hecho: sin cambios de codigo; iteracion de verificacion | Agente |
+| 47 | 2026-11-08 | Sesion expirada con token vigente: backend 401 SESION_INVALIDA (obtener_actor, token invalido o usuario eliminado); ApiEnlaceService limpia token + onSesionExpirada; AutenticacionService.expiraciones(); shell redirige a /login?expirada=1 con aviso | hecho: backend 132/132 + ruff 0, shared-lib 174/174 + build, shell 28/28 + build, lint raiz 0; commits backend 5e46a39, shared-lib 5932430, shell d2e608e, raiz 5febf62; demo Docker pendiente de rebuild | Agente |
