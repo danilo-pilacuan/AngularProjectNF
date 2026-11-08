@@ -39,6 +39,19 @@ Log de avance dia a dia. Fuente de verdad del avance; `.ops` lo organiza y enlaz
   (GET /api/proyectos/... devuelve 1234567).
 - Commits: mfe-projects d298339; este commit raiz actualiza docs.
 
+## 2026-11-08 (iteracion 37: regresion E2E contra la demo reconstruida)
+
+- Justificacion: el rebuild de la demo (it. 36) puede regresar banner de API
+  y re-push de escrituras; la demo es la referencia de produccion.
+- Verificacion: e2e-banner-api 8/8 (ciclo completo de caida/recuperacion con
+  banner y consola limpia) y e2e-repush-api 8/8 (creacion con API arriba,
+  creacion offline con PUT fallido, re-push automatico +1 PUT a los 5118 ms
+  tras restaurar) contra la demo 4400 con el fix step=any incluido.
+- Ademas: verificacion en vivo con navegador integrado del segundo input
+  (presupuesto de etapa): etapa creada con 987654, persistida en
+  GET /api/proyectos/{id}/etapas, datos de prueba eliminados (etapa borrada y
+  proyecto cancelado con motivo en bitacora).
+
 ## 2026-11-08 (iteracion 35: re-empuje automatico de escrituras tras recuperar la API)
 
 - Justificacion: los cambios hechos con la API caida solo se reintentaban al
