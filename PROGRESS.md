@@ -2,6 +2,28 @@
 
 Log de avance dia a dia. Fuente de verdad del avance; `.ops` lo organiza y enlaza.
 
+## 2026-11-08 (iteracion 7: catalogo compartido de tipos de bitacora)
+
+- Deduplicacion del catalogo de tipos de registro de bitacora, que vivia duplicado en
+  mfe-governance (constantes locales de la pagina Bitacora) y como ternarios inline en
+  proyecto-detalle.ts de mfe-projects (regla de negocio fuera de shared-lib).
+- shared-lib `domain/catalogos.ts`: `TIPOS_BITACORA` (const `as const`),
+  `TipoBitacora` (type derivado) y `ETIQUETA_TIPO_BITACORA` (Record readonly con
+  etiquetas Transicion/Aprobacion/Cambio), junto a los catalogos existentes.
+  `BitacoraEntrada.tipo` pasa a estar tipada con `TipoBitacora`.
+- Nuevo `catalogos.spec.ts` (4 tests: conteo de tipos, etiqueta por tipo, tipado de
+  BitacoraEntrada con entrada real y coherencia de conteos de catalogos existentes).
+- Rewire de consumidores: bitacora.ts de mfe-governance ya no define tipos ni etiquetas
+  locales; proyecto-detalle.ts de mfe-projects delega en `ETIQUETA_TIPO_BITACORA`.
+- Verificacion: shared-lib 157/157 tests (runner oficial `npm test -- --watch=false`;
+  nota: `npx vitest run` directo falla en specs de stores por TestBed
+  initTestEnvironment, preexistente y ajeno a este cambio), build+lint exit 0;
+  mfe-governance 22/22 + build + lint; mfe-projects 26/26 + build + lint.
+- Commits: shared-lib aac61cc (feat), mfe-governance 0404ae5 (refactor), mfe-projects
+  245d5e8 (refactor). Durante el rewiring el build de mfe-governance fallo una vez por
+  una referencia residual a la constante eliminada (TS2552), corregida reutilizando la
+  propiedad ya expuesta en el componente.
+
 ## 2026-11-08 (lint backend con ruff)
 
 - Lint formal del backend (fase 0-8, deuda 11.4 extendida): `pyproject.toml` nuevo con
