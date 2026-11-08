@@ -2,6 +2,19 @@
 
 Log de avance dia a dia. Fuente de verdad del avance; `.ops` lo organiza y enlaza.
 
+## 2026-11-08 (iteracion 16: chips restantes sobre ph-pill)
+
+- Unificacion completa del patron pill/chip: los chips de conteo del gate (documentos.html:
+  Aprobados/Pendientes de aprobacion/Faltan por cargar) y la metadata de proyecto-detalle
+  (mfe-projects: Patrocinador, Objetivo) migran a ph-pill. Para no duplicar criterios de
+  tamano se normalizo ph-pill al formato chip (padding 0.15rem 0.6rem, font-size 0.75rem,
+  sin uppercase) con el tono neutral como variante metadata; los tonos ok/info/warn/danger/
+  primario conservan su semantica. ph-stage-badge sigue intacto (decision 12.3, chip nativo).
+- Eliminados los ultimos estilos hand-rolled: .chip de documentos.scss (3 variantes) y .chip
+  de proyecto-detalle.scss. Verificacion: ui-lib 37/37 + build + lint; mfe-governance 20/20 +
+  build + lint; mfe-projects 26/26 + build + lint, todo exit 0. Commits: ui-lib dad3e6c,
+  mfe-governance c4ebebd, mfe-projects fd88177.
+
 ## 2026-11-08 (iteracion 15: ph-pill en ui-lib y dedupe de pills en mfe-governance)
 
 - Auditoria Material de las paginas nuevas de mfe-governance (documentos, bitacora): usan
