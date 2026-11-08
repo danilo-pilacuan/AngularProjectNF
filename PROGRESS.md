@@ -2,6 +2,26 @@
 
 Log de avance dia a dia. Fuente de verdad del avance; `.ops` lo organiza y enlaza.
 
+## 2026-11-08 (iteracion 40: mitigacion VULN-003 - rate limit en login)
+
+- Justificacion: VULN-003 (Media) permitia fuerza bruta sobre
+  /api/auth/login (25 intentos en 1.6 s sin bloqueo). A estandares de
+  produccion el endpoint publico de credenciales exige limitacion.
+- Implementado: `backend/app/rate_limit.py` nuevo (limitador en memoria,
+  sin dependencias nuevas por la politica del repo): ventana fija por
+  correo+IP, 5 fallos en 60 s -> 429 LIMITE_INTENTOS; config por env
+  (`RATE_LIMIT_LOGIN_INTENTOS`, `RATE_LIMIT_LOGIN_VENTANA_SEG`, 0
+  desactiva); solo cuentan fallos (un login exitoso no acumula); hilo
+  seguro con limpieza perezosa. Conectado en el endpoint de login.
+- Tests: 6 unitarios del limitador (maximo, ventana que expira, claves
+  independientes, desactivacion, limpiar) + 2 de integracion HTTP (429 en
+  el sexto intento y exitos no acumulan).
+- Nota registrada: con varias instancias del backend conviene un limitador
+  externo (Redis); queda en vulns.md como decision de despliegue.
+- Verificacion: backend pytest 120/120, ruff limpio; API demo reconstruida
+  y probada por HTTP: 401x5 -> 429, otra cuenta OK; estado demo intacto.
+- Commits: backend, raiz (docs/.ops).
+
 ## 2026-11-08 (iteracion 39: mitigacion VULN-002 - sesion exigida en lecturas de dominio)
 
 - Justificacion: VULN-002 (Media) dejaba 12 GET de dominio sin autenticacion;
