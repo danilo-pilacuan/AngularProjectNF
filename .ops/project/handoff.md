@@ -91,6 +91,10 @@ las secciones 2-8; la estructura y las reglas son reutilizables tal cual.
      salida de evidencia; builds largos con log; evidencia etiquetada por stack).
 
 7. **Trabajo en curso y pendiente:**
+   - Iteracion 29 (regresion E2E de exportacion PDF) -> HECHA (2026-11-08):
+     rerun de files/e2e-pdf.mjs, 14/14 OK (tablero y presupuesto: dialogo de
+     impresion con titulo correcto, secciones y totales, celdas escapadas,
+     consola limpia). Sin cambios de codigo.
    - Iteracion 28 (regresion E2E de widgets federados) -> HECHA (2026-11-08):
      rerun de files/e2e-widgets.mjs, 8/8 OK (dashboard 4 widgets, widget
      remote a remote con Intl, selector de proyecto actualiza el resumen, F5
@@ -195,3 +199,4 @@ las secciones 2-8; la estructura y las reglas son reutilizables tal cual.
 | 26 | 2026-11-08 | Regresion E2E del store unico (files/e2e-store-unico.mjs): sesion compartida, lecturas cross-MFE, escritura en mfe-projects visible en /reports/presupuesto sin recargar, consola limpia | hecho: 7/7 OK, 0 recursos >= 400; sin cambios de codigo; commit raiz docs | Agente |
 | 27 | 2026-11-08 | Regresion E2E federado general (files/e2e-federado.mjs adaptado a la era de sesion real): header con actor autenticado, 4 rutas sin fallback, F5 profundo /governance/bitacora, consola limpia | hecho: 10/10 OK, 0 recursos 404; script de sesion actualizado (era demo -> login real), sin cambios de producto; commit raiz docs | Agente |
 | 28 | 2026-11-08 | Regresion E2E de widgets federados (files/e2e-widgets.mjs): dashboard con 4 widgets, widget remote a remote con Intl, selector de proyecto actualiza resumen, F5 profundo, consola limpia | hecho: 8/8 OK, 0 recursos >= 400; sin cambios de codigo; commit raiz docs | Agente |
+| 29 | 2026-11-08 | Regresion E2E de exportacion PDF (files/e2e-pdf.mjs): tablero y presupuesto invocan dialogo de impresion con titulo correcto, secciones, totales y celdas escapadas, consola limpia | hecho: 14/14 OK; sin cambios de codigo; commit raiz docs | Agente |

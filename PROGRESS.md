@@ -2,6 +2,21 @@
 
 Log de avance dia a dia. Fuente de verdad del avance; `.ops` lo organiza y enlaza.
 
+## 2026-11-08 (iteracion 29: regresion E2E de exportacion PDF)
+
+- Justificacion: mfe-reports fue tocado despues de su ultima corrida de PDF
+  (commit de lint 0e81473 y catalogo compartido de la iteracion 7); rerun de
+  files/e2e-pdf.mjs para validar la exportacion por dialogo nativo.
+- Resultado: 14/14 comprobaciones OK. Tablero general: boton Exportar PDF,
+  dialogo de impresion invocado con titulo "Tablero general de indicadores",
+  secciones Detalle por proyecto / Proyectos por etapa del ciclo de vida /
+  Proyectos por estado, marca de tiempo "generado el " y celdas escapadas
+  (sin script crudo). Presupuesto: boton Exportar PDF, dialogo invocado con
+  titulo "Reporte de presupuesto", seccion asignado vs consumido y fila de
+  totales <tfoot>. Consola sin errores ni warnings durante ambas
+  exportaciones.
+- Sin cambios de codigo.
+
 ## 2026-11-08 (iteracion 28: regresion E2E de widgets federados)
 
 - Justificacion: la iteracion 22 toco la resolucion de nombres en
