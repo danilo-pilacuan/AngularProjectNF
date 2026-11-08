@@ -102,6 +102,14 @@ las secciones 2-8; la estructura y las reglas son reutilizables tal cual.
      salida de evidencia; builds largos con log; evidencia etiquetada por stack).
 
 7. **Trabajo en curso y pendiente:**
+   - Iteracion 38 (auditoria de seguridad de la API) -> REGISTRADA (2026-11-08):
+     4 hallazgos en `.ops/security/vulns.md` (VULN-001 Alta: PUT
+     /api/sincronizacion sin validacion de permisos, reproducido por HTTP;
+     VULN-002 Media: GETs de dominio sin sesion; VULN-003 Media: sin rate
+     limit en login; VULN-004 Baja: CORS fijo). Tests de caracterizacion en
+     el backend (112/112). PENDIENTE DEL PROPIETARIO: decidir mitigaciones
+     (el fix de VULN-001 cambia el contrato del re-sync 13.4 y toca
+     consumidores del frontend; VULN-002 exige auditar los 5 apps).
    - Iteracion 30 (cierre documental 13.1/13.3/13.4) -> HECHA (2026-11-08):
      los tres items ◑ de la seccion 13 pasan a ☑ con evidencia acumulada
      (109/109 pytest, auth JWT de fase 14, E2E de hoy con 0 recursos >= 400,
@@ -225,3 +233,4 @@ las secciones 2-8; la estructura y las reglas son reutilizables tal cual.
 | 35b | 2026-11-08 | E2E del re-push (tools/e2e/e2e-repush-api.mjs): causa raiz de la fase offline que fallaba en silencio era el step=1000 del input de presupuesto (stepMismatch bloquea el submit sin error visible); el script usa montos multiplos de 1000 y verifica navegacion a detalle | hecho: 8/8 comprobaciones OK contra demo 4400; re-push +1 PUT a los 1521 ms sin interaccion | Agente |
 | 36 | 2026-11-08 | step=any en los dos inputs de presupuesto (proyecto-form, proyecto-detalle): el step=1000 bloqueaba en silencio submits con montos arbitrarios; validacion de dominio intacta (>= 0 y finito en guardar()/store) | hecho: eslint 0, tests mfe-projects 29/29, rebuild demo y prueba en vivo con navegador integrado: 1234567 crea proyecto, navega a detalle y persiste (GET devuelve 1234567); commits mfe-projects d298339 | Agente |
 | 37 | 2026-11-08 | Regresion E2E contra la demo reconstruida con step=any: banner 8/8 y re-push 8/8 (re-push automatico +1 PUT a los 5118 ms); segundo input verificado en vivo: etapa creada con 987654 y persistida, datos de prueba eliminados | hecho | Agente |
+| 38 | 2026-11-08 | Auditoria de seguridad de la API (revision de codigo + pruebas HTTP contra 8100): VULN-001 (Alta) re-sync total sin validacion de permisos (escalada de roles y borrado de bitacora reproducidos), VULN-002 (Media) 12 GET de dominio sin sesion, VULN-003 (Media) login sin rate limit, VULN-004 (Baja) CORS fijo. 3 tests de caracterizacion en test_api.py; estado demo restaurado a semilla exacta tras las pruebas | hecho: backend 112/112 pytest, ruff 0; registro en .ops/security/vulns.md (estados abiertos, decision del propietario) | Agente |

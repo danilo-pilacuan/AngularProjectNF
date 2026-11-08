@@ -2,6 +2,38 @@
 
 Log de avance dia a dia. Fuente de verdad del avance; `.ops` lo organiza y enlaza.
 
+## 2026-11-08 (iteracion 38: auditoria de seguridad de la API y registro VULN)
+
+- Justificacion: el proyecto se trabaja con estandares de produccion (AGENTS.md);
+  el dominio y el DoD funcional estaban cerrados, pero nadie habia auditado la
+  superficie de seguridad de la API que ahora sostiene la demo completa.
+- Metodo: revision de codigo de backend/app (auth, rutas, servicio) + pruebas
+  HTTP reales contra la API dockerizada (8100) + suite pytest de regresion.
+- Hallazgos (registro en `.ops/security/vulns.md`, estados abiertos a decision
+  del propietario):
+  - VULN-001 (Alta): `PUT /api/sincronizacion` acepta el reemplazo completo del
+    estado desde cualquier actor autenticado sin validar la matriz. Reproducido
+    por HTTP: analista se auto-eleva a Admin (roles persistidos en la respuesta)
+    y vacia la bitacora (bitacora=0) en dos PUT.
+  - VULN-002 (Media): 12 GET de dominio responden 200 sin sesion (usuarios,
+    proyectos, etapas, entregables, bitacora, sincronizacion y variantes);
+    verificado con curl sin Bearer ni X-Actor-Id.
+  - VULN-003 (Media): login sin limitacion de intentos: 25 contrasenas
+    erroneas seguidas procesadas en 1.6 s sin bloqueo (fuerza bruta).
+  - VULN-004 (Baja): CORS con origenes localhost fijos en codigo, sin env.
+- Implementado (test de caracterizacion, no fix: la mitigacion toca contrato de
+  escritura y consumidores del frontend, decision del propietario): 3 tests
+  nuevos en `backend/tests/test_api.py` que documentan VULN-001 (escalada y
+  borrado de bitacora, con restauracion de semilla al final) y VULN-002 (GETs
+  sin sesion 200). Fallaran al mitigar, forzando actualizar el registro.
+- Limpieza: la auditoria contra la demo dejo residuos (proyectos PH-E2E, un
+  usuario y bitacora vacia); estado demo restaurado a semilla exacta via
+  PUT /api/sincronizacion con payload generado desde app.semilla
+  (usuarios=7, proyectos=6, etapas=5, entregables=10, bitacora=5; login Diana
+  OK verificado despues).
+- Verificacion: backend 112/112 pytest (antes 109), ruff check exit 0.
+- Commits: backend (tests de caracterizacion); raiz (.ops/security + docs).
+
 ## 2026-11-08 (iteracion 35b: E2E del re-push en verde y causa raiz del bloqueo silencioso)
 
 - Justificacion: la verificacion en vivo del re-push (pendiente de 35) fallaba
