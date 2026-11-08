@@ -91,6 +91,12 @@ las secciones 2-8; la estructura y las reglas son reutilizables tal cual.
      salida de evidencia; builds largos con log; evidencia etiquetada por stack).
 
 7. **Trabajo en curso y pendiente:**
+   - Iteracion 24 (regresion E2E de transiciones de etapa) -> HECHA
+     (2026-11-08): rerun de files/e2e-transiciones.mjs tras iteracion 22,
+     19/19 OK (gate cerrado rechaza, acta + autoaprobacion rechazada +
+     aprobacion Sponsor, transicion a Iniciativa con bitacora y gate destino
+     recalculado, sin retroceso, persistencia F5, consola limpia). Sin cambios
+     de codigo.
    - Iteracion 23 (regresion E2E de flujos de escritura) -> HECHA (2026-11-08):
      rerun de files/e2e-flujos.mjs tras el cambio de UI de la iteracion 22,
      14/14 OK (proyecto + etapa + F5 + entregable + autoaprobacion rechazada +
@@ -165,3 +171,4 @@ las secciones 2-8; la estructura y las reglas son reutilizables tal cual.
 | 2026-11-08 (iteracion 21, cortada por reinicio) | E2E de filtros de listas (files/e2e-filtros.mjs en files/ de sesion): script creado y 2 fixes de asercion aplicados; primera corrida 7/9 con fallos del script (no de producto); lint de los 7 repos frontend en verde | pendiente: relanzar dev servers 4300-4304 (npm start) y backend 8100 (docker compose en deploy/), rerun e2e-filtros.mjs y cerrar la iteracion |
 | 22 | 2026-11-08 | Nombres de usuario resueltos en la UI (portafolio/detalle/CSV) via UsuarioStore, ID tecnico como tooltip, ph-pill con input title opcional; verificado con tests, lint, builds y navegador integrado (login -> portafolio -> detalle p1) | hecho: ui-lib 40/40, mfe-projects 29/29, build+lint exit 0; commits mfe-projects 11020cb + e989b70, ui-lib 583281e; docs 2.2/2.4 | Agente |
 | 23 | 2026-11-08 | Regresion E2E de flujos de escritura (files/e2e-flujos.mjs) tras el cambio de UI de la iteracion 22: proyecto + etapa + F5 + entregable + autoaprobacion rechazada + aprobacion Sponsor + gate + proteccion sin sesion + consola limpia | hecho: 14/14 OK, 0 recursos >= 400; sin cambios de codigo; commit raiz docs | Agente |
+| 24 | 2026-11-08 | Regresion E2E de transiciones de etapa (files/e2e-transiciones.mjs) tras iteracion 22: gate cerrado rechaza avance, acta cargada + autoaprobacion rechazada + aprobacion Sponsor, transicion a Iniciativa, gate destino recalculado, sin retroceso, F5 persiste, consola limpia | hecho: 19/19 OK, 0 recursos >= 400; sin cambios de codigo; commit raiz docs | Agente |

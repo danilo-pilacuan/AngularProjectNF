@@ -2,6 +2,25 @@
 
 Log de avance dia a dia. Fuente de verdad del avance; `.ops` lo organiza y enlaza.
 
+## 2026-11-08 (iteracion 24: regresion E2E de transiciones de etapa)
+
+- Justificacion: la iteracion 22 toco proyecto-detalle (filas de etapas con
+  responsable resuelto), la pagina donde operan las transiciones. Rerun de
+  files/e2e-transiciones.mjs para descartar regresiones.
+- Resultado: 19/19 comprobaciones OK sobre shell 4300 + API 8100. Flujo del
+  gate completo por UI: avance con gate cerrado rechazado con mensaje de
+  dominio ("esta cerrado") y proyecto sigue en Planteamiento -> acta de
+  planteamiento cargada (pendiente) -> autoaprobacion rechazada (banner de
+  dominio) -> aprobacion por Sergio Sponsor -> transicion "Ir a Iniciativa"
+  aceptada con "Transicion registrada en la bitacora" -> badge y bitacora
+  muestran Planteamiento -> Iniciativa -> gate de la etapa destino recalculado
+  (exige "Documento de iniciativa") -> sin boton de retroceso no permitido ->
+  etapa y bitacora persisten tras F5 -> consola limpia, 0 recursos >= 400.
+- Sin cambios de codigo; el gate de origen y el de destino, la matriz de
+  permisos y el ciclo de vida se comportan igual tras el cambio de UI.
+- Comandos de verificacion usados: Playwright headless (directiva del dueno:
+  browser + playwright).
+
 ## 2026-11-08 (iteracion 23: regresion E2E de flujos de escritura)
 
 - Justificacion: la iteracion 22 modifico las paginas exactas que recorre
