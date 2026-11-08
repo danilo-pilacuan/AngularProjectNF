@@ -17,8 +17,11 @@ Log de avance dia a dia. Fuente de verdad del avance; `.ops` lo organiza y enlaz
   tras el reinicio los 3 remotes renderizan sus modulos reales y el E2E pasa 8/8.
 - Nota de operacion (anteproyecto de mejora): el catch silencioso de remoteConFallback()
   (shell app.routes.ts) traga la causa del fallback; cuando el modulo si carga pero el build
-  esta desactualizado no queda rastro del motivo. Candidata a mejora de observabilidad con
-  su test (DEC o fix pequeno) — se propone en la siguiente iteracion, no se ejecuto aqui.
+  esta desactualizado no queda rastro del motivo. MEJORA EJECUTADA en la iteracion 14:
+  remoteConFallback delega en cargaRemote(remote, cargar?) — inyectable para tests — que
+  registra en consola (console.warn) el remote y el error real antes de recurrir al fallback;
+  spec nuevo app.routes.spec.ts (2 casos: exito -> remoteRoutes; fallo -> fallback '**' con
+  data.remote y warn con el error). shell 22/22 tests, build y lint exit 0; commit a003638.
 - Lecciones de la sonda: una sonda por ruta extraia /reports desde <main|body> y reportaba
   el widget como texto (OK) pese al fallback; la sonda fiable compara el selector del
   componente real (ph-summary-widget). Mantener ese patron en los E2E.
