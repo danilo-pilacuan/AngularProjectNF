@@ -2,6 +2,22 @@
 
 Log de avance dia a dia. Fuente de verdad del avance; `.ops` lo organiza y enlaza.
 
+## 2026-11-08 (iteracion 35: re-empuje automatico de escrituras tras recuperar la API)
+
+- Justificacion: los cambios hechos con la API caida solo se reintentaban al
+  siguiente cambio del usuario; sin mas cambios se perdian al cerrar la
+  pestana (gap de produccion detectado revisando 13.4).
+- Implementado: `SincronizadorEscrituras.conectarRecuperacion()` escucha la
+  transicion a disponible del `ApiEnlaceService` y programa un empuje si hay
+  escrituras fallidas pendientes; bandera `conCambiosNoEnviados` se marca al
+  fallar y se limpia al tener exito; el initializer lo conecta junto a
+  `observar()`.
+- Verificacion: 168/168 tests de shared-lib (3 tests nuevos: re-push al
+  recuperar, no re-push sin escrituras pendientes, bandera limpia tras
+  exito); build y eslint limpios.
+- Pendiente: verificacion en vivo del re-push contra la demo (opcional, el
+  unit test cubre el ciclo completo).
+
 ## 2026-11-08 (iteracion 34: E2E automatizado del banner de estado de API)
 
 - Justificacion: el ciclo de caida/recuperacion del banner se verifico dos
