@@ -525,3 +525,21 @@ Siguiente deuda: lint formal (11.4): ningun repo frontend tiene eslint ni script
   reciente (b5, 15 de oct de 2026).
 - Verificacion: mfe-governance 18/18 (vitest), build exit 0, lint exit 0. Commit
   mfe-governance (feat governance). Sin push.
+
+## 2026-11-08 (iteracion 5: mejoras de bitacora)
+- mfe-projects (proyecto-detalle): la seccion Bitacora ahora muestra la fecha formateada
+  con intl.fecha (antes ISO crudo), el autor resuelto por nombre via UsuarioStore (antes
+  el id) y el tipo de registro como etiqueta ("Transicion.", "Aprobacion.", "Cambio.")
+  antes del evento. Bug corregido durante la iteracion: recortar el ISO a 'YYYY-MM-DD'
+  lo parseaba como medianoche UTC y retrocedia un dia en zonas UTC-negativas (20 de ago
+  se veia como 19 de ago); el fix formatea el ISO completo, igual que la pagina Bitacora
+  de mfe-governance.
+- mfe-governance (pagina Bitacora): boton "Exportar CSV" junto a los filtros (patron CSV
+  de mfe-reports/presupuesto: serializarCsv RFC 4180, descargarArchivo con BOM y
+  nombreConFecha 'bitacora-YYYY-MM-DD-HHmm.csv'), deshabilitado sin sesion o sin filas.
+  Reutiliza los helpers ya publicados por @projecthub/shared (7.5); sin tocar shared-lib.
+- Tests: 2 nuevos en bitacora.spec.ts (export genera Blob + URL.createObjectURL + click
+  del ancla + revokeObjectURL; export con filtro sin resultados), aserciones reforzadas
+  en proyecto-detalle.spec.ts (Diana Admin, 20 de ago de 2026, sin 'u-admin' ni ISO crudo).
+- Verificacion: mfe-governance 20/20, mfe-projects 26/26 (vitest), builds y lint exit 0
+  en ambos. Commits: mfe-projects 14d1eec, mfe-governance 01ef742 (feat, sin push).

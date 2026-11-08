@@ -20,7 +20,7 @@ Estado: `☐` pendiente · `◐` en progreso · `☑` hecho
 - ☑ 2.1 Crear iniciativa/proyecto: nombre (único), descripción, patrocinador, presupuesto estimado, fecha objetivo. Nace en etapa Planteamiento. *(Implementado 2026-11-06: formulario en mfe-projects + `ProjectStore.crearProyecto`.)*
 - ☑ 2.2 Listado del portafolio: tabla con nombre, patrocinador, etapa actual, % de avance, presupuesto, estado. *(Implementado 2026-11-06.)*
 - ☑ 2.3 Filtros por etapa y estado; búsqueda por nombre (parcial, insensible a mayúsculas). *(Implementado 2026-11-06.)*
-- ☑ 2.4 Detalle del proyecto: descripción, etapas, Gantt, presupuesto, bitácora. *(Implementado 2026-11-06.)*
+- ☑ 2.4 Detalle del proyecto: descripción, etapas, Gantt, presupuesto, bitácora. *(Implementado 2026-11-06; bitácora del detalle con fecha formateada, autor resuelto y tipo etiquetado 2026-11-08.)*
 - ☑ 2.5 Edición de proyecto (nombre, descripción, fecha objetivo) con nombre único. *(Implementado 2026-11-06: formulario reutilizado en modo edición.)*
 - ☑ 2.6 Cancelar proyecto (solo Admin/Sponsor, desde cualquier etapa distinta de Cierre); proyecto cancelado no admite transiciones. *(Implementado 2026-11-06 en detalle + store.)*
 - ☑ 2.7 Cerrar proyecto (solo Admin/Sponsor, desde Cierre); proyecto cerrado es de solo lectura. *(Implementado 2026-11-06 en detalle + store.)*
@@ -31,7 +31,7 @@ Estado: `☐` pendiente · `◐` en progreso · `☑` hecho
 - ☑ 3.2 Grafo de transiciones válidas codificado y testeado; la UI no permite transiciones fuera del grafo. *(Implementado 2026-11-05; la UI solo ofrece transiciones habilitadas.)*
 - ☑ 3.3 Retrocesos permitidos solo: PoC → Iniciativa y Validación de PoC → PoC (PoC no validada). *(Implementado 2026-11-05 con tests.)*
 - ☑ 3.4 Transición con validación de rol (según matriz de responsabilidades) y de estado del proyecto. *(Implementado 2026-11-05 con tests.)*
-- ☑ 3.5 Bitácora de transiciones: quién, cuándo, etapa origen → destino, comentario opcional. *(Implementado 2026-11-05; visible en detalle 2026-11-06.)*
+- ☑ 3.5 Bitácora de transiciones: quién, cuándo, etapa origen → destino, comentario opcional. *(Implementado 2026-11-05; visible en detalle 2026-11-06; fecha formateada, autor resuelto por nombre y etiqueta de tipo en el detalle 2026-11-08, y exportación CSV en la página Bitácora de mfe-governance 2026-11-08.)*
 - ☑ 3.6 Estados del proyecto: Activo, Cancelado, Cerrado. *(Implementado 2026-11-05 con tests.)*
 - ☑ 3.7 Página de documentos/entregables en mfe-governance: filtro de proyecto, estado del gate (aprobados/pendientes/faltantes), tabla con aprobación según matriz, carga de entregables (versión 1, pendiente) y casos límite (el autor no autoaprueba su documento, proyecto no activo es solo lectura). *(Implementado 2026-11-08: mfe-governance 11/11 tests; gate extiende `EstadoGate.aprobados` en shared.)*
 - ☑ 3.8 Página de bitácora cross-proyecto en mfe-governance: vista de solo lectura con todos los registros de bitácora del portafolio, filtros por proyecto y por tipo de registro (transición/aprobación/cambio), evento de transición legible (etapa origen → destino), autor resuelto por nombre y orden de más reciente a más antigua. *(Implementado 2026-11-08: ruta `/governance/bitacora`, mfe-governance 18/18 tests, build y lint en verde.)*
@@ -66,7 +66,7 @@ Estado: `☐` pendiente · `◐` en progreso · `☑` hecho
 - ☑ 7.2 Avance por proyecto (ranking). *(Implementado 2026-11-06 en mfe-reports.)*
 - ☑ 7.3 Presupuesto asignado vs. consumido por proyecto. *(Implementado 2026-11-06 en mfe-reports.)*
 - ☑ 7.4 Reportes de solo lectura, recalculados a partir del estado actual (nunca editables a mano). *(Implementado 2026-11-06: mfe-reports solo lee del `ProjectStore` compartido.)*
-- ☑ 7.5 Exportación de reportes (CSV/PDF). *(Implementado 2026-11-06 CSV: exportación de portafolio, ranking de avance y presupuesto por proyecto desde mfe-reports, con generación en `@projecthub/shared` y tests; PDF queda como item futuro.)*
+- ☑ 7.5 Exportación de reportes (CSV/PDF). *(Implementado 2026-11-06 CSV: exportación de portafolio, ranking de avance y presupuesto por proyecto desde mfe-reports, con generación en `@projecthub/shared` y tests; exportación CSV de la bitácora cross-proyecto en mfe-governance 2026-11-08 reutilizando los mismos helpers; PDF queda como item futuro.)*
 
 ## 8. Arquitectura y federación
 
