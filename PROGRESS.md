@@ -508,3 +508,20 @@ Siguiente deuda: lint formal (11.4): ningun repo frontend tiene eslint ni script
 - Nuevo script E2E federado (en session-state, no versionado): login real (diana@projecthub.local), sesion compartida visible en mfe-admin, lecturas de dominio en mfe-projects/mfe-reports/mfe-governance, creacion de proyecto "PH-E2E Store Unico" en mfe-projects y comprobacion de que aparece en /reports/presupuesto via store unico, consola limpia. Resultado: 7/7 OK, 0 recursos >= 400. Segunda corrida (idempotencia, proyecto ya cancelado): 7/7 OK.
 - Limpieza: proyecto de prueba p-mw78zvoq-1 cancelado via POST /api/proyectos/{id}/cancelar (no existe DELETE de proyectos; el dominio baja proyectos por cancelacion). Se verifico GET /api/proyectos/p-mw78zvoq-1 -> estado Cancelado y la corrida E2E sigue 7/7.
 - docs/funcionalidades.md 8.4 marcado ☑ con nota de evidencia. Con esto el alcance 1-14 no queda con items ◐ abiertos.
+
+## 2026-11-08 (iteracion 4: pagina de bitacora cross-proyecto en mfe-governance)
+- Nueva pagina Bitacora en mfe-governance (ruta /governance/bitacora, link en nav): solo
+  lectura, lista la bitacora de todos los proyectos del portafolio con filtros mat-select
+  por proyecto y por tipo (transicion/aprobacion/cambio), evento de transicion legible con
+  ETIQUETA_ETAPA ("Origen -> Destino"), autor resuelto por nombre via UsuarioStore y orden
+  mas recientes primero (localeCompare descendente sobre fecha ISO).
+- Reusa ph-data-table/ph-data-table-column, ph-permission-banner y intl.fecha de
+  @projecthub/ui; pill con clase por tipo. Banner Sesion requerida sin sesion y banner
+  Sin registros con proyecto sin bitacora (p5).
+- Spec nuevo con 7 tests (render semilla, transicion legible, filtro por proyecto, filtro
+  por tipo, estado vacio, sin sesion, autores resueltos). Correccion durante la iteracion:
+  test 1 comparaba fechas formateadas ordenadas lexicograficamente (incorrecto: orden
+  lexico no es cronologico); se reemplazo por asercion de primera fila = registro mas
+  reciente (b5, 15 de oct de 2026).
+- Verificacion: mfe-governance 18/18 (vitest), build exit 0, lint exit 0. Commit
+  mfe-governance (feat governance). Sin push.
