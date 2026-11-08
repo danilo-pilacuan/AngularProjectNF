@@ -503,3 +503,8 @@ Siguiente deuda: lint formal (11.4): ningun repo frontend tiene eslint ni script
 
 ## 2026-11-08 (iteracion 2: mat-checkbox en dependencias de etapa)
 - proyecto-detalle de mfe-projects: checkbox nativo de dependencias reemplazado por mat-checkbox (patron de mfe-admin/usuarios). Ajuste de CSS del bloque dependencias. mfe-projects 26/26 tests, build y lint verdes. Commit be5afd3. Cierra el ultimo hallazgo de la auditoria Material (12.4).
+
+## 2026-11-08 (iteracion 3: verificacion E2E del store unico, 8.4)
+- Nuevo script E2E federado (en session-state, no versionado): login real (diana@projecthub.local), sesion compartida visible en mfe-admin, lecturas de dominio en mfe-projects/mfe-reports/mfe-governance, creacion de proyecto "PH-E2E Store Unico" en mfe-projects y comprobacion de que aparece en /reports/presupuesto via store unico, consola limpia. Resultado: 7/7 OK, 0 recursos >= 400. Segunda corrida (idempotencia, proyecto ya cancelado): 7/7 OK.
+- Limpieza: proyecto de prueba p-mw78zvoq-1 cancelado via POST /api/proyectos/{id}/cancelar (no existe DELETE de proyectos; el dominio baja proyectos por cancelacion). Se verifico GET /api/proyectos/p-mw78zvoq-1 -> estado Cancelado y la corrida E2E sigue 7/7.
+- docs/funcionalidades.md 8.4 marcado ☑ con nota de evidencia. Con esto el alcance 1-14 no queda con items ◐ abiertos.
