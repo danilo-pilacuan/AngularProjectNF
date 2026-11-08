@@ -720,3 +720,10 @@ Siguiente deuda: lint formal (11.4): ningun repo frontend tiene eslint ni script
 - Test nuevo en componentes.spec.ts: estructura Material del dialogo (2 mat-form-field, input[matinput], textarea[matinput], mat-hint, .ph-dialog-req).
 - Verificado: ui-lib 38/38 (antes 37), build exit 0, lint exit 0. Commit ui-lib 78baba2.
 - Consumidores (mfe-projects, mfe-admin) verificados por analisis: no cambian (sin dependencia del DOM interno del dialogo).
+
+## Verificacion E2E federada post-iteracion 17 (2026-11-08, 02:57)
+
+- Bateria completa de navegador 38/38: e2e-federado 12/12, e2e-widgets 8/8, e2e-store-unico 7/7, e2e-bitacora 11/11.
+- Verifica en runtime federado las iteraciones 15-17: ph-pill en documentos/bitacora/detalle, chips del gate con conteo, metadata del portafolio y prompt-dialog 100% Material (mat-form-field + matInput + mat-hint).
+- Episodio documentado: los dev servers que llevaban desde antes de la iteracion 15 servian builds desactualizados (HMR) y los exposes './Module' de mfe-projects y mfe-governance caian al fallback silencioso del shell (SyntaxError blob, sin error visible). Sintoma: "Modulo no disponible" en /projects y /governance/bitacora con remoteEntry 200. Cura: detener los ng serve y relanzarlos (misma leccion de la iteracion 13). Tras relanzar: consola limpia y 38/38.
+- Leccion operativa reforzada: cuando varias iteraciones de codigo no pasan por navegador, verificar E2E antes de dar por cerrado el ciclo; un dev server viejo enmascara los cambios.
