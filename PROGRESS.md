@@ -2,6 +2,33 @@
 
 Log de avance dia a dia. Fuente de verdad del avance; `.ops` lo organiza y enlaza.
 
+## 2026-11-08 (iteracion 42: mitigacion VULN-001 - validacion de diff de usuarios en el re-sync)
+
+- Justificacion: VULN-001 (Alta) permitia a cualquier actor autenticado
+  escalar roles o destruir la bitacora via PUT /api/sincronizacion. La
+  mitigacion profunda (degradar el re-sync total) cambia el contrato 13.4,
+  pero la parte segura no: validar el diff de usuarios server-side.
+- Implementado: `_validar_diff_usuarios()` en `escribir_estado_completo`
+  (backend/app/servicio.py): si la coleccion usuarios empujada difiere de
+  la vigente (nuevo, eliminado, roles, activo, correo o nombre), exige
+  Admin con el mismo guard `_exigir_admin` de 1.8 -> 409
+  PERMISO_DENEGADO; el re-sync sin diff de usuarios lo acepta cualquier
+  actor autenticado (contrato del frontend intacto: ninguna vista empuja
+  cambios de usuarios via re-sync, la administracion usa
+  POST/PATCH /api/usuarios).
+- Decision documentada (vulns.md): la inmutabilidad profunda de bitacora
+  y el resto de colecciones de gobierno siguen en el contrato actual;
+  restringirlos queda como decision de alcance del propietario.
+- Tests: la caracterizacion VULN-001 se sustituye por 3 tests de
+  mitigacion (escalada -> 409 y estado intacto + Admin si puede; borrado
+  de bitacora conserva contrato, restaurando semilla; re-sync de PM sin
+  diff aceptado).
+- Verificacion: backend pytest 131/131, ruff limpio; API demo reconstruida
+  y sonda HTTP en vivo: escalada 409 PERMISO_DENEGADO con roles intactos,
+  re-sync de PM (sin diff) OK, estado demo 7/6/5/10/5 y analista sin
+  Admin.
+- Commits: backend, raiz (docs/.ops).
+
 ## 2026-11-08 (iteracion 41: mitigacion VULN-004 - CORS configurable)
 
 - Justificacion: VULN-004 (Baja) dejaba los origenes CORS fijos en codigo;

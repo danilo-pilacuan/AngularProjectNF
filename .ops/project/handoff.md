@@ -102,6 +102,12 @@ las secciones 2-8; la estructura y las reglas son reutilizables tal cual.
      salida de evidencia; builds largos con log; evidencia etiquetada por stack).
 
 7. **Trabajo en curso y pendiente:**
+   - Iteracion 42 (mitigacion VULN-001, parte segura) -> HECHA (2026-11-08):
+     diff de usuarios en el re-sync exige Admin (escalada de roles ->
+     409); contrato 13.4 intacto para el resto de colecciones. pytest
+     131/131; demo verificada por HTTP. VULN-001 en `mitigado (parcial)`.
+     PENDIENTE DEL PROPIETARIO (decision de alcance): inmutabilidad de
+     bitacora y gobierno de las demas colecciones en el re-sync total.
    - Iteracion 41 (mitigacion VULN-004) -> HECHA (2026-11-08): CORS via
      `ALLOWED_ORIGINS` (default intacto para dev/demo); pytest 130/130; API
      demo reconstruida y CORS verificado por HTTP. Registro VULN-004 en
@@ -123,10 +129,9 @@ las secciones 2-8; la estructura y las reglas son reutilizables tal cual.
      4 hallazgos en `.ops/security/vulns.md` (VULN-001 Alta: PUT
      /api/sincronizacion sin validacion de permisos, reproducido por HTTP;
      VULN-002 Media: mitigada en iteracion 39; VULN-003 Media: mitigada en
-     iteracion 40; VULN-004 Baja: mitigada en iteracion 41).
-     PENDIENTE DEL PROPIETARIO: decidir la mitigacion de VULN-001 (cambia el
-     contrato del re-sync 13.4 y toca consumidores del frontend). Es el
-     ultimo hallazgo abierto del registro.
+     iteracion 40; VULN-004 Baja: mitigada en iteracion 41; VULN-001 Alta:
+     mitigada en parte en iteracion 42 (diff de usuarios exige Admin;
+     decision de alcance pendiente para bitacora y demas colecciones).
    - Iteracion 30 (cierre documental 13.1/13.3/13.4) -> HECHA (2026-11-08):
      los tres items ◑ de la seccion 13 pasan a ☑ con evidencia acumulada
      (109/109 pytest, auth JWT de fase 14, E2E de hoy con 0 recursos >= 400,
@@ -254,3 +259,4 @@ las secciones 2-8; la estructura y las reglas son reutilizables tal cual.
 | 39 | 2026-11-08 | Mitigacion VULN-002: obtener_actor en los 12 GET de dominio (solo salud y login publicos); ApiEnlaceService no trata 4xx como caida (modo demo conserva semilla y banner honesto); tests: test_vuln002_mitigado + 2 specs de enlace + sync con 422 | hecho: backend 112/112 pytest, ruff 0; shared-lib 171/171 + build dist; API demo reconstruida (sondas 422/200/200, login Bearer OK, estado 7/6/5/10/5 intacto) | Agente |
 | 40 | 2026-11-08 | Mitigacion VULN-003: rate_limit.py nuevo (ventana fija correo+IP, 5 fallos/60 s -> 429 LIMITE_INTENTOS, config RATE_LIMIT_LOGIN_INTENTOS/VENTANA_SEG, solo fallos cuentan) conectado al login; 6 tests unitarios + 2 HTTP | hecho: backend 120/120 pytest, ruff 0; API demo reconstruida y verificada por HTTP (401x5 -> 429, otra cuenta OK); nota Redis en vulns.md | Agente |
 | 41 | 2026-11-08 | Mitigacion VULN-004: _origenes_permitidos() en main.py lee ALLOWED_ORIGINS (comas, barras finales, entradas vacias) con default de dev/demo intacto; test_cors.py (5 tests) | hecho: backend 130/130 pytest, ruff 0; API demo reconstruida; CORS por HTTP: origen 4400 recibe ACAO, origen ajeno no | Agente |
+| 42 | 2026-11-08 | Mitigacion VULN-001 (parte segura): _validar_diff_usuarios en escribir_estado_completo; alterar usuarios via re-sync exige Admin (409), re-sync sin diff aceptado; 3 tests de mitigacion sustituyen la caracterizacion | hecho: backend 131/131 pytest, ruff 0; demo reconstruida y sonda HTTP: escalada 409 con roles intactos, re-sync PM OK, estado 7/6/5/10/5 | Agente |
