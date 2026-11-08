@@ -2,6 +2,28 @@
 
 Log de avance dia a dia. Fuente de verdad del avance; `.ops` lo organiza y enlaza.
 
+## 2026-11-08 (iteracion 13: validacion del widget remote-a-remote en runtime)
+
+- Cierre del caveat de 11.5: E2E federado 8/8 (session files e2e-widgets.mjs) — mfe-reports
+  consume ProjectSummaryWidget de mfe-projects por federacion, cambio de proyecto actualiza
+  el widget (avance Intl 0% -> 42,4% y montos $), F5 en /reports/proyecto-widget lo recarga,
+  consola limpia y 0 recursos >= 400.
+- Incidente y diagnostico: al abrir el ciclo, /reports /projects /admin y /governance pintaban
+  todos el fallback del shell ("Modulo no disponible") sin un solo error de consola, pageerror
+  ni request >= 400; los chunks de Module respondian 200. Sondas Playwright confirmaron que
+  los exposes './Widget' seguian vivos (dashboard OK) y que el remote evaluaba limpio. Causa
+  raiz: dev servers con build desactualizado por cache HMR (antecedente del informe E2E
+  2026-11-07). La cura fue detener los procesos de 4300 y 4302 y relanzar `npx ng serve`;
+  tras el reinicio los 3 remotes renderizan sus modulos reales y el E2E pasa 8/8.
+- Nota de operacion (anteproyecto de mejora): el catch silencioso de remoteConFallback()
+  (shell app.routes.ts) traga la causa del fallback; cuando el modulo si carga pero el build
+  esta desactualizado no queda rastro del motivo. Candidata a mejora de observabilidad con
+  su test (DEC o fix pequeno) — se propone en la siguiente iteracion, no se ejecuto aqui.
+- Lecciones de la sonda: una sonda por ruta extraia /reports desde <main|body> y reportaba
+  el widget como texto (OK) pese al fallback; la sonda fiable compara el selector del
+  componente real (ph-summary-widget). Mantener ese patron en los E2E.
+- Doc: docs/funcionalidades.md 11.5 actualizado con la validacion runtime y la leccion HMR.
+
 ## 2026-11-08 (iteracion 12: matriz de responsabilidades sobre mat-table)
 
 - Ultima tabla nativa restante de la auditoria Material (12.3): matriz.html de mfe-admin
