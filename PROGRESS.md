@@ -2,6 +2,26 @@
 
 Log de avance dia a dia. Fuente de verdad del avance; `.ops` lo organiza y enlaza.
 
+## 2026-11-08 (iteracion 15: ph-pill en ui-lib y dedupe de pills en mfe-governance)
+
+- Auditoria Material de las paginas nuevas de mfe-governance (documentos, bitacora): usan
+  Material correcto (mat-card, mat-select, mat-form-field, mat-flat-button, ph-data-table,
+  ph-permission-banner, ph-stage-badge); el unico elemento hand-rolled eran los spans .pill
+  con estilos duplicados identicos en documentos.scss y bitacora.scss (tokens legacy locales).
+- Nuevo componente generico ph-pill en ui-lib (Pill, selector ph-pill): input tono
+  (ok|info|warn|danger|neutral|primario, default neutral) y contenido requerido; usa los
+  tokens canonicos --ph-color-* de _theme.scss con fallbacks. Barrel ui.ts exporta Pill.
+  3 tests nuevos (contenido+neutral por defecto, tono ok, clase base en 5 tonos): ui-lib
+  37/37 (antes 34), build y lint exit 0; commit 01a1448. Correccion del spec: el segundo
+  render no puede llamar configureTestingModule de nuevo (TestBed ya instanciado); los tonos
+  restantes se prueban creando otra instancia del componente sobre el mismo modulo.
+- Migracion en mfe-governance: gate Abierto/Cerrado y estado de entregable (documentos.html)
+  y tipo de registro (bitacora.html) usan ahora ph-pill con tono derivado de la fila;
+  imports Pill en documentos.ts y bitacora.ts; eliminados los bloques .pill de ambos SCSS
+  (-37 lineas de CSS duplicado). Tests 20/20, build y lint exit 0; commit 93720f2.
+- Los chips .chip del resumen del gate se conservan esta iteracion (conteo, no etiqueta):
+  candidato a dedupe en la siguiente pasada si se generaliza el patron.
+
 ## 2026-11-08 (iteracion 13: validacion del widget remote-a-remote en runtime)
 
 - Cierre del caveat de 11.5: E2E federado 8/8 (session files e2e-widgets.mjs) — mfe-reports
