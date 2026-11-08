@@ -102,6 +102,9 @@ las secciones 2-8; la estructura y las reglas son reutilizables tal cual.
      salida de evidencia; builds largos con log; evidencia etiquetada por stack).
 
 7. **Trabajo en curso y pendiente:**
+   - Iteracion 43 (demo alineada) -> HECHA (2026-11-08): 5 imagenes demo
+     reconstruidas con la shared-lib corregida; E2E de navegador: modo demo
+     sin banner falso, login real, ruta profunda con datos, F5 persiste.
    - Iteracion 42 (mitigacion VULN-001, parte segura) -> HECHA (2026-11-08):
      diff de usuarios en el re-sync exige Admin (escalada de roles ->
      409); contrato 13.4 intacto para el resto de colecciones. pytest
@@ -260,3 +263,4 @@ las secciones 2-8; la estructura y las reglas son reutilizables tal cual.
 | 40 | 2026-11-08 | Mitigacion VULN-003: rate_limit.py nuevo (ventana fija correo+IP, 5 fallos/60 s -> 429 LIMITE_INTENTOS, config RATE_LIMIT_LOGIN_INTENTOS/VENTANA_SEG, solo fallos cuentan) conectado al login; 6 tests unitarios + 2 HTTP | hecho: backend 120/120 pytest, ruff 0; API demo reconstruida y verificada por HTTP (401x5 -> 429, otra cuenta OK); nota Redis en vulns.md | Agente |
 | 41 | 2026-11-08 | Mitigacion VULN-004: _origenes_permitidos() en main.py lee ALLOWED_ORIGINS (comas, barras finales, entradas vacias) con default de dev/demo intacto; test_cors.py (5 tests) | hecho: backend 130/130 pytest, ruff 0; API demo reconstruida; CORS por HTTP: origen 4400 recibe ACAO, origen ajeno no | Agente |
 | 42 | 2026-11-08 | Mitigacion VULN-001 (parte segura): _validar_diff_usuarios en escribir_estado_completo; alterar usuarios via re-sync exige Admin (409), re-sync sin diff aceptado; 3 tests de mitigacion sustituyen la caracterizacion | hecho: backend 131/131 pytest, ruff 0; demo reconstruida y sonda HTTP: escalada 409 con roles intactos, re-sync PM OK, estado 7/6/5/10/5 | Agente |
+| 43 | 2026-11-08 | Demo alineada con las mitigaciones: rebuild de las 5 imagenes front (shared-lib con fix de 4xx embebida) + API; E2E navegador: modo demo sin banner falso (422 esperados en consola), login real Diana, /projects con 6 proyectos reales, F5 persiste sesion y datos | hecho: sin cambios de codigo; ciclo de seguridad VULN-001..004 mitigado y verificado en demo | Agente |

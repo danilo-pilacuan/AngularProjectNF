@@ -2,6 +2,26 @@
 
 Log de avance dia a dia. Fuente de verdad del avance; `.ops` lo organiza y enlaza.
 
+## 2026-11-08 (iteracion 43: demo alineada con las mitigaciones - verificacion E2E de seguridad)
+
+- Justificacion: los 5 frontends demo (4400-4404) tenian embebida la
+  shared-lib con el bug de registrarCaida (4xx = caida): con VULN-002
+  activa, el modo demo habria mostrado el banner "Sin conexion" en falso.
+- Implementado: rebuild de las 5 imagenes demo (shell, projects, reports,
+  admin, governance) mas la API ya reconstruida en las iteraciones 39-42;
+  sin cambios de codigo.
+- Verificacion (navegador integrado contra la demo reconstruida):
+  - Modo demo sin sesion en 4400: los 422 de los GET anónimos NO disparan
+    el banner de caida (consola con 422 esperados, UI con semilla y sin
+    "Sin conexion"); degradacion elegante intacta.
+  - Login real de Diana (Bearer): dashboard con datos del backend.
+  - Ruta profunda /projects: portafolio con los 6 proyectos reales,
+    patrocinadores resueltos, sin banner.
+  - F5 en /projects: sesion y datos persisten (token en localStorage).
+- Cierre del ciclo de seguridad: VULN-001 (parcial), 002, 003 y 004
+  mitigadas y verificadas en la demo.
+- Commits: raiz (docs).
+
 ## 2026-11-08 (iteracion 42: mitigacion VULN-001 - validacion de diff de usuarios en el re-sync)
 
 - Justificacion: VULN-001 (Alta) permitia a cualquier actor autenticado
