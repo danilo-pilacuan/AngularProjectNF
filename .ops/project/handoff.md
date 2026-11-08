@@ -37,14 +37,16 @@ las secciones 2-8; la estructura y las reglas son reutilizables tal cual.
 
 ---
 
-## Estado actual (2026-11-08, fase 14.5 + demo completa)
+## Estado actual (2026-11-08, fase 14.5 + demo completa + fix widget)
 
 > Fecha: 2026-11-08. Rama: n/a en la raiz (orquestador); cada repo del multirepo tiene la suya
 > (RC4/dev). Estado: fases 0-8 + 13 + 14 + 14.5 + rutas planas + migracion Angular Material
 > (12.5) implementadas. API y db Postgres dockerizadas en el compose demo (deploy 1deb0b8):
 > 8100 con login JWT y persistencia real, demo reconstruida con Material y E2E 12/12 con 0
-> recursos 404 en 4400-4404. Pendiente: revision humana de estados `verificado`, lint formal
-> (deuda 11.4) y validacion runtime del widget remote-a-remote.
+> recursos 404 en 4400-4404. Widget remote-a-remote RESUELTO (2026-11-08, shared-lib 7e840ec
+> + shell 58661b5 + mfe-reports 8b5481a): token REMOTE_MODULE_LOADER en @projecthub/shared;
+> E2E dev 4300 8/8 OK. Pendiente: revision humana de estados `verificado` y lint formal
+> (deuda 11.4).
 
 2. **Estado del producto:** ProjectHub, sistema documental para gobernar proyectos de software
    (ciclo de vida de 9 etapas, gates, matriz de responsabilidades, Gantt propio). Fases 0-7
@@ -74,8 +76,9 @@ las secciones 2-8; la estructura y las reglas son reutilizables tal cual.
      Verificar `curl http://localhost:8100/api/salud`, login (diana@projecthub.local /
      projecthub-demo) y GET /api/sincronizacion con Bearer. DATABASE_URL y AUTH_SECRET
      aceptan override por entorno (ver docker-compose.yml).
-   - Tests: `npm test` por repo (vitest). Totales de referencia: shared-lib 98, ui-lib 18,
-     mfe-projects 26, mfe-admin 13, mfe-reports 5, mfe-governance 3, shell 6 = 169.
+   - Tests: `npm test` por repo (vitest). Totales de referencia: shared-lib 153,
+     ui-lib 18, mfe-projects 26, mfe-admin 13, mfe-reports 5, mfe-governance 2,
+     shell 20 = 237 (+109 pytest del backend).
    - Tras cambiar `shared-lib` o `ui-lib`: `npx ng build` en la lib antes de servir las apps
      (las consumen por `file:../<lib>/dist/...`).
    - Politica de comandos: `.ops/development/command-safety.md` (prohibido descartar
@@ -85,15 +88,23 @@ las secciones 2-8; la estructura y las reglas son reutilizables tal cual.
    - Lint formal (deuda 11.4): definir/configurar eslint en los 9 repos y
      pasar de `tsc --noEmit` a un gate de lint en la verificacion. Necesita
      codigo/config.
-   - Validacion runtime del widget remote-a-remote (mfe-reports consume
-     ProjectSummaryWidget de mfe-projects): hoy el E2E cubre navegacion y
-     user-switcher; falta evidencia de la composicion del widget federado.
-     Necesita codigo (E2E) o revision humana.
-   - Revision humana de estados `implementado` -> `verificado` (fases 0-14.5
-     y demo Docker). No necesita codigo; la evidencia esta en PROGRESS.md.
-   - Cerrado (2026-11-08): servicio de API + db en el compose demo
-     (deploy 1deb0b8); imagenes de frontends demo reconstruidas con Material
-     y login; E2E demo 12/12 con 0 recursos 404.
+   - Rebuild demo Docker con el fix del widget: las imagenes 440x son previas
+     a REMOTE_MODULE_LOADER; el widget remote-a-remote en 4400 necesita
+     `docker compose build` + `up -d` de los 5 frontends y E2E variante
+     SHELL=4400. Necesita comando, no codigo.
+   - Revision humana de estados `implementado` -> `verificado` (fases 0-14.5,
+     demo Docker y fix del widget). No necesita codigo; la evidencia esta en
+     PROGRESS.md.
+   - Cerrado (2026-11-08): widget remote-a-remote (mfe-reports ->
+     ProjectSummaryWidget de mfe-projects) colgaba en "Cargando widget...".
+     Causa: copia del runtime NF sin inicializar enlineada en el chunk
+     expuesto (federationPromise pendiente eterno). Solucion: token
+     REMOTE_MODULE_LOADER en @projecthub/shared (shared-lib 7e840ec, shell
+     58661b5, mfe-reports 8b5481a, provider en app.config de los 3 remotes
+     restantes). Compartir el runtime NF como shared fue descartado (rompe el
+     boot en dev: el import map solo existe tras initFederation). Evidencia:
+     chunks expuestos sin runtime, tests 219/219 + backend 109/109, E2E dev
+     4300 8/8 con F5 y consola limpia.
 
 8. **Historial de sesiones:**
 
@@ -112,3 +123,4 @@ las secciones 2-8; la estructura y las reglas son reutilizables tal cual.
 | 2026-11-07 (verificacion federada post-Material) | E2E Playwright tras a057140: fix de dev server obsoleto (chunk con UserSwitcher antiguo), relanzamiento ng serve 4300, 12/12 comprobaciones demo OK (mat-select, overlay, cambio de usuario, 4 rutas sin fallback, F5 profundo, consola limpia); detectadas rutas planas 404 del backend | hecho: evidencia en PROGRESS.md y session files; deuda de rutas registrada en pendientes |
 | 2026-11-08 (rutas planas + fix push demo) | Backend: GET /api/etapas, /api/entregables, /api/bitacora planos + tests (109/109). shared-lib: actorId() null sin sesion y empujar() no envia en modo demo (153/153); rebuild dist + reinicio de servers con cache limpia. E2E: 12/12 con 0 recursos 404 | hecho: commits backend 96fa534, shared-lib 3f48335; deuda de rutas planas cerrada en esta seccion |
 | 2026-11-08 (API + db en compose demo) | deploy: api.Dockerfile (python 3.14, uvicorn 8100) + servicios api/db en docker-compose.yml (Postgres 17 demo en 5434, AUTH_SECRET >= 32 bytes). Verificado: salud, login JWT, sincronizacion (7/6/5/10/5), persistencia psql. Rebuild de los 5 frontends demo (ahora con Material + login) y E2E demo 12/12 con 0 404 | hecho: commit deploy 1deb0b8; backend/shared-lib sin cambios; uvicorn dev detenido, 8100 es de la API dockerizada |
+| 2026-11-08 (widget remote-a-remote) | Fix definitivo del hang del widget federado remote a remote: token REMOTE_MODULE_LOADER en @projecthub/shared (patron SESION_STORE), providers en los 5 app.config, consumidores (shell dashboard, mfe-reports proyecto-widget) via remoteModuleLoader() con validacion de export; descartado compartir el runtime NF (rompe boot dev). Evidencia: 10 chunks expuestos sin runtime, tests 219/219 + backend 109/109, E2E dev 4300 8/8 con login real y F5 | hecho: commits shared-lib 7e840ec, shell 58661b5, mfe-reports 8b5481a, mfe-projects 85b9fee, mfe-admin 50dc27e, mfe-governance 71d2ec5; E2E actualizado a login real (token JWT persiste, el modo demo no) |

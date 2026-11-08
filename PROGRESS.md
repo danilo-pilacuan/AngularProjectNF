@@ -377,3 +377,46 @@ Log de avance dia a dia. Fuente de verdad del avance; `.ops` lo organiza y enlaz
   SHELL=4400): **12/12 OK, 0 recursos 404** (user-switcher mat-select,
   cambio de usuario, 4 rutas sin fallback, F5 profundo, consola limpia).
 - Commits: deploy 1deb0b8 (feat). Backend y shared-lib sin cambios. Sin push.
+
+## 2026-11-08 (widget remote-a-remote: fix definitivo con REMOTE_MODULE_LOADER)
+
+- Bug reproducido y diagnosticado a fondo: mfe-reports consume
+  ProjectSummaryWidget de mfe-projects (8.5, remote a remote) y el widget
+  quedaba colgado en "Cargando widget..." sin error ni timeout, tanto en dev
+  4300 como en demo Docker 4400.
+- Causa raiz: cada app que importa `loadRemoteModule` enlinea una copia del
+  runtime NF en su chunk. En el chunk expuesto Module.js de mfe-reports esa
+  copia NUNCA ejecuta initFederation, asi que `federationPromise` (estado a
+  nivel de modulo) queda en pendiente para siempre y el await cuelga sin
+  excepcion.
+- Intento descartado: compartir el runtime NF como shared singleton en las 5
+  federation.config.mjs. En prod lo excluye NG_SKIP_LIST; en dev el import
+  map solo existe DESPUES de que initFederation corra en runtime (es-module-
+  shims, shimMode), asi que el bare specifier es irresoluble al boot y rompia
+  el arranque del shell. Revertido; el dev-host-instances-plugin solo aplica
+  a SSR, no hay camino oficial.
+- Solucion (Plan B): InjectionToken `REMOTE_MODULE_LOADER` en @projecthub/
+  shared (shared-lib 7e840ec, patron SESION_STORE). Cada app lo provee en su
+  app.config con SU copia de `loadRemoteModule` (inicializada por su
+  bootstrap); los consumidores (shell dashboard.ts, mfe-reports
+  proyecto-widget.ts) lo resuelven con `remoteModuleLoader()` y ya no
+  importan el runtime: los chunks expuestos quedan sin runtime NF
+  (verificado en los 10 chunks Module/Widget de los 4 remotes).
+- Los consumidores validan que el export cargado sea funcion y lanzan error
+  explicito si el remote no expone lo esperado.
+- Evidencia: builds prod de los 5 apps OK; tests 219/219 (shared-lib 153,
+  shell 20, mfe-projects 26, mfe-reports 5, mfe-admin 13, mfe-governance 2);
+  backend pytest 109/109; E2E Playwright dev 4300 8/8 OK (login real diana
+  /projecthub-demo, dashboard con 4 widgets, /reports/proyecto-widget
+  renderiza el widget remoto con avance Intl, cambio de proyecto actualiza
+  el resumen, F5 recarga, 0 recursos >= 400, consola limpia); standalone
+  mfe-reports 4302 degrada con elegancia (tablero funciona, widget requiere
+  sesion real).
+- E2E actualizado a login real (fase 14): el user-switcher demo no persiste
+  la sesion entre recargas (SesionStore en memoria); el token JWT del login
+  si persiste en localStorage (projecthub.token).
+- Commits: shared-lib 7e840ec (feat), shell 58661b5 (fix), mfe-reports
+  8b5481a (fix), mfe-projects 85b9fee / mfe-admin 50dc27e / mfe-governance
+  71d2ec5 (chore, provider del token en app.config). Sin push.
+- Deuda registrada: lint formal (ESLint 9) sin configurar en ningun repo
+  frontend (11.4 del handoff).
