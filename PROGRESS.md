@@ -2,6 +2,22 @@
 
 Log de avance dia a dia. Fuente de verdad del avance; `.ops` lo organiza y enlaza.
 
+## 2026-11-08 (iteracion 25: regresion E2E de bitacora federada)
+
+- Justificacion: la resolucion de autores por nombre en bitacora se toco en la
+  iteracion 5 y la convencion de nombres se reforzo en la 22; rerun de
+  files/e2e-bitacora.mjs para validar la pagina /governance/bitacora en el
+  shell federado tras esos cambios.
+- Resultado: 11/11 comprobaciones OK. Link Bitacora visible en el nav de
+  governance, navegacion por click al URL /governance/bitacora, semilla
+  renderizada con proyecto y autores resueltos por nombre (Diana Admin /
+  Sergio Sponsor) y transiciones legibles "Origen -> Destino", filtro por tipo
+  "Cambio" deja solo esos registros y se restaura, export CSV descarga
+  bitacora-2026-11-08-0423.csv (patron de nombre con fecha), ruta profunda sin
+  sesion redirige a /login?de=%2Fgovernance%2Fbitacora y consola limpia con
+  0 recursos >= 400.
+- Sin cambios de codigo.
+
 ## 2026-11-08 (iteracion 24: regresion E2E de transiciones de etapa)
 
 - Justificacion: la iteracion 22 toco proyecto-detalle (filas de etapas con
