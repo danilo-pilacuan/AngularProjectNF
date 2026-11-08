@@ -56,6 +56,12 @@ las secciones 2-8; la estructura y las reglas son reutilizables tal cual.
 > sirve, los specs exigen el bootstrap de TestBed del builder de Angular), build raiz EXIT 0
 > en los 7 proyectos, lint raiz EXIT 0, backend 109/109 pytest, remoteEntry 200 en 4301-4304
 > y /api/salud 200 en 8100; navegador integrado confirma sesion real en 4300/login.
+> Banner de estado de API (iteracion 32, 2026-11-08): ApiEnlaceService publica EstadoApi
+> ('verificando'|'disponible'|'indisponible') y sondea /api/salud (15 s/5 s, idempotente);
+> el shell muestra aviso persistente de modo demo cuando el backend no responde y lo retira
+> al recuperarse (shared-lib 426f196 + shell c0d3c92 + mfe-reports 5f8b6d2: ademas estado
+> vacio explicito en tablero-general). Verificado en navegador con API caida y restaurada;
+> demo dockerizada pendiente de rebuild para incluir el banner (iteracion 33).
 > Pendiente: revision humana de estados
 > `verificado` y gate de lint en el DoD.
 
@@ -212,3 +218,4 @@ las secciones 2-8; la estructura y las reglas son reutilizables tal cual.
 | 29 | 2026-11-08 | Regresion E2E de exportacion PDF (files/e2e-pdf.mjs): tablero y presupuesto invocan dialogo de impresion con titulo correcto, secciones, totales y celdas escapadas, consola limpia | hecho: 14/14 OK; sin cambios de codigo; commit raiz docs | Agente |
 | 30 | 2026-11-08 | Cierre documental de 13.1/13.3/13.4 en docs/funcionalidades.md con evidencia acumulada (pytest 109/109, auth JWT, E2E hoy 0 recursos >= 400, persistencia F5 de iteraciones 23/24) | hecho: seccion 13 completa (13.1-13.4 en ☑); sin cambios de codigo; commit raiz docs | Agente |
 | 31 | 2026-11-08 | Barrido integral de calidad tras 19 commits de subrepos: npx ng test en los 7 repos (290 tests), build raiz, lint raiz, pytest backend, remoteEntry/salud 200, navegador integrado en 4300/login | hecho: 7/7 repos verdes (shared 161, ui 40, shell 22, projects 29, admin 13, governance 20, reports 5), build EXIT 0, lint EXIT 0, backend 109/109; hallazgo metodologico documentado (npx vitest run directo no sirve); sin cambios de codigo; commit raiz docs | Agente |
+| 32 | 2026-11-08 | Degradacion visible a modo demo: EstadoApi + sondeo /api/salud en ApiEnlaceService, banner de aviso en shell, estado vacio explicito en tablero-general; auditoria DoD de estados en las 9 paginas | hecho: shared-lib 426f196 + shell c0d3c92 + mfe-reports 5f8b6d2; 165+25+6+29 tests verdes, build raiz EXIT 0; navegador: banner aparece con API caida (Playwright) y estado vuelve a disponible al restaurar; demo docker pendiente de rebuild | Agente |

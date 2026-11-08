@@ -2,6 +2,29 @@
 
 Log de avance dia a dia. Fuente de verdad del avance; `.ops` lo organiza y enlaza.
 
+## 2026-11-08 (iteracion 32: banner de estado de API + vacio explicito en tablero)
+
+- Justificacion: auditoria DoD "estados de carga, vacio, error y sin
+  permisos" en las 9 paginas: descubrio que la degradacion a modo demo
+  (backend caido) era silenciosa, y que tablero-general no tenia estado
+  vacio explicito.
+- Implementado: `EstadoApi` ('verificando'|'disponible'|'indisponible')
+  como signal en `ApiEnlaceService` + sondeo de salud `GET /api/salud`
+  (15 s arriba / 5 s caido, idempotente, arrancado por el inicializador
+  de entorno en `proporcionarSincronizacionBackend`); banner de aviso en
+  el shell (ph-permission-banner, variante warn) visible solo con
+  'indisponible'; estado vacio explicito en tablero-general (mfe-reports).
+- Verificacion: 165/165 shared-lib, 25/25 shell, 6/6 mfe-reports,
+  29/29 mfe-projects (`npx ng test`); build integral EXIT 0 (7 repos);
+  navegador: con API caida aparece el banner (Playwright waitForSelector
+  texto "Sin conexion con el backend ... modo demo"), dev server viejo
+  sin HMR no tomaba el cambio: leccion reconfirmada, relanzar `ng serve`.
+  Con API restaurada el estado vuelve a 'disponible' (test unitario y
+  sondeo en vivo 200).
+- Nota: la demo dockerizada (4400-4404) quedo construida antes del cambio
+  (imagen 01:25); sin el banner hasta reconstruir (iteracion 33).
+- Commits: shared-lib 426f196, shell c0d3c92, mfe-reports 5f8b6d2.
+
 ## 2026-11-08 (iteracion 31: barrido de calidad integral post-commit masivo)
 
 - Justificacion: 19 commits de subrepos en las iteraciones 1-22; ninguna
