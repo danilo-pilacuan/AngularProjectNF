@@ -2,6 +2,27 @@
 
 Log de avance dia a dia. Fuente de verdad del avance; `.ops` lo organiza y enlaza.
 
+## 2026-11-08 (iteracion 47: sesion expirada con token vigente en pantalla)
+
+- Contrato backend: obtener_actor ahora responde 401 con
+  detail.codigo=SESION_INVALIDA cuando el Bearer es invalido/expirado o el
+  usuario ya no existe (antes: 422 VALIDACION / 404). Regla unica de
+  cliente: 401 SESION_INVALIDA => cerrar sesion y volver a login.
+  X-Actor-Id (compatibilidad) conserva 404 ENTIDAD_NO_ENCONTRADA.
+- Shared-lib: ApiEnlaceService detecta 401 SESION_INVALIDA (con token
+  presente), limpia el token y notifica via onSesionExpirada(); el estado
+  de salud de la API no cambia (el backend sigue vivo). AutenticacionService
+  reacciona cerrando la sesion y expone expiraciones() (contador reactivo).
+- Shell: efecto en App redirige a /login?expirada=1 (replaceUrl) al
+  detectar la expiracion, salvo que ya este en /login; Login muestra el
+  aviso "Tu sesion ha expirado; inicia sesion de nuevo." (role=alert).
+- Verificacion: backend 132/132 pytest + ruff limpio (y smoke E2E contra
+  la API viva: token invalido en /api/usuarios => 422 VALIDACION por
+  compilacion previa al fix; contrato cubierto por tests); shared-lib
+  174/174 vitest + build dist; shell 28/28 vitest + build + lint raiz
+  (5 repos) en verde.
+- Commits: backend 5e46a39, shared-lib 5932430, shell d2e608e; docs raiz.
+
 ## 2026-11-08 (iteracion 46: barrido integral de regresion tras el ciclo de seguridad)
 
 - Justificacion: los cambios de shared-lib (api-enlace, autenticacion) y
