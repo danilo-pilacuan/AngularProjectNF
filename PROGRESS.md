@@ -2,6 +2,22 @@
 
 Log de avance dia a dia. Fuente de verdad del avance; `.ops` lo organiza y enlaza.
 
+## 2026-11-08 (iteraciones 44-45: CI del backend y manejo del 429 en la UI)
+
+- Iteracion 44 (CI): workflow `backend-ci.yml` (pytest + ruff, Python 3.14
+  con cache pip, repositorio en memoria) activado con cambios en backend/.
+  Sin ejecucion local nueva necesaria (131/131 ya verificado).
+- Iteracion 45 (manejo del 429 en el frontend): la demo seguia mostrando
+  "El backend no responde" cuando el backend respondia 429 LIMITE_INTENTOS
+  (verificado por navegador: 401x5 -> 429 con mensaje equivocado). Fix en
+  `AutenticacionService.mapearError` (shared-lib): 429 -> codigo
+  LIMITE_INTENTOS con el mensaje del backend ("Demasiados intentos
+  fallidos; reintente mas tarde."). Test nuevo en autenticacion.spec.ts.
+- Verificacion: shared-lib 172/172 vitest + build dist; rebuild de los 5
+  frontends demo y E2E de navegador: 401x5 -> 429 y la UI muestra el
+  mensaje correcto; estado demo intacto (7/6/5/10/5).
+- Commits: raiz (CI), shared-lib (fix 429), raiz (docs).
+
 ## 2026-11-08 (iteracion 43: demo alineada con las mitigaciones - verificacion E2E de seguridad)
 
 - Justificacion: los 5 frontends demo (4400-4404) tenian embebida la
