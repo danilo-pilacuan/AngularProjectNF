@@ -2,6 +2,22 @@
 
 Log de avance dia a dia. Fuente de verdad del avance; `.ops` lo organiza y enlaza.
 
+## 2026-11-08 (iteracion 30: cierre de items 13.1 / 13.3 / 13.4)
+
+- Cierre documental de los tres items ◑ de la seccion 13 (Backend) con la
+  evidencia acumulada; sin cambios de codigo.
+- 13.1 -> ☑: API REST espejo ampliada con auth JWT, /me, rutas planas y
+  salud/docs; 109/109 pytest + ruff limpio; API viva en 8100 (salud 200 y
+  docs 200 verificados con curl hoy).
+- 13.3 -> ☑: el consumo de la API por el frontend quedo completo con la fase
+  14 (login JWT y token en cada llamada); los 8 scripts E2E de la bateria de
+  hoy corrieron con 0 recursos >= 400 contra shell 4300 + API 8100.
+- 13.4 -> ☑: persistencia de escrituras re-verificada hoy: e2e-flujos (23)
+  persiste proyecto + etapa + entregable + aprobacion tras F5 y e2e-
+  transiciones (24) confirma la transicion Planteamiento -> Iniciativa
+  persistida con su entrada de bitacora.
+- Documento actualizado: docs/funcionalidades.md (seccion 13).
+
 ## 2026-11-08 (iteracion 29: regresion E2E de exportacion PDF)
 
 - Justificacion: mfe-reports fue tocado despues de su ultima corrida de PDF

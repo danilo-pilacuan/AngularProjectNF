@@ -91,6 +91,11 @@ las secciones 2-8; la estructura y las reglas son reutilizables tal cual.
      salida de evidencia; builds largos con log; evidencia etiquetada por stack).
 
 7. **Trabajo en curso y pendiente:**
+   - Iteracion 30 (cierre documental 13.1/13.3/13.4) -> HECHA (2026-11-08):
+     los tres items ◑ de la seccion 13 pasan a ☑ con evidencia acumulada
+     (109/109 pytest, auth JWT de fase 14, E2E de hoy con 0 recursos >= 400,
+     persistencia F5 re-verificada en iteraciones 23/24). Sin cambios de
+     codigo.
    - Iteracion 29 (regresion E2E de exportacion PDF) -> HECHA (2026-11-08):
      rerun de files/e2e-pdf.mjs, 14/14 OK (tablero y presupuesto: dialogo de
      impresion con titulo correcto, secciones y totales, celdas escapadas,
@@ -200,3 +205,4 @@ las secciones 2-8; la estructura y las reglas son reutilizables tal cual.
 | 27 | 2026-11-08 | Regresion E2E federado general (files/e2e-federado.mjs adaptado a la era de sesion real): header con actor autenticado, 4 rutas sin fallback, F5 profundo /governance/bitacora, consola limpia | hecho: 10/10 OK, 0 recursos 404; script de sesion actualizado (era demo -> login real), sin cambios de producto; commit raiz docs | Agente |
 | 28 | 2026-11-08 | Regresion E2E de widgets federados (files/e2e-widgets.mjs): dashboard con 4 widgets, widget remote a remote con Intl, selector de proyecto actualiza resumen, F5 profundo, consola limpia | hecho: 8/8 OK, 0 recursos >= 400; sin cambios de codigo; commit raiz docs | Agente |
 | 29 | 2026-11-08 | Regresion E2E de exportacion PDF (files/e2e-pdf.mjs): tablero y presupuesto invocan dialogo de impresion con titulo correcto, secciones, totales y celdas escapadas, consola limpia | hecho: 14/14 OK; sin cambios de codigo; commit raiz docs | Agente |
+| 30 | 2026-11-08 | Cierre documental de 13.1/13.3/13.4 en docs/funcionalidades.md con evidencia acumulada (pytest 109/109, auth JWT, E2E hoy 0 recursos >= 400, persistencia F5 de iteraciones 23/24) | hecho: seccion 13 completa (13.1-13.4 en ☑); sin cambios de codigo; commit raiz docs | Agente |
