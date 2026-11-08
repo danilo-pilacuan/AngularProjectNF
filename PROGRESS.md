@@ -2,6 +2,20 @@
 
 Log de avance dia a dia. Fuente de verdad del avance; `.ops` lo organiza y enlaza.
 
+## 2026-11-08 (iteracion 28: regresion E2E de widgets federados)
+
+- Justificacion: la iteracion 22 toco la resolucion de nombres en
+  mfe-projects (fuente de ProjectSummaryWidget) y el dashboard del shell
+  compone widgets de 3 remotes; rerun de files/e2e-widgets.mjs.
+- Resultado: 8/8 comprobaciones OK. Dashboard del shell con 4
+  ph-summary-widget federados, ruta /reports/proyecto-widget carga el widget
+  remote a remote sin error ("Resumen de proyecto"), exactly 1 widget montado
+  en mfe-reports, avance formateado con Intl (0% / $ 0), el selector de
+  proyecto cambia el resumen mostrado (PH-E2E STORE UNICO -> PH-E2E FLUJO),
+  F5 en la ruta profunda recarga el widget federado y consola limpia con
+  0 recursos >= 400.
+- Sin cambios de codigo.
+
 ## 2026-11-08 (iteracion 27: regresion E2E federado general)
 
 - Justificacion: la iteracion 22 y el lint de iteraciones previas tocaron el

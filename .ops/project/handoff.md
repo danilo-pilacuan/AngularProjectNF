@@ -91,6 +91,10 @@ las secciones 2-8; la estructura y las reglas son reutilizables tal cual.
      salida de evidencia; builds largos con log; evidencia etiquetada por stack).
 
 7. **Trabajo en curso y pendiente:**
+   - Iteracion 28 (regresion E2E de widgets federados) -> HECHA (2026-11-08):
+     rerun de files/e2e-widgets.mjs, 8/8 OK (dashboard 4 widgets, widget
+     remote a remote con Intl, selector de proyecto actualiza el resumen, F5
+     profundo, consola limpia). Sin cambios de codigo.
    - Iteracion 27 (regresion E2E federado general) -> HECHA (2026-11-08):
      files/e2e-federado.mjs era de la era demo y se adapto a la era de sesion
      real (login por API, header con actor + Cerrar sesion, selector demo
@@ -190,3 +194,4 @@ las secciones 2-8; la estructura y las reglas son reutilizables tal cual.
 | 25 | 2026-11-08 | Regresion E2E de bitacora federada (files/e2e-bitacora.mjs): nav de governance, semilla con autores por nombre, filtro tipo Cambio, export CSV con fecha, ruta profunda sin sesion -> /login?de=..., consola limpia | hecho: 11/11 OK, 0 recursos >= 400; sin cambios de codigo; commit raiz docs | Agente |
 | 26 | 2026-11-08 | Regresion E2E del store unico (files/e2e-store-unico.mjs): sesion compartida, lecturas cross-MFE, escritura en mfe-projects visible en /reports/presupuesto sin recargar, consola limpia | hecho: 7/7 OK, 0 recursos >= 400; sin cambios de codigo; commit raiz docs | Agente |
 | 27 | 2026-11-08 | Regresion E2E federado general (files/e2e-federado.mjs adaptado a la era de sesion real): header con actor autenticado, 4 rutas sin fallback, F5 profundo /governance/bitacora, consola limpia | hecho: 10/10 OK, 0 recursos 404; script de sesion actualizado (era demo -> login real), sin cambios de producto; commit raiz docs | Agente |
+| 28 | 2026-11-08 | Regresion E2E de widgets federados (files/e2e-widgets.mjs): dashboard con 4 widgets, widget remote a remote con Intl, selector de proyecto actualiza resumen, F5 profundo, consola limpia | hecho: 8/8 OK, 0 recursos >= 400; sin cambios de codigo; commit raiz docs | Agente |
