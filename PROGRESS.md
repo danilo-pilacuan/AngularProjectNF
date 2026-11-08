@@ -2,6 +2,22 @@
 
 Log de avance dia a dia. Fuente de verdad del avance; `.ops` lo organiza y enlaza.
 
+## 2026-11-08 (iteracion 41: mitigacion VULN-004 - CORS configurable)
+
+- Justificacion: VULN-004 (Baja) dejaba los origenes CORS fijos en codigo;
+  un despliegue en dominio real exigiria tocar codigo, contrario a la
+  configuracion por entorno (DEC-001).
+- Implementado: `_origenes_permitidos()` en `app/main.py` lee
+  `ALLOWED_ORIGINS` (separada por comas, normaliza barras finales y
+  entradas vacias) y conserva los 6 origenes de desarrollo/demo como
+  default; cero cambios de comportamiento para dev y demo.
+- Tests: `tests/test_cors.py` nuevo (5 tests: default, separacion por
+  comas, normalizacion, env vacio -> default, puertos del proyecto).
+- Verificacion: backend pytest 130/130, ruff limpio; API demo reconstruida
+  y CORS probado por HTTP: origen permitido 4400 recibe
+  Access-Control-Allow-Origin, origen ajeno no lo recibe.
+- Commits: backend, raiz (docs/.ops).
+
 ## 2026-11-08 (iteracion 40: mitigacion VULN-003 - rate limit en login)
 
 - Justificacion: VULN-003 (Media) permitia fuerza bruta sobre
