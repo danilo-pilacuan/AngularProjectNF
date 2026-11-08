@@ -2,6 +2,30 @@
 
 Log de avance dia a dia. Fuente de verdad del avance; `.ops` lo organiza y enlaza.
 
+## 2026-11-08 (lint formal en los 7 repos frontend)
+
+- Deuda 11.4 cerrada: eslint 9 + typescript-eslint 8 + angular-eslint 22 (flat config) en
+  shell, mfe-projects, mfe-reports, mfe-admin, mfe-governance, shared-lib y ui-lib.
+  Script `lint` por repo; verificacion lint+tests+build verde y commit en los 7
+  (shell 8ef80c9, mfe-projects ec15cff, mfe-reports 0e81473, mfe-admin 8e0df10,
+  mfe-governance daf2e3f, shared-lib b1a671b, ui-lib 15b77bf).
+- Convencion de prefijos de selector, documentada en cada eslint.config.mjs: `ph` = API
+  publica compartida (widgets federados y componentes de ui-lib), `app` = resto. Los MFEs
+  usan ['app','ph']; ui-lib ['ph','app']; shared-lib sin angular-eslint (dominio) con
+  no-explicit-any en error.
+- Fixes que destapo el linter: imports/variables sin uso (sesionStore en shell,
+  UsuarioStore en mfe-admin, ApiEnlaceService y `enlace` en specs de shared-lib,
+  ComponentFixture en 3 specs de ui-lib) y hosts de spec renombrados a `app-*`
+  (prohibido el prefijo reservado `spec-`/`test-`).
+- ui-lib: `ph-data-table-column` es una @Directive con selector de elemento (API
+  declarativa de la columna de la data table); se valido con configs duales de
+  directive-selector. La forma plana (dos objetos tras 'error') no pasa el esquema de
+  ESLint (array-form maxItems 1 por opcion): la forma correcta es anidar el arreglo
+  (option 2 = arreglo de 1-2 configs), y angular-eslint elige la config por tipo real
+  del selector (atributo camelCase, elemento kebab-case).
+- Totales de tests sin cambio: 237 frontend + 109 backend.
+- Pendiente derivado: lint del backend (ruff) y evaluar gate de lint en el DoD.
+
 ## 2026-11-05
 
 - Sesion: arranque del proyecto. Bootstrap de `.ops/` (OKF 0.2) con arboles product, project,

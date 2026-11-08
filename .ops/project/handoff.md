@@ -45,8 +45,10 @@ las secciones 2-8; la estructura y las reglas son reutilizables tal cual.
 > 8100 con login JWT y persistencia real, demo reconstruida con Material y E2E 12/12 con 0
 > recursos 404 en 4400-4404. Widget remote-a-remote RESUELTO (2026-11-08, shared-lib 7e840ec
 > + shell 58661b5 + mfe-reports 8b5481a): token REMOTE_MODULE_LOADER en @projecthub/shared;
-> E2E dev 4300 8/8 OK. Pendiente: revision humana de estados `verificado` y lint formal
-> (deuda 11.4).
+> E2E dev 4300 8/8 OK. Lint formal (deuda 11.4) HECHO (2026-11-08): eslint 9 + angular-eslint
+> 22 en los 7 repos frontend con commits 8ef80c9, ec15cff, 0e81473, 8e0df10, daf2e3f,
+> b1a671b, 15b77bf; prefijos ph (API publica) / app (resto). Pendiente: revision humana de
+> estados `verificado`, lint backend (ruff) y gate de lint en el DoD.
 
 2. **Estado del producto:** ProjectHub, sistema documental para gobernar proyectos de software
    (ciclo de vida de 9 etapas, gates, matriz de responsabilidades, Gantt propio). Fases 0-7
@@ -85,9 +87,11 @@ las secciones 2-8; la estructura y las reglas son reutilizables tal cual.
      salida de evidencia; builds largos con log; evidencia etiquetada por stack).
 
 7. **Trabajo en curso y pendiente:**
-   - Lint formal (deuda 11.4): definir/configurar eslint en los 9 repos y
-     pasar de `tsc --noEmit` a un gate de lint en la verificacion. Necesita
-     codigo/config.
+   - Lint formal (deuda 11.4) -> hecho (2026-11-08): eslint 9 + typescript-eslint 8 +
+     angular-eslint 22 con flat config en los 7 repos frontend; lint+tests+build verdes y
+     commit por repo. Prefijos documentados: `ph` = API publica (widgets federados,
+     componentes de ui-lib), `app` = resto. Quedan: lint backend (ruff) y decidir si el
+     gate de lint entra en el DoD de verificacion (seccion 5).
    - Rebuild demo Docker con el fix del widget -> hecho (2026-11-08): las
      imagenes 440x ya contenian REMOTE_MODULE_LOADER (grep dentro de las
      imagenes), contenedores recreados con `docker compose up -d` y E2E demo
@@ -125,3 +129,4 @@ las secciones 2-8; la estructura y las reglas son reutilizables tal cual.
 | 2026-11-08 (API + db en compose demo) | deploy: api.Dockerfile (python 3.14, uvicorn 8100) + servicios api/db en docker-compose.yml (Postgres 17 demo en 5434, AUTH_SECRET >= 32 bytes). Verificado: salud, login JWT, sincronizacion (7/6/5/10/5), persistencia psql. Rebuild de los 5 frontends demo (ahora con Material + login) y E2E demo 12/12 con 0 404 | hecho: commit deploy 1deb0b8; backend/shared-lib sin cambios; uvicorn dev detenido, 8100 es de la API dockerizada |
 | 2026-11-08 (widget remote-a-remote) | Fix definitivo del hang del widget federado remote a remote: token REMOTE_MODULE_LOADER en @projecthub/shared (patron SESION_STORE), providers en los 5 app.config, consumidores via remoteModuleLoader() con validacion de export; descartado compartir el runtime NF (rompe boot dev). Evidencia: 10 chunks expuestos sin runtime, tests 219/219 + backend 109/109, E2E dev 4300 8/8 con login real y F5 | hecho: commits shared-lib 7e840ec, shell 58661b5, mfe-reports 8b5481a, mfe-projects 85b9fee, mfe-admin 50dc27e, mfe-governance 71d2ec5; E2E actualizado a login real (token JWT persiste, el modo demo no) |
 | 2026-11-08 (validacion en demo Docker) | El fix REMOTE_MODULE_LOADER validado en la demo prod-like 4400: imagenes 440x ya contienen el token (verificado con grep dentro de imagenes shell y mfe-reports), contenedores recreados con up -d; E2E demo 8/8 con login real (dashboard 4 widgets, widget remote a remote con avance Intl, F5, consola limpia, 0 recursos >= 400) | hecho: sin cambios de codigo; evidencia en PROGRESS.md 2026-11-08 |
+| 2026-11-08 (lint formal 7 repos) | eslint 9 + angular-eslint 22 (flat config) en shell, mfe-projects, mfe-reports, mfe-admin, mfe-governance, shared-lib y ui-lib; fixes de imports sin uso y hosts de spec a app-*; en ui-lib, configs duales de directive-selector (atributo camelCase + elemento kebab-case anidados en un arreglo) para validar la @Directive ph-data-table-column. Lint+tests+build verdes en los 7; tests 237 frontend sin cambio | hecho: commits shell 8ef80c9, mfe-projects ec15cff, mfe-reports 0e81473, mfe-admin 8e0df10, mfe-governance daf2e3f, shared-lib b1a671b, ui-lib 15b77bf; pendiente lint backend (ruff) |
