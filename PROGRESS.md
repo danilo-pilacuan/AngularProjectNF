@@ -2,6 +2,20 @@
 
 Log de avance dia a dia. Fuente de verdad del avance; `.ops` lo organiza y enlaza.
 
+## 2026-11-08 (iteracion 12: matriz de responsabilidades sobre mat-table)
+
+- Ultima tabla nativa restante de la auditoria Material (12.3): matriz.html de mfe-admin
+  pasa de tabla HTML a `<table mat-table>` con 11 columnas explicitas (etapa + las 10
+  acciones de ACCIONES). Las celdas de accion siguen la maquetacion cruzada original:
+  cada matColumnDef accede fila.celdas[i] por indice (i = posicion en ACCIONES), conserva
+  la clase td.celda con [class.vacia] y el title con titulo(). El spec vigente sigue
+  pasando sin cambios (td.celda.vacia se conserva).
+- matriz.ts gana readonly columnas = ['etapa', ...ACCIONES] y MatTableModule en imports;
+  matriz.scss ajusta selectores a th.mat-mdc-header-cell / td.mat-mdc-cell, conservando
+  fondo de etapa, color primario de celda y bordes.
+- Verificacion: mfe-admin 13/13 tests (vitest), build exit 0, lint exit 0.
+- Commit: mfe-admin c2d7f58 (refactor). Sin push.
+
 ## 2026-11-08 (iteracion 11: tabla de presupuesto sobre ph-data-table)
 
 - Auditoria Material transversal (12.3/1.7): los botones de todos los remotes ya usan
