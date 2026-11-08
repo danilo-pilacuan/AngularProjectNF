@@ -772,3 +772,23 @@ Siguiente deuda: lint formal (11.4): ningun repo frontend tiene eslint ni script
   via polling de iframes[aria-hidden=true].
 - Commits: shared-lib 7f16aca, mfe-reports 4549935, docs raiz (ver hash). 7.5 queda ☑ completo
   en docs/funcionalidades.md: todo el alcance numerado esta implementado.
+
+## Iteracion 20 (2026-11-08) - E2E de gate de etapa del ciclo de vida por UI + NG0956
+
+- Bateria nueva files/e2e-transiciones.mjs (19 checks, Playwright headless contra el shell): login Diana ->
+  crear proyecto -> "Ir a Iniciativa" rechazado con mensaje de dominio (gate cerrado) -> acta obligatoria
+  cargada en Documentos -> autoaprobacion rechazada (validarAprobacion) -> login Sergio (Sponsor) aprueba ->
+  transicion aceptada -> badge Iniciativa -> bitacora "Planteamiento -> Iniciativa" -> gate recalculado
+  ("Falta entregable: Documento de iniciativa") -> sin boton de retroceso no permitido -> F5 persiste ->
+  consola limpia. RESULTADO 19/19.
+- Fixes NG0956 (track by identity en colecciones de un elemento): proyecto-detalle.html transiciones/
+  faltantes/pendientesAprobacion y user-switcher.ts (shell) ambos modos track $index. El warning solo se
+  disparaba al clic de transicion (recompute de senales), no en navegacion simple (sonda-ng0956.mjs).
+- Lecciones: (a) Test-NetConnection a 127.0.0.1 da falsos negativos cuando Vite escucha en IPv6; usar
+  Invoke-WebRequest http://localhost:puerto. (b) Cuando dos bloques de plantilla son textualmente identicos,
+  el edit tool falla con "Multiple matches found": desambiguar con contexto unico por bloque. (c) Los servidores
+  dev de la iteracion 19 siguen sirviendo HMR tras los edits; el rerun del E2E contra los mismos procesos
+  valida los cambios sin relanzar.
+- Commits: mfe-projects 033d300, shell 05eb519 (fix, sin push). mcp-config.json global restaurado a su
+  contenido original tras edicion por error de alcance; la deshabilitacion de mobile-mcp/maestro la hara
+  el usuario manualmente.
