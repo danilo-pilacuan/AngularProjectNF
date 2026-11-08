@@ -2,6 +2,27 @@
 
 Log de avance dia a dia. Fuente de verdad del avance; `.ops` lo organiza y enlaza.
 
+## 2026-11-08 (lint backend con ruff)
+
+- Lint formal del backend (fase 0-8, deuda 11.4 extendida): `pyproject.toml` nuevo con
+  ruff 0.17.4 (line-length 120, reglas E/F/I/B/UP, isort first-party `app`, formato con
+  comillas dobles). B008 se permite para `fastapi.Depends/Query/Header` via
+  extend-immutable-calls: Depends() en defaults de parametros es el patron idiomatico de
+  FastAPI.
+- Primer check: 121 errores (50 B008, 35 E501, 10 F401, 9 E402, 5 UP031, 5 I001, 3 UP017,
+  y otros). Correcciones: E402 en servicio.py (logger intercalado entre imports, movido
+  abajo), UP031 % -> f-strings a mano en dependencias.py y servicio.py preservando el
+  texto exacto de los mensajes (los tests los validan), resto con `ruff check --fix`
+  (imports sin uso, orden isort, datetime.timezone.utc -> UTC, logging % -> f-string,
+  f-string sin placeholders).
+- `ruff format .`: 10 archivos reformateados (semilla.py y calculos.py los de mayor
+  diff: datos de semilla envueltos). Revisado el diff: sin cambios semanticos.
+- Verificacion final: `ruff check .` exit 0 y pytest 109/109 (7.65s) tras el formato.
+- requirements.txt: `ruff>=0.17` anadido (el repo no separa dev-dependencies; el
+  Dockerfile del api lo instala sin impacto). Commit backend 5ba04b5.
+- Con esto, lint formal queda cerrado en los 8 repos (7 frontend + backend). Pendiente
+  derivado: evaluar gate de lint en el DoD (seccion 5 del handoff).
+
 ## 2026-11-08 (lint formal en los 7 repos frontend)
 
 - Deuda 11.4 cerrada: eslint 9 + typescript-eslint 8 + angular-eslint 22 (flat config) en
