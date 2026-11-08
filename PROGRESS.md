@@ -420,3 +420,19 @@ Log de avance dia a dia. Fuente de verdad del avance; `.ops` lo organiza y enlaz
   71d2ec5 (chore, provider del token en app.config). Sin push.
 - Deuda registrada: lint formal (ESLint 9) sin configurar en ningun repo
   frontend (11.4 del handoff).
+
+## 2026-11-08 (validacion del fix en demo Docker 4400)
+
+El pendiente del handoff "rebuild demo Docker con el fix" quedo cubierto sin rebuild adicional:
+docker compose build reutilizo cache de BuildKit y las imagenes 440x ya contienen el token
+REMOTE_MODULE_LOADER (grep dentro de las imagenes shell y mfe-reports: presente en
+_projecthub_shared y chunks de shell/reports). `docker compose up -d` recreo los contenedores.
+
+E2E demo (SHELL=http://localhost:4400, login real diana@projecthub.local): 8/8 OK.
+- dashboard del shell compone 4 widgets federados.
+- /reports/proyecto-widget: widget remote a remote monta (count=1), avance Intl
+  ("PORTAL DE PAGOS 42,4% $ 81.500 de $ 150.000"), cambio de proyecto lo actualiza
+  ("DATA WAREHOUSE CORPORATIVO 4,8%...").
+- F5 en ruta profunda recarga el widget; 0 recursos >= 400; consola limpia.
+
+Siguiente deuda: lint formal (11.4): ningun repo frontend tiene eslint ni script lint.

@@ -88,10 +88,10 @@ las secciones 2-8; la estructura y las reglas son reutilizables tal cual.
    - Lint formal (deuda 11.4): definir/configurar eslint en los 9 repos y
      pasar de `tsc --noEmit` a un gate de lint en la verificacion. Necesita
      codigo/config.
-   - Rebuild demo Docker con el fix del widget: las imagenes 440x son previas
-     a REMOTE_MODULE_LOADER; el widget remote-a-remote en 4400 necesita
-     `docker compose build` + `up -d` de los 5 frontends y E2E variante
-     SHELL=4400. Necesita comando, no codigo.
+   - Rebuild demo Docker con el fix del widget -> hecho (2026-11-08): las
+     imagenes 440x ya contenian REMOTE_MODULE_LOADER (grep dentro de las
+     imagenes), contenedores recreados con `docker compose up -d` y E2E demo
+     SHELL=4400 8/8 OK (login real, F5, consola limpia).
    - Revision humana de estados `implementado` -> `verificado` (fases 0-14.5,
      demo Docker y fix del widget). No necesita codigo; la evidencia esta en
      PROGRESS.md.
@@ -123,4 +123,5 @@ las secciones 2-8; la estructura y las reglas son reutilizables tal cual.
 | 2026-11-07 (verificacion federada post-Material) | E2E Playwright tras a057140: fix de dev server obsoleto (chunk con UserSwitcher antiguo), relanzamiento ng serve 4300, 12/12 comprobaciones demo OK (mat-select, overlay, cambio de usuario, 4 rutas sin fallback, F5 profundo, consola limpia); detectadas rutas planas 404 del backend | hecho: evidencia en PROGRESS.md y session files; deuda de rutas registrada en pendientes |
 | 2026-11-08 (rutas planas + fix push demo) | Backend: GET /api/etapas, /api/entregables, /api/bitacora planos + tests (109/109). shared-lib: actorId() null sin sesion y empujar() no envia en modo demo (153/153); rebuild dist + reinicio de servers con cache limpia. E2E: 12/12 con 0 recursos 404 | hecho: commits backend 96fa534, shared-lib 3f48335; deuda de rutas planas cerrada en esta seccion |
 | 2026-11-08 (API + db en compose demo) | deploy: api.Dockerfile (python 3.14, uvicorn 8100) + servicios api/db en docker-compose.yml (Postgres 17 demo en 5434, AUTH_SECRET >= 32 bytes). Verificado: salud, login JWT, sincronizacion (7/6/5/10/5), persistencia psql. Rebuild de los 5 frontends demo (ahora con Material + login) y E2E demo 12/12 con 0 404 | hecho: commit deploy 1deb0b8; backend/shared-lib sin cambios; uvicorn dev detenido, 8100 es de la API dockerizada |
-| 2026-11-08 (widget remote-a-remote) | Fix definitivo del hang del widget federado remote a remote: token REMOTE_MODULE_LOADER en @projecthub/shared (patron SESION_STORE), providers en los 5 app.config, consumidores (shell dashboard, mfe-reports proyecto-widget) via remoteModuleLoader() con validacion de export; descartado compartir el runtime NF (rompe boot dev). Evidencia: 10 chunks expuestos sin runtime, tests 219/219 + backend 109/109, E2E dev 4300 8/8 con login real y F5 | hecho: commits shared-lib 7e840ec, shell 58661b5, mfe-reports 8b5481a, mfe-projects 85b9fee, mfe-admin 50dc27e, mfe-governance 71d2ec5; E2E actualizado a login real (token JWT persiste, el modo demo no) |
+| 2026-11-08 (widget remote-a-remote) | Fix definitivo del hang del widget federado remote a remote: token REMOTE_MODULE_LOADER en @projecthub/shared (patron SESION_STORE), providers en los 5 app.config, consumidores via remoteModuleLoader() con validacion de export; descartado compartir el runtime NF (rompe boot dev). Evidencia: 10 chunks expuestos sin runtime, tests 219/219 + backend 109/109, E2E dev 4300 8/8 con login real y F5 | hecho: commits shared-lib 7e840ec, shell 58661b5, mfe-reports 8b5481a, mfe-projects 85b9fee, mfe-admin 50dc27e, mfe-governance 71d2ec5; E2E actualizado a login real (token JWT persiste, el modo demo no) |
+| 2026-11-08 (validacion en demo Docker) | El fix REMOTE_MODULE_LOADER validado en la demo prod-like 4400: imagenes 440x ya contienen el token (verificado con grep dentro de imagenes shell y mfe-reports), contenedores recreados con up -d; E2E demo 8/8 con login real (dashboard 4 widgets, widget remote a remote con avance Intl, F5, consola limpia, 0 recursos >= 400) | hecho: sin cambios de codigo; evidencia en PROGRESS.md 2026-11-08 |
