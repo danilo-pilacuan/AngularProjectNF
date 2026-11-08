@@ -2,6 +2,24 @@
 
 Log de avance dia a dia. Fuente de verdad del avance; `.ops` lo organiza y enlaza.
 
+## 2026-11-08 (iteracion 22: nombres de usuario resueltos en la UI)
+
+- Defecto de produccion detectado en revision de codigo: portafolio, detalle y CSV mostraban
+  IDs crudos de usuario (u-admin, u-sponsor, u-pm) en columna Patrocinador, pill
+  "Patrocinador:" y columna Responsable de etapas.
+- mfe-projects: portafolio y proyecto-detalle resuelven nombres via UsuarioStore con fallback
+  "Sin asignar" para IDs no catalogados; el ID tecnico queda como tooltip (title) en la
+  columna del portafolio y en el pill del detalle. CSV del portafolio hereda el nombre.
+- ui-lib: `ph-pill` gana input opcional `title` (markup identico si no se pasa).
+- Verificacion: ui-lib 40/40 tests (5 de pill nuevos), mfe-projects 29/29, lint limpio en
+  ambos, builds de produccion OK. Validacion visual con navegador integrado (Playwright)
+  sobre shell 4300: login Diana -> /projects muestra "Sergio Sponsor" en Patrocinador ->
+  /projects/detalle/p1 muestra "Patrocinador: Sergio Sponsor" (title=u-sponsor) y
+  "Paula Manager" en Responsable. Ademas: deep-link /projects/detalle/p1 sin sesion redirige
+  a /login?de=... y vuelve al destino tras entrar (guard verificado de paso).
+- Commits: mfe-projects 11020cb (fix) + e989b70 (refactor imports), ui-lib 583281e (feat).
+  docs/funcionalidades.md 2.2 y 2.4 actualizados.
+
 ## 2026-11-08 (iteracion 21: E2E de filtros de listas)
 
 - Cierre de la iteracion que quedo en curso por reinicio del equipo: dev servers 4300-4304 y

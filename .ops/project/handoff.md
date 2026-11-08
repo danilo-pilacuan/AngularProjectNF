@@ -91,6 +91,12 @@ las secciones 2-8; la estructura y las reglas son reutilizables tal cual.
      salida de evidencia; builds largos con log; evidencia etiquetada por stack).
 
 7. **Trabajo en curso y pendiente:**
+   - Iteracion 22 (nombres de usuario resueltos en la UI) -> HECHA (2026-11-08):
+     portafolio/detalle/CSV ya muestran nombres (UsuarioStore) en vez de IDs
+     crudos; ID tecnico como tooltip; ph-pill con input title opcional
+     (ui-lib 583281e). Verificado con tests (ui-lib 40/40, mfe-projects 29/29),
+     lint, builds y navegador integrado sobre shell 4300. Commits mfe-projects
+     11020cb + e989b70; docs 2.2/2.4 actualizados.
    - Iteracion 21 (E2E de filtros de listas) -> HECHA (2026-11-08): rerun de
      files/e2e-filtros.mjs tras reinicio del equipo, 12/12 OK (portafolio,
      documentos, bitacora, usuarios, consola limpia incl. NG0956). Sin cambios
@@ -152,3 +158,4 @@ las secciones 2-8; la estructura y las reglas son reutilizables tal cual.
 | 19 | 2026-11-08 | E2E de flujos de escritura por UI (e2e-flujos, 14/14): crear proyecto -> etapa -> entregable en /governance -> autoaprobacion rechazada (mensaje de dominio) -> aprobacion por Sergio (Sponsor) -> gate visible -> proteccion sin sesion -> F5 y consola limpia. Hallazgos: ruta real de Documentos es /governance (path '' del remote; /governance/documentos cae al fallback del shell); quirks Playwright+Material (aria-disabled en mat-option); sin bug de producto | hecho: bateria escritura 14/14, regresion bitacora 11/11 durante diagnostico; scripts en files/ de sesion | Agente |
 | 2026-11-08 (iteracion 20) | E2E de gate de etapa por UI (files/e2e-transiciones.mjs, 19/19): proyecto nuevo -> gate cerrado con mensaje de dominio -> acta cargada -> autoaprobacion rechazada -> aprobacion Sponsor -> transicion Planteamiento->Iniciativa -> bitacora -> gate recalculado (Falta entregable: Documento de iniciativa) -> sin retroceso -> F5 persiste -> consola limpia. Fixes NG0956: track \ en transiciones/faltantes/pendientesAprobacion (proyecto-detalle) y en roles de user-switcher (shell). Commits: mfe-projects 033d300, shell 05eb519. Script E2E en files/ de sesion (no commiteado por politico). | hecho |
 | 2026-11-08 (iteracion 21, cortada por reinicio) | E2E de filtros de listas (files/e2e-filtros.mjs en files/ de sesion): script creado y 2 fixes de asercion aplicados; primera corrida 7/9 con fallos del script (no de producto); lint de los 7 repos frontend en verde | pendiente: relanzar dev servers 4300-4304 (npm start) y backend 8100 (docker compose en deploy/), rerun e2e-filtros.mjs y cerrar la iteracion |
+| 22 | 2026-11-08 | Nombres de usuario resueltos en la UI (portafolio/detalle/CSV) via UsuarioStore, ID tecnico como tooltip, ph-pill con input title opcional; verificado con tests, lint, builds y navegador integrado (login -> portafolio -> detalle p1) | hecho: ui-lib 40/40, mfe-projects 29/29, build+lint exit 0; commits mfe-projects 11020cb + e989b70, ui-lib 583281e; docs 2.2/2.4 | Agente |
