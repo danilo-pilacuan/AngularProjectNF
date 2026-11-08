@@ -49,7 +49,10 @@ las secciones 2-8; la estructura y las reglas son reutilizables tal cual.
 > 22 en los 7 repos frontend con commits 8ef80c9, ec15cff, 0e81473, 8e0df10, daf2e3f,
 > b1a671b, 15b77bf; prefijos ph (API publica) / app (resto). Lint backend HECHO (2026-11-08):
 > ruff 0.17.4 (pyproject.toml, E/F/I/B/UP) en el backend, check exit 0, pytest 109/109,
-> commit 5ba04b5. Pendiente: revision humana de estados `verificado` y gate de lint en el DoD.
+> commit 5ba04b5. Pagina de documentos/entregables en mfe-governance HECHA (2026-11-08,
+> commits shared-lib fe863d0 + mfe-governance b7c5acc): primer contenido real del remote,
+> gate con resumen aprobados/pendientes/faltantes. Pendiente: revision humana de estados
+> `verificado` y gate de lint en el DoD.
 
 2. **Estado del producto:** ProjectHub, sistema documental para gobernar proyectos de software
    (ciclo de vida de 9 etapas, gates, matriz de responsabilidades, Gantt propio). Fases 0-7
@@ -80,8 +83,8 @@ las secciones 2-8; la estructura y las reglas son reutilizables tal cual.
      projecthub-demo) y GET /api/sincronizacion con Bearer. DATABASE_URL y AUTH_SECRET
      aceptan override por entorno (ver docker-compose.yml).
    - Tests: `npm test` por repo (vitest). Totales de referencia: shared-lib 153,
-     ui-lib 18, mfe-projects 26, mfe-admin 13, mfe-reports 5, mfe-governance 2,
-     shell 20 = 237 (+109 pytest del backend).
+     ui-lib 18, mfe-projects 26, mfe-admin 13, mfe-reports 5, mfe-governance 11,
+     shell 20 = 246 (+109 pytest del backend).
    - Tras cambiar `shared-lib` o `ui-lib`: `npx ng build` en la lib antes de servir las apps
      (las consumen por `file:../<lib>/dist/...`).
    - Politica de comandos: `.ops/development/command-safety.md` (prohibido descartar
@@ -133,3 +136,4 @@ las secciones 2-8; la estructura y las reglas son reutilizables tal cual.
 | 2026-11-08 (lint backend ruff) | Cierre de la deuda 11.4 en el backend: pyproject.toml con ruff 0.17.4 (E/F/I/B/UP, line 120, B008 extendido para Depends de FastAPI), 121 -> 0 errores (E402 logger, UP031 f-strings con textos de error intactos, ruff format en 10 archivos), pytest 109/109 tras el formato, ruff>=0.17 en requirements.txt | hecho: commit backend 5ba04b5; lint formal cerrado en los 8 repos |
 | 2026-11-08 (validacion en demo Docker) | El fix REMOTE_MODULE_LOADER validado en la demo prod-like 4400: imagenes 440x ya contienen el token (verificado con grep dentro de imagenes shell y mfe-reports), contenedores recreados con up -d; E2E demo 8/8 con login real (dashboard 4 widgets, widget remote a remote con avance Intl, F5, consola limpia, 0 recursos >= 400) | hecho: sin cambios de codigo; evidencia en PROGRESS.md 2026-11-08 |
 | 2026-11-08 (lint formal 7 repos) | eslint 9 + angular-eslint 22 (flat config) en shell, mfe-projects, mfe-reports, mfe-admin, mfe-governance, shared-lib y ui-lib; fixes de imports sin uso y hosts de spec a app-*; en ui-lib, configs duales de directive-selector (atributo camelCase + elemento kebab-case anidados en un arreglo) para validar la @Directive ph-data-table-column. Lint+tests+build verdes en los 7; tests 237 frontend sin cambio | hecho: commits shell 8ef80c9, mfe-projects ec15cff, mfe-reports 0e81473, mfe-admin 8e0df10, mfe-governance daf2e3f, shared-lib b1a671b, ui-lib 15b77bf; pendiente lint backend (ruff) |
+| 2026-11-08 (pagina documentos/gates) | Primera pagina real de mfe-governance: Documentos y entregables (filtro de proyecto, tarjeta de gate con aprobados/pendientes/faltantes, tabla con aprobacion por matriz, carga v1 pendiente, casos limite autor-propio y proyecto no activo). Dominio: EstadoGate.aprobados en shared con test | hecho: mfe-governance 11/11 (antes 2), build+lint exit 0, shared-lib 153/153; commits shared-lib fe863d0, mfe-governance b7c5acc |

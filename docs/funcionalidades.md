@@ -33,6 +33,7 @@ Estado: `☐` pendiente · `◐` en progreso · `☑` hecho
 - ☑ 3.4 Transición con validación de rol (según matriz de responsabilidades) y de estado del proyecto. *(Implementado 2026-11-05 con tests.)*
 - ☑ 3.5 Bitácora de transiciones: quién, cuándo, etapa origen → destino, comentario opcional. *(Implementado 2026-11-05; visible en detalle 2026-11-06.)*
 - ☑ 3.6 Estados del proyecto: Activo, Cancelado, Cerrado. *(Implementado 2026-11-05 con tests.)*
+- ☑ 3.7 Página de documentos/entregables en mfe-governance: filtro de proyecto, estado del gate (aprobados/pendientes/faltantes), tabla con aprobación según matriz, carga de entregables (versión 1, pendiente) y casos límite (el autor no autoaprueba su documento, proyecto no activo es solo lectura). *(Implementado 2026-11-08: mfe-governance 11/11 tests; gate extiende `EstadoGate.aprobados` en shared.)*
 
 ## 4. Planificación: etapas de trabajo
 

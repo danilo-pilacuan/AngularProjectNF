@@ -481,3 +481,22 @@ E2E demo (SHELL=http://localhost:4400, login real diana@projecthub.local): 8/8 O
 - F5 en ruta profunda recarga el widget; 0 recursos >= 400; consola limpia.
 
 Siguiente deuda: lint formal (11.4): ningun repo frontend tiene eslint ni script lint.
+
+## 2026-11-08 (pagina de documentos y gates en mfe-governance)
+
+- Primera pagina real de mfe-governance (reemplaza el PlaceholderComponent): Documentos
+  y entregables en src/app/pages/documentos (ts/html/scss/spec). Filtro de proyecto,
+  tarjeta de estado del gate, tabla de entregables con aprobacion segun matriz y
+  formulario de carga (version 1, queda pendiente).
+- Dominio: `EstadoGate` gana el campo derivado `aprobados` (nombres obligatorios ya
+  aprobados) en shared-lib/gates.ts, con test. El resumen del gate usa conteos y la
+  pill Abierto/Cerrado es span local (stage-badge es de etapa/estado de proyecto).
+- Estados de vista: banner Sesion requerida sin sesion (estructura @else if), banner
+  de proyecto no activo (solo lectura) y error del dominio via permission-banner;
+  el boton Cargar entregable solo aparece con proyecto Activo.
+- Casos limite cubiertos en spec (11 tests, antes 2): render semilla, sin sesion,
+  sin permisos (u-analista), crear, nombre vacio, aprobar con u-admin, autor-propio
+  (crea como u-admin y intenta autoaprobacion), p6 cancelado, lista vacia p5.
+- Verificacion: mfe-governance 11/11 (vitest), build y lint exit 0, shared-lib
+  153/153. Commits: shared-lib fe863d0 (feat), mfe-governance b7c5acc (feat
+  governance). Sin push.
