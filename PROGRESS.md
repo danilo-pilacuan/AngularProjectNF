@@ -2,6 +2,20 @@
 
 Log de avance dia a dia. Fuente de verdad del avance; `.ops` lo organiza y enlaza.
 
+## 2026-11-08 (iteracion 26: regresion E2E del store unico)
+
+- Justificacion: la iteracion 22 cambio el portafolio y el detalle (paginas
+  alimentadas por el ProjectStore unico); rerun de files/e2e-store-unico.mjs
+  para validar sesion compartida, lecturas cross-MFE y escritura visible entre
+  remotes tras ese cambio.
+- Resultado: 7/7 comprobaciones OK. Sesion de Diana visible en mfe-admin,
+  mfe-projects lista proyectos del store, mfe-reports lee el mismo dominio,
+  escritura en mfe-projects persiste en el store y se ve en
+  /reports/presupuesto sin recargar la app (store unico, no copias),
+  mfe-governance lee el dominio compartido y consola limpia con
+  0 recursos >= 400.
+- Sin cambios de codigo.
+
 ## 2026-11-08 (iteracion 25: regresion E2E de bitacora federada)
 
 - Justificacion: la resolucion de autores por nombre en bitacora se toco en la

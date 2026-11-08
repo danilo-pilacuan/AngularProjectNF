@@ -91,6 +91,10 @@ las secciones 2-8; la estructura y las reglas son reutilizables tal cual.
      salida de evidencia; builds largos con log; evidencia etiquetada por stack).
 
 7. **Trabajo en curso y pendiente:**
+   - Iteracion 26 (regresion E2E del store unico) -> HECHA (2026-11-08):
+     rerun de files/e2e-store-unico.mjs, 7/7 OK (sesion compartida en admin,
+     lecturas en projects/reports/governance, escritura en projects visible en
+     /reports/presupuesto, consola limpia). Sin cambios de codigo.
    - Iteracion 25 (regresion E2E de bitacora federada) -> HECHA (2026-11-08):
      rerun de files/e2e-bitacora.mjs, 11/11 OK (nav, semilla con autores
      resueltos, filtro tipo Cambio, CSV bitacora-YYYY-MM-DD-HHmm.csv, ruta
@@ -178,3 +182,4 @@ las secciones 2-8; la estructura y las reglas son reutilizables tal cual.
 | 23 | 2026-11-08 | Regresion E2E de flujos de escritura (files/e2e-flujos.mjs) tras el cambio de UI de la iteracion 22: proyecto + etapa + F5 + entregable + autoaprobacion rechazada + aprobacion Sponsor + gate + proteccion sin sesion + consola limpia | hecho: 14/14 OK, 0 recursos >= 400; sin cambios de codigo; commit raiz docs | Agente |
 | 24 | 2026-11-08 | Regresion E2E de transiciones de etapa (files/e2e-transiciones.mjs) tras iteracion 22: gate cerrado rechaza avance, acta cargada + autoaprobacion rechazada + aprobacion Sponsor, transicion a Iniciativa, gate destino recalculado, sin retroceso, F5 persiste, consola limpia | hecho: 19/19 OK, 0 recursos >= 400; sin cambios de codigo; commit raiz docs | Agente |
 | 25 | 2026-11-08 | Regresion E2E de bitacora federada (files/e2e-bitacora.mjs): nav de governance, semilla con autores por nombre, filtro tipo Cambio, export CSV con fecha, ruta profunda sin sesion -> /login?de=..., consola limpia | hecho: 11/11 OK, 0 recursos >= 400; sin cambios de codigo; commit raiz docs | Agente |
+| 26 | 2026-11-08 | Regresion E2E del store unico (files/e2e-store-unico.mjs): sesion compartida, lecturas cross-MFE, escritura en mfe-projects visible en /reports/presupuesto sin recargar, consola limpia | hecho: 7/7 OK, 0 recursos >= 400; sin cambios de codigo; commit raiz docs | Agente |
