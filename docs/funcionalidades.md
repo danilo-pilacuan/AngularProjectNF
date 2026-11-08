@@ -66,7 +66,7 @@ Estado: `☐` pendiente · `◐` en progreso · `☑` hecho
 - ☑ 7.2 Avance por proyecto (ranking). *(Implementado 2026-11-06 en mfe-reports.)*
 - ☑ 7.3 Presupuesto asignado vs. consumido por proyecto. *(Implementado 2026-11-06 en mfe-reports.)*
 - ☑ 7.4 Reportes de solo lectura, recalculados a partir del estado actual (nunca editables a mano). *(Implementado 2026-11-06: mfe-reports solo lee del `ProjectStore` compartido.)*
-- ☑ 7.5 Exportación de reportes (CSV/PDF). *(Implementado 2026-11-06 CSV: exportación de portafolio, ranking de avance y presupuesto por proyecto desde mfe-reports, con generación en `@projecthub/shared` y tests; exportación CSV de la bitácora cross-proyecto en mfe-governance 2026-11-08 reutilizando los mismos helpers; PDF queda como item futuro.)*
+- ☑ 7.5 Exportación de reportes (CSV/PDF). *(Implementado 2026-11-06 CSV: exportación de portafolio, ranking de avance y presupuesto por proyecto desde mfe-reports, con generación en `@projecthub/shared` y tests; exportación CSV de la bitácora cross-proyecto en mfe-governance 2026-11-08 reutilizando los mismos helpers; PDF implementado 2026-11-07 sin dependencias: `generarHtmlPdf`/`imprimirPdf` en `@projecthub/shared` (HTML imprimible con tablas, escape y marca de tiempo) consumido por Tablero general y Presupuesto en mfe-reports; el navegador resuelve con "Guardar como PDF".)*
 
 ## 8. Arquitectura y federación
 

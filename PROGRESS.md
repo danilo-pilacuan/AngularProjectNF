@@ -727,3 +727,23 @@ Siguiente deuda: lint formal (11.4): ningun repo frontend tiene eslint ni script
 - Verifica en runtime federado las iteraciones 15-17: ph-pill en documentos/bitacora/detalle, chips del gate con conteo, metadata del portafolio y prompt-dialog 100% Material (mat-form-field + matInput + mat-hint).
 - Episodio documentado: los dev servers que llevaban desde antes de la iteracion 15 servian builds desactualizados (HMR) y los exposes './Module' de mfe-projects y mfe-governance caian al fallback silencioso del shell (SyntaxError blob, sin error visible). Sintoma: "Modulo no disponible" en /projects y /governance/bitacora con remoteEntry 200. Cura: detener los ng serve y relanzarlos (misma leccion de la iteracion 13). Tras relanzar: consola limpia y 38/38.
 - Leccion operativa reforzada: cuando varias iteraciones de codigo no pasan por navegador, verificar E2E antes de dar por cerrado el ciclo; un dev server viejo enmascara los cambios.
+
+## Iteracion 18 (2026-11-07) - Exportacion PDF de reportes (7.5) sin dependencias
+
+- shared-lib: domain/pdf.ts con generarHtmlPdf (HTML imprimible: tablas con thead/tbody/tfoot,
+  alineacion derecha de numeros, escape HTML, marca de tiempo) + imprimirPdf (iframe oculto
+  aria-hidden + window.print, limpieza a 30 s). Barrel actualizado. 4 tests -> 161/161 OK, build OK.
+- mfe-reports: exportarPdf() en tablero-general (3 tablas: detalle por proyecto, por etapa, por
+  estado) y presupuesto (tabla + pie de totales); botones "Exportar PDF" junto a los de CSV.
+  Build OK, 5/5 tests, lint OK.
+- E2E nuevo e2e-pdf.mjs: 14/14 checks (botones, dialogo invocado en ambas paginas, titulos
+  "Tablero general de indicadores" / "Reporte de presupuesto", secciones, fila de totales,
+  marca de tiempo, escape HTML, consola limpia). Regresion completa 52/52 checks E2E verdes
+  (14 pdf + 12 federado + 8 widgets + 7 store + 11 bitacora).
+- Leccion tecnica: reconstruir el dist de shared-lib con los ng serve corriendo puede envenenar
+  el watcher del shell (TS2307/TS2571 a mitad de escritura; no se recupera solo) -> reiniciar
+  ese ng serve. Interceptar window.print en Playwright: nunca tocar Document.prototype.title
+  (recursion); override de window.print por frame guardando window.__pdfCapturado y leerlo
+  via polling de iframes[aria-hidden=true].
+- Commits: shared-lib 7f16aca, mfe-reports 4549935, docs raiz (ver hash). 7.5 queda ☑ completo
+  en docs/funcionalidades.md: todo el alcance numerado esta implementado.
