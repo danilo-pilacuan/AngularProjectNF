@@ -711,3 +711,12 @@ Siguiente deuda: lint formal (11.4): ningun repo frontend tiene eslint ni script
   Leccion de sondas: imprimir 200+ chars del body y comparar en minusculas.
 - Verificacion: mfe-governance 22/22 (vitest), build exit 0, lint exit 0. Commit
   mfe-governance 0103a1a (feat). Sin push.
+
+### Iteracion 17 (2026-11-08) - prompt-dialog a mat-form-field (Material correcto)
+
+- Objetivo: ultimo componente de entrada con controles nativos (prompt-dialog de ui-lib, DEC-005) a Material.
+- Verificacion previa: specs de consumidores no dependen de selectores del DOM del dialogo (mfe-admin mockea PromptDialogService; e2e usan input[type=...] generico). Solo componentes.spec.ts de ui-lib toca el dialogo.
+- Cambios: prompt-dialog.ts usa mat-form-field appearance=outline + matInput (input/textarea) + mat-hint + etiqueta con span.ph-dialog-req; imports +MatFormFieldModule +MatInputModule; eliminados estilos hand-rolled .ph-dialog-input/.ph-dialog-etiqueta/.ph-dialog-ayuda; .ph-dialog-campo ahora display block width 100%.
+- Test nuevo en componentes.spec.ts: estructura Material del dialogo (2 mat-form-field, input[matinput], textarea[matinput], mat-hint, .ph-dialog-req).
+- Verificado: ui-lib 38/38 (antes 37), build exit 0, lint exit 0. Commit ui-lib 78baba2.
+- Consumidores (mfe-projects, mfe-admin) verificados por analisis: no cambian (sin dependencia del DOM interno del dialogo).
