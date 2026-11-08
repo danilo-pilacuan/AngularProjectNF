@@ -104,6 +104,18 @@ las secciones 2-8; la estructura y las reglas son reutilizables tal cual.
    - Revision humana de estados `implementado` -> `verificado` (fases 0-14.5,
      demo Docker y fix del widget). No necesita codigo; la evidencia esta en
      PROGRESS.md.
+   - Iteracion 21 (E2E de filtros de listas) -> EN CURSO, cortada por reinicio
+     del equipo a peticion del usuario (2026-11-08). Script files/e2e-filtros.mjs
+     en files/ de sesion: portafolio (filtro etapa, busqueda sin coincidencias,
+     restauracion), documentos (cambio de proyecto actualiza gate y tabla),
+     bitacora (filtro por proyecto), usuarios (filas + formulario con roles) y
+     consola limpia (NG0956 incluido). Primera corrida 7/9 con dos fallos del
+     script ya corregidos (la asercion de etapa mezclaba badges de estado; la
+     lectura de mat-option tras cerrarse el overlay daba timeout). Lint de los 7
+     repos frontend verdes durante la iteracion. Pendiente al retomar: relanzar
+     dev servers 4300-4304 (`npm start` en la raiz) y backend (docker compose up
+     -d en deploy/ para 8100), rerun e2e-filtros.mjs y, si queda verde, cerrar la
+     iteracion con commits/docs como en la 20.
    - Cerrado (2026-11-08): widget remote-a-remote (mfe-reports ->
      ProjectSummaryWidget de mfe-projects) colgaba en "Cargando widget...".
      Causa: copia del runtime NF sin inicializar enlineada en el chunk
@@ -156,3 +168,4 @@ las secciones 2-8; la estructura y las reglas son reutilizables tal cual.
 | 18 | 2026-11-08 | Exportacion PDF de reportes (7.5) sin dependencias: generarHtmlPdf/imprimirPdf en shared-lib; botones y tablas en tablero-general y presupuesto (mfe-reports); E2E nuevo e2e-pdf 14/14 + regresion 52/52 checks; leccion: reiniciar ng serve si el dist de shared-lib se reconstruye en caliente (watcher envenenado) | hecho: shared-lib 161/161, mfe-reports 5/5, build+lint exit 0; commits shared-lib 7f16aca, mfe-reports 4549935 | Agente |
 | 19 | 2026-11-08 | E2E de flujos de escritura por UI (e2e-flujos, 14/14): crear proyecto -> etapa -> entregable en /governance -> autoaprobacion rechazada (mensaje de dominio) -> aprobacion por Sergio (Sponsor) -> gate visible -> proteccion sin sesion -> F5 y consola limpia. Hallazgos: ruta real de Documentos es /governance (path '' del remote; /governance/documentos cae al fallback del shell); quirks Playwright+Material (aria-disabled en mat-option); sin bug de producto | hecho: bateria escritura 14/14, regresion bitacora 11/11 durante diagnostico; scripts en files/ de sesion | Agente |
 | 2026-11-08 (iteracion 20) | E2E de gate de etapa por UI (files/e2e-transiciones.mjs, 19/19): proyecto nuevo -> gate cerrado con mensaje de dominio -> acta cargada -> autoaprobacion rechazada -> aprobacion Sponsor -> transicion Planteamiento->Iniciativa -> bitacora -> gate recalculado (Falta entregable: Documento de iniciativa) -> sin retroceso -> F5 persiste -> consola limpia. Fixes NG0956: track \ en transiciones/faltantes/pendientesAprobacion (proyecto-detalle) y en roles de user-switcher (shell). Commits: mfe-projects 033d300, shell 05eb519. Script E2E en files/ de sesion (no commiteado por politico). | hecho |
+| 2026-11-08 (iteracion 21, cortada por reinicio) | E2E de filtros de listas (files/e2e-filtros.mjs en files/ de sesion): script creado y 2 fixes de asercion aplicados; primera corrida 7/9 con fallos del script (no de producto); lint de los 7 repos frontend en verde | pendiente: relanzar dev servers 4300-4304 (npm start) y backend 8100 (docker compose en deploy/), rerun e2e-filtros.mjs y cerrar la iteracion |
