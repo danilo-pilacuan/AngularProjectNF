@@ -23,6 +23,22 @@ Log de avance dia a dia. Fuente de verdad del avance; `.ops` lo organiza y enlaz
 - Pendiente (it. 36): considerar `step="any"` en el formulario para permitir
   montos arbitrarios (guardar() ya valida >= 0 y finito).
 
+## 2026-11-08 (iteracion 36: step=any en presupuestos de proyecto y etapa)
+
+- Justificacion: el hallazgo de 35b (step=1000 bloqueaba submits con montos
+  no multiplos de 1000, en silencio) era un defecto real de producto: un
+  usuario que escribe 1234567 no puede crear el proyecto ni asignar
+  presupuesto a una etapa, sin mensaje alguno.
+- Implementado: step="any" en los dos inputs de presupuesto (proyecto-form y
+  proyecto-detalle). La validacion de dominio no cambia: guardar() y el
+  store ya exigen monto >= 0 y finito.
+- Verificacion: eslint exit 0, tests mfe-projects 29/29, rebuild de la demo
+  (solo se recereo mfe-projects; las demas imagenes quedaron identicas por
+  cache) y prueba en vivo con navegador integrado: login como Diana, creacion
+  con 1234567 -> navegacion a detalle y presupuesto persistido en el backend
+  (GET /api/proyectos/... devuelve 1234567).
+- Commits: mfe-projects d298339; este commit raiz actualiza docs.
+
 ## 2026-11-08 (iteracion 35: re-empuje automatico de escrituras tras recuperar la API)
 
 - Justificacion: los cambios hechos con la API caida solo se reintentaban al
