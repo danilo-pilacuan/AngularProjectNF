@@ -102,6 +102,9 @@ las secciones 2-8; la estructura y las reglas son reutilizables tal cual.
      salida de evidencia; builds largos con log; evidencia etiquetada por stack).
 
 7. **Trabajo en curso y pendiente:**
+   - Iteracion 46 (regresion integral) -> HECHA (2026-11-08): tests de los
+     6 repos frontend en verde, builds exit 0, lint raiz exit 0. Sin
+     cambios de codigo.
    - Iteraciones 44-45 -> HECHAS (2026-11-08): CI del backend
      (.github/workflows/backend-ci.yml: pytest + ruff) y manejo del 429 en
      la UI (LIMITE_INTENTOS con mensaje propio, test nuevo; verificado E2E
@@ -270,3 +273,4 @@ las secciones 2-8; la estructura y las reglas son reutilizables tal cual.
 | 43 | 2026-11-08 | Demo alineada con las mitigaciones: rebuild de las 5 imagenes front (shared-lib con fix de 4xx embebida) + API; E2E navegador: modo demo sin banner falso (422 esperados en consola), login real Diana, /projects con 6 proyectos reales, F5 persiste sesion y datos | hecho: sin cambios de codigo; ciclo de seguridad VULN-001..004 mitigado y verificado en demo | Agente |
 | 44 | 2026-11-08 | CI del backend: .github/workflows/backend-ci.yml (pytest + ruff, Python 3.14, cache pip, memoria) con triggers push/PR en backend/ | hecho: commit raiz f332a25 | Agente |
 | 45 | 2026-11-08 | Manejo del 429 en la UI: AutenticacionService.mapearError mapea 429 -> LIMITE_INTENTOS con el mensaje del backend; test nuevo en autenticacion.spec.ts; demo reconstruida y E2E: 401x5 -> 429 con mensaje correcto | hecho: shared-lib 172/172 + build dist; estado demo intacto | Agente |
+| 46 | 2026-11-08 | Barrido integral de regresion tras el ciclo de seguridad: ng test en los 6 repos frontend (todos los archivos en verde), npm run build exit 0 en los 6, lint raiz exit 0; backend 131/131 | hecho: sin cambios de codigo; iteracion de verificacion | Agente |

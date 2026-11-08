@@ -2,6 +2,18 @@
 
 Log de avance dia a dia. Fuente de verdad del avance; `.ops` lo organiza y enlaza.
 
+## 2026-11-08 (iteracion 46: barrido integral de regresion tras el ciclo de seguridad)
+
+- Justificacion: los cambios de shared-lib (api-enlace, autenticacion) y
+  del backend se propagan a los 5 apps via dist; barrido completo para
+  confirmar que nada rompio.
+- Verificacion: npx ng test en ui-lib (6), shell (8), mfe-projects (5),
+  mfe-admin (3), mfe-governance (4), mfe-reports (5) archivos de tests,
+  todos en verde; npm run build exit 0 en los 6; lint raiz exit 0;
+  backend 131/131 ya verificado en iteracion 42.
+- Sin cambios de codigo: iteracion de verificacion pura.
+- Commits: raiz (docs).
+
 ## 2026-11-08 (iteraciones 44-45: CI del backend y manejo del 429 en la UI)
 
 - Iteracion 44 (CI): workflow `backend-ci.yml` (pytest + ruff, Python 3.14
