@@ -2,6 +2,15 @@
 
 Log de avance dia a dia. Fuente de verdad del avance; `.ops` lo organiza y enlaza.
 
+## 2026-11-08 (iteracion 9: dedupe de NavGovernance)
+
+- NavGovernance de mfe-governance (ts/html/scss/spec, 2 tests propios) eliminado en favor
+  de `ph-section-nav` de @projecthub/ui, que ya cubre su comportamiento (exact en la raiz
+  /governance y prefijo para /governance/bitacora). Las paginas Documentos y Bitacora
+  definen navLinks y renderizan el componente compartido.
+- Verificacion: mfe-governance 20/20 tests (antes 22, -2 al retirar el spec del
+  componente), build y lint exit 0. Commit mfe-governance 1e37c1d.
+
 ## 2026-11-08 (iteracion 8: componente generico ph-section-nav)
 
 - Nuevo componente genérico `ph-section-nav` en ui-lib (`lib/section-nav`): nav de
