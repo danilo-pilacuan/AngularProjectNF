@@ -2,6 +2,37 @@
 
 Log de avance dia a dia. Fuente de verdad del avance; `.ops` lo organiza y enlaza.
 
+## 2026-11-08 (iteracion 34: E2E automatizado del banner de estado de API)
+
+- Justificacion: el ciclo de caida/recuperacion del banner se verifico dos
+  veces a mano (iteraciones 32 y 33); sin un E2E, una regresion del sondeo o
+  del banner pasaria inadvertida.
+- Implementado: `e2e-banner-api.mjs` (9no script E2E): controla el contenedor
+  `projecthub-api-1` con docker, verifica banner ausente con API arriba,
+  aparicion con texto de modo demo al caer (~5 s), dashboard operando durante
+  la caida, retirada del banner al restaurar y consola sin errores graves;
+  garantiza la API arriba en el `finally`.
+- Verificacion: 8/8 comprobaciones OK contra la demo dockerizada 4400.
+- Commits: raiz (script copiado a tools/e2e + docs).
+
+## 2026-11-08 (iteracion 33: demo docker con banner de API y leccion de cache)
+
+- Justificacion: la demo dockerizada quedo con la imagen previa a la
+  iteracion 32 (sin banner): la demo debe mostrar el mismo comportamiento de
+  degradacion que el desarrollo.
+- Implementado: rebuild de las 5 imagenes (shell + 4 remotes) con
+  `docker compose -f deploy/projecthub/docker-compose.yml build` + `up -d`;
+  nota en `deploy/projecthub/README.md` (ace10a3) sobre la cache de
+  es-module-shims tras un rebuild y sobre el banner.
+- Verificacion (Playwright, 4400): con API caida el banner aparece en ~5 s con
+  "Sin conexion con el backend ... modo demo" y desaparece al restaurar
+  (waitForSelector detached); navegacion y login sin errores de consola.
+- Hallazgo: tras un rebuild, es-module-shims mantiene el importmap viejo en
+  memoria: hubo errores `enlace.estado is not a function` hasta limpiar la
+  cache HTTP (CDP Network.clearBrowserCache); con importmap fresco (zmwDjManaB)
+  todo funciona. Documentado en el README del deploy.
+- Commits: deploy/projecthub ace10a3, raiz 8adfc65.
+
 ## 2026-11-08 (iteracion 32: banner de estado de API + vacio explicito en tablero)
 
 - Justificacion: auditoria DoD "estados de carga, vacio, error y sin
