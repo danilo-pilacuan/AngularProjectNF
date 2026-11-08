@@ -2,6 +2,26 @@
 
 Log de avance dia a dia. Fuente de verdad del avance; `.ops` lo organiza y enlaza.
 
+## 2026-11-08 (iteracion 8: componente generico ph-section-nav)
+
+- Nuevo componente genérico `ph-section-nav` en ui-lib (`lib/section-nav`): nav de
+  secciones en pills con RouterLink/RouterLinkActive, inputs `links` (required),
+  `ariaLabel` y `exact`; `[routerLinkActiveOptions]` con exact solo para el primer
+  enlace (raiz) y prefijo para el resto. Estilos con tokens `--ph-color-*` y fallbacks.
+  2 tests nuevos en ui-lib (30/30); leccion: no leer `input.required()` en tiempo de
+  construccion del componente (NG0950) y asertar `href` (RouterLink no refleja el
+  property binding como atributo).
+- Consumidores: mfe-reports (tablero-general, presupuesto) y mfe-admin (usuarios,
+  matriz; matriz pierde su boton RouterLink puntual). Specs de tablero-general y
+  presupuesto necesitaron `provideRouter([])` nuevo; usuarios y matriz ya lo tenian.
+- Correccion durante verificacion: un `PromptDialogService` quedo accidentalmente en el
+  array `imports` del componente Usuarios (NG2012, es un servicio); retirado.
+- Verificacion: ui-lib 30/30 + build + lint exit 0; mfe-reports 5/5 + build + lint;
+  mfe-admin 13/13 + build + lint.
+- Commits: ui-lib 2705727 (feat), mfe-reports 2515df3 (feat), mfe-admin c7c1e4b (feat).
+- Pendiente para iteraciones siguientes: deduplicar NavGovernance de mfe-governance
+  sobre ph-section-nav (patron original que generaliza), y E2E federado del nav.
+
 ## 2026-11-08 (iteracion 7: catalogo compartido de tipos de bitacora)
 
 - Deduplicacion del catalogo de tipos de registro de bitacora, que vivia duplicado en

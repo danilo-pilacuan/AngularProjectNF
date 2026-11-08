@@ -81,7 +81,7 @@ Estado: `☐` pendiente · `◐` en progreso · `☑` hecho
 ## 9. Librerías compartidas
 
 - ☑ 9.1 `@projecthub/shared`: modelos (proyecto, etapa, presupuesto, usuario, rol, bitácora), grafo de ciclo de vida, matriz de permisos, cálculos (avance, presupuesto), stores, datos semilla. *(Implementado 2026-11-05/06 con tests de dominio y stores.)*
-- ☑ 9.2 `@projecthub/ui`: data-table, form-field, stage-badge, permission-banner, gantt-chart, summary-widget; variables SCSS compartidas. *(Implementado 2026-11-05/06 con tests de render.)*
+- ☑ 9.2 `@projecthub/ui`: data-table, form-field, stage-badge, permission-banner, gantt-chart, summary-widget, section-nav; variables SCSS compartidas. *(Implementado 2026-11-05/06 con tests de render. Actualizado 2026-11-08: `ph-section-nav` nav de secciones generico (pills con RouterLinkActive y opcion exact por enlace, tokens `--ph-color-*`); consumido por mfe-reports, mfe-admin y mfe-governance.)*
 - ☑ 9.3 Errores de dominio tipados (transición inválida, permiso denegado, validación) con mensajes en español. *(Implementado 2026-11-05.)*
 
 ## 10. Datos semilla y demo
