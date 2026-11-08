@@ -2,6 +2,19 @@
 
 Log de avance dia a dia. Fuente de verdad del avance; `.ops` lo organiza y enlaza.
 
+## 2026-11-08 (iteracion 10: fechaHora en IntlFormat)
+
+- `IntlFormat` de ui-lib gana `fechaHora()` (fecha + hora:minuto) y `fechaHoraSegundos()`
+  (fecha + hora:minuto:segundo), delegando en un helper privado compartido con `fecha()`.
+  Locale es-CO, guion '-' para null/invalid. 3 tests nuevos (32/32 en ui-lib).
+  Leccion: es-CO formatea en 12 h ('02:05 p. m.' para 14:05), no 24 h.
+- Consumidores: mfe-governance Bitacora (`this.intl.fechaHora(b.fecha)`) y mfe-projects
+  proyecto-detalle (`fechaBitacora()` delega en `this.intl.fechaHora(valor)`, comentario
+  de parseo ISO conservado).
+- Verificacion: mfe-governance 20/20 (asercion de orden actualizada al formato 12 h),
+  build y lint exit 0; mfe-projects 26/26, build y lint exit 0.
+- Commits: ui-lib 982ca32, mfe-governance 41cb28b, mfe-projects 08dd5a4.
+
 ## 2026-11-08 (iteracion 9: dedupe de NavGovernance)
 
 - NavGovernance de mfe-governance (ts/html/scss/spec, 2 tests propios) eliminado en favor
