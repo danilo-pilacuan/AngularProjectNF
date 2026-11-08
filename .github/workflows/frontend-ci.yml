@@ -1,0 +1,99 @@
+# CI del frontend de ProjectHub (iteracion 49): replica backend-ci.yml.
+# Un solo job sobre el workspace multirepo (DEC-003): instala repo por repo
+# respetando el orden de dependencia (shared-lib y ui-lib primero, porque sus
+# builds emiten dist/ que shell y mfe-* consumen via file:), y valida los 7
+# repos con build, test (vitest) y lint (eslint).
+name: frontend-ci
+
+on:
+  push:
+    paths:
+      - 'ui-lib/**'
+      - 'shared-lib/**'
+      - 'shell/**'
+      - 'mfe-projects/**'
+      - 'mfe-reports/**'
+      - 'mfe-admin/**'
+      - 'mfe-governance/**'
+      - 'tools/run-all.mjs'
+      - '.github/workflows/frontend-ci.yml'
+  pull_request:
+    paths:
+      - 'ui-lib/**'
+      - 'shared-lib/**'
+      - 'shell/**'
+      - 'mfe-projects/**'
+      - 'mfe-reports/**'
+      - 'mfe-admin/**'
+      - 'mfe-governance/**'
+      - 'tools/run-all.mjs'
+      - '.github/workflows/frontend-ci.yml'
+  workflow_dispatch:
+
+jobs:
+  build-test-lint:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '24'
+          # Cada repo tiene su propio lockfile (multirepo DEC-003); se
+          # instala por repo para respetar los file: hacia dist de las libs.
+          # shared-lib y ui-lib van primero: sus builds emiten dist/, que los
+          # demas repos ya tienen instalado via file:.
+          cache-dependency-path: |
+            shared-lib/package-lock.json
+            ui-lib/package-lock.json
+
+      # Instala en el orden de dependencia: primero las libs (sus builds
+      # poblan dist/), luego shell y mfe-* (resuelven @projecthub/* via
+      # file:../<lib>/dist). run-all.mjs itera alfabeticamente, por lo que
+      # se pasa el orden explicito al instalador.
+      - name: Instalar y construir libs (shared-lib, ui-lib)
+        run: |
+          for repo in shared-lib ui-lib; do
+            echo "::group::install $repo"
+            (cd "$repo" && npm ci)
+            echo "::endgroup::"
+            echo "::group::build $repo"
+            (cd "$repo" && npm run build)
+            echo "::endgroup::"
+          done
+
+      - name: Instalar apps (shell y mfe-*)
+        run: |
+          set -e
+          for repo in mfe-admin mfe-governance mfe-projects mfe-reports shell; do
+            echo "::group::install $repo"
+            (cd "$repo" && npm ci)
+            echo "::endgroup::"
+          done
+
+      - name: Build apps (shell y mfe-*)
+        run: |
+          set -e
+          for repo in mfe-admin mfe-governance mfe-projects mfe-reports shell; do
+            echo "::group::build $repo"
+            (cd "$repo" && npm run build)
+            echo "::endgroup::"
+          done
+
+      - name: Tests unitarios (vitest, todos los repos)
+        run: |
+          set -e
+          for repo in mfe-admin mfe-governance mfe-projects mfe-reports shared-lib shell ui-lib; do
+            echo "::group::test $repo"
+            (cd "$repo" && npm run test)
+            echo "::endgroup::"
+          done
+
+      - name: Lint (eslint, todos los repos)
+        run: |
+          set -e
+          for repo in mfe-admin mfe-governance mfe-projects mfe-reports shared-lib shell ui-lib; do
+            echo "::group::lint $repo"
+            (cd "$repo" && npm run lint)
+            echo "::endgroup::"
+          done
