@@ -27,10 +27,10 @@ function readEnvValue(envPath, name) {
   return m[1].trim().replace(/^["']|["']$/g, '');
 }
 
-// Puertos: el flag explícito manda; si el instalador no pasó uno, se hereda el
+// Puertos: el flag explicito manda; si el instalador no paso uno, se hereda el
 // puerto ya fijado en el .env del destino (fuente de verdad de los servicios
 // corriendo). Cae al default solo en instalaciones limpias. Sin esto, una
-// reinstalación sin flags regenera mcp.json con los puertos por defecto y
+// reinstalacion sin flags regenera mcp.json con los puertos por defecto y
 // desconecta los MCP del editor aunque los servicios sigan en otros puertos.
 function resolvePort(flagName, envName, fallback) {
   const flag = option(flagName, null);
@@ -92,7 +92,7 @@ function setEnvKeyUserScope(name, value) {
     execSync('reg.exe add "HKCU\\Environment" /v ' + name + ' /t REG_SZ /d "' + value + '" /f', { stdio: 'ignore' });
     return 'escrita (User scope via reg.exe)';
   } catch {
-    console.error(`aviso: no se pudo propagar ${name} a Windows (WSL); expórtala en tu shell para que el editor la vea`);
+    console.error(`aviso: no se pudo propagar ${name} a Windows (WSL); exportala en tu shell para que el editor la vea`);
     return 'no propagada';
   }
 }

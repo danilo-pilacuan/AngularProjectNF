@@ -28,6 +28,28 @@
 - Commits: deploy (hardening, 9 archivos), root 827f120 (submodulos 47-48 +
   deploy), root docs (esta entrada, handoff, funcionalidades 14.1-14.7).
 
+## 2026-11-08 (iteracion 51: guard de ultimo Admin activo)
+
+- Hallazgo de la iteracion 50 cerrado: un Admin podia desactivarse a si mismo
+  (o retirarse el rol Admin) y desactivar a los demas Admins via PUT
+  /api/sincronizacion; el sistema quedaba sin ninguna via de reactivacion.
+- Guard en ServicioProyectos (nivel servicio, cubre ambas vias):
+  editar_usuario rechaza desactivar al ultimo Admin activo o retirarle el
+  rol; escribir_estado_completo y _validar_diff_usuarios rechazan un estado
+  entrante sin ningun Admin activo. Error 422 VALIDACION con mensaje
+  accionable ("promueve a otro Admin antes de retirar el ultimo").
+- tests/test_ultimo_admin.py: 9 casos (servicio y HTTP reproduciendo el
+  hallazgo, incluido el caso limite de reenviar una edicion a un usuario ya
+  inactivo). El caso positivo HTTP usa u-doble (semilla) promovido a Admin:
+  solo usuarios semilla administran usuarios (proteccion preexistente contra
+  X-Actor-Id suplantado).
+- Verificado: backend 142 pytest (133 + 9), ruff limpio; imagen api del demo
+  reconstruida; experimento E2E por HTTP contra 8100: 422 al dejar 0 Admins
+  activos, 200 desactivando un Analista con Diana activa, estado de demo
+  restaurado, me 200.
+- Commits: backend 568e3ea, root ba99db7 (submodulo), docs (esta entrada +
+  handoff + funcionalidades 14.8).
+
 # PROGRESS.md - ProjectHub
 
 Log de avance dia a dia. Fuente de verdad del avance; `.ops` lo organiza y enlaza.

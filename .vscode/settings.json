@@ -11,7 +11,8 @@
       "max_tokens": 16384,
       "temperature": 1,
       "top_p": 0.95,
-      "reasoning_effort": "low"
+      "reasoning_effort": "low",
+      "vision": true
     },
     {
       "id": "zai-org/GLM-5.3-Flash",
@@ -23,7 +24,8 @@
       "max_tokens": 65536,
       "temperature": 1,
       "top_p": 0.95,
-      "reasoning_effort": "high"
+      "reasoning_effort": "high",
+      "vision": true
     },
     {
       "id": "zai-org/GLM-5.3-Flash",
@@ -35,7 +37,8 @@
       "max_tokens": 65536,
       "temperature": 0.6,
       "top_p": 0.95,
-      "reasoning_effort": "high"
+      "reasoning_effort": "high",
+      "vision": true
     },
     {
       "id": "zai-org/GLM-5.3-Flash",
@@ -47,7 +50,8 @@
       "max_tokens": 131072,
       "temperature": 1,
       "top_p": 0.95,
-      "reasoning_effort": "max"
+      "reasoning_effort": "max",
+      "vision": true
     },
     {
       "id": "zai-org/GLM-5.3-Flash",
@@ -59,7 +63,8 @@
       "max_tokens": 32768,
       "temperature": 1,
       "top_p": 0.95,
-      "reasoning_effort": "high"
+      "reasoning_effort": "high",
+      "vision": true
     }
   ],
   "workbench.colorCustomizations": {
@@ -91,5 +96,6 @@
     "titleBar.inactiveBackground": "#f9e64f99",
     "titleBar.inactiveForeground": "#15202b99"
   },
-  "peacock.color": "#f9e64f"
+  "peacock.color": "#f9e64f",
+  "chat.mcp.gallery.enabled": true
 }

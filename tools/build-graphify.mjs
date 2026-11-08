@@ -203,19 +203,21 @@ async function smoke() {
     console.error(`memgraph MCP no responde en :${memgraphPort}/mcp/ (000 con reintentos): revisa docker compose logs mcp-memgraph`);
     process.exit(1);
   }
-  // Verificacion de conexion real: el MCP puede estar vivo pero apuntando a un
-  // Bolt equivocado (default de imagen host.docker.internal, otro memgraph del
-  // host). list_databases solo responde si hay Bolt detras.
-  const boltOk = await probeMcpTool(memgraphPort, 'list_databases');
+  // Verificacion de conexion real (Bolt end-to-end): el MCP puede estar vivo
+  // pero sin Bolt detras. `list_databases` NO sirve como prueba: es una tool
+  // enlatada que responde isError=false con [{"name":"memgraph","current":true}]
+  // incluso con memgraph Exited 137 (verificado en laboratorio). La unica prueba
+  // real es ejecutar una query trivial contra Bolt: error de conexion => sin Bolt.
+  const boltOk = await probeMcpTool(memgraphPort, 'run_cypher_query', { query: 'RETURN 1' });
   if (!boltOk) {
-    console.error(`memgraph MCP vivo en :${memgraphPort} pero sin Bolt alcanzable (revisa MEMGRAPH_URL en deploy/graphify/docker-compose.yml)`);
+    console.error(`memgraph MCP vivo en :${memgraphPort} pero sin Bolt alcanzable (revisa MEMGRAPH_URL en deploy/graphify/docker-compose.yml; levanta con "node tools/build-graphify.mjs up")`);
     process.exit(1);
   }
 }
 
 // Handshake MCP minimo (initialize -> initialized -> tools/call) contra el MCP
 // de memgraph; devuelve true si la tool respondio sin error de protocolo.
-async function probeMcpTool(memgraphPort, toolName) {
+async function probeMcpTool(memgraphPort, toolName, toolArgs = {}) {
   const post = async (body, sid) => {
     const headers = { 'Content-Type': 'application/json', Accept: 'application/json, text/event-stream' };
     if (sid) headers['mcp-session-id'] = sid;
@@ -228,7 +230,7 @@ async function probeMcpTool(memgraphPort, toolName) {
     const init = await post({ jsonrpc: '2.0', id: 1, method: 'initialize', params: { protocolVersion: '2025-03-26', capabilities: {}, clientInfo: { name: 'smoke', version: '0' } } });
     if (!init.sid) return false;
     await post({ jsonrpc: '2.0', method: 'notifications/initialized' }, init.sid);
-    const call = await post({ jsonrpc: '2.0', id: 2, method: 'tools/call', params: { name: toolName, arguments: {} } }, init.sid);
+    const call = await post({ jsonrpc: '2.0', id: 2, method: 'tools/call', params: { name: toolName, arguments: toolArgs } }, init.sid);
     return !call.text.includes('"isError":true') && !call.text.includes('"error"');
   } catch {
     return false;
