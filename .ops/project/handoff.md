@@ -7,7 +7,7 @@ description: Documento de soporte para pasar contexto completo a una sesion nuev
 estado: vigente
 dueno: rol:agente
 fecha: 2026-11-05T19:55:00Z
-updated: 2026-11-05T19:55:00Z
+updated: 2026-11-08T23:59:00Z
 relaciona: [ops-readme, project-readme]
 status: stable
 ---
@@ -37,31 +37,17 @@ las secciones 2-8; la estructura y las reglas son reutilizables tal cual.
 
 ---
 
-## Estado actual (2026-11-08, fase 14.5 + demo completa + fix widget)
+## Estado actual (2026-11-08, iteracion 53: VULN-001 bitacora cerrada)
 
 > Fecha: 2026-11-08. Rama: n/a en la raiz (orquestador); cada repo del multirepo tiene la suya
 > (RC4/dev). Estado: fases 0-8 + 13 + 14 + 14.5 + rutas planas + migracion Angular Material
-> (12.5) implementadas. API y db Postgres dockerizadas en el compose demo (deploy 1deb0b8):
-> 8100 con login JWT y persistencia real, demo reconstruida con Material y E2E 12/12 con 0
-> recursos 404 en 4400-4404. Widget remote-a-remote RESUELTO (2026-11-08, shared-lib 7e840ec
-> + shell 58661b5 + mfe-reports 8b5481a): token REMOTE_MODULE_LOADER en @projecthub/shared;
-> E2E dev 4300 8/8 OK. Lint formal (deuda 11.4) HECHO (2026-11-08): eslint 9 + angular-eslint
-> 22 en los 7 repos frontend con commits 8ef80c9, ec15cff, 0e81473, 8e0df10, daf2e3f,
-> b1a671b, 15b77bf; prefijos ph (API publica) / app (resto). Lint backend HECHO (2026-11-08):
-> ruff 0.17.4 (pyproject.toml, E/F/I/B/UP) en el backend, check exit 0, pytest 109/109,
-> commit 5ba04b5. Pagina de documentos/entregables en mfe-governance HECHA (2026-11-08,
-> commits shared-lib fe863d0 + mfe-governance b7c5acc): primer contenido real del remote,
-> gate con resumen aprobados/pendientes/faltantes. Barrido integral de calidad (iteracion 31,
-> 2026-11-08): npx ng test en 7/7 repos = 290 tests OK (ojo: `npx vitest run` directo NO
-> sirve, los specs exigen el bootstrap de TestBed del builder de Angular), build raiz EXIT 0
-> en los 7 proyectos, lint raiz EXIT 0, backend 109/109 pytest, remoteEntry 200 en 4301-4304
-> y /api/salud 200 en 8100; navegador integrado confirma sesion real en 4300/login.
-> Banner de estado de API (iteracion 32, 2026-11-08): ApiEnlaceService publica EstadoApi
-> ('verificando'|'disponible'|'indisponible') y sondea /api/salud (15 s/5 s, idempotente);
-> el shell muestra aviso persistente de modo demo cuando el backend no responde y lo retira
-> al recuperarse (shared-lib 426f196 + shell c0d3c92 + mfe-reports 5f8b6d2: ademas estado
-> vacio explicito en tablero-general). Verificado en navegador con API caida y restaurada;
-> demo dockerizada pendiente de rebuild para incluir el banner (iteracion 33).
+> (12.5) implementadas. Seguridad: VULN-001/002/003/004 mitigadas (ver .ops/security/vulns.md);
+> iteracion 53 cerro la parte pendiente de VULN-001: PUT /api/sincronizacion ya no reemplaza la
+> bitacora, la fusiona por id (append-only con conservacion: omision = no-op, modificacion 422,
+> append ajeno 422); cliente filtra bitacora ajena no confirmada. pytest 136/136, vitest
+> shared-lib 177/177, ruff limpio. Commits: backend 1f8b297, shared-lib b7c489f, root b6f7a3f.
+> API y db Postgres dockerizadas en el compose demo (deploy 1deb0b8): 8100 con login JWT y
+> persistencia real, demo reconstruida con Material y E2E 12/12 con 0 recursos 404 en 4400-4404.
 > Pendiente: revision humana de estados
 > `verificado` y gate de lint en el DoD.
 
@@ -102,6 +88,21 @@ las secciones 2-8; la estructura y las reglas son reutilizables tal cual.
      salida de evidencia; builds largos con log; evidencia etiquetada por stack).
 
 7. **Trabajo en curso y pendiente:**
+   - Iteracion 53 (VULN-001 bitacora) -> HECHA (2026-11-08): backend
+     `_fusionar_bitacora` (merge conservador: omision = no-op, modificacion
+     422, append ajeno 422; `bitacora_reemplazar()` administrativo) y
+     cliente con filtro de bitacora ajena no confirmada (`confirmadas`).
+     pytest 136/136, vitest 177/177, ruff limpio. Commits backend 1f8b297,
+     shared-lib b7c489f, root b6f7a3f. La demo docker aun no incluye este
+     fix (rebuild en iteracion 55).
+   - Iteracion 54 (siguiente): smoke de produccion del stack docker demo
+     con la API 8100: salud, login diana, remoteEntry 200 en 4400-4404,
+     navegacion, F5 profundo, consola limpia, e2e-repush-api.mjs y
+     e2e-banner-api.mjs verdes.
+   - Iteracion 55: rebuild de imagenes demo con la iteracion 53, runbook
+     de deploy (ALLOWED_ORIGINS, AUTH_SECRET, RATE_LIMIT_*, nota Redis
+     multi-instancia) y barrido integral de regresion (ng test 7 repos,
+     build, lint, pytest).
    - Iteracion 50 (hardening del deploy demo) -> HECHA (2026-11-08):
      nginx no root (nginx.conf propio: listen 8080, pid/temp en /tmp, logs a
      std streams; master y workers uid 101), api como appuser (10001),

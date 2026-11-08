@@ -54,6 +54,42 @@
 
 Log de avance dia a dia. Fuente de verdad del avance; `.ops` lo organiza y enlaza.
 
+## 2026-11-08 (iteracion 53: bitacora append-only en el re-sync, VULN-001)
+
+- Hallazgo cerrado: PUT /api/sincronizacion reemplazaba la coleccion de
+  bitacora al completo; cualquier actor autenticado podia borrar el
+  historial (parte pendiente de VULN-001, invariante 3.5) y un cliente
+  stale entraba en 422 al conservar entradas ya registradas en servidor.
+- Servidor (`backend/app/servicio.py`): `escribir_estado_completo` llama a
+  `_fusionar_bitacora(bitacora, actor_id)`. Fusion por id, el servidor es
+  la fuente autoritativa y su bitacora nunca pierde entradas: entrada
+  vigente omitida del push se conserva (omision = no-op: un push stale no
+  borra ni entra en 422); entrada vigente con otro contenido -> 422
+  VALIDACION (el historial es invariable); entrada nueva con autorId !=
+  actor del re-sync -> 422 (la bitacora solo crece por acciones propias;
+  VULN-001). Nueva via administrativa `bitacora_reemplazar()` para seeds y
+  tests, fuera del canal de re-sync.
+- Cliente (`shared-lib`, sincronizador-escrituras.ts): set `confirmadas`
+  con ids vistos en el eco del servidor; `reBaselinearConfirmadas()` en la
+  primera lectura de `observar()`; `empujar()` filtra la bitacora a propia
+  del actor o ya confirmada; `aplicarRespuesta()` reconstruye el set con
+  la bitacora autoritativa. Un push stale que omita una entrada registrada
+  por otro se recupera solo: el servidor la conserva y el siguiente push
+  ya la lleva confirmada.
+- Decisión de diseño: la omision de una entrada vigente se interpreta como
+  cliente desactualizado y se conserva la copia del servidor (merge
+  conservador), no como borrado a rechazar: rechazar obligaria a que todo
+  cliente empuje siempre la bitacora completa y fresca (422 en bucle de
+  recuperacion). El 422 queda reservado para lo irreversible: modificar
+  el historial o atribuir acciones ajenas.
+- Verificado: pytest 136/136 (backend .venv), ruff limpio, vitest
+  shared-lib 177/177 (nuevo spec de filtrado VULN-001 en
+  sincronizador-escrituras.spec.ts). Log: .dev-logs/pytest-vuln001-bitacora.log
+  y ngtest-sharedlib-iter53.log. Nota de entorno: `npx ng test
+  --browsers=...` no aplica a esta config de vitest (usa `npx ng test
+  --watch=false`).
+- Commits: backend 1f8b297, shared-lib b7c489f, root b6f7a3f (punteros).
+
 ## 2026-11-08 (iteracion 48: cuenta desactivada en pleno uso, 403 USUARIO_INACTIVO)
 
 - Contrato backend: obtener_actor responde 403 con detail.codigo=
