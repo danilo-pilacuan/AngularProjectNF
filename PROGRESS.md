@@ -2,6 +2,33 @@
 
 Log de avance dia a dia. Fuente de verdad del avance; `.ops` lo organiza y enlaza.
 
+## 2026-11-08 (iteracion 39: mitigacion VULN-002 - sesion exigida en lecturas de dominio)
+
+- Justificacion: VULN-002 (Media) dejaba 12 GET de dominio sin autenticacion;
+  a estandares de produccion el estado completo del sistema (usuarios con
+  roles, bitacora, presupuesto) no puede ser de dominio publico.
+- Implementado (backend): `obtener_actor` como dependencia en los 12 GET
+  (`/api/usuarios`, `/api/proyectos` + resumenes/detalle/gate/etapas/
+  entregables/bitacora, colecciones planas y `/api/sincronizacion`). Solo
+  `/api/salud` y `/api/auth/login` quedan publicos. El actor sigue aceptando
+  X-Actor-Id (contrato demo) y Bearer (sesion real, camino principal).
+- Implementado (frontend shared-lib): `ApiEnlaceService` distingue caida real
+  de rechazo: red/timeout/5xx marcan indisponible; un 4xx (p. ej. 422
+  VALIDACION por sesion ausente en modo demo) mantiene el banner en
+  disponible y el fallback a semilla intacto. Sin esto, el modo demo habria
+  mostrado "sin conexion" con la API viva.
+- Tests: `test_vuln002_mitigado_lecturas_de_dominio_exigen_sesion` sustituye
+  la caracterizacion (422 anonimo + 200 con sesion por ruta); cliente de
+  tests con X-Actor-Id por defecto + cliente `anon` para peticiones sin
+  sesion; en shared-lib 2 tests nuevos (4xx no marca caida; 5xx si; sync con
+  422 conserva semillas).
+- Verificacion: backend pytest 112/112, ruff limpio; shared-lib vitest
+  171/171 y build de dist OK; rebuild de la API demo (`docker compose up -d
+  --build api`) + sondas HTTP: anonimo 422 VALIDACION, con sesion 200,
+  salud 200; login Bearer de Diana OK; estado demo intacto
+  (7/6/5/10/5). Contenedor demo actualizado con la mitigacion.
+- Commits: backend, shared-lib y raiz (docs/.ops).
+
 ## 2026-11-08 (iteracion 38: auditoria de seguridad de la API y registro VULN)
 
 - Justificacion: el proyecto se trabaja con estandares de produccion (AGENTS.md);
