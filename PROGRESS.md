@@ -2,6 +2,27 @@
 
 Log de avance dia a dia. Fuente de verdad del avance; `.ops` lo organiza y enlaza.
 
+## 2026-11-08 (iteracion 27: regresion E2E federado general)
+
+- Justificacion: la iteracion 22 y el lint de iteraciones previas tocaron el
+  shell y los remotes; rerun de files/e2e-federado.mjs para validar el corazon
+  de la federacion tras esos cambios.
+- Hallazgo y fix del script: e2e-federado.mjs era de la era demo (pre fase 14)
+  y esperaba el selector demo "Usuario activo" en el header. El producto evoluciono
+  correctamente: con sesion real la identidad la determina el backend y el
+  shell muestra actor autenticado + roles + "Cambiar contrasena" + "Cerrar
+  sesion" (shell/src/app/user-switcher/user-switcher.ts). Se actualizo el
+  script (practica ya usada en la iteracion 16 con e2e-widgets): login real
+  contra la API, header verificado en modo real (Diana Admin, Cerrar sesion,
+  y el selector demo ausente por diseno) y ruta profunda de F5 actualizada a
+  /governance/bitacora (existente hoy).
+- Resultado final: 10/10 comprobaciones OK. Shell carga con titulo ProjectHub,
+  header en modo sesion real, las 4 rutas (/projects, /reports, /admin,
+  /governance) renderizan sin fallback, F5 en ruta profunda del remote
+  funciona, consola limpia y 0 recursos 404.
+- Sin cambios de codigo de producto; solo se adapto el script E2E (archivo de
+  sesion, no commiteado).
+
 ## 2026-11-08 (iteracion 26: regresion E2E del store unico)
 
 - Justificacion: la iteracion 22 cambio el portafolio y el detalle (paginas

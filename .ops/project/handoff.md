@@ -91,6 +91,12 @@ las secciones 2-8; la estructura y las reglas son reutilizables tal cual.
      salida de evidencia; builds largos con log; evidencia etiquetada por stack).
 
 7. **Trabajo en curso y pendiente:**
+   - Iteracion 27 (regresion E2E federado general) -> HECHA (2026-11-08):
+     files/e2e-federado.mjs era de la era demo y se adapto a la era de sesion
+     real (login por API, header con actor + Cerrar sesion, selector demo
+     ausente por diseno, F5 en /governance/bitacora). 10/10 OK, consola
+     limpia, 0 recursos 404. Sin cambios de codigo de producto (solo script
+     de sesion).
    - Iteracion 26 (regresion E2E del store unico) -> HECHA (2026-11-08):
      rerun de files/e2e-store-unico.mjs, 7/7 OK (sesion compartida en admin,
      lecturas en projects/reports/governance, escritura en projects visible en
@@ -183,3 +189,4 @@ las secciones 2-8; la estructura y las reglas son reutilizables tal cual.
 | 24 | 2026-11-08 | Regresion E2E de transiciones de etapa (files/e2e-transiciones.mjs) tras iteracion 22: gate cerrado rechaza avance, acta cargada + autoaprobacion rechazada + aprobacion Sponsor, transicion a Iniciativa, gate destino recalculado, sin retroceso, F5 persiste, consola limpia | hecho: 19/19 OK, 0 recursos >= 400; sin cambios de codigo; commit raiz docs | Agente |
 | 25 | 2026-11-08 | Regresion E2E de bitacora federada (files/e2e-bitacora.mjs): nav de governance, semilla con autores por nombre, filtro tipo Cambio, export CSV con fecha, ruta profunda sin sesion -> /login?de=..., consola limpia | hecho: 11/11 OK, 0 recursos >= 400; sin cambios de codigo; commit raiz docs | Agente |
 | 26 | 2026-11-08 | Regresion E2E del store unico (files/e2e-store-unico.mjs): sesion compartida, lecturas cross-MFE, escritura en mfe-projects visible en /reports/presupuesto sin recargar, consola limpia | hecho: 7/7 OK, 0 recursos >= 400; sin cambios de codigo; commit raiz docs | Agente |
+| 27 | 2026-11-08 | Regresion E2E federado general (files/e2e-federado.mjs adaptado a la era de sesion real): header con actor autenticado, 4 rutas sin fallback, F5 profundo /governance/bitacora, consola limpia | hecho: 10/10 OK, 0 recursos 404; script de sesion actualizado (era demo -> login real), sin cambios de producto; commit raiz docs | Agente |
