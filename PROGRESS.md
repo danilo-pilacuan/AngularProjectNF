@@ -342,3 +342,38 @@ Log de avance dia a dia. Fuente de verdad del avance; `.ops` lo organiza y enlaz
   con STATUS/METHOD/URL.
 - Commits: backend 96fa534 (feat), shared-lib 3f48335 (fix). Sin push
   (politica del propietario).
+
+## 2026-11-08 (API y db Postgres dentro del compose demo)
+
+- Objetivo (deuda del handoff, seccion 7): los frontends de la demo llaman a
+  `http://localhost:8100` por defecto (API_BASE_URL) y ese puerto no tenia
+  servicio en el compose. Se agrego la API y su db al stack demo.
+- deploy (1deb0b8): `api.Dockerfile` nuevo (python:3.14-slim, pip install de
+  requirements.txt, CMD uvicorn app.main:app --port 8100) y servicio `api`
+  + servicio `db` (postgres:17-alpine con healthcheck pg_isready) en
+  `docker-compose.yml`, con volumen `projecthub_pgdata_demo` y dependencia
+  `condition: service_healthy`. DATABASE_URL y AUTH_SECRET sobreescribibles
+  por entorno (`${VAR:-default}`). Puerto host de la db demo: 5434 (el 5433
+  lo ocupa la db de desarrollo del compose del backend).
+- Ajuste: el AUTH_SECRET inicial de 30 bytes disparaba
+  InsecureKeyLengthWarning (RFC 7518 exige >= 32 para HMAC-SHA256); default
+  alargado a 38 bytes en Dockerfile y compose; warning desaparecido de los
+  logs.
+- Choque de puertos en 8100 detectado y resuelto: el uvicorn de desarrollo
+  del host (PID 13092, IPv6) convivia con el proxy de Docker (IPv4). Detenido
+  el proceso dev; 8100 queda con dueno unico (API dockerizada).
+- Verificacion de la API dockerizada (todo contra localhost:8100):
+  GET /api/salud -> {"estado":"ok"}; POST /api/auth/login (diana@
+  projecthub.local / projecthub-demo) -> token JWT + usuario Diana Admin;
+  GET /api/sincronizacion con Bearer -> usuarios=7 proyectos=6 etapas=5
+  entregables=10 bitacora=5; docker exec psql contra projecthub-db-demo ->
+  tabla usuarios con 7 filas (persistencia Postgres real, no memoria).
+- Rebuild de los 5 frontends demo: las imagenes previas (11-07 05:03) no
+  incluian la migracion Material (a057140, 11-07 16:38). `docker compose
+  build` + `up -d` de shell y 4 remotes; arboles git limpios antes de
+  construir.
+- Smoke demo completo: remoteEntry.json 200 en 4400-4404,
+  federation.manifest.json con URLs 440x, E2E federado Playwright (variante
+  SHELL=4400): **12/12 OK, 0 recursos 404** (user-switcher mat-select,
+  cambio de usuario, 4 rutas sin fallback, F5 profundo, consola limpia).
+- Commits: deploy 1deb0b8 (feat). Backend y shared-lib sin cambios. Sin push.

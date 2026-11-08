@@ -37,15 +37,14 @@ las secciones 2-8; la estructura y las reglas son reutilizables tal cual.
 
 ---
 
-## Estado actual (2026-11-07, fase 14.5)
+## Estado actual (2026-11-08, fase 14.5 + demo completa)
 
-> Fecha: 2026-11-07. Rama: n/a en la raiz (orquestador); cada repo del multirepo tiene la suya
-> (RC4/dev). Estado: fases 0-8 + 13 + 14 + 14.5 (credenciales persistidas en tabla propia,
-> cambio de contrasena, /perfil) implementadas. Backend test_auth 23/23, shared-lib 152/152;
-> E2E navegador verificado en dev (8100) y Docker (4400). Pendiente: revision humana para
-> estados `verificado` y servicio de API en el compose de Docker. Migracion
-> Angular Material 12.5 completada y verificada E2E (12/12 demo). Nueva deuda:
-> rutas planas /api/etapas, /api/entregables, /api/bitacora (404 en runtime).
+> Fecha: 2026-11-08. Rama: n/a en la raiz (orquestador); cada repo del multirepo tiene la suya
+> (RC4/dev). Estado: fases 0-8 + 13 + 14 + 14.5 + rutas planas + migracion Angular Material
+> (12.5) implementadas. API y db Postgres dockerizadas en el compose demo (deploy 1deb0b8):
+> 8100 con login JWT y persistencia real, demo reconstruida con Material y E2E 12/12 con 0
+> recursos 404 en 4400-4404. Pendiente: revision humana de estados `verificado`, lint formal
+> (deuda 11.4) y validacion runtime del widget remote-a-remote.
 
 2. **Estado del producto:** ProjectHub, sistema documental para gobernar proyectos de software
    (ciclo de vida de 9 etapas, gates, matriz de responsabilidades, Gantt propio). Fases 0-7
@@ -70,6 +69,11 @@ las secciones 2-8; la estructura y las reglas son reutilizables tal cual.
      Tee-Object -FilePath .dev-logs/docker-build.log` y luego `up -d`. Verificar
      antiguedad de imagenes (`docker images`), remoteEntry 200 en 4400-4404, manifest con
      URLs 440x, navegacion a las 4 rutas, F5 en /governance y consola sin errores.
+   - API demo: el compose incluye `api` (8100) y `db` (postgres, host 5434);
+     `docker compose -f deploy/projecthub/docker-compose.yml up -d api` levanta ambos.
+     Verificar `curl http://localhost:8100/api/salud`, login (diana@projecthub.local /
+     projecthub-demo) y GET /api/sincronizacion con Bearer. DATABASE_URL y AUTH_SECRET
+     aceptan override por entorno (ver docker-compose.yml).
    - Tests: `npm test` por repo (vitest). Totales de referencia: shared-lib 98, ui-lib 18,
      mfe-projects 26, mfe-admin 13, mfe-reports 5, mfe-governance 3, shell 6 = 169.
    - Tras cambiar `shared-lib` o `ui-lib`: `npx ng build` en la lib antes de servir las apps
@@ -78,17 +82,18 @@ las secciones 2-8; la estructura y las reglas son reutilizables tal cual.
      salida de evidencia; builds largos con log; evidencia etiquetada por stack).
 
 7. **Trabajo en curso y pendiente:**
-   - Servicio de API dentro del compose de Docker (4400-4404): hoy los
-     frontends construidos llaman a `http://localhost:8100` por defecto
-     (`API_BASE_URL`, shared-lib/api-enlace.ts); el nginx del shell no
-     proxifica `/api` (POST responde 405 via SPA fallback). Hace falta un
-     servicio `api` en `deploy/projecthub/docker-compose.yml` + override de
-     `API_BASE_URL` por build/runtime. Necesita codigo.
-   - Revision humana de estados `implementado` -> `verificado` (fases 0-14.5).
-     No necesita codigo; la evidencia esta en PROGRESS.md.
-   - Docker (4400-4404) sin reconstruir desde fase 14: las imagenes no incluyen
-     la fase de autenticacion ni la pantalla de login. Necesita rebuild si se
-     quiere verificar el stack Docker.
+   - Lint formal (deuda 11.4): definir/configurar eslint en los 9 repos y
+     pasar de `tsc --noEmit` a un gate de lint en la verificacion. Necesita
+     codigo/config.
+   - Validacion runtime del widget remote-a-remote (mfe-reports consume
+     ProjectSummaryWidget de mfe-projects): hoy el E2E cubre navegacion y
+     user-switcher; falta evidencia de la composicion del widget federado.
+     Necesita codigo (E2E) o revision humana.
+   - Revision humana de estados `implementado` -> `verificado` (fases 0-14.5
+     y demo Docker). No necesita codigo; la evidencia esta en PROGRESS.md.
+   - Cerrado (2026-11-08): servicio de API + db en el compose demo
+     (deploy 1deb0b8); imagenes de frontends demo reconstruidas con Material
+     y login; E2E demo 12/12 con 0 recursos 404.
 
 8. **Historial de sesiones:**
 
@@ -106,3 +111,4 @@ las secciones 2-8; la estructura y las reglas son reutilizables tal cual.
 | 2026-11-07 (migracion Material por componentes) | Cierre 12.5 por repo: ui-lib 9b8c11b, mfe-projects 7c915f6, mfe-admin d3d90ba, mfe-reports d9fe54c, mfe-governance 800a575, shell a057140 (mat-select/mat-button/ph-form-field + dedupe Material en vitest) | hecho: shell 20/20 tests, build 150.99 kB, arbol limpio en 9 repos; PROGRESS.md actualizado |
 | 2026-11-07 (verificacion federada post-Material) | E2E Playwright tras a057140: fix de dev server obsoleto (chunk con UserSwitcher antiguo), relanzamiento ng serve 4300, 12/12 comprobaciones demo OK (mat-select, overlay, cambio de usuario, 4 rutas sin fallback, F5 profundo, consola limpia); detectadas rutas planas 404 del backend | hecho: evidencia en PROGRESS.md y session files; deuda de rutas registrada en pendientes |
 | 2026-11-08 (rutas planas + fix push demo) | Backend: GET /api/etapas, /api/entregables, /api/bitacora planos + tests (109/109). shared-lib: actorId() null sin sesion y empujar() no envia en modo demo (153/153); rebuild dist + reinicio de servers con cache limpia. E2E: 12/12 con 0 recursos 404 | hecho: commits backend 96fa534, shared-lib 3f48335; deuda de rutas planas cerrada en esta seccion |
+| 2026-11-08 (API + db en compose demo) | deploy: api.Dockerfile (python 3.14, uvicorn 8100) + servicios api/db en docker-compose.yml (Postgres 17 demo en 5434, AUTH_SECRET >= 32 bytes). Verificado: salud, login JWT, sincronizacion (7/6/5/10/5), persistencia psql. Rebuild de los 5 frontends demo (ahora con Material + login) y E2E demo 12/12 con 0 404 | hecho: commit deploy 1deb0b8; backend/shared-lib sin cambios; uvicorn dev detenido, 8100 es de la API dockerizada |
