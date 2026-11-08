@@ -89,15 +89,6 @@ las secciones 2-8; la estructura y las reglas son reutilizables tal cual.
    - Docker (4400-4404) sin reconstruir desde fase 14: las imagenes no incluyen
      la fase de autenticacion ni la pantalla de login. Necesita rebuild si se
      quiere verificar el stack Docker.
-   - Correccion de AGENTS.md seccion 1 (Estructura): pendiente de instruccion explicita del
-     propietario (el rulebook no se modifica sin que lo pida). No necesita codigo.
-   - Rutas planas faltantes en el backend (detectado en E2E 2026-11-07, 24 peticiones
-     404 en runtime): shared-lib Sincronizacion consume `GET /api/etapas`,
-     `GET /api/entregables` y `GET /api/bitacora`, pero el backend solo expone
-     las versiones por proyecto (`/api/proyectos/{id}/etapas`, etc.). Los
-     remotes degradan con elegancia (sin excepciones). Necesita codigo: o el
-     backend agrega listas planas, o el servicio sincroniza agregando por
-     proyecto.
 
 8. **Historial de sesiones:**
 
@@ -114,3 +105,4 @@ las secciones 2-8; la estructura y las reglas son reutilizables tal cual.
 | 2026-11-06 (fase 14, autenticacion real) | Backend auth (login JWT HS256, /me, PBKDF2, credenciales demo, Bearer prioridad sobre X-Actor-Id), AutenticacionService/TokenAlmacen en shared-lib, Bearer automatico en ApiEnlaceService, pantalla /login + guard + cierre de sesion en shell, fix de tests hermeticos (conftest DATABASE_URL), E2E navegador completa (login, F5, escritura persistida con token, logout) | hecho: backend 101/101, shared-lib 148/148, shell 20/20, remotes y ui-lib verdes, builds 5/5; docs/funcionalidades.md 14.1-14.4 y plan.md actualizados |
 | 2026-11-07 (migracion Material por componentes) | Cierre 12.5 por repo: ui-lib 9b8c11b, mfe-projects 7c915f6, mfe-admin d3d90ba, mfe-reports d9fe54c, mfe-governance 800a575, shell a057140 (mat-select/mat-button/ph-form-field + dedupe Material en vitest) | hecho: shell 20/20 tests, build 150.99 kB, arbol limpio en 9 repos; PROGRESS.md actualizado |
 | 2026-11-07 (verificacion federada post-Material) | E2E Playwright tras a057140: fix de dev server obsoleto (chunk con UserSwitcher antiguo), relanzamiento ng serve 4300, 12/12 comprobaciones demo OK (mat-select, overlay, cambio de usuario, 4 rutas sin fallback, F5 profundo, consola limpia); detectadas rutas planas 404 del backend | hecho: evidencia en PROGRESS.md y session files; deuda de rutas registrada en pendientes |
+| 2026-11-08 (rutas planas + fix push demo) | Backend: GET /api/etapas, /api/entregables, /api/bitacora planos + tests (109/109). shared-lib: actorId() null sin sesion y empujar() no envia en modo demo (153/153); rebuild dist + reinicio de servers con cache limpia. E2E: 12/12 con 0 recursos 404 | hecho: commits backend 96fa534, shared-lib 3f48335; deuda de rutas planas cerrada en esta seccion |

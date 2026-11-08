@@ -315,3 +315,30 @@ Log de avance dia a dia. Fuente de verdad del avance; `.ops` lo organiza y enlaz
   Sincronizacion consume /api/etapas, /api/entregables y /api/bitacora planas
   que el backend no expone (los remotes degradan con elegancia). Informe en
   session files (e2e-informe-2026-11-07.md).
+
+## 2026-11-08 (rutas planas del backend + fix de push en modo demo)
+
+- Backend (96fa534): 3 GET planos `GET /api/etapas`, `GET /api/entregables` y
+  `GET /api/bitacora` (sin filtro de proyecto) en rutas.py + metodos de
+  coleccion etapas()/entregables()/bitacora() en servicio.py. Tests: 4 nuevos
+  en test_api.py (colecciones planas + consistencia contra /api/sincronizacion);
+  suite backend 109/109.
+- shared-lib (3f48335): fix de 404 en `PUT /api/sincronizacion` desde el
+  navegador. Causa raiz: en modo demo sin usuario activo, actorId() devolvia
+  'sistema' como fallback y el backend rechazaba con 404
+  (ENTIDAD_NO_ENCONTRADA: el usuario 'sistema' no existe; reproducido con
+  curl: X-Actor-Id: sistema -> 404 {"codigo":"ENTIDAD_NO_ENCONTRADA"}).
+  Fix: actorId() devuelve null sin sesion y empujar() no envia nada (los
+  cambios de demo son efimeros). Test nuevo: no empuja sin sesion activa;
+  suite shared-lib 153/153.
+- Distribucion del fix: `npx ng build` de shared-lib + reinicio de los 5 dev
+  servers con `.angular/cache` limpia (el prebundle de Vite servia el dist
+  viejo; tocar app.config.ts no basto). Leccion: tras cambiar una lib
+  consumida por `file:../dist`, rebuild + reinicio de servers con cache
+  limpia.
+- E2E federado (Playwright, dev 4300-4304 + backend 8100): 12/12 OK con
+  **0 recursos 404** (antes: 6 x PUT 404 + 24 rutas planas 404). Endurecido
+  e2e-federado.mjs: los 404 ahora fallan el run; listener de responses >=400
+  con STATUS/METHOD/URL.
+- Commits: backend 96fa534 (feat), shared-lib 3f48335 (fix). Sin push
+  (politica del propietario).
