@@ -102,6 +102,17 @@ las secciones 2-8; la estructura y las reglas son reutilizables tal cual.
      salida de evidencia; builds largos con log; evidencia etiquetada por stack).
 
 7. **Trabajo en curso y pendiente:**
+   - Iteracion 50 (hardening del deploy demo) -> HECHA (2026-11-08):
+     nginx no root (nginx.conf propio: listen 8080, pid/temp en /tmp, logs a
+     std streams; master y workers uid 101), api como appuser (10001),
+     read_only + tmpfs + no-new-privileges en compose (440x -> 8080),
+     cabeceras de seguridad y cache no-cache en remoteEntry.json/index.html.
+     Demo reconstruida y verificada e2e: 200 en 440x + api/salud, uids y
+     secopts por inspect, headers y cache por curl, login en navegador y F5
+     en /governance. La demo quedo con la shared-lib de 47-48. Commits
+     deploy + root 827f120. Hallazgo nuevo (iteracion 51): un Admin puede
+     desactivar a todos los Admin y bloquear el sistema (sin guard de
+     ultimo Admin); reproducido en la demo y restaurado por DB.
    - Iteracion 48 (cuenta desactivada) -> HECHA (2026-11-08): backend 403
      USUARIO_INACTIVO cuando el token es valido pero el usuario fue
      desactivado por un Admin (obtener_actor); ApiEnlaceService detecta
@@ -291,5 +302,6 @@ las secciones 2-8; la estructura y las reglas son reutilizables tal cual.
 | 44 | 2026-11-08 | CI del backend: .github/workflows/backend-ci.yml (pytest + ruff, Python 3.14, cache pip, memoria) con triggers push/PR en backend/ | hecho: commit raiz f332a25 | Agente |
 | 45 | 2026-11-08 | Manejo del 429 en la UI: AutenticacionService.mapearError mapea 429 -> LIMITE_INTENTOS con el mensaje del backend; test nuevo en autenticacion.spec.ts; demo reconstruida y E2E: 401x5 -> 429 con mensaje correcto | hecho: shared-lib 172/172 + build dist; estado demo intacto | Agente |
 | 48 | 2026-11-08 | Cuenta desactivada en pleno uso: backend 403 USUARIO_INACTIVO en obtener_actor (token valido, usuario desactivado por Admin); ApiEnlaceService.onCuentaDesactivada (sin limpiar token), AutenticacionService.desactivaciones(); shell redirige a /login?desactivada=1 con aviso propio | hecho: backend 133/133 + ruff 0, shared-lib 176/176 + build, shell 30/30 + build + lint; commits backend f8874e6, shared-lib b95f5d4, shell fdd6e3f | Agente |
+| 50 | 2026-11-08 | Hardening del deploy demo: nginx no root (nginx.conf propio, listen 8080, pid/temp en /tmp, logs a std streams), api como appuser 10001, read_only + tmpfs + no-new-privileges, cabeceras de seguridad, cache no-cache en remoteEntry.json/index.html; demo reconstruida y verificada e2e (login navegador, F5, headers, uids) | hecho: demo arriba 200 en 440x + api/salud, docker inspect ro/no-new-privileges, curl headers; commits deploy + root 827f120 | Agente |
 | 46 | 2026-11-08 | Barrido integral de regresion tras el ciclo de seguridad: ng test en los 6 repos frontend (todos los archivos en verde), npm run build exit 0 en los 6, lint raiz exit 0; backend 131/131 | hecho: sin cambios de codigo; iteracion de verificacion | Agente |
 | 47 | 2026-11-08 | Sesion expirada con token vigente: backend 401 SESION_INVALIDA (obtener_actor, token invalido o usuario eliminado); ApiEnlaceService limpia token + onSesionExpirada; AutenticacionService.expiraciones(); shell redirige a /login?expirada=1 con aviso | hecho: backend 132/132 + ruff 0, shared-lib 174/174 + build, shell 28/28 + build, lint raiz 0; commits backend 5e46a39, shared-lib 5932430, shell d2e608e, raiz 5febf62; demo Docker pendiente de rebuild | Agente |

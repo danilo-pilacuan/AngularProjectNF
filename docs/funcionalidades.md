@@ -148,7 +148,7 @@ Estado: `☐` pendiente · `◐` en progreso · `☑` hecho
 8. **shell** (8.6, 1.6): dashboard, navegación, selector de usuario.
 9. **Integración y cierre** (11.1–11.5): tests, build, verificación de federación.
 10. **Backend y persistencia** (13.1–13.4, 10.3): FastAPI, PostgreSQL en Docker, HttpClient en stores.
-11. **Autenticacion real** (14.1–14.5): login JWT en backend, pantalla de login en el shell, Bearer en el enlace HTTP.
+11. **Autenticacion real** (14.1–14.7): login JWT en backend, pantalla de login en el shell, Bearer en el enlace HTTP.
 
 ## Fuera de alcance por ahora
 

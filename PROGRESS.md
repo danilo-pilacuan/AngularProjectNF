@@ -1,3 +1,33 @@
+## 2026-11-08 (iteracion 50: hardening del deploy demo)
+
+- nginx sin privilegios: nginx.conf propio (listen 8080, pid y temp paths en
+  /tmp, logs a stdout/stderr, sin directiva user); master y workers corren como
+  uid 101. Empiricamente: un tmpfs en /var/cache/nginx queda root:root y nginx
+  no puede crear subdirectorios ahi, por eso todo lo escribible vive en /tmp.
+- api.Dockerfile: usuario appuser (uid 10001) en vez de root.
+- compose: read_only + tmpfs + no-new-privileges en todos los servicios;
+  puertos 440x -> 8080 (el usuario no root no puede enlazar <1024).
+- Cabeceras de seguridad (headers.conf incluido por shell.conf y remote.conf):
+  X-Content-Type-Options, X-Frame-Options, Referrer-Policy, Permissions-Policy;
+  Server sin version (server_tokens off en http de nginx.conf; headers.conf se
+  incluye en dos niveles, duplicarlo da error).
+- Cache segura para federation: remoteEntry.json e index.html con
+  Cache-Control no-cache (antes max-age=3600: un redeploy dejaria chunks
+  viejos en los browsers); assets hasheados max-age=3600, una sola cabecera
+  Cache-Control (expires anadiria una duplicada).
+- Demo reconstruida y verificada: 200 en 4400-4404 y api/salud; uid 101 en
+  frontends y 10001 en api (docker exec id); read_only y no-new-privileges
+  (docker inspect); cabeceras y cache con curl; login e2e en navegador
+  (diana) y F5 en /governance -> login con ?de=%2Fgovernance. La demo quedo
+  actualizada con shared-lib de las iteraciones 47-48.
+- Experimento 403 USUARIO_INACTIVO en demo (desactivar a diana via PUT
+  /api/sincronizacion): me respondio 403 USUARIO_INACTIVO; al reactivarla por
+  DB restauro el estado. HALLAZGO: un Admin puede desactivar a todos los
+  Admin y bloquear el sistema (sin guard de ultimo Admin); sin endpoint de
+  reactivacion alcanzable. Queda como item de la siguiente iteracion.
+- Commits: deploy (hardening, 9 archivos), root 827f120 (submodulos 47-48 +
+  deploy), root docs (esta entrada, handoff, funcionalidades 14.1-14.7).
+
 # PROGRESS.md - ProjectHub
 
 Log de avance dia a dia. Fuente de verdad del avance; `.ops` lo organiza y enlaza.
