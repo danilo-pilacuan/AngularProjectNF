@@ -51,7 +51,12 @@ las secciones 2-8; la estructura y las reglas son reutilizables tal cual.
 > ruff 0.17.4 (pyproject.toml, E/F/I/B/UP) en el backend, check exit 0, pytest 109/109,
 > commit 5ba04b5. Pagina de documentos/entregables en mfe-governance HECHA (2026-11-08,
 > commits shared-lib fe863d0 + mfe-governance b7c5acc): primer contenido real del remote,
-> gate con resumen aprobados/pendientes/faltantes. Pendiente: revision humana de estados
+> gate con resumen aprobados/pendientes/faltantes. Barrido integral de calidad (iteracion 31,
+> 2026-11-08): npx ng test en 7/7 repos = 290 tests OK (ojo: `npx vitest run` directo NO
+> sirve, los specs exigen el bootstrap de TestBed del builder de Angular), build raiz EXIT 0
+> en los 7 proyectos, lint raiz EXIT 0, backend 109/109 pytest, remoteEntry 200 en 4301-4304
+> y /api/salud 200 en 8100; navegador integrado confirma sesion real en 4300/login.
+> Pendiente: revision humana de estados
 > `verificado` y gate de lint en el DoD.
 
 2. **Estado del producto:** ProjectHub, sistema documental para gobernar proyectos de software
@@ -206,3 +211,4 @@ las secciones 2-8; la estructura y las reglas son reutilizables tal cual.
 | 28 | 2026-11-08 | Regresion E2E de widgets federados (files/e2e-widgets.mjs): dashboard con 4 widgets, widget remote a remote con Intl, selector de proyecto actualiza resumen, F5 profundo, consola limpia | hecho: 8/8 OK, 0 recursos >= 400; sin cambios de codigo; commit raiz docs | Agente |
 | 29 | 2026-11-08 | Regresion E2E de exportacion PDF (files/e2e-pdf.mjs): tablero y presupuesto invocan dialogo de impresion con titulo correcto, secciones, totales y celdas escapadas, consola limpia | hecho: 14/14 OK; sin cambios de codigo; commit raiz docs | Agente |
 | 30 | 2026-11-08 | Cierre documental de 13.1/13.3/13.4 en docs/funcionalidades.md con evidencia acumulada (pytest 109/109, auth JWT, E2E hoy 0 recursos >= 400, persistencia F5 de iteraciones 23/24) | hecho: seccion 13 completa (13.1-13.4 en ☑); sin cambios de codigo; commit raiz docs | Agente |
+| 31 | 2026-11-08 | Barrido integral de calidad tras 19 commits de subrepos: npx ng test en los 7 repos (290 tests), build raiz, lint raiz, pytest backend, remoteEntry/salud 200, navegador integrado en 4300/login | hecho: 7/7 repos verdes (shared 161, ui 40, shell 22, projects 29, admin 13, governance 20, reports 5), build EXIT 0, lint EXIT 0, backend 109/109; hallazgo metodologico documentado (npx vitest run directo no sirve); sin cambios de codigo; commit raiz docs | Agente |

@@ -2,6 +2,29 @@
 
 Log de avance dia a dia. Fuente de verdad del avance; `.ops` lo organiza y enlaza.
 
+## 2026-11-08 (iteracion 31: barrido de calidad integral post-commit masivo)
+
+- Justificacion: 19 commits de subrepos en las iteraciones 1-22; ninguna
+  corrida integral de tests/build/lint despues de ellos. Puerta de calidad
+  de release antes de continuar con hardening.
+- Hallazgo metodologico: `npx vitest run` directo NO sirve en este workspace
+  (los specs dependen del bootstrap de TestBed que inyecta el builder
+  vitest de Angular; fallan con "Need to call TestBed.initTestEnvironment()").
+  La forma correcta es `npx ng test` por repo o `npm test` raiz.
+- Resultado tests: 7/7 repos en verde con `npx ng test` — shared-lib 161,
+  ui-lib 40, shell 22, mfe-projects 29, mfe-admin 13, mfe-governance 20,
+  mfe-reports 5 = 290 tests unitarios OK.
+- Resultado builds: `node tools/run-all.mjs build` EXIT 0 — los 7 proyectos
+  compilan en produccion (4 MFEs + shell + 2 libs ng-packagr).
+- Resultado lint: `node tools/run-all.mjs lint` EXIT 0 en los 7 repos.
+- Resultado backend: 109/109 pytest.
+- Verificacion en vivo: remoteEntry.json 200 en 4301-4304, /api/salud 200
+  en 8100, y navegador integrado sobre http://localhost:4300/login con
+  sesion real activa (Diana Admin + roles + Cerrar sesion) y formulario de
+  login renderizado.
+- Sin cambios de codigo: el workspace estaba sano; la alerta inicial de
+  "20 failed" era metodologica, no una regresion.
+
 ## 2026-11-08 (iteracion 30: cierre de items 13.1 / 13.3 / 13.4)
 
 - Cierre documental de los tres items ◑ de la seccion 13 (Backend) con la
