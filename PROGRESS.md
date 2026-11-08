@@ -2,6 +2,27 @@
 
 Log de avance dia a dia. Fuente de verdad del avance; `.ops` lo organiza y enlaza.
 
+## 2026-11-08 (iteracion 48: cuenta desactivada en pleno uso, 403 USUARIO_INACTIVO)
+
+- Contrato backend: obtener_actor responde 403 con detail.codigo=
+  USUARIO_INACTIVO cuando el token es criptograficamente valido pero el
+  usuario fue desactivado por un Admin (antes: el actor pasaba y las
+  escrituras fallaban por otra via). Diferenciado del 401 SESION_INVALIDA:
+  la identidad es conocida, solo la cuenta esta inactiva. X-Actor-Id sin
+  token conserva su comportamiento.
+- Shared-lib: ApiEnlaceService detecta 403 USUARIO_INACTIVO (con token
+  presente) y notifica via onCuentaDesactivada() sin limpiar el token (la
+  identidad sigue siendo valida; cerrar la sesion es decision de la app);
+  un 403 con otro codigo (p. ej. PERMISO_DENEGADO) no notifica.
+  AutenticacionService reacciona cerrando la sesion y expone
+  desactivaciones() (contador reactivo, paralelo a expiraciones()).
+- Shell: efecto en App redirige a /login?desactivada=1 (replaceUrl); Login
+  muestra el aviso "Tu cuenta fue desactivada; contacta a un administrador."
+  (role=alert), distinto del aviso de sesion expirada.
+- Verificacion: backend 133/133 pytest + ruff limpio; shared-lib 176/176
+  vitest + build dist; shell 30/30 vitest + build + lint en verde.
+- Commits: backend f8874e6, shared-lib b95f5d4, shell fdd6e3f; docs raiz.
+
 ## 2026-11-08 (iteracion 47: sesion expirada con token vigente en pantalla)
 
 - Contrato backend: obtener_actor ahora responde 401 con

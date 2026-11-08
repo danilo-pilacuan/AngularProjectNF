@@ -102,6 +102,14 @@ las secciones 2-8; la estructura y las reglas son reutilizables tal cual.
      salida de evidencia; builds largos con log; evidencia etiquetada por stack).
 
 7. **Trabajo en curso y pendiente:**
+   - Iteracion 48 (cuenta desactivada) -> HECHA (2026-11-08): backend 403
+     USUARIO_INACTIVO cuando el token es valido pero el usuario fue
+     desactivado por un Admin (obtener_actor); ApiEnlaceService detecta
+     (onCuentaDesactivada, sin limpiar el token), AutenticacionService
+     cierra sesion y expone desactivaciones(); shell redirige a
+     /login?desactivada=1 con aviso propio. Backend 133/133, shared-lib
+     176/176, shell 30/30. Commits backend f8874e6, shared-lib b95f5d4,
+     shell fdd6e3f. Pendiente de rebuild demo; no bloquea dev.
    - Iteracion 47 (sesion expirada) -> HECHA (2026-11-08): contrato 401
      SESION_INVALIDA en backend (obtener_actor, token invalido o usuario
      eliminado), deteccion en ApiEnlaceService (limpia token +
@@ -282,5 +290,6 @@ las secciones 2-8; la estructura y las reglas son reutilizables tal cual.
 | 43 | 2026-11-08 | Demo alineada con las mitigaciones: rebuild de las 5 imagenes front (shared-lib con fix de 4xx embebida) + API; E2E navegador: modo demo sin banner falso (422 esperados en consola), login real Diana, /projects con 6 proyectos reales, F5 persiste sesion y datos | hecho: sin cambios de codigo; ciclo de seguridad VULN-001..004 mitigado y verificado en demo | Agente |
 | 44 | 2026-11-08 | CI del backend: .github/workflows/backend-ci.yml (pytest + ruff, Python 3.14, cache pip, memoria) con triggers push/PR en backend/ | hecho: commit raiz f332a25 | Agente |
 | 45 | 2026-11-08 | Manejo del 429 en la UI: AutenticacionService.mapearError mapea 429 -> LIMITE_INTENTOS con el mensaje del backend; test nuevo en autenticacion.spec.ts; demo reconstruida y E2E: 401x5 -> 429 con mensaje correcto | hecho: shared-lib 172/172 + build dist; estado demo intacto | Agente |
+| 48 | 2026-11-08 | Cuenta desactivada en pleno uso: backend 403 USUARIO_INACTIVO en obtener_actor (token valido, usuario desactivado por Admin); ApiEnlaceService.onCuentaDesactivada (sin limpiar token), AutenticacionService.desactivaciones(); shell redirige a /login?desactivada=1 con aviso propio | hecho: backend 133/133 + ruff 0, shared-lib 176/176 + build, shell 30/30 + build + lint; commits backend f8874e6, shared-lib b95f5d4, shell fdd6e3f | Agente |
 | 46 | 2026-11-08 | Barrido integral de regresion tras el ciclo de seguridad: ng test en los 6 repos frontend (todos los archivos en verde), npm run build exit 0 en los 6, lint raiz exit 0; backend 131/131 | hecho: sin cambios de codigo; iteracion de verificacion | Agente |
 | 47 | 2026-11-08 | Sesion expirada con token vigente: backend 401 SESION_INVALIDA (obtener_actor, token invalido o usuario eliminado); ApiEnlaceService limpia token + onSesionExpirada; AutenticacionService.expiraciones(); shell redirige a /login?expirada=1 con aviso | hecho: backend 132/132 + ruff 0, shared-lib 174/174 + build, shell 28/28 + build, lint raiz 0; commits backend 5e46a39, shared-lib 5932430, shell d2e608e, raiz 5febf62; demo Docker pendiente de rebuild | Agente |
