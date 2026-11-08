@@ -2,6 +2,27 @@
 
 Log de avance dia a dia. Fuente de verdad del avance; `.ops` lo organiza y enlaza.
 
+## 2026-11-08 (iteracion 35b: E2E del re-push en verde y causa raiz del bloqueo silencioso)
+
+- Justificacion: la verificacion en vivo del re-push (pendiente de 35) fallaba
+  en la fase offline sin rastro: 0 PUTs, sin error, sin consola. Nueve
+  diagnosticos con Playwright aislaron la causa: el input de presupuesto usa
+  `step=1000`; al llenar `1234567` el navegador marca stepMismatch y la
+  validacion interactiva bloquea el submit en silencio (no hay submit event,
+  el boton no esta disabled porque la validacion Angular pasa y
+  `requestSubmit()` no omite constraints).
+- Implementado: `e2e-repush-api.mjs` (10mo script E2E): login -> creacion con
+  API arriba (PUT ok) -> caida -> creacion offline via navegacion client-side
+  (PUT emitido y fallido, navegacion a detalle) -> recuperacion -> re-push
+  automatico sin interaccion; presupuesto de prueba siempre multiplo de 1000
+  para no chocar con el step del input.
+- Verificacion: 8/8 comprobaciones OK contra la demo dockerizada 4400; el
+  re-push salio +1 PUT a los 1521 ms de restaurar la API, sin tocar la UI.
+  Leccion registrada para el E2E: valores de campos con step deben respetar
+  el step o el submit se bloquea en silencio.
+- Pendiente (it. 36): considerar `step="any"` en el formulario para permitir
+  montos arbitrarios (guardar() ya valida >= 0 y finito).
+
 ## 2026-11-08 (iteracion 35: re-empuje automatico de escrituras tras recuperar la API)
 
 - Justificacion: los cambios hechos con la API caida solo se reintentaban al
