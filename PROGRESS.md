@@ -1,3 +1,33 @@
+## 2026-11-09 (iteracion 68: release 1 de QA funcional promovido)
+
+Objetivo (pedido del propietario): ultima iteracion antes de pausa del loop:
+promover una version para QA funcional garantizando login y navegacion entre
+rutas, y documentar credenciales por rol para explorar el proyecto.
+
+- Verificacion de login (API, stack demo 4400/8100): los 7 usuarios de
+  semilla; diana/sergio/paula/andres/sofia/daniel -> 200 con token JWT;
+  ivan (inactivo) -> 403 sin sesion. Contrasena demo unica:
+  projecthub-demo (backend/app/auth.py, env AUTH_CONTRASENA_DEMO; el
+  compose demo no la sobreescribe).
+- Verificacion de navegacion/federacion: remoteEntry.json 200 en
+  4400-4404; federation.manifest.json con URLs directas 440x; GET / y
+  /governance -> 200 (SPA con historial); GET /api/proyectos con Bearer ->
+  200. Rutas y guards revisados en shell/src/app/app.routes.ts
+  (sesionGuard, permisoGuard Admin en /admin, /sin-permisos).
+- Documento nuevo .ops/qa/credenciales-qa.md: credenciales demo por rol
+  (tabla de 7 usuarios), mapa de rutas con guards y rol que entra,
+  resumen de la matriz de responsabilidades (matriz-permisos.ts) y 7 casos
+  de exploracion sugeridos para QA.
+- REL-002 registrado en .ops/operations/releases.md con la evidencia de
+  esta verificacion y el gate humano pendiente (E2E de navegador y suite
+  completa al aprobarse el release).
+- Limitaciones declaradas: sin TDD ni suites largas (regla del
+  propietario); verificacion por sondas HTTP focalizadas; el navegador
+  integrado de la sesion no disponible (CDP timeout), E2E manual queda
+  para QA.
+- Commits: root adfa29f (docs REL-002 + credenciales); backend sin
+  cambios en it68.
+
 ## 2026-11-09 (iteracion 67: VULN-011 prefijos de id exigidos en el re-sync)
 
 Objetivo: cerrar el gap de paridad restante del canal de re-sync: aceptaba ids

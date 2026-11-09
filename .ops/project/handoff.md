@@ -7,7 +7,7 @@ description: Documento de soporte para pasar contexto completo a una sesion nuev
 estado: vigente
 dueno: rol:agente
 fecha: 2026-11-05T19:55:00Z
-updated: 2026-11-09T08:15:00Z
+updated: 2026-11-09T10:30:00Z
 relaciona: [ops-readme, project-readme]
 status: stable
 ---
@@ -86,6 +86,13 @@ las secciones 2-8; la estructura y las reglas son reutilizables tal cual.
 > _fusionar_bitacora (historial 3.5 sin revalidar). pytest 2/2 it67 (verificacion
 > focalizada por nuevo criterio de proceso del propietario: sin TDD extendido ni suites
 > largas; suite completa al cierre de fase).
+> it68 promovio el release 1 de QA funcional (docs, root adfa29f): verificado login
+> por API de los 7 usuarios de semilla (6 activos -> 200 con JWT, ivan inactivo -> 403)
+> y navegacion/federacion del stack demo (remoteEntry 200 en 4400-4404, manifest 440x,
+> SPA con historial, /api/proyectos con Bearer 200); nuevo .ops/qa/credenciales-qa.md
+> con credenciales demo por rol, mapa de rutas con guards y casos de exploracion QA;
+> REL-002 en .ops/operations/releases.md con el gate humano pendiente (E2E navegador +
+> suite completa al aprobarse). Backend sin cambios en it68.
 > API y db Postgres dockerizadas en el compose demo (deploy 1deb0b8): 8100 con login JWT y
 > persistencia real, demo reconstruida con Material y E2E 12/12 con 0 recursos 404 en 4400-4404.
 > Pendiente: revision humana de estados
@@ -128,6 +135,15 @@ las secciones 2-8; la estructura y las reglas son reutilizables tal cual.
      salida de evidencia; builds largos con log; evidencia etiquetada por stack).
 
 7. **Trabajo en curso y pendiente:**
+   - Iteracion 68 (release QA funcional 1) -> HECHA (2026-11-09): verificado
+     login de los 7 usuarios de semilla por API (6 activos 200, ivan
+     inactivo 403) y navegacion del stack demo (remoteEntry 200 en
+     4400-4404, manifest 440x, GET / y /governance 200, /api/proyectos
+     con Bearer 200). Documento .ops/qa/credenciales-qa.md (credenciales
+     demo por rol, mapa de rutas con guards, matriz resumida, casos QA)
+     y REL-002 en releases.md con gate humano pendiente (E2E navegador y
+     suite completa al aprobarse). Commits: root adfa29f; backend sin
+     cambios. Pausa del loop: ultima iteracion pedida por el propietario.
    - Iteracion 60 (fin del era mock) -> HECHA (2026-11-09): constante unica
      para la URL base de la API (API_BASE_URL_POR_DEFECTO + urlApiPorDefecto
      en shared-lib 18fd4d8; 50 literales http://localhost:8100 eliminados de
