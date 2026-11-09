@@ -80,6 +80,12 @@ las secciones 2-8; la estructura y las reglas son reutilizables tal cual.
 > 152/152+4sk (nueva baseline), vitest shared-lib 178/178; demo docker reconstruida;
 > sondas HTTP 422 con estado vigente 7/6/10/11 intacto (las sondas no aislan la regla
 > exacta; la evidencia autoritativa son los pytest).
+> it67 cerro VULN-011 (backend 5b8b147): el re-sync ya no acepta ids sin el prefijo
+> de su coleccion; la regla ^(?:prefijo-.+|prefijo\d+)$ acepta las dos formas canonicas
+> (ids de nuevo_id y de semilla p1/e1/b1); el prefijo b- de entradas nuevas sigue en
+> _fusionar_bitacora (historial 3.5 sin revalidar). pytest 2/2 it67 (verificacion
+> focalizada por nuevo criterio de proceso del propietario: sin TDD extendido ni suites
+> largas; suite completa al cierre de fase).
 > API y db Postgres dockerizadas en el compose demo (deploy 1deb0b8): 8100 con login JWT y
 > persistencia real, demo reconstruida con Material y E2E 12/12 con 0 recursos 404 en 4400-4404.
 > Pendiente: revision humana de estados

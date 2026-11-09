@@ -1,3 +1,35 @@
+## 2026-11-09 (iteracion 67: VULN-011 prefijos de id exigidos en el re-sync)
+
+Objetivo: cerrar el gap de paridad restante del canal de re-sync: aceptaba ids
+sin el prefijo de su coleccion (u-/p-/e-/ent-), lo que el canal normal nunca
+genera (nuevo_id y semilla).
+
+- Hallazgo (VULN-011): PUT /api/sincronizacion aceptaba proyecto id
+  'x-proyecto', usuario 'admin-sin-prefijo', etapa con prefijo ajeno
+  'p1-etapa-it67' y entregable con prefijo de etapa 'e-entregable-it67';
+  ids que ninguna coleccion reconoce ni colisionan rompen trazabilidad y
+  deduplicacion.
+- Fix (backend 5b8b147): _validar_invariantes_dominio exige que cada id de
+  usuarios/proyectos/etapas/entregables haga match
+  ^(?:{prefijo}-.+|{prefijo}\d+)$ con su prefijo (u/p/e/ent). La primera
+  version estricta (startswith prefijo-) era incorrecta: la semilla canonica
+  usa p1/e1/b1 sin guion, asi que rechazaba el propio estado del servidor y
+  bloqueaba todo re-sync; lo detecto el test rojo
+  test_sincronizacion_acepta_historial_bitacora_vigente_sin_prefijo y la
+  regla se relajo a las dos formas canonicas antes del commit.
+- Bitacora: sin revalidacion (historial inmutable 3.5); el prefijo b- de
+  entradas nuevas sigue en _fusionar_bitacora (VULN-006). La forma semilla
+  (prefijo+digitos) se mantiene como canonica: regla, no deuda.
+- Tests: test_escribir_estado_prefijos_de_id_responde_422 (4 casos negativos
+  + entrada nueva de bitacora sin b-, estado vigente intacto) y
+  test_sincronizacion_acepta_historial_bitacora_vigente_sin_prefijo
+  (roundtrip con id legacy en el historial). 2/2 en verde.
+- Evidencia: pytest 2/2 it67; suite completa pendiente al cierre de fase
+  (nuevo criterio de proceso: verificacion focalizada por cambio, sin TDD
+  extendido ni suites largas, feedback del propietario). Ruff pendiente.
+- Commits: backend 5b8b147 (pushed RC4/dev); docs VULN-011 + PROGRESS +
+  handoff (root, proximo commit).
+
 ## 2026-11-09 (iteracion 66: nombre/version de entregables y fechas ISO de bitacora validados en el re-sync y canal normal)
 
 Objetivo: cerrar los gaps de paridad restantes del canal de re-sync detectados
