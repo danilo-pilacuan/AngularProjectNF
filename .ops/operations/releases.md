@@ -15,9 +15,40 @@ status: stable
 | id | release | contenido | estado |
 |---|---|---|---|
 | REL-001 | RC4/dev demo 2026-11-07 | Fases 0-8, 13, 14 y 14.5: federacion, dominio, stores http, backend FastAPI/Postgres, autenticacion JWT, credenciales persistidas + /perfil | ejecutado (pendiente revision humana) |
+| REL-002 | RC4/dev demo 2026-11-09 | VULN-005..011 mitigadas (re-sync con paridad de validaciones del canal normal); preparacion del release 1 de QA funcional: verificacion de login (7 usuarios de semilla) y navegacion entre rutas, y documento de credenciales por rol (.ops/qa/credenciales-qa.md) | ejecutado (pendiente revision humana) |
 
 Verificacion post-despliegue de cada release: ver seccion REL-001 abajo
 (el detalle por stack vive aqui, no en PROGRESS.md).
+
+## REL-002: release 1 de QA funcional (2026-11-09, it68)
+
+Alcance: mismo stack demo REL-001 (Docker 4400-4404 + API 8100) con las
+mitigaciones VULN-005..011 del re-sync (it61..it67, backend 5b8b147) y
+documento de credenciales por rol para el equipo de QA
+(.ops/qa/credenciales-qa.md).
+
+Verificacion (politica de ahorro del propietario: sondas focalizadas, sin
+suites largas; la suite completa del backend corre al aprobarse el release):
+
+- Login por API: los 7 usuarios de semilla; 6 activos -> 200 con token JWT
+  (diana, sergio, paula, andres, sofia, daniel), ivan inactivo -> 403
+  (comportamiento esperado, sin sesion).
+- Navegacion/federacion: remoteEntry.json 200 en 4400-4404;
+  federation.manifest.json del shell con URLs directas 440x; SPA con
+  historial (GET / y GET /governance -> 200); GET /api/proyectos con Bearer
+  -> 200.
+- Rutas del shell (shell/src/app/app.routes.ts): '' dashboard, /login,
+  /perfil (sesionGuard), /projects, /reports, /governance (sesionGuard),
+  /admin (sesionGuard + permisoGuard roles [Admin]), /sin-permisos,
+  ** -> ''.
+- Accesos del explorador de QA: el documento lista rutas visibles por rol;
+  el guard /admin redirige a /sin-permisos a todo no-Admin (comportamiento
+  verificado en unit tests del guard, iteraciones previas).
+
+Pendiente de revision humana (gate del release): E2E de navegador sobre
+4400 (login por UI, F5 en ruta profunda, consola sin warnings) y corrida
+completa del backend al aprobarse el release; registro del resultado en
+esta seccion.
 
 ## REL-001: verificacion post-despliegue (2026-11-07)
 
