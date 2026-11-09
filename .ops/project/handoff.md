@@ -88,6 +88,12 @@ las secciones 2-8; la estructura y las reglas son reutilizables tal cual.
      salida de evidencia; builds largos con log; evidencia etiquetada por stack).
 
 7. **Trabajo en curso y pendiente:**
+   - Iteracion 59 (regresion integral tras it58) -> HECHA (2026-11-09):
+     barrido verde: vitest shared-lib 177, shell 29, mfe-projects 29,
+     mfe-admin 13, mfe-governance 20, mfe-reports 6, ui-lib 40; pytest
+     140+4sk; ruff 0; eslint 7 repos; build raiz 7 repos. Hallazgo menor:
+     el spec de login del shell sufria el mismo efecto de it58; corregido
+     con el mismo helper (shell f4f992d, solo test).
    - Iteracion 58 (NG0203 en resincronizarStores tras el login) -> HECHA
      (2026-11-09): iniciarSesion() llamaba a sincronizarStores() tras
      await(s) HTTP y la descarga del estado autoritativo fallaba en
@@ -331,3 +337,4 @@ las secciones 2-8; la estructura y las reglas son reutilizables tal cual.
 | 47 | 2026-11-08 | Sesion expirada con token vigente: backend 401 SESION_INVALIDA (obtener_actor, token invalido o usuario eliminado); ApiEnlaceService limpia token + onSesionExpirada; AutenticacionService.expiraciones(); shell redirige a /login?expirada=1 con aviso | hecho: backend 132/132 + ruff 0, shared-lib 174/174 + build, shell 28/28 + build, lint raiz 0; commits backend 5e46a39, shared-lib 5932430, shell d2e608e, raiz 5febf62; demo Docker pendiente de rebuild | Agente |
 | 57 | 2026-11-09 | Smoke de la demo: NG0203 en bootstrap prod (regresion it55); fix runInInjectionContext en el initializer (shared-lib 522c78e); no-cache en remoteEntry.json del shell (deploy ea0867d); e2e-banner 9/9 alineado a it55, repush 8/8, bitacora 10/10, BD sin residuos | hecho: vitest 177/177, demo reconstruida y verificada; commits shared-lib 522c78e, deploy ea0867d, raiz 20b1e60 + docs 35d616a | Agente |
 | 58 | 2026-11-09 | Mismo patron NG0203 en AutenticacionService.resincronizarStores (tras el login la descarga del estado autoritativo moria en silencio); fix Injector capturado + runInInjectionContext (shared-lib 77bb148); spec de login actualizado (los tests de login exitoso responden las 5 lecturas de sync: antes validaban el bug) | hecho: vitest 177/177, build shared-lib + shell, rebuild shell demo, e2e 9/9 + 8/8 + 10/10, BD sin residuos | Agente |
+| 59 | 2026-11-09 | Barrido integral de regresion tras it58 (sin codigo de produccion): vitest 7 repos (177/29/29/13/20/6/40), pytest 140+4sk, ruff 0, eslint 7 repos, build raiz 7 repos; spec de login del shell corregido con el helper de sync (shell f4f992d) | hecho: commits shell f4f992d + raiz punteros; 10 repos clean | Agente |

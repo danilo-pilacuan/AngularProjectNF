@@ -1,3 +1,20 @@
+## 2026-11-09 (iteracion 59: barrido integral de regresion tras it58)
+
+Objetivo: confirmar que el fix de AutenticacionService (77bb148) no rompio
+nada en ninguna parte; ademas cubrir el spec de la pantalla de login del
+shell, que consumia el mismo camino.
+
+- Resultado del barrido (sin cambios de codigo de produccion): vitest
+  shared-lib 177, shell 29, mfe-projects 29, mfe-admin 13, mfe-governance
+  20, mfe-reports 6, ui-lib 40; pytest backend 140 passed + 4 skipped;
+  ruff 0 hallazgos; eslint 7 repos limpio; build raiz 7 repos exit 0.
+- Hallazgo menor: el spec de login del shell (2 tests de login exitoso)
+  sufria el mismo efecto de it58 (5 peticiones de sync abiertas al
+  verify()); corregido con el mismo helper (shell f4f992d, solo test).
+- Leccion: el helper de sincronizacion de tests vivia duplicado (shared-lib
+  y shell); aceptable por estar en repos independientes, pero si aparece
+  un tercer caso habra que moverlo a un util de test de shared-lib.
+
 ## 2026-11-09 (iteracion 58: NG0203 en resincronizarStores tras el login)
 
 Objetivo: endurecer el mismo patron de riesgo de la it57 en el unico sitio
