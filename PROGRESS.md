@@ -1,3 +1,32 @@
+## 2026-11-09 (iteracion 64: VULN-008 paridad de validacion de usuarios en el re-sync)
+
+Objetivo: cerrar el ultimo gap de paridad del canal de re-sync detectado al
+analizar VULN-005/007: el push aceptaba usuarios que crear_usuario/editar_
+usuario rechazan.
+
+- Gap (VULN-008): `escribir_estado_completo` solo pasaba los usuarios por
+  model_validate (Pydantic, campos str simples sin validators) + guard de
+  Admin; nada exigia nombre no vacio, >= 1 rol (1.4) ni formato/unicidad de
+  correo. El correo es clave de identidad en ServicioCredenciales
+  (sincronizar_con_usuarios limpia credenciales huerfanas por correo), asi
+  que un correo roto o duplicado rompe login y limpieza.
+- Fix (backend 790e5fa): escribir_estado_completo normaliza nombre/correo de
+  cada usuario entrante (strip + lower, igual que el canal normal) y
+  _validar_invariantes_dominio ahora espeja _validar_nombre (nombre no
+  vacio), _validar_roles (>= 1 rol) y _validar_correo (formato -> 422
+  VALIDACION; duplicado en coleccion -> 409 DUPLICADO). Variante legitima
+  (espacios/mayusculas) entra almacenada normalizada.
+- Test de regresion: test_escribir_estado_usuarios_invalidos_responde_422_o_
+  409 (nombre vacio, roles [], correo sin arroba, duplicado case-insensitive
+  con el correo del PM en mayusculas, estado vigente intacto tras los 4
+  rechazos y push legitimo con espacios/mayusculas almacenado normalizado).
+- Evidencia: pytest 148 passed + 4 skipped (44/44 test_api), ruff limpio;
+  rebuild demo (build exit 0 + up -d, grep vistos_correo = 3 dentro del
+  contenedor) y sondas HTTP 8100: push con correo duplicado case-insensitive
+  -> 409, correo sin arroba -> 422, estado demo intacto tras ambos (7
+  usuarios, 6 proyectos, 11 bitacora; correo de u-analista vigente
+  andres@projecthub.local).
+- Commits: backend 790e5fa; docs vulns.md + puntero backend cf6e075.
 
 ## 2026-11-09 (iteracion 63: fin de la herencia mock + VULN-007 nombres duplicados en el re-sync)
 
