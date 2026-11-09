@@ -7,7 +7,7 @@ description: Documento de soporte para pasar contexto completo a una sesion nuev
 estado: vigente
 dueno: rol:agente
 fecha: 2026-11-05T19:55:00Z
-updated: 2026-11-09T08:00:00Z
+updated: 2026-11-09T08:15:00Z
 relaciona: [ops-readme, project-readme]
 status: stable
 ---
@@ -37,7 +37,7 @@ las secciones 2-8; la estructura y las reglas son reutilizables tal cual.
 
 ---
 
-## Estado actual (2026-11-09, iteracion 65: VULN-009 integridad referencial en el re-sync)
+## Estado actual (2026-11-09, iteracion 66: entregables y bitacora validados en el re-sync y canal normal)
 
 > Fecha: 2026-11-09. Rama: n/a en la raiz (orquestador); cada repo del multirepo tiene la suya
 > (RC4/dev). Estado: fases 0-8 + 13 + 14 + 14.5 + rutas planas + migracion Angular Material
@@ -72,6 +72,14 @@ las secciones 2-8; la estructura y las reglas son reutilizables tal cual.
 > 422 VALIDACION; el gate ya no puede contar aprobaciones de usuarios fantasma). Semilla
 > auditada (u-doble existe). pytest 149/149+4sk; demo docker reconstruida; sonda HTTP:
 > push con aprobador u-fantasma -> 422 y estado vigente intacto.
+> it66 cerro VULN-010 (backend 8855038, shared-lib 3e2dc6a): paridad de insumos de
+> entregables y bitacora en el re-sync (entregable sin nombre o version < 1 y aprobado_en
+> no ISO -> 422; entrada nueva de bitacora sin fecha ISO o transicion sin etapa
+> origen/destino -> 422) y canal normal de crear_entregable (nombre strip/no vacio,
+> version int >= 1 con guard bool); paridad en crearEntregable del store. pytest
+> 152/152+4sk (nueva baseline), vitest shared-lib 178/178; demo docker reconstruida;
+> sondas HTTP 422 con estado vigente 7/6/10/11 intacto (las sondas no aislan la regla
+> exacta; la evidencia autoritativa son los pytest).
 > API y db Postgres dockerizadas en el compose demo (deploy 1deb0b8): 8100 con login JWT y
 > persistencia real, demo reconstruida con Material y E2E 12/12 con 0 recursos 404 en 4400-4404.
 > Pendiente: revision humana de estados
@@ -383,3 +391,4 @@ las secciones 2-8; la estructura y las reglas son reutilizables tal cual.
 | 61 | 2026-11-09 | VULN-005: invariantes de dominio en escribir_estado_completo (avance 0-100, presupuesto finito >= 0, fechas ordenadas, no autoaprobacion); huecos NaN en crear_proyecto y registrar_consumo; 4 tests nuevos; BD demo verificada intacta tras incidente de sondas standalone | hecho: commit backend 8a9de54, fila VULN-005 en vulns.md, PROGRESS + handoff; pytest 144/144+4sk, ruff 0 | Agente |
 | 64 | 2026-11-09 | VULN-008: paridad de validacion de usuarios en el re-sync; escribir_estado_completo normaliza nombre/correo (strip+lower) y _validar_invariantes_dominio rechaza nombre vacio, sin roles y correo invalido/duplicado case-insensitive (422/409); test de regresion con 4 rechazos + push legitimo normalizado | hecho: commit backend 790e5fa, fila VULN-008 en vulns.md, puntero+docs root cf6e075; pytest 148/148+4sk, ruff 0; demo rebuild+up y sondas 409/422 con estado 7/6/11 intacto | Agente |
 | 65 | 2026-11-09 | VULN-009: integridad referencial en el re-sync; _validar_invariantes_dominio exige que creadoPorId/aprobadoPorId de entregables y patrocinadorId de proyectos existan en la coleccion de usuarios entrante (422 VALIDACION); decision de dominio: el aprobador puede quedar inactivo despues de aprobar (historial del gate no se invalida) | hecho: commit backend db57502, fila VULN-009 en vulns.md, sonda HTTP push con u-fantasma -> 422 y estado vigente intacto (7/6/10/11), semilla auditada (u-doble existe); pytest 149/149+4sk, ruff 0; demo docker reconstruida (grep confirma el fix) | Agente |
+| 66 | 2026-11-09 | VULN-010: paridad de insumos de entregables y bitacora en el re-sync (_validar_invariantes_dominio: nombre no vacio, version >= 1 y aprobado_en ISO de entregables; _fusionar_bitacora: fecha ISO y transicion completa en entradas nuevas -> 422) y canal normal de crear_entregable (nombre strip + version int >= 1); paridad en crearEntregable del store con esFechaIso en calculos | hecho: commits backend 8855038, shared-lib 3e2dc6a, fila VULN-010 en vulns.md, PROGRESS + handoff; pytest 152+4sk (nueva baseline), ruff 0; vitest shared-lib 178; demo docker reconstruida (grep confirma mensajes) y sondas HTTP 422 con estado 7/6/10/11 intacto | Agente |

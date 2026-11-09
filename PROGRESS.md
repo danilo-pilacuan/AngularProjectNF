@@ -1,3 +1,51 @@
+## 2026-11-09 (iteracion 66: nombre/version de entregables y fechas ISO de bitacora validados en el re-sync y canal normal)
+
+Objetivo: cerrar los gaps de paridad restantes del canal de re-sync detectados
+al auditar los insumos de entregables y bitacora: el push colaba entregables
+sin nombre o con version < 1, fechas de aprobacion no ISO y entradas de
+bitacora nuevas sin fecha ISO o transiciones sin etapa de origen/destino; el
+canal normal de crear_entregable, ademas, aceptaba nombre vacio y version 0.
+
+- Gap: Pydantic solo coacciona tipos en la frontera (version '3' -> 3, 0.5
+  rechazado), pero nada exigia nombre no vacio, version >= 1 ni formato de
+  fechas; el canal normal construia el Entregable sin validar esos insumos.
+- Fix (backend 8855038): cuatro validaciones nuevas en servicio.py.
+  (1) _validar_invariantes_dominio: nombre no vacio y version >= 1 de cada
+  entregable; aprobado_en parseable ISO (fromisoformat con Z -> +00:00) si
+  no es None. (2) _fusionar_bitacora: entradas NUEVAS con fecha no ISO ->
+  422 y transicion sin etapa_origen/etapa_destino -> 422 (las vigentes son
+  historial inmutable, como en VULN-006). (3) crear_entregable: nombre con
+  strip y no vacio, version con guard isinstance bool / not int / < 1 ->
+  ErrorValidacion; el Entregable se construye con el nombre normalizado.
+- Paridad frontend (shared-lib 3e2dc6a): crearEntregable del ProjectStore
+  valida y normaliza igual (trim, 'El nombre del entregable es obligatorio.',
+  'La version del entregable debe ser al menos 1.' con Number.isInteger);
+  esFechaIso() anadido a calculos.ts como helper de dominio para paridades
+  futuras. Nota de diseno: aprobarEntregable NO valida aprobadoEn (es null
+  al aprobar; el store lo genera con toISOString en la misma mutacion).
+- Tests: 3 pytest nuevos (insumos de entregable -> 422 con nombre strip 200;
+  bitacora nueva invalida -> 422 con transicion completa PoC ->
+  ValidacionPoC -> 200; canal normal POST /entregables con nombre vacio y
+  version 0 -> 422 y caso feliz '  Plan de PoC B  ' -> 201 normalizado) y
+  1 vitest nuevo (store: nombre espacios -> throw, version 0 -> throw,
+  nombre con bordes normalizado). Gotcha documentado: dict(bitacora[0],
+  tipo='transicion') hereda etapaOrigen/etapaDestino de la semilla; hay que
+  forzarlos a None para probar la transicion incompleta.
+- Verificacion: pytest 152 passed + 4 skipped (nueva baseline; antes 149),
+  ruff check limpio; vitest shared-lib 178/178, lint y build OK. Unico
+  caller UI de crearEntregable verificado compatible (mfe-governance
+  documentos.ts ya hace trim y usa version: 1). Demo docker reconstruida
+  (grep confirma los mensajes nuevos en el contenedor) y sondas HTTP 8100:
+  push con coleccion de entregables reducida a 1 -> 422 y push con entrada
+  de bitacora nueva con fecha '09/11/2026' -> 422, estado vigente intacto
+  en ambos (7 usuarios, 6 proyectos, 10 entregables, 11 bitacora). Nota
+  honesta: las sondas no aislan la regla exacta disparada (el push reducido
+  puede chocar antes con el invariante de etapas del gate y la entrada de
+  bitacora con el guard de autor propia de VULN-001); la evidencia
+  autoritativa de las reglas it66 son los pytest.
+- Commits: backend 8855038, shared-lib 3e2dc6a; docs vulns.md (VULN-010) +
+  PROGRESS + handoff (root).
+
 ## 2026-11-09 (iteracion 65: VULN-009 integridad referencial de entregables y patrocinadores en el re-sync)
 
 Objetivo: cerrar el gap de referencias fantasma detectado al auditar el canal
