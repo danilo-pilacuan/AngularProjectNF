@@ -37,15 +37,15 @@ las secciones 2-8; la estructura y las reglas son reutilizables tal cual.
 
 ---
 
-## Estado actual (2026-11-09, iteracion 57: NG0203 prod corregido + cache remoteEntry)
+## Estado actual (2026-11-09, iteracion 58: NG0203 en resincronizarStores corregido)
 
 > Fecha: 2026-11-09. Rama: n/a en la raiz (orquestador); cada repo del multirepo tiene la suya
 > (RC4/dev). Estado: fases 0-8 + 13 + 14 + 14.5 + rutas planas + migracion Angular Material
 > (12.5) implementadas. Seguridad: VULN-001/002/003/004 mitigadas (ver .ops/security/vulns.md);
 > iteracion 53 cerro la parte pendiente de VULN-001: PUT /api/sincronizacion ya no reemplaza la
 > bitacora, la fusiona por id (append-only con conservacion: omision = no-op, modificacion 422,
-> append ajeno 422); cliente filtra bitacora ajena no confirmada. it55 elimino el selector mock "Usuario activo" (sesion real unicamente); it56 barrido integral verde + RUNBOOK de deploy; it57 corrigio el NG0203 del bootstrap prod (shared-lib 522c78e) y anadio no-cache a remoteEntry.json del shell (deploy ea0867d). pytest 140/140+4sk, vitest
-> shared-lib 177/177, ruff limpio. Commits: backend 1f8b297, shared-lib b7c489f, root b6f7a3f.
+> append ajeno 422); cliente filtra bitacora ajena no confirmada. it55 elimino el selector mock "Usuario activo" (sesion real unicamente); it56 barrido integral verde + RUNBOOK de deploy; it57 corrigio el NG0203 del bootstrap prod (shared-lib 522c78e) y anadio no-cache a remoteEntry.json del shell (deploy ea0867d); it58 aplico el mismo patron a AutenticacionService.resincronizarStores (shared-lib 77bb148): tras un login exitoso ahora si se descarga el estado autoritativo. pytest 140/140+4sk, vitest
+> shared-lib 177/177, ruff limpio. Commits: backend 1f8b297, shared-lib 77bb148, root b6f7a3f.
 > API y db Postgres dockerizadas en el compose demo (deploy 1deb0b8): 8100 con login JWT y
 > persistencia real, demo reconstruida con Material y E2E 12/12 con 0 recursos 404 en 4400-4404.
 > Pendiente: revision humana de estados
@@ -88,6 +88,17 @@ las secciones 2-8; la estructura y las reglas son reutilizables tal cual.
      salida de evidencia; builds largos con log; evidencia etiquetada por stack).
 
 7. **Trabajo en curso y pendiente:**
+   - Iteracion 58 (NG0203 en resincronizarStores tras el login) -> HECHA
+     (2026-11-09): iniciarSesion() llamaba a sincronizarStores() tras
+     await(s) HTTP y la descarga del estado autoritativo fallaba en
+     silencio (app quedaba en semilla local hasta F5). Fix shared-lib
+     77bb148: Injector capturado en el constructor +
+     runInInjectionContext en resincronizarStores (patron it57). Spec
+     actualizado: los tests de login exitoso responden las 5 lecturas
+     de sincronizacion (antes el test pasaba porque la sync moria en
+     silencio: validaba el bug). Verificado: vitest 177/177, build
+     shared-lib + shell, rebuild shell demo, e2e banner 9/9 + repush 8/8
+     + bitacora-append 10/10, BD demo sin residuos E2E.
    - Iteracion 56 (regresion integral + runbook) -> HECHA (2026-11-09): barrido sin cambios de codigo - vitest shared-lib 177, shell 29, mfe-projects 29, mfe-admin 13, mfe-governance 20, ui-lib 40, mfe-reports 6; pytest 140 passed + 4 skipped; ruff y eslint OK (7 repos); build raiz OK (7 repos). Runbook de deploy nuevo (deploy/projecthub/RUNBOOK.md, commit deploy 721b6a3): env vars (AUTH_SECRET, ALLOWED_ORIGINS, RATE_LIMIT_*), limitador en memoria y multi-instancia (Redis/edge), hardening, verificacion post-despliegue, operacion y limitaciones.
    - Iteracion 55 (sesion real sin selector mock) -> HECHA (2026-11-09): el select de usuario activo del navbar (herencia mock) se elimino junto con todo lo hardcodeado: SesionStore solo acepta usuario fijado por AutenticacionService (fijarUsuario con JWT); sin seleccionar()/usuariosActivos en sesion; catalogo de usuarios del ProjectStore viene del backend; X-Actor-Id fuera del cliente (queda como herramienta de pruebas del backend); guards redirigen a /login sin sesion (sin fallback al dashboard); banner sin lenguaje de modo demo. Totales vitest: shared-lib 177, shell 29, mfe-projects 29, mfe-admin 13, mfe-governance 20. Builds y lint OK en los 7/6 repos. Commits: shared-lib 285a178, shell 130d7ec,
    mfe-projects 1fca9c3, mfe-admin 228dfaf, mfe-governance cee3d22, root cfc5343 (punteros) + d5d7394 (script e2e). La demo docker aun no incluye la iteracion 55 (rebuild pendiente).
@@ -318,3 +329,5 @@ las secciones 2-8; la estructura y las reglas son reutilizables tal cual.
 | 50 | 2026-11-08 | Hardening del deploy demo: nginx no root (nginx.conf propio, listen 8080, pid/temp en /tmp, logs a std streams), api como appuser 10001, read_only + tmpfs + no-new-privileges, cabeceras de seguridad, cache no-cache en remoteEntry.json/index.html; demo reconstruida y verificada e2e (login navegador, F5, headers, uids) | hecho: demo arriba 200 en 440x + api/salud, docker inspect ro/no-new-privileges, curl headers; commits deploy + root 827f120 | Agente |
 | 46 | 2026-11-08 | Barrido integral de regresion tras el ciclo de seguridad: ng test en los 6 repos frontend (todos los archivos en verde), npm run build exit 0 en los 6, lint raiz exit 0; backend 131/131 | hecho: sin cambios de codigo; iteracion de verificacion | Agente |
 | 47 | 2026-11-08 | Sesion expirada con token vigente: backend 401 SESION_INVALIDA (obtener_actor, token invalido o usuario eliminado); ApiEnlaceService limpia token + onSesionExpirada; AutenticacionService.expiraciones(); shell redirige a /login?expirada=1 con aviso | hecho: backend 132/132 + ruff 0, shared-lib 174/174 + build, shell 28/28 + build, lint raiz 0; commits backend 5e46a39, shared-lib 5932430, shell d2e608e, raiz 5febf62; demo Docker pendiente de rebuild | Agente |
+| 57 | 2026-11-09 | Smoke de la demo: NG0203 en bootstrap prod (regresion it55); fix runInInjectionContext en el initializer (shared-lib 522c78e); no-cache en remoteEntry.json del shell (deploy ea0867d); e2e-banner 9/9 alineado a it55, repush 8/8, bitacora 10/10, BD sin residuos | hecho: vitest 177/177, demo reconstruida y verificada; commits shared-lib 522c78e, deploy ea0867d, raiz 20b1e60 + docs 35d616a | Agente |
+| 58 | 2026-11-09 | Mismo patron NG0203 en AutenticacionService.resincronizarStores (tras el login la descarga del estado autoritativo moria en silencio); fix Injector capturado + runInInjectionContext (shared-lib 77bb148); spec de login actualizado (los tests de login exitoso responden las 5 lecturas de sync: antes validaban el bug) | hecho: vitest 177/177, build shared-lib + shell, rebuild shell demo, e2e 9/9 + 8/8 + 10/10, BD sin residuos | Agente |

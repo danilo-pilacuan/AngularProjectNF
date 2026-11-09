@@ -1,3 +1,31 @@
+## 2026-11-09 (iteracion 58: NG0203 en resincronizarStores tras el login)
+
+Objetivo: endurecer el mismo patron de riesgo de la it57 en el unico sitio
+que quedaba expuesto: AutenticacionService.iniciarSesion().
+
+- Hallazgo: iniciarSesion() llama a resincronizarStores() -> sincronizarStores()
+  DESPUES de await(s) HTTP; fuera del contexto de inyeccion los inject() de
+  sincronizarStores fallaban en silencio (el catch de degradacion tragaba el
+  error) y tras un login exitoso la app quedaba en semilla local hasta F5.
+  Impacto real: al iniciar sesion no se descargaba el estado autoritativo
+  (10.3), contradiciendo el comentario de la propia llamada.
+- Fix (shared-lib 77bb148): campo `private readonly inyector = inject(Injector);`
+  capturado en el constructor y `await runInInjectionContext(this.inyector,
+  () => sincronizarStores())` en resincronizarStores. cambiarContrasena no
+  sincroniza (revisado; no hace falta).
+- Spec actualizado (mismo commit): los 2 tests de login exitoso ahora
+  responden las 5 lecturas autoritativas que la sincronizacion emite con
+  sesion real (helper responderSincronizacion con tick + flush de
+  usuarios/proyectos/etapas/entregables/bitacora). Los logins con error no
+  llegan a sincronizar. Baseline verificado con git stash: sin el fix el
+  spec viejo pasaba porque la sync moria en silencio (el test validaba el
+  bug). Leccion: cuando un catch tragaba un error, arreglar el error puede
+  exigir actualizar el test que lo daba por bueno.
+- Verificacion: tests shared-lib 177/177; build shared-lib + shell OK;
+  rebuild del shell demo y e2e re-ejecutados (banner 9/9, repush 8/8,
+  bitacora-append 10/10); BD demo sin residuos E2E (DELETE 2 proyectos
+  E2E RePush% + 2 bitacora hijas); chunk del shell sin strings mock.
+
 ## 2026-11-09 (iteracion 57: NG0203 en bootstrap prod + cache remoteEntry + e2e banner)
 
 Objetivo: smoke integral de la demo dockerizada. Destapo una regresion real
