@@ -52,7 +52,8 @@ try {
   await page.waitForSelector('.shell-banner-api', { state: 'visible', timeout: 30000 });
   const texto = (await page.locator('.shell-banner-api').innerText()).replace(/\s+/g, ' ');
   anotar(texto.includes('Sin conexion con el backend'), 'banner aparece con la API caida', texto.slice(0, 120));
-  anotar(texto.includes('modo demo'), 'banner anuncia modo demo', texto.slice(0, 120));
+  anotar(texto.includes('datos locales de referencia'), 'banner anuncia datos locales de referencia', texto.slice(0, 120));
+  anotar(!texto.includes('modo demo'), 'banner ya no menciona modo demo (it55)', texto.slice(0, 120));
 
   // 2. La app sigue operando en modo demo (el dashboard no se rompe).
   const cuerpo = await page.locator('body').innerText();
