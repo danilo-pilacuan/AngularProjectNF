@@ -7,7 +7,7 @@ description: Documento de soporte para pasar contexto completo a una sesion nuev
 estado: vigente
 dueno: rol:agente
 fecha: 2026-11-05T19:55:00Z
-updated: 2026-11-09T01:05:00Z
+updated: 2026-11-09T01:15:00Z
 relaciona: [ops-readme, project-readme]
 status: stable
 ---
@@ -37,14 +37,14 @@ las secciones 2-8; la estructura y las reglas son reutilizables tal cual.
 
 ---
 
-## Estado actual (2026-11-09, iteracion 56: regresion integral verde + runbook)
+## Estado actual (2026-11-09, iteracion 57: NG0203 prod corregido + cache remoteEntry)
 
 > Fecha: 2026-11-09. Rama: n/a en la raiz (orquestador); cada repo del multirepo tiene la suya
 > (RC4/dev). Estado: fases 0-8 + 13 + 14 + 14.5 + rutas planas + migracion Angular Material
 > (12.5) implementadas. Seguridad: VULN-001/002/003/004 mitigadas (ver .ops/security/vulns.md);
 > iteracion 53 cerro la parte pendiente de VULN-001: PUT /api/sincronizacion ya no reemplaza la
 > bitacora, la fusiona por id (append-only con conservacion: omision = no-op, modificacion 422,
-> append ajeno 422); cliente filtra bitacora ajena no confirmada. pytest 136/136, vitest
+> append ajeno 422); cliente filtra bitacora ajena no confirmada. it55 elimino el selector mock "Usuario activo" (sesion real unicamente); it56 barrido integral verde + RUNBOOK de deploy; it57 corrigio el NG0203 del bootstrap prod (shared-lib 522c78e) y anadio no-cache a remoteEntry.json del shell (deploy ea0867d). pytest 140/140+4sk, vitest
 > shared-lib 177/177, ruff limpio. Commits: backend 1f8b297, shared-lib b7c489f, root b6f7a3f.
 > API y db Postgres dockerizadas en el compose demo (deploy 1deb0b8): 8100 con login JWT y
 > persistencia real, demo reconstruida con Material y E2E 12/12 con 0 recursos 404 en 4400-4404.
@@ -89,7 +89,17 @@ las secciones 2-8; la estructura y las reglas son reutilizables tal cual.
 
 7. **Trabajo en curso y pendiente:**
    - Iteracion 56 (regresion integral + runbook) -> HECHA (2026-11-09): barrido sin cambios de codigo - vitest shared-lib 177, shell 29, mfe-projects 29, mfe-admin 13, mfe-governance 20, ui-lib 40, mfe-reports 6; pytest 140 passed + 4 skipped; ruff y eslint OK (7 repos); build raiz OK (7 repos). Runbook de deploy nuevo (deploy/projecthub/RUNBOOK.md, commit deploy 721b6a3): env vars (AUTH_SECRET, ALLOWED_ORIGINS, RATE_LIMIT_*), limitador en memoria y multi-instancia (Redis/edge), hardening, verificacion post-despliegue, operacion y limitaciones.
-   - Iteracion 55 (sesion real sin selector mock) -> HECHA (2026-11-09): el select de usuario activo del navbar (herencia mock) se elimino junto con todo lo hardcodeado: SesionStore solo acepta usuario fijado por AutenticacionService (fijarUsuario con JWT); sin seleccionar()/usuariosActivos en sesion; catalogo de usuarios del ProjectStore viene del backend; X-Actor-Id fuera del cliente (queda como herramienta de pruebas del backend); guards redirigen a /login sin sesion (sin fallback al dashboard); banner sin lenguaje de modo demo. Totales vitest: shared-lib 177, shell 29, mfe-projects 29, mfe-admin 13, mfe-governance 20. Builds y lint OK en los 7/6 repos. Commits: shared-lib 285a178, shell 130d7ec, mfe-projects 1fca9c3, mfe-admin 228dfaf, mfe-governance cee3d22, root cfc5343 (punteros) + d5d7394 (script e2e). La demo docker aun no incluye la iteracion 55 (rebuild pendiente).
+   - Iteracion 55 (sesion real sin selector mock) -> HECHA (2026-11-09): el select de usuario activo del navbar (herencia mock) se elimino junto con todo lo hardcodeado: SesionStore solo acepta usuario fijado por AutenticacionService (fijarUsuario con JWT); sin seleccionar()/usuariosActivos en sesion; catalogo de usuarios del ProjectStore viene del backend; X-Actor-Id fuera del cliente (queda como herramienta de pruebas del backend); guards redirigen a /login sin sesion (sin fallback al dashboard); banner sin lenguaje de modo demo. Totales vitest: shared-lib 177, shell 29, mfe-projects 29, mfe-admin 13, mfe-governance 20. Builds y lint OK en los 7/6 repos. Commits: shared-lib 285a178, shell 130d7ec,
+   mfe-projects 1fca9c3, mfe-admin 228dfaf, mfe-governance cee3d22, root cfc5343 (punteros) + d5d7394 (script e2e). La demo docker aun no incluye la iteracion 55 (rebuild pendiente).
+   - Iteracion 57 (NG0203 prod + cache + e2e banner) -> HECHA (2026-11-09):
+     el smoke de la demo destapo el NG0203 del bootstrap prod (regresion
+     de it55: sincronizarStores llamado tras await restauroSesion en el
+     initializer). Fix en shared-lib 522c78e (runInInjectionContext tras
+     capturar el Injector antes del await); verificado en local y demo
+     (rebuild shell, dashboard renderiza, 0 errores NG0*). Ademas:
+     no-cache en remoteEntry.json del shell (deploy ea0867d, era
+     max-age=3600), e2e-banner-api 9/9 alineado al texto it55, e2e-repush
+     8/8, e2e-bitacora-append 10/10, BD demo sin residuos E2E.
    - Iteracion 53 (VULN-001 bitacora) -> HECHA (2026-11-08): backend
      `_fusionar_bitacora` (merge conservador: omision = no-op, modificacion
      422, append ajeno 422; `bitacora_reemplazar()` administrativo) y
@@ -174,7 +184,7 @@ las secciones 2-8; la estructura y las reglas son reutilizables tal cual.
      mitigada en parte en iteracion 42 (diff de usuarios exige Admin;
      decision de alcance pendiente para bitacora y demas colecciones).
    - Iteracion 30 (cierre documental 13.1/13.3/13.4) -> HECHA (2026-11-08):
-     los tres items ◑ de la seccion 13 pasan a ☑ con evidencia acumulada
+     los tres items ÃƒÆ’Ã†â€™Ãƒâ€ Ã¢â‚¬â„¢ÃƒÆ’Ã¢â‚¬Â ÃƒÂ¢Ã¢â€šÂ¬Ã¢â€žÂ¢ÃƒÆ’Ã†â€™ÃƒÂ¢Ã¢â€šÂ¬Ã…Â¡ÃƒÆ’Ã¢â‚¬Å¡Ãƒâ€šÃ‚Â¢ÃƒÆ’Ã†â€™Ãƒâ€ Ã¢â‚¬â„¢ÃƒÆ’Ã¢â‚¬Å¡Ãƒâ€šÃ‚Â¢ÃƒÆ’Ã†â€™Ãƒâ€šÃ‚Â¢ÃƒÆ’Ã‚Â¢ÃƒÂ¢Ã¢â‚¬Å¡Ã‚Â¬Ãƒâ€¦Ã‚Â¡ÃƒÆ’Ã¢â‚¬Å¡Ãƒâ€šÃ‚Â¬ÃƒÆ’Ã†â€™Ãƒâ€šÃ‚Â¢ÃƒÆ’Ã‚Â¢ÃƒÂ¢Ã¢â€šÂ¬Ã…Â¡Ãƒâ€šÃ‚Â¬ÃƒÆ’Ã¢â‚¬Å¡Ãƒâ€šÃ‚ÂÃƒÆ’Ã†â€™Ãƒâ€ Ã¢â‚¬â„¢ÃƒÆ’Ã¢â‚¬Å¡Ãƒâ€šÃ‚Â¢ÃƒÆ’Ã†â€™Ãƒâ€šÃ‚Â¢ÃƒÆ’Ã‚Â¢ÃƒÂ¢Ã¢â‚¬Å¡Ã‚Â¬Ãƒâ€¦Ã‚Â¡ÃƒÆ’Ã¢â‚¬Å¡Ãƒâ€šÃ‚Â¬ÃƒÆ’Ã†â€™ÃƒÂ¢Ã¢â€šÂ¬Ã‚Â¹ÃƒÆ’Ã¢â‚¬Â¦ÃƒÂ¢Ã¢â€šÂ¬Ã…â€œ de la seccion 13 pasan a ÃƒÆ’Ã†â€™Ãƒâ€ Ã¢â‚¬â„¢ÃƒÆ’Ã¢â‚¬Â ÃƒÂ¢Ã¢â€šÂ¬Ã¢â€žÂ¢ÃƒÆ’Ã†â€™ÃƒÂ¢Ã¢â€šÂ¬Ã…Â¡ÃƒÆ’Ã¢â‚¬Å¡Ãƒâ€šÃ‚Â¢ÃƒÆ’Ã†â€™Ãƒâ€ Ã¢â‚¬â„¢ÃƒÆ’Ã‚Â¢ÃƒÂ¢Ã¢â‚¬Å¡Ã‚Â¬Ãƒâ€šÃ‚Â¹ÃƒÆ’Ã†â€™ÃƒÂ¢Ã¢â€šÂ¬Ã‚Â¦ÃƒÆ’Ã‚Â¢ÃƒÂ¢Ã¢â‚¬Å¡Ã‚Â¬Ãƒâ€¦Ã¢â‚¬Å“ÃƒÆ’Ã†â€™Ãƒâ€ Ã¢â‚¬â„¢ÃƒÆ’Ã¢â‚¬Å¡Ãƒâ€šÃ‚Â¢ÃƒÆ’Ã†â€™Ãƒâ€šÃ‚Â¢ÃƒÆ’Ã‚Â¢ÃƒÂ¢Ã¢â‚¬Å¡Ã‚Â¬Ãƒâ€¦Ã‚Â¡ÃƒÆ’Ã¢â‚¬Å¡Ãƒâ€šÃ‚Â¬ÃƒÆ’Ã†â€™ÃƒÂ¢Ã¢â€šÂ¬Ã‚Â¹ÃƒÆ’Ã¢â‚¬Â¦ÃƒÂ¢Ã¢â€šÂ¬Ã…â€œ con evidencia acumulada
      (109/109 pytest, auth JWT de fase 14, E2E de hoy con 0 recursos >= 400,
      persistencia F5 re-verificada en iteraciones 23/24). Sin cambios de
      codigo.
@@ -287,7 +297,7 @@ las secciones 2-8; la estructura y las reglas son reutilizables tal cual.
 | 27 | 2026-11-08 | Regresion E2E federado general (files/e2e-federado.mjs adaptado a la era de sesion real): header con actor autenticado, 4 rutas sin fallback, F5 profundo /governance/bitacora, consola limpia | hecho: 10/10 OK, 0 recursos 404; script de sesion actualizado (era demo -> login real), sin cambios de producto; commit raiz docs | Agente |
 | 28 | 2026-11-08 | Regresion E2E de widgets federados (files/e2e-widgets.mjs): dashboard con 4 widgets, widget remote a remote con Intl, selector de proyecto actualiza resumen, F5 profundo, consola limpia | hecho: 8/8 OK, 0 recursos >= 400; sin cambios de codigo; commit raiz docs | Agente |
 | 29 | 2026-11-08 | Regresion E2E de exportacion PDF (files/e2e-pdf.mjs): tablero y presupuesto invocan dialogo de impresion con titulo correcto, secciones, totales y celdas escapadas, consola limpia | hecho: 14/14 OK; sin cambios de codigo; commit raiz docs | Agente |
-| 30 | 2026-11-08 | Cierre documental de 13.1/13.3/13.4 en docs/funcionalidades.md con evidencia acumulada (pytest 109/109, auth JWT, E2E hoy 0 recursos >= 400, persistencia F5 de iteraciones 23/24) | hecho: seccion 13 completa (13.1-13.4 en ☑); sin cambios de codigo; commit raiz docs | Agente |
+| 30 | 2026-11-08 | Cierre documental de 13.1/13.3/13.4 en docs/funcionalidades.md con evidencia acumulada (pytest 109/109, auth JWT, E2E hoy 0 recursos >= 400, persistencia F5 de iteraciones 23/24) | hecho: seccion 13 completa (13.1-13.4 en ÃƒÆ’Ã†â€™Ãƒâ€ Ã¢â‚¬â„¢ÃƒÆ’Ã¢â‚¬Â ÃƒÂ¢Ã¢â€šÂ¬Ã¢â€žÂ¢ÃƒÆ’Ã†â€™ÃƒÂ¢Ã¢â€šÂ¬Ã…Â¡ÃƒÆ’Ã¢â‚¬Å¡Ãƒâ€šÃ‚Â¢ÃƒÆ’Ã†â€™Ãƒâ€ Ã¢â‚¬â„¢ÃƒÆ’Ã‚Â¢ÃƒÂ¢Ã¢â‚¬Å¡Ã‚Â¬Ãƒâ€šÃ‚Â¹ÃƒÆ’Ã†â€™ÃƒÂ¢Ã¢â€šÂ¬Ã‚Â¦ÃƒÆ’Ã‚Â¢ÃƒÂ¢Ã¢â‚¬Å¡Ã‚Â¬Ãƒâ€¦Ã¢â‚¬Å“ÃƒÆ’Ã†â€™Ãƒâ€ Ã¢â‚¬â„¢ÃƒÆ’Ã¢â‚¬Å¡Ãƒâ€šÃ‚Â¢ÃƒÆ’Ã†â€™Ãƒâ€šÃ‚Â¢ÃƒÆ’Ã‚Â¢ÃƒÂ¢Ã¢â‚¬Å¡Ã‚Â¬Ãƒâ€¦Ã‚Â¡ÃƒÆ’Ã¢â‚¬Å¡Ãƒâ€šÃ‚Â¬ÃƒÆ’Ã†â€™ÃƒÂ¢Ã¢â€šÂ¬Ã‚Â¹ÃƒÆ’Ã¢â‚¬Â¦ÃƒÂ¢Ã¢â€šÂ¬Ã…â€œ); sin cambios de codigo; commit raiz docs | Agente |
 | 31 | 2026-11-08 | Barrido integral de calidad tras 19 commits de subrepos: npx ng test en los 7 repos (290 tests), build raiz, lint raiz, pytest backend, remoteEntry/salud 200, navegador integrado en 4300/login | hecho: 7/7 repos verdes (shared 161, ui 40, shell 22, projects 29, admin 13, governance 20, reports 5), build EXIT 0, lint EXIT 0, backend 109/109; hallazgo metodologico documentado (npx vitest run directo no sirve); sin cambios de codigo; commit raiz docs | Agente |
 | 32 | 2026-11-08 | Degradacion visible a modo demo: EstadoApi + sondeo /api/salud en ApiEnlaceService, banner de aviso en shell, estado vacio explicito en tablero-general; auditoria DoD de estados en las 9 paginas | hecho: shared-lib 426f196 + shell c0d3c92 + mfe-reports 5f8b6d2; 165+25+6+29 tests verdes, build raiz EXIT 0; navegador: banner aparece con API caida (Playwright) y estado vuelve a disponible al restaurar; demo docker pendiente de rebuild | Agente |
 | 33 | 2026-11-08 | Rebuild de la demo docker (5 imagenes) para incluir el banner; leccion: es-module-shims retiene el importmap viejo tras un rebuild y hay que limpiar cache HTTP | hecho: demo 4400-4404 con banner; Playwright: aparece en ~5 s con API caida y se retira al restaurar; nota en deploy/projecthub/README.md (ace10a3); commits raiz 8adfc65 | Agente |

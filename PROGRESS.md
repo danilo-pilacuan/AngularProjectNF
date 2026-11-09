@@ -1,3 +1,32 @@
+## 2026-11-09 (iteracion 57: NG0203 en bootstrap prod + cache remoteEntry + e2e banner)
+
+Objetivo: smoke integral de la demo dockerizada. Destapo una regresion real
+introducida en la iteracion 55 y quedo cerrada con fix verificado.
+
+- Hallazgo 1 (cache): remoteEntry.json del shell salia con
+  Cache-Control: public, max-age=3600 (shell.conf sin location dedicada;
+  los remotes si tenian no-cache desde it50). Tras un redeploy los
+  navegadores podian cargar chunks inexistentes hasta vencer el TTL.
+  deploy (ea0867d): location = /remoteEntry.json con no-cache; verificado
+  con curl -I en 4400 (remoteEntry e index.html).
+- Hallazgo 2 (REGRESION CRITICA): NG0203 en el bootstrap prod del shell
+  (body vacio en la demo). Causa raiz: en it55 el initializer paso a
+  llamar sincronizarStores() DESPUES de await restaurarSesion(); el
+  contexto de inyeccion no sobrevive al await y los inject() de
+  sincronizarStores fallan fuera de el. shared-lib (522c78e): se captura
+  inject(Injector) antes del await y se envuelve con
+  runInInjectionContext(inyector, () => sincronizarStores()). Tests
+  shared-lib 177/177; builds shared-lib y shell OK; verificado en local
+  (http-server 4399: 0 pageerrors, dashboard renderiza) y en demo
+  (rebuild shell; 0 errores NG0*; dashboard compone widgets).
+- e2e-banner-api actualizado al texto de it55 y ejecutado 9/9 (antes
+  esperaba 'modo demo'); e2e-repush 8/8 y e2e-bitacora-append 10/10
+  re-verificados tras el rebuild; BD demo sin residuos E2E (DELETE 2).
+- Demo verificada: chunk del shell sin 'Usuario activo' ni 'modo demo',
+  con 'datos locales de referencia'; remoteEntry con no-cache.
+- Leccion: los tests no atrapan NG0203 porque en TestBed el contexto de
+  inyeccion se administra distinto; la unica verificacion valida para el
+  bootstrap prod es servir el dist y abrir el browser.
 ## 2026-11-09 (iteracion 56: barrido integral de regresion + runbook de deploy)
 
 Objetivo: confirmar que la iteracion 55 no rompio nada en ninguna parte
@@ -129,7 +158,7 @@ Log de avance dia a dia. Fuente de verdad del avance; `.ops` lo organiza y enlaz
   la bitacora autoritativa. Un push stale que omita una entrada registrada
   por otro se recupera solo: el servidor la conserva y el siguiente push
   ya la lleva confirmada.
-- Decisión de diseño: la omision de una entrada vigente se interpreta como
+- DecisiÃ³n de diseÃ±o: la omision de una entrada vigente se interpreta como
   cliente desactualizado y se conserva la copia del servidor (merge
   conservador), no como borrado a rechazar: rechazar obligaria a que todo
   cliente empuje siempre la bitacora completa y fresca (422 en bucle de
@@ -222,7 +251,7 @@ Log de avance dia a dia. Fuente de verdad del avance; `.ops` lo organiza y enlaz
   admin, governance) mas la API ya reconstruida en las iteraciones 39-42;
   sin cambios de codigo.
 - Verificacion (navegador integrado contra la demo reconstruida):
-  - Modo demo sin sesion en 4400: los 422 de los GET anónimos NO disparan
+  - Modo demo sin sesion en 4400: los 422 de los GET anÃ³nimos NO disparan
     el banner de caida (consola con 422 esperados, UI con semilla y sin
     "Sin conexion"); degradacion elegante intacta.
   - Login real de Diana (Bearer): dashboard con datos del backend.
@@ -484,10 +513,10 @@ Log de avance dia a dia. Fuente de verdad del avance; `.ops` lo organiza y enlaz
   (los specs dependen del bootstrap de TestBed que inyecta el builder
   vitest de Angular; fallan con "Need to call TestBed.initTestEnvironment()").
   La forma correcta es `npx ng test` por repo o `npm test` raiz.
-- Resultado tests: 7/7 repos en verde con `npx ng test` — shared-lib 161,
+- Resultado tests: 7/7 repos en verde con `npx ng test` â€” shared-lib 161,
   ui-lib 40, shell 22, mfe-projects 29, mfe-admin 13, mfe-governance 20,
   mfe-reports 5 = 290 tests unitarios OK.
-- Resultado builds: `node tools/run-all.mjs build` EXIT 0 — los 7 proyectos
+- Resultado builds: `node tools/run-all.mjs build` EXIT 0 â€” los 7 proyectos
   compilan en produccion (4 MFEs + shell + 2 libs ng-packagr).
 - Resultado lint: `node tools/run-all.mjs lint` EXIT 0 en los 7 repos.
 - Resultado backend: 109/109 pytest.
@@ -500,15 +529,15 @@ Log de avance dia a dia. Fuente de verdad del avance; `.ops` lo organiza y enlaz
 
 ## 2026-11-08 (iteracion 30: cierre de items 13.1 / 13.3 / 13.4)
 
-- Cierre documental de los tres items ◑ de la seccion 13 (Backend) con la
+- Cierre documental de los tres items â—‘ de la seccion 13 (Backend) con la
   evidencia acumulada; sin cambios de codigo.
-- 13.1 -> ☑: API REST espejo ampliada con auth JWT, /me, rutas planas y
+- 13.1 -> â˜‘: API REST espejo ampliada con auth JWT, /me, rutas planas y
   salud/docs; 109/109 pytest + ruff limpio; API viva en 8100 (salud 200 y
   docs 200 verificados con curl hoy).
-- 13.3 -> ☑: el consumo de la API por el frontend quedo completo con la fase
+- 13.3 -> â˜‘: el consumo de la API por el frontend quedo completo con la fase
   14 (login JWT y token en cada llamada); los 8 scripts E2E de la bateria de
   hoy corrieron con 0 recursos >= 400 contra shell 4300 + API 8100.
-- 13.4 -> ☑: persistencia de escrituras re-verificada hoy: e2e-flujos (23)
+- 13.4 -> â˜‘: persistencia de escrituras re-verificada hoy: e2e-flujos (23)
   persiste proyecto + etapa + entregable + aprobacion tras F5 y e2e-
   transiciones (24) confirma la transicion Planteamiento -> Iniciativa
   persistida con su entrada de bitacora.
@@ -729,7 +758,7 @@ Log de avance dia a dia. Fuente de verdad del avance; `.ops` lo organiza y enlaz
 
 ## 2026-11-08 (iteracion 13: validacion del widget remote-a-remote en runtime)
 
-- Cierre del caveat de 11.5: E2E federado 8/8 (session files e2e-widgets.mjs) — mfe-reports
+- Cierre del caveat de 11.5: E2E federado 8/8 (session files e2e-widgets.mjs) â€” mfe-reports
   consume ProjectSummaryWidget de mfe-projects por federacion, cambio de proyecto actualiza
   el widget (avance Intl 0% -> 42,4% y montos $), F5 en /reports/proyecto-widget lo recarga,
   consola limpia y 0 recursos >= 400.
@@ -743,7 +772,7 @@ Log de avance dia a dia. Fuente de verdad del avance; `.ops` lo organiza y enlaz
 - Nota de operacion (anteproyecto de mejora): el catch silencioso de remoteConFallback()
   (shell app.routes.ts) traga la causa del fallback; cuando el modulo si carga pero el build
   esta desactualizado no queda rastro del motivo. MEJORA EJECUTADA en la iteracion 14:
-  remoteConFallback delega en cargaRemote(remote, cargar?) — inyectable para tests — que
+  remoteConFallback delega en cargaRemote(remote, cargar?) â€” inyectable para tests â€” que
   registra en consola (console.warn) el remote y el error real antes de recurrir al fallback;
   spec nuevo app.routes.spec.ts (2 casos: exito -> remoteRoutes; fallo -> fallback '**' con
   data.remote y warn con el error). shell 22/22 tests, build y lint exit 0; commit a003638.
@@ -804,7 +833,7 @@ Log de avance dia a dia. Fuente de verdad del avance; `.ops` lo organiza y enlaz
 
 ## 2026-11-08 (iteracion 8: componente generico ph-section-nav)
 
-- Nuevo componente genérico `ph-section-nav` en ui-lib (`lib/section-nav`): nav de
+- Nuevo componente genÃ©rico `ph-section-nav` en ui-lib (`lib/section-nav`): nav de
   secciones en pills con RouterLink/RouterLinkActive, inputs `links` (required),
   `ariaLabel` y `exact`; `[routerLinkActiveOptions]` con exact solo para el primer
   enlace (raiz) y prefijo para el resto. Estilos con tokens `--ph-color-*` y fallbacks.
@@ -1349,7 +1378,7 @@ Siguiente deuda: lint formal (11.4): ningun repo frontend tiene eslint ni script
 ## 2026-11-08 (iteracion 3: verificacion E2E del store unico, 8.4)
 - Nuevo script E2E federado (en session-state, no versionado): login real (diana@projecthub.local), sesion compartida visible en mfe-admin, lecturas de dominio en mfe-projects/mfe-reports/mfe-governance, creacion de proyecto "PH-E2E Store Unico" en mfe-projects y comprobacion de que aparece en /reports/presupuesto via store unico, consola limpia. Resultado: 7/7 OK, 0 recursos >= 400. Segunda corrida (idempotencia, proyecto ya cancelado): 7/7 OK.
 - Limpieza: proyecto de prueba p-mw78zvoq-1 cancelado via POST /api/proyectos/{id}/cancelar (no existe DELETE de proyectos; el dominio baja proyectos por cancelacion). Se verifico GET /api/proyectos/p-mw78zvoq-1 -> estado Cancelado y la corrida E2E sigue 7/7.
-- docs/funcionalidades.md 8.4 marcado ☑ con nota de evidencia. Con esto el alcance 1-14 no queda con items ◐ abiertos.
+- docs/funcionalidades.md 8.4 marcado â˜‘ con nota de evidencia. Con esto el alcance 1-14 no queda con items â— abiertos.
 
 ## 2026-11-08 (iteracion 4: pagina de bitacora cross-proyecto en mfe-governance)
 - Nueva pagina Bitacora en mfe-governance (ruta /governance/bitacora, link en nav): solo
@@ -1437,7 +1466,7 @@ Siguiente deuda: lint formal (11.4): ningun repo frontend tiene eslint ni script
   ese ng serve. Interceptar window.print en Playwright: nunca tocar Document.prototype.title
   (recursion); override de window.print por frame guardando window.__pdfCapturado y leerlo
   via polling de iframes[aria-hidden=true].
-- Commits: shared-lib 7f16aca, mfe-reports 4549935, docs raiz (ver hash). 7.5 queda ☑ completo
+- Commits: shared-lib 7f16aca, mfe-reports 4549935, docs raiz (ver hash). 7.5 queda â˜‘ completo
   en docs/funcionalidades.md: todo el alcance numerado esta implementado.
 
 ## Iteracion 20 (2026-11-08) - E2E de gate de etapa del ciclo de vida por UI + NG0956
