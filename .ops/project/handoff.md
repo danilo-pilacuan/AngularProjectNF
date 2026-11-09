@@ -7,7 +7,7 @@ description: Documento de soporte para pasar contexto completo a una sesion nuev
 estado: vigente
 dueno: rol:agente
 fecha: 2026-11-05T19:55:00Z
-updated: 2026-11-08T23:59:00Z
+updated: 2026-11-09T01:05:00Z
 relaciona: [ops-readme, project-readme]
 status: stable
 ---
@@ -37,7 +37,7 @@ las secciones 2-8; la estructura y las reglas son reutilizables tal cual.
 
 ---
 
-## Estado actual (2026-11-09, iteracion 55: sesion real sin selector mock)
+## Estado actual (2026-11-09, iteracion 56: regresion integral verde + runbook)
 
 > Fecha: 2026-11-09. Rama: n/a en la raiz (orquestador); cada repo del multirepo tiene la suya
 > (RC4/dev). Estado: fases 0-8 + 13 + 14 + 14.5 + rutas planas + migracion Angular Material
@@ -88,6 +88,7 @@ las secciones 2-8; la estructura y las reglas son reutilizables tal cual.
      salida de evidencia; builds largos con log; evidencia etiquetada por stack).
 
 7. **Trabajo en curso y pendiente:**
+   - Iteracion 56 (regresion integral + runbook) -> HECHA (2026-11-09): barrido sin cambios de codigo - vitest shared-lib 177, shell 29, mfe-projects 29, mfe-admin 13, mfe-governance 20, ui-lib 40, mfe-reports 6; pytest 140 passed + 4 skipped; ruff y eslint OK (7 repos); build raiz OK (7 repos). Runbook de deploy nuevo (deploy/projecthub/RUNBOOK.md, commit deploy 721b6a3): env vars (AUTH_SECRET, ALLOWED_ORIGINS, RATE_LIMIT_*), limitador en memoria y multi-instancia (Redis/edge), hardening, verificacion post-despliegue, operacion y limitaciones.
    - Iteracion 55 (sesion real sin selector mock) -> HECHA (2026-11-09): el select de usuario activo del navbar (herencia mock) se elimino junto con todo lo hardcodeado: SesionStore solo acepta usuario fijado por AutenticacionService (fijarUsuario con JWT); sin seleccionar()/usuariosActivos en sesion; catalogo de usuarios del ProjectStore viene del backend; X-Actor-Id fuera del cliente (queda como herramienta de pruebas del backend); guards redirigen a /login sin sesion (sin fallback al dashboard); banner sin lenguaje de modo demo. Totales vitest: shared-lib 177, shell 29, mfe-projects 29, mfe-admin 13, mfe-governance 20. Builds y lint OK en los 7/6 repos. Commits: shared-lib 285a178, shell 130d7ec, mfe-projects 1fca9c3, mfe-admin 228dfaf, mfe-governance cee3d22, root cfc5343 (punteros) + d5d7394 (script e2e). La demo docker aun no incluye la iteracion 55 (rebuild pendiente).
    - Iteracion 53 (VULN-001 bitacora) -> HECHA (2026-11-08): backend
      `_fusionar_bitacora` (merge conservador: omision = no-op, modificacion

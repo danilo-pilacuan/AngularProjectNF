@@ -1,3 +1,24 @@
+## 2026-11-09 (iteracion 56: barrido integral de regresion + runbook de deploy)
+
+Objetivo: confirmar que la iteracion 55 no rompio nada en ninguna parte
+del sistema y documentar el despliegue.
+
+- Barrido de regresion (todo verde, sin cambios de codigo):
+  vitest shared-lib 177/177, shell 29/29, mfe-projects 29/29,
+  mfe-admin 13/13, mfe-governance 20/20, ui-lib 40/40,
+  mfe-reports 6/6; pytest backend 140 passed + 4 skipped; ruff limpio;
+  eslint OK en los 7 repos (npm run lint); npm run build raiz OK
+  (7 repos: mfe-admin, mfe-governance, mfe-projects, mfe-reports,
+  shared-lib, shell, ui-lib).
+- deploy (commit 721b6a3): nuevo
+  deploy/projecthub/RUNBOOK.md - variables de entorno (AUTH_SECRET,
+  ALLOWED_ORIGINS, RATE_LIMIT_LOGIN_*), limitacion del limitador de login
+  en memoria con varias instancias (Redis/edge como camino), comandos de
+  despliegue y rebuild por servicio, hardening de la iteracion 50,
+  verificacion post-despliegue (curl + login de humo) y operacion
+  (logs, backup/restore, down -v destructivo).
+- Limpieza: eliminados .dev-logs/msg-*.txt (temporales de la iteracion
+  55).
 ## 2026-11-09 (iteracion 55: sesion real sin selector mock - eliminar hardcodeo)
 
 Objetivo: eliminar el select "Usuario activo" del navbar (herencia del mock)
