@@ -1,3 +1,35 @@
+## 2026-11-09 (iteracion 55: sesion real sin selector mock - eliminar hardcodeo)
+
+Objetivo: eliminar el select "Usuario activo" del navbar (herencia del mock)
+y todo lo hardcodeado asociado, moviendo el sistema a sesion unicamente real.
+
+- shared-lib (commit 285a178): SesionStore real - solo AutenticacionService
+  fija el usuario (fijarUsuario); eliminados USUARIOS_SEMILLA del store,
+  usuariosActivos, seleccionar() y registrarUsuario(). AutenticacionService
+  resincroniza los stores tras el login y expone reBaselinear() en el
+  sincronizador para reanclar el push. api-enlace sin X-Actor-Id (la
+  identidad viaja solo en el token Authorization). project.store lleva
+  catalogo propio de usuarios desde el backend; exigirResponsableActivo y
+  exigirAdmin validan contra ese catalogo. Tests: 13 archivos, 177/177.
+- shell (commit 130d7ec): user-switcher sin modo demo - con sesion muestra
+  usuario/roles/perfil/cierre; sin sesion muestra acceso a /login.
+  sesion.guard redirige SIEMPRE a /login sin sesion; permiso.guard igual.
+  Banner de backend caido ya no menciona modo demo. Tests: 8 archivos,
+  29/29.
+- mfe-projects (commit 1fca9c3): responsables desde UsuarioStore
+  (catalogo), no desde la sesion; mensajes "Inicia sesion para continuar."
+  Tests: 5 archivos, 29/29.
+- mfe-admin (228dfaf) y mfe-governance (cee3d22): specs con sesion real
+  (fijarUsuario + fixture). 13/13 y 20/20.
+- Verificacion integral: build de los 7 repos OK; lint OK en los 6 con
+  eslint (un fix: variables sesion sin uso en usuarios.spec).
+- Residuos iteracion 54: DELETE en BD demo de proyectos "E2E RePush%"
+  (2 filas via datos->>nombre) y commit del script
+  tools/e2e/e2e-bitacora-append-api.mjs (d5d7394).
+- docs/funcionalidades.md: 1.6 marcado como reemplazado por sesion real
+  (14.3), decision de eliminacion de la sesion simulada (2026-11-09),
+  11.6 con texto nuevo del banner, X-Actor-Id reclassificado como
+  herramienta de pruebas del backend.
 ## 2026-11-08 (iteracion 50: hardening del deploy demo)
 
 - nginx sin privilegios: nginx.conf propio (listen 8080, pid y temp paths en

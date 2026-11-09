@@ -37,9 +37,9 @@ las secciones 2-8; la estructura y las reglas son reutilizables tal cual.
 
 ---
 
-## Estado actual (2026-11-08, iteracion 53: VULN-001 bitacora cerrada)
+## Estado actual (2026-11-09, iteracion 55: sesion real sin selector mock)
 
-> Fecha: 2026-11-08. Rama: n/a en la raiz (orquestador); cada repo del multirepo tiene la suya
+> Fecha: 2026-11-09. Rama: n/a en la raiz (orquestador); cada repo del multirepo tiene la suya
 > (RC4/dev). Estado: fases 0-8 + 13 + 14 + 14.5 + rutas planas + migracion Angular Material
 > (12.5) implementadas. Seguridad: VULN-001/002/003/004 mitigadas (ver .ops/security/vulns.md);
 > iteracion 53 cerro la parte pendiente de VULN-001: PUT /api/sincronizacion ya no reemplaza la
@@ -88,6 +88,7 @@ las secciones 2-8; la estructura y las reglas son reutilizables tal cual.
      salida de evidencia; builds largos con log; evidencia etiquetada por stack).
 
 7. **Trabajo en curso y pendiente:**
+   - Iteracion 55 (sesion real sin selector mock) -> HECHA (2026-11-09): el select de usuario activo del navbar (herencia mock) se elimino junto con todo lo hardcodeado: SesionStore solo acepta usuario fijado por AutenticacionService (fijarUsuario con JWT); sin seleccionar()/usuariosActivos en sesion; catalogo de usuarios del ProjectStore viene del backend; X-Actor-Id fuera del cliente (queda como herramienta de pruebas del backend); guards redirigen a /login sin sesion (sin fallback al dashboard); banner sin lenguaje de modo demo. Totales vitest: shared-lib 177, shell 29, mfe-projects 29, mfe-admin 13, mfe-governance 20. Builds y lint OK en los 7/6 repos. Commits: shared-lib 285a178, shell 130d7ec, mfe-projects 1fca9c3, mfe-admin 228dfaf, mfe-governance cee3d22, root cfc5343 (punteros) + d5d7394 (script e2e). La demo docker aun no incluye la iteracion 55 (rebuild pendiente).
    - Iteracion 53 (VULN-001 bitacora) -> HECHA (2026-11-08): backend
      `_fusionar_bitacora` (merge conservador: omision = no-op, modificacion
      422, append ajeno 422; `bitacora_reemplazar()` administrativo) y
