@@ -1,3 +1,35 @@
+## 2026-11-09 (iteracion 60: dedupe de URL base en specs + fin del era mock)
+
+Objetivo: eliminar los ultimos residuos de la era mock detectados en la
+revision del navbar: el nombre heredado `UserSwitcher` y los 50 literales
+`http://localhost:8100` repartidos en 5 specs.
+
+- Constante unica (shared-lib 18fd4d8): `API_BASE_URL_POR_DEFECTO` y el
+  helper `urlApiPorDefecto(ruta)` exportados desde api-enlace.ts; el factory
+  del token `API_BASE_URL` usa la constante. Los specs de api-enlace,
+  autenticacion y sincronizador-escrituras (shared-lib) y app y login (shell)
+  migrados al helper: 0 literales restantes (unico sitio del codigo con el
+  8100: la constante).
+- Renombrado (shell 7cc4133): `user-switcher/` -> `sesion-usuario/` (carpeta,
+  clase `SesionUsuario`, selector `app-sesion-usuario`, clases CSS del
+  template). El select mock "Usuario activo" ya se habia eliminado en it55
+  (130d7ec); quedaba solo el nombre, que viaja al bundle prod porque app.html
+  referencia el selector. app.ts/app.html/app.spec.ts actualizados; JSDoc
+  cuenta la historia.
+- Verificacion: vitest 314/314 (7 repos), lint raiz 7 repos exit 0, build
+  raiz 7 repos exit 0, bundle prod del shell sin 'user-switcher' ni
+  'Usuario activo' y con 'app-sesion-usuario'. Demo dockerizada: shell
+  reconstruido (imagen nueva), manifest 440x correcto, remoteEntry 200 en
+  los 5, chunk servido (14732 B) contiene 'app-sesion-usuario'/'Cambiar
+  contrasena'/'Cerrar sesion' y 0 strings mock, login real de diana contra
+  8100: 200/200/200 (login, /me, /api/usuarios). navegador CDP no disponible
+  en esta sesion; verificacion por HTTP y bundles servidos.
+- Nota: para tocar shared-lib y testear el shell sigue siendo obligatorio
+  `npx ng build` en shared-lib (el shell consume dist por `file:`), ahora
+  los exports nuevos se ven en types/projecthub-shared.d.ts y
+  fesm2022/projecthub-shared.mjs (archivos consolidados).
+- Punteros: root 96bd359 (shared-lib 18fd4d8, shell 7cc4133).
+
 ## 2026-11-09 (iteracion 59: barrido integral de regresion tras it58)
 
 Objetivo: confirmar que el fix de AutenticacionService (77bb148) no rompio

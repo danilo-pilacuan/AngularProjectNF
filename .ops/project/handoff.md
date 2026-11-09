@@ -37,15 +37,18 @@ las secciones 2-8; la estructura y las reglas son reutilizables tal cual.
 
 ---
 
-## Estado actual (2026-11-09, iteracion 58: NG0203 en resincronizarStores corregido)
+## Estado actual (2026-11-09, iteracion 60: dedupe URL base + fin del era mock)
 
 > Fecha: 2026-11-09. Rama: n/a en la raiz (orquestador); cada repo del multirepo tiene la suya
 > (RC4/dev). Estado: fases 0-8 + 13 + 14 + 14.5 + rutas planas + migracion Angular Material
 > (12.5) implementadas. Seguridad: VULN-001/002/003/004 mitigadas (ver .ops/security/vulns.md);
 > iteracion 53 cerro la parte pendiente de VULN-001: PUT /api/sincronizacion ya no reemplaza la
 > bitacora, la fusiona por id (append-only con conservacion: omision = no-op, modificacion 422,
-> append ajeno 422); cliente filtra bitacora ajena no confirmada. it55 elimino el selector mock "Usuario activo" (sesion real unicamente); it56 barrido integral verde + RUNBOOK de deploy; it57 corrigio el NG0203 del bootstrap prod (shared-lib 522c78e) y anadio no-cache a remoteEntry.json del shell (deploy ea0867d); it58 aplico el mismo patron a AutenticacionService.resincronizarStores (shared-lib 77bb148): tras un login exitoso ahora si se descarga el estado autoritativo. pytest 140/140+4sk, vitest
-> shared-lib 177/177, ruff limpio. Commits: backend 1f8b297, shared-lib 77bb148, root b6f7a3f.
+> append ajeno 422); cliente filtra bitacora ajena no confirmada. it55 elimino el selector mock "Usuario activo" (sesion real unicamente); it56 barrido integral verde + RUNBOOK de deploy; it57 corrigio el NG0203 del bootstrap prod (shared-lib 522c78e) y anadio no-cache a remoteEntry.json del shell (deploy ea0867d); it58 aplico el mismo patron a AutenticacionService.resincronizarStores (shared-lib 77bb148): tras un login exitoso ahora si se descarga el estado autoritativo. it60 borro los ultimos
+> residuos del era mock: UserSwitcher renombrado a SesionUsuario (shell 7cc4133) y los 50
+> literales http://localhost:8100 de los specs unificados en API_BASE_URL_POR_DEFECTO +
+> urlApiPorDefecto() (shared-lib 18fd4d8). pytest 140/140+4sk, vitest
+> shared-lib 177/177, ruff limpio. Commits: backend 1f8b297, shared-lib 18fd4d8, shell 7cc4133, root 96bd359.
 > API y db Postgres dockerizadas en el compose demo (deploy 1deb0b8): 8100 con login JWT y
 > persistencia real, demo reconstruida con Material y E2E 12/12 con 0 recursos 404 en 4400-4404.
 > Pendiente: revision humana de estados
@@ -88,6 +91,18 @@ las secciones 2-8; la estructura y las reglas son reutilizables tal cual.
      salida de evidencia; builds largos con log; evidencia etiquetada por stack).
 
 7. **Trabajo en curso y pendiente:**
+   - Iteracion 60 (fin del era mock) -> HECHA (2026-11-09): constante unica
+     para la URL base de la API (API_BASE_URL_POR_DEFECTO + urlApiPorDefecto
+     en shared-lib 18fd4d8; 50 literales http://localhost:8100 eliminados de
+     5 specs) y renombrado UserSwitcher -> SesionUsuario (shell 7cc4133;
+     app.ts/app.html/app.spec.ts actualizados; el select mock ya no existia
+     desde it55, quedaba el nombre heredado que viaja al bundle prod).
+     Verificado: vitest 314/314 en 7 repos, lint raiz 0, build raiz exit 0,
+     bundle prod sin 'user-switcher'/'Usuario activo', demo reconstruida
+     (manifest 440x, remoteEntry 200 en los 5, chunk servido con
+     app-sesion-usuario y sin strings mock), login real de diana 200/200/200.
+     Nota: el browser CDP no estaba disponible en esa sesion; verificacion
+     por HTTP + bundles servidos. Punteros root 96bd359; 10 repos clean.
    - Iteracion 59 (regresion integral tras it58) -> HECHA (2026-11-09):
      barrido verde: vitest shared-lib 177, shell 29, mfe-projects 29,
      mfe-admin 13, mfe-governance 20, mfe-reports 6, ui-lib 40; pytest
@@ -338,3 +353,4 @@ las secciones 2-8; la estructura y las reglas son reutilizables tal cual.
 | 57 | 2026-11-09 | Smoke de la demo: NG0203 en bootstrap prod (regresion it55); fix runInInjectionContext en el initializer (shared-lib 522c78e); no-cache en remoteEntry.json del shell (deploy ea0867d); e2e-banner 9/9 alineado a it55, repush 8/8, bitacora 10/10, BD sin residuos | hecho: vitest 177/177, demo reconstruida y verificada; commits shared-lib 522c78e, deploy ea0867d, raiz 20b1e60 + docs 35d616a | Agente |
 | 58 | 2026-11-09 | Mismo patron NG0203 en AutenticacionService.resincronizarStores (tras el login la descarga del estado autoritativo moria en silencio); fix Injector capturado + runInInjectionContext (shared-lib 77bb148); spec de login actualizado (los tests de login exitoso responden las 5 lecturas de sync: antes validaban el bug) | hecho: vitest 177/177, build shared-lib + shell, rebuild shell demo, e2e 9/9 + 8/8 + 10/10, BD sin residuos | Agente |
 | 59 | 2026-11-09 | Barrido integral de regresion tras it58 (sin codigo de produccion): vitest 7 repos (177/29/29/13/20/6/40), pytest 140+4sk, ruff 0, eslint 7 repos, build raiz 7 repos; spec de login del shell corregido con el helper de sync (shell f4f992d) | hecho: commits shell f4f992d + raiz punteros; 10 repos clean | Agente |
+| 60 | 2026-11-09 | Fin del era mock: UserSwitcher -> SesionUsuario (shell 7cc4133) y constante unica API_BASE_URL_POR_DEFECTO + urlApiPorDefecto() con 50 literales 8100 eliminados de 5 specs (shared-lib 18fd4d8); verificado con vitest 314/314 (7 repos), lint raiz, build raiz, bundle prod sin strings mock y demo HTTP (manifest, remoteEntry x5, chunk limpio, login diana 200/200/200) | hecho: commits shared-lib 18fd4d8, shell 7cc4133, root punteros 96bd359 + docs; 10 repos clean | Agente |
