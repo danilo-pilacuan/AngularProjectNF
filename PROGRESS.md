@@ -1,3 +1,32 @@
+## 2026-11-09 (iteracion 65: VULN-009 integridad referencial de entregables y patrocinadores en el re-sync)
+
+Objetivo: cerrar el gap de referencias fantasma detectado al auditar el canal
+de re-sync: el push podia colar creadoPorId/aprobadoPorId de entregables y
+patrocinadorId de proyectos apuntando a usuarios que no existen.
+
+- Gap (VULN-009): el canal normal fija esas referencias como el actor del
+  caso de uso (crear_proyecto, crear_entregable, aprobar_entregable), asi que
+  nunca son fantasmas; por el push, en cambio, cualquier id entraba. Riesgo:
+  el gate cuenta aprobaciones por id (gate_actual compara ids), por lo que un
+  aprobador fantasma contaba como aprobacion sin dueno conocido (bypass de
+  gobernanza); un patrocinador fantasma dejaba la trazabilidad 1.2 sin dueno.
+- Fix (backend db57502): _validar_invariantes_dominio exige que el creador y
+  el aprobador de cada entregable y el patrocinador de cada proyecto existan
+  en la coleccion entrante de usuarios -> 422 VALIDACION con mensaje espejo
+  del canal normal. Decision de dominio: el aprobador puede quedar inactivo
+  despues de aprobar (aprobar_entregable solo exige actor activo en el
+  momento de aprobar, 1.8), asi que no se exige activo=True: el historial del
+  gate no se invalida.
+- Test de regresion: test_escribir_estado_referencias_fantasma_responde_422
+  (aprobador fantasma, autor fantasma, patrocinador fantasma -> 422
+  VALIDACION; estado vigente intacto tras los tres rechazos).
+- Verificacion: pytest 149 passed + 4 skipped, ruff limpio. Semilla auditada
+  previamente: todos los ids de creador/aprobador/responsable/patrocinador
+  existen en USUARIOS_SEMILLA (u-doble incluido). Demo docker reconstruida
+  (grep confirma el fix en /app/app/servicio.py) y sonda HTTP: push con
+  aprobador u-fantasma -> 422; estado vigente intacto (7 usuarios, 6
+  proyectos, 10 entregables, 11 bitacora).
+
 ## 2026-11-09 (iteracion 64: VULN-008 paridad de validacion de usuarios en el re-sync)
 
 Objetivo: cerrar el ultimo gap de paridad del canal de re-sync detectado al

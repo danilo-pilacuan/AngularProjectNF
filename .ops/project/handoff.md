@@ -7,7 +7,7 @@ description: Documento de soporte para pasar contexto completo a una sesion nuev
 estado: vigente
 dueno: rol:agente
 fecha: 2026-11-05T19:55:00Z
-updated: 2026-11-09T07:20:00Z
+updated: 2026-11-09T08:00:00Z
 relaciona: [ops-readme, project-readme]
 status: stable
 ---
@@ -37,11 +37,11 @@ las secciones 2-8; la estructura y las reglas son reutilizables tal cual.
 
 ---
 
-## Estado actual (2026-11-09, iteracion 64: VULN-008 paridad de usuarios en el re-sync)
+## Estado actual (2026-11-09, iteracion 65: VULN-009 integridad referencial en el re-sync)
 
 > Fecha: 2026-11-09. Rama: n/a en la raiz (orquestador); cada repo del multirepo tiene la suya
 > (RC4/dev). Estado: fases 0-8 + 13 + 14 + 14.5 + rutas planas + migracion Angular Material
-> (12.5) implementadas. Seguridad: VULN-001..008 mitigadas (ver .ops/security/vulns.md);
+> (12.5) implementadas. Seguridad: VULN-001..009 mitigadas (ver .ops/security/vulns.md);
 > iteracion 53 cerro la parte pendiente de VULN-001: PUT /api/sincronizacion ya no reemplaza la
 > bitacora, la fusiona por id (append-only con conservacion: omision = no-op, modificacion 422,
 > append ajeno 422); cliente filtra bitacora ajena no confirmada. it55 elimino el selector mock "Usuario activo" (sesion real unicamente); it56 barrido integral verde + RUNBOOK de deploy; it57 corrigio el NG0203 del bootstrap prod (shared-lib 522c78e) y anadio no-cache a remoteEntry.json del shell (deploy ea0867d); it58 aplico el mismo patron a AutenticacionService.resincronizarStores (shared-lib 77bb148): tras un login exitoso ahora si se descarga el estado autoritativo. it60 borro los ultimos
@@ -67,6 +67,11 @@ las secciones 2-8; la estructura y las reglas son reutilizables tal cual.
 > rechaza (nombre vacio, sin roles, correo invalido o duplicado case-insensitive -> 422/409);
 > escribir_estado_completo normaliza nombre/correo entrantes como crear/editar. pytest
 > 148/148+4sk; sondas HTTP demo: 409 duplicado, 422 sin arroba, estado intacto.
+> it65 cerro VULN-009 (backend db57502): el re-sync ya no acepta referencias a usuarios
+> inexistentes (creadoPorId/aprobadoPorId de entregables y patrocinadorId de proyectos ->
+> 422 VALIDACION; el gate ya no puede contar aprobaciones de usuarios fantasma). Semilla
+> auditada (u-doble existe). pytest 149/149+4sk; demo docker reconstruida; sonda HTTP:
+> push con aprobador u-fantasma -> 422 y estado vigente intacto.
 > API y db Postgres dockerizadas en el compose demo (deploy 1deb0b8): 8100 con login JWT y
 > persistencia real, demo reconstruida con Material y E2E 12/12 con 0 recursos 404 en 4400-4404.
 > Pendiente: revision humana de estados
@@ -377,3 +382,4 @@ las secciones 2-8; la estructura y las reglas son reutilizables tal cual.
 | 62 | 2026-11-09 | VULN-006: validacion referencial de bitacora solo en entradas nuevas dentro de _fusionar_bitacora (append-only 3.5: las vigentes son historial y pueden referenciar proyectos eliminados); repro manual + restauracion del estado demo; sondas HTTP seguras con snapshot (422/200/200) | hecho: commit backend bce5470, fila VULN-006 en vulns.md; pytest 146/146+4sk; puntero root 3360ba4; contenedor demo recreado con up -d (build solo no basta) | Agente |
 | 61 | 2026-11-09 | VULN-005: invariantes de dominio en escribir_estado_completo (avance 0-100, presupuesto finito >= 0, fechas ordenadas, no autoaprobacion); huecos NaN en crear_proyecto y registrar_consumo; 4 tests nuevos; BD demo verificada intacta tras incidente de sondas standalone | hecho: commit backend 8a9de54, fila VULN-005 en vulns.md, PROGRESS + handoff; pytest 144/144+4sk, ruff 0 | Agente |
 | 64 | 2026-11-09 | VULN-008: paridad de validacion de usuarios en el re-sync; escribir_estado_completo normaliza nombre/correo (strip+lower) y _validar_invariantes_dominio rechaza nombre vacio, sin roles y correo invalido/duplicado case-insensitive (422/409); test de regresion con 4 rechazos + push legitimo normalizado | hecho: commit backend 790e5fa, fila VULN-008 en vulns.md, puntero+docs root cf6e075; pytest 148/148+4sk, ruff 0; demo rebuild+up y sondas 409/422 con estado 7/6/11 intacto | Agente |
+| 65 | 2026-11-09 | VULN-009: integridad referencial en el re-sync; _validar_invariantes_dominio exige que creadoPorId/aprobadoPorId de entregables y patrocinadorId de proyectos existan en la coleccion de usuarios entrante (422 VALIDACION); decision de dominio: el aprobador puede quedar inactivo despues de aprobar (historial del gate no se invalida) | hecho: commit backend db57502, fila VULN-009 en vulns.md, sonda HTTP push con u-fantasma -> 422 y estado vigente intacto (7/6/10/11), semilla auditada (u-doble existe); pytest 149/149+4sk, ruff 0; demo docker reconstruida (grep confirma el fix) | Agente |
