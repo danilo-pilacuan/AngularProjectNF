@@ -1,0 +1,2184 @@
+X [ERROR] TS2307: Cannot find module '@projecthub/ui' or its corresponding type declarations. [plugin angular-compiler]
+
+    C:/dev/AngularProjectNF/mfe-projects/src/app/pages/portafolio/portafolio.ts:14:67:
+      14 │ ..., DataTableColumn, IntlFormat, StageBadge } from '@projecthub/ui';
+         ╵                                                     ~~~~~~~~~~~~~~~~
+
+X [ERROR] NG1010: 'imports' must be an array of components, directives, pipes, or NgModules.
+  Value could not be determined statically. [plugin angular-compiler]
+
+    C:/dev/AngularProjectNF/mfe-projects/src/app/pages/portafolio/portafolio.ts:37:12:
+      37 │   imports: [DataTable, DataTableColumn, StageBadge, RouterLink],
+         ╵             ~~~~~~~~~
+
+  Unknown reference.
+
+    C:/dev/AngularProjectNF/mfe-projects/src/app/pages/portafolio/portafolio.ts:37:12:
+      37 │   imports: [DataTable, DataTableColumn, StageBadge, RouterLink],
+         ╵             ~~~~~~~~~
+
+X [ERROR] NG1010: 'imports' must be an array of components, directives, pipes, or NgModules.
+  Value could not be determined statically. [plugin angular-compiler]
+
+    C:/dev/AngularProjectNF/mfe-projects/src/app/pages/portafolio/portafolio.ts:37:23:
+      37 │   imports: [DataTable, DataTableColumn, StageBadge, RouterLink],
+         ╵                        ~~~~~~~~~~~~~~~
+
+  Unknown reference.
+
+    C:/dev/AngularProjectNF/mfe-projects/src/app/pages/portafolio/portafolio.ts:37:23:
+      37 │   imports: [DataTable, DataTableColumn, StageBadge, RouterLink],
+         ╵                        ~~~~~~~~~~~~~~~
+
+X [ERROR] NG1010: 'imports' must be an array of components, directives, pipes, or NgModules.
+  Value could not be determined statically. [plugin angular-compiler]
+
+    C:/dev/AngularProjectNF/mfe-projects/src/app/pages/portafolio/portafolio.ts:37:40:
+      37 │   imports: [DataTable, DataTableColumn, StageBadge, RouterLink],
+         ╵                                         ~~~~~~~~~~
+
+  Unknown reference.
+
+    C:/dev/AngularProjectNF/mfe-projects/src/app/pages/portafolio/portafolio.ts:37:40:
+      37 │   imports: [DataTable, DataTableColumn, StageBadge, RouterLink],
+         ╵                                         ~~~~~~~~~~
+
+X [ERROR] TS2571: Object is of type 'unknown'. [plugin angular-compiler]
+
+    C:/dev/AngularProjectNF/mfe-projects/src/app/pages/portafolio/portafolio.ts:84:11:
+      84 │     return this.intl.monto(valor);
+         ╵            ~~~~~~~~~
+
+X [ERROR] TS2571: Object is of type 'unknown'. [plugin angular-compiler]
+
+    C:/dev/AngularProjectNF/mfe-projects/src/app/pages/portafolio/portafolio.ts:88:11:
+      88 │     return this.intl.porcentaje(valor);
+         ╵            ~~~~~~~~~
+
+X [ERROR] TS2307: Cannot find module '@projecthub/ui' or its corresponding type declarations. [plugin angular-compiler]
+
+    C:/dev/AngularProjectNF/mfe-projects/src/app/pages/proyecto-detalle/proyecto-detalle.ts:23:7:
+      23 │ } from '@projecthub/ui';
+         ╵        ~~~~~~~~~~~~~~~~
+
+X [ERROR] NG1010: 'imports' must be an array of components, directives, pipes, or NgModules.
+  Value could not be determined statically. [plugin angular-compiler]
+
+    C:/dev/AngularProjectNF/mfe-projects/src/app/pages/proyecto-detalle/proyecto-detalle.ts:48:12:
+      48 │   imports: [DataTable, DataTableColumn, FormField, GanttChart, Per...
+         ╵             ~~~~~~~~~
+
+  Unknown reference.
+
+    C:/dev/AngularProjectNF/mfe-projects/src/app/pages/proyecto-detalle/proyecto-detalle.ts:48:12:
+      48 │   imports: [DataTable, DataTableColumn, FormField, GanttChart, Per...
+         ╵             ~~~~~~~~~
+
+X [ERROR] NG1010: 'imports' must be an array of components, directives, pipes, or NgModules.
+  Value could not be determined statically. [plugin angular-compiler]
+
+    C:/dev/AngularProjectNF/mfe-projects/src/app/pages/proyecto-detalle/proyecto-detalle.ts:48:23:
+      48 │   imports: [DataTable, DataTableColumn, FormField, GanttChart, Per...
+         ╵                        ~~~~~~~~~~~~~~~
+
+  Unknown reference.
+
+    C:/dev/AngularProjectNF/mfe-projects/src/app/pages/proyecto-detalle/proyecto-detalle.ts:48:23:
+      48 │   imports: [DataTable, DataTableColumn, FormField, GanttChart, Per...
+         ╵                        ~~~~~~~~~~~~~~~
+
+X [ERROR] NG1010: 'imports' must be an array of components, directives, pipes, or NgModules.
+  Value could not be determined statically. [plugin angular-compiler]
+
+    C:/dev/AngularProjectNF/mfe-projects/src/app/pages/proyecto-detalle/proyecto-detalle.ts:48:40:
+      48 │ ...ataTable, DataTableColumn, FormField, GanttChart, PermissionBan...
+         ╵                               ~~~~~~~~~
+
+  Unknown reference.
+
+    C:/dev/AngularProjectNF/mfe-projects/src/app/pages/proyecto-detalle/proyecto-detalle.ts:48:40:
+      48 │ ...ataTable, DataTableColumn, FormField, GanttChart, PermissionBan...
+         ╵                               ~~~~~~~~~
+
+X [ERROR] NG1010: 'imports' must be an array of components, directives, pipes, or NgModules.
+  Value could not be determined statically. [plugin angular-compiler]
+
+    C:/dev/AngularProjectNF/mfe-projects/src/app/pages/proyecto-detalle/proyecto-detalle.ts:48:51:
+      48 │ ...ataTableColumn, FormField, GanttChart, PermissionBanner, StageB...
+         ╵                               ~~~~~~~~~~
+
+  Unknown reference.
+
+    C:/dev/AngularProjectNF/mfe-projects/src/app/pages/proyecto-detalle/proyecto-detalle.ts:48:51:
+      48 │ ...ataTableColumn, FormField, GanttChart, PermissionBanner, StageB...
+         ╵                               ~~~~~~~~~~
+
+X [ERROR] NG1010: 'imports' must be an array of components, directives, pipes, or NgModules.
+  Value could not be determined statically. [plugin angular-compiler]
+
+    C:/dev/AngularProjectNF/mfe-projects/src/app/pages/proyecto-detalle/proyecto-detalle.ts:48:63:
+      48 │ ... FormField, GanttChart, PermissionBanner, StageBadge, RouterLink],
+         ╵                            ~~~~~~~~~~~~~~~~
+
+  Unknown reference.
+
+    C:/dev/AngularProjectNF/mfe-projects/src/app/pages/proyecto-detalle/proyecto-detalle.ts:48:63:
+      48 │ ... FormField, GanttChart, PermissionBanner, StageBadge, RouterLink],
+         ╵                            ~~~~~~~~~~~~~~~~
+
+X [ERROR] NG1010: 'imports' must be an array of components, directives, pipes, or NgModules.
+  Value could not be determined statically. [plugin angular-compiler]
+
+    C:/dev/AngularProjectNF/mfe-projects/src/app/pages/proyecto-detalle/proyecto-detalle.ts:48:81:
+      48 │ ... FormField, GanttChart, PermissionBanner, StageBadge, RouterLink],
+         ╵                                              ~~~~~~~~~~
+
+  Unknown reference.
+
+    C:/dev/AngularProjectNF/mfe-projects/src/app/pages/proyecto-detalle/proyecto-detalle.ts:48:81:
+      48 │ ... FormField, GanttChart, PermissionBanner, StageBadge, RouterLink],
+         ╵                                              ~~~~~~~~~~
+
+X [ERROR] TS2571: Object is of type 'unknown'. [plugin angular-compiler]
+
+    C:/dev/AngularProjectNF/mfe-projects/src/app/pages/proyecto-detalle/proyecto-detalle.ts:117:14:
+      117 │       inicio: this.intl.fecha(e.fechaInicio),
+          ╵               ~~~~~~~~~
+
+X [ERROR] TS2571: Object is of type 'unknown'. [plugin angular-compiler]
+
+    C:/dev/AngularProjectNF/mfe-projects/src/app/pages/proyecto-detalle/proyecto-detalle.ts:118:11:
+      118 │       fin: this.intl.fecha(e.fechaFin),
+          ╵            ~~~~~~~~~
+
+X [ERROR] TS2571: Object is of type 'unknown'. [plugin angular-compiler]
+
+    C:/dev/AngularProjectNF/mfe-projects/src/app/pages/proyecto-detalle/proyecto-detalle.ts:133:11:
+      133 │     return this.intl.monto(valor);
+          ╵            ~~~~~~~~~
+
+X [ERROR] TS2571: Object is of type 'unknown'. [plugin angular-compiler]
+
+    C:/dev/AngularProjectNF/mfe-projects/src/app/pages/proyecto-detalle/proyecto-detalle.ts:137:11:
+      137 │     return this.intl.porcentaje(valor);
+          ╵            ~~~~~~~~~
+
+X [ERROR] TS2571: Object is of type 'unknown'. [plugin angular-compiler]
+
+    C:/dev/AngularProjectNF/mfe-projects/src/app/pages/proyecto-detalle/proyecto-detalle.ts:141:11:
+      141 │     return this.intl.fecha(valor);
+          ╵            ~~~~~~~~~
+
+X [ERROR] TS2307: Cannot find module '@projecthub/ui' or its corresponding type declarations. [plugin angular-compiler]
+
+    C:/dev/AngularProjectNF/mfe-projects/src/app/pages/proyecto-form/proyecto-form.ts:10:44:
+      10 │ import { FormField, PermissionBanner } from '@projecthub/ui';
+         ╵                                             ~~~~~~~~~~~~~~~~
+
+X [ERROR] NG1010: 'imports' must be an array of components, directives, pipes, or NgModules.
+  Value could not be determined statically. [plugin angular-compiler]
+
+    C:/dev/AngularProjectNF/mfe-projects/src/app/pages/proyecto-form/proyecto-form.ts:21:12:
+      21 │   imports: [FormField, PermissionBanner],
+         ╵             ~~~~~~~~~
+
+  Unknown reference.
+
+    C:/dev/AngularProjectNF/mfe-projects/src/app/pages/proyecto-form/proyecto-form.ts:21:12:
+      21 │   imports: [FormField, PermissionBanner],
+         ╵             ~~~~~~~~~
+
+X [ERROR] NG1010: 'imports' must be an array of components, directives, pipes, or NgModules.
+  Value could not be determined statically. [plugin angular-compiler]
+
+    C:/dev/AngularProjectNF/mfe-projects/src/app/pages/proyecto-form/proyecto-form.ts:21:23:
+      21 │   imports: [FormField, PermissionBanner],
+         ╵                        ~~~~~~~~~~~~~~~~
+
+  Unknown reference.
+
+    C:/dev/AngularProjectNF/mfe-projects/src/app/pages/proyecto-form/proyecto-form.ts:21:23:
+      21 │   imports: [FormField, PermissionBanner],
+         ╵                        ~~~~~~~~~~~~~~~~
+
+X [ERROR] TS2307: Cannot find module '@projecthub/ui' or its corresponding type declarations. [plugin angular-compiler]
+
+    C:/dev/AngularProjectNF/mfe-projects/src/app/widgets/project-summary.widget.ts:3:60:
+      3 │ ...ntlFormat, SummaryTendencia, SummaryWidget } from '@projecthub/ui';
+        ╵                                                      ~~~~~~~~~~~~~~~~
+
+X [ERROR] NG1010: 'imports' must be an array of components, directives, pipes, or NgModules.
+  Value could not be determined statically. [plugin angular-compiler]
+
+    C:/dev/AngularProjectNF/mfe-projects/src/app/widgets/project-summary.widget.ts:13:12:
+      13 │   imports: [SummaryWidget],
+         ╵             ~~~~~~~~~~~~~
+
+  Unknown reference.
+
+    C:/dev/AngularProjectNF/mfe-projects/src/app/widgets/project-summary.widget.ts:13:12:
+      13 │   imports: [SummaryWidget],
+         ╵             ~~~~~~~~~~~~~
+
+X [ERROR] TS2571: Object is of type 'unknown'. [plugin angular-compiler]
+
+    C:/dev/AngularProjectNF/mfe-projects/src/app/widgets/project-summary.widget.ts:51:13:
+      51 │       valor: this.intl.porcentaje(r.avance),
+         ╵              ~~~~~~~~~
+
+X [ERROR] TS2571: Object is of type 'unknown'. [plugin angular-compiler]
+
+    C:/dev/AngularProjectNF/mfe-projects/src/app/widgets/project-summary.widget.ts:52:18:
+      52 │       detalle: `${this.intl.monto(r.presupuestoConsumido)} de ${th...
+         ╵                   ~~~~~~~~~
+
+X [ERROR] TS2571: Object is of type 'unknown'. [plugin angular-compiler]
+
+    C:/dev/AngularProjectNF/mfe-projects/src/app/widgets/project-summary.widget.ts:52:64:
+      52 │ ... `${this.intl.monto(r.presupuestoConsumido)} de ${this.intl.monto(
+         ╵                                                      ~~~~~~~~~
+
+ ERRR  Error building federation artifacts
+ ERRR  Federation rebuild failed!
+X [ERROR] TS2307: Cannot find module '@projecthub/ui' or its corresponding type declarations. [plugin angular-compiler]
+
+    C:/dev/AngularProjectNF/mfe-projects/src/app/pages/portafolio/portafolio.ts:14:67:
+      14 │ ..., DataTableColumn, IntlFormat, StageBadge } from '@projecthub/ui';
+         ╵                                                     ~~~~~~~~~~~~~~~~
+
+X [ERROR] NG1010: 'imports' must be an array of components, directives, pipes, or NgModules.
+  Value could not be determined statically. [plugin angular-compiler]
+
+    C:/dev/AngularProjectNF/mfe-projects/src/app/pages/portafolio/portafolio.ts:37:12:
+      37 │   imports: [DataTable, DataTableColumn, StageBadge, RouterLink],
+         ╵             ~~~~~~~~~
+
+  Unknown reference.
+
+    C:/dev/AngularProjectNF/mfe-projects/src/app/pages/portafolio/portafolio.ts:37:12:
+      37 │   imports: [DataTable, DataTableColumn, StageBadge, RouterLink],
+         ╵             ~~~~~~~~~
+
+X [ERROR] NG1010: 'imports' must be an array of components, directives, pipes, or NgModules.
+  Value could not be determined statically. [plugin angular-compiler]
+
+    C:/dev/AngularProjectNF/mfe-projects/src/app/pages/portafolio/portafolio.ts:37:23:
+      37 │   imports: [DataTable, DataTableColumn, StageBadge, RouterLink],
+         ╵                        ~~~~~~~~~~~~~~~
+
+  Unknown reference.
+
+    C:/dev/AngularProjectNF/mfe-projects/src/app/pages/portafolio/portafolio.ts:37:23:
+      37 │   imports: [DataTable, DataTableColumn, StageBadge, RouterLink],
+         ╵                        ~~~~~~~~~~~~~~~
+
+X [ERROR] NG1010: 'imports' must be an array of components, directives, pipes, or NgModules.
+  Value could not be determined statically. [plugin angular-compiler]
+
+    C:/dev/AngularProjectNF/mfe-projects/src/app/pages/portafolio/portafolio.ts:37:40:
+      37 │   imports: [DataTable, DataTableColumn, StageBadge, RouterLink],
+         ╵                                         ~~~~~~~~~~
+
+  Unknown reference.
+
+    C:/dev/AngularProjectNF/mfe-projects/src/app/pages/portafolio/portafolio.ts:37:40:
+      37 │   imports: [DataTable, DataTableColumn, StageBadge, RouterLink],
+         ╵                                         ~~~~~~~~~~
+
+X [ERROR] TS2571: Object is of type 'unknown'. [plugin angular-compiler]
+
+    C:/dev/AngularProjectNF/mfe-projects/src/app/pages/portafolio/portafolio.ts:84:11:
+      84 │     return this.intl.monto(valor);
+         ╵            ~~~~~~~~~
+
+X [ERROR] TS2571: Object is of type 'unknown'. [plugin angular-compiler]
+
+    C:/dev/AngularProjectNF/mfe-projects/src/app/pages/portafolio/portafolio.ts:88:11:
+      88 │     return this.intl.porcentaje(valor);
+         ╵            ~~~~~~~~~
+
+X [ERROR] TS2307: Cannot find module '@projecthub/ui' or its corresponding type declarations. [plugin angular-compiler]
+
+    C:/dev/AngularProjectNF/mfe-projects/src/app/pages/proyecto-detalle/proyecto-detalle.ts:23:7:
+      23 │ } from '@projecthub/ui';
+         ╵        ~~~~~~~~~~~~~~~~
+
+X [ERROR] NG1010: 'imports' must be an array of components, directives, pipes, or NgModules.
+  Value could not be determined statically. [plugin angular-compiler]
+
+    C:/dev/AngularProjectNF/mfe-projects/src/app/pages/proyecto-detalle/proyecto-detalle.ts:48:12:
+      48 │   imports: [DataTable, DataTableColumn, FormField, GanttChart, Per...
+         ╵             ~~~~~~~~~
+
+  Unknown reference.
+
+    C:/dev/AngularProjectNF/mfe-projects/src/app/pages/proyecto-detalle/proyecto-detalle.ts:48:12:
+      48 │   imports: [DataTable, DataTableColumn, FormField, GanttChart, Per...
+         ╵             ~~~~~~~~~
+
+X [ERROR] NG1010: 'imports' must be an array of components, directives, pipes, or NgModules.
+  Value could not be determined statically. [plugin angular-compiler]
+
+    C:/dev/AngularProjectNF/mfe-projects/src/app/pages/proyecto-detalle/proyecto-detalle.ts:48:23:
+      48 │   imports: [DataTable, DataTableColumn, FormField, GanttChart, Per...
+         ╵                        ~~~~~~~~~~~~~~~
+
+  Unknown reference.
+
+    C:/dev/AngularProjectNF/mfe-projects/src/app/pages/proyecto-detalle/proyecto-detalle.ts:48:23:
+      48 │   imports: [DataTable, DataTableColumn, FormField, GanttChart, Per...
+         ╵                        ~~~~~~~~~~~~~~~
+
+X [ERROR] NG1010: 'imports' must be an array of components, directives, pipes, or NgModules.
+  Value could not be determined statically. [plugin angular-compiler]
+
+    C:/dev/AngularProjectNF/mfe-projects/src/app/pages/proyecto-detalle/proyecto-detalle.ts:48:40:
+      48 │ ...ataTable, DataTableColumn, FormField, GanttChart, PermissionBan...
+         ╵                               ~~~~~~~~~
+
+  Unknown reference.
+
+    C:/dev/AngularProjectNF/mfe-projects/src/app/pages/proyecto-detalle/proyecto-detalle.ts:48:40:
+      48 │ ...ataTable, DataTableColumn, FormField, GanttChart, PermissionBan...
+         ╵                               ~~~~~~~~~
+
+X [ERROR] NG1010: 'imports' must be an array of components, directives, pipes, or NgModules.
+  Value could not be determined statically. [plugin angular-compiler]
+
+    C:/dev/AngularProjectNF/mfe-projects/src/app/pages/proyecto-detalle/proyecto-detalle.ts:48:51:
+      48 │ ...ataTableColumn, FormField, GanttChart, PermissionBanner, StageB...
+         ╵                               ~~~~~~~~~~
+
+  Unknown reference.
+
+    C:/dev/AngularProjectNF/mfe-projects/src/app/pages/proyecto-detalle/proyecto-detalle.ts:48:51:
+      48 │ ...ataTableColumn, FormField, GanttChart, PermissionBanner, StageB...
+         ╵                               ~~~~~~~~~~
+
+X [ERROR] NG1010: 'imports' must be an array of components, directives, pipes, or NgModules.
+  Value could not be determined statically. [plugin angular-compiler]
+
+    C:/dev/AngularProjectNF/mfe-projects/src/app/pages/proyecto-detalle/proyecto-detalle.ts:48:63:
+      48 │ ... FormField, GanttChart, PermissionBanner, StageBadge, RouterLink],
+         ╵                            ~~~~~~~~~~~~~~~~
+
+  Unknown reference.
+
+    C:/dev/AngularProjectNF/mfe-projects/src/app/pages/proyecto-detalle/proyecto-detalle.ts:48:63:
+      48 │ ... FormField, GanttChart, PermissionBanner, StageBadge, RouterLink],
+         ╵                            ~~~~~~~~~~~~~~~~
+
+X [ERROR] NG1010: 'imports' must be an array of components, directives, pipes, or NgModules.
+  Value could not be determined statically. [plugin angular-compiler]
+
+    C:/dev/AngularProjectNF/mfe-projects/src/app/pages/proyecto-detalle/proyecto-detalle.ts:48:81:
+      48 │ ... FormField, GanttChart, PermissionBanner, StageBadge, RouterLink],
+         ╵                                              ~~~~~~~~~~
+
+  Unknown reference.
+
+    C:/dev/AngularProjectNF/mfe-projects/src/app/pages/proyecto-detalle/proyecto-detalle.ts:48:81:
+      48 │ ... FormField, GanttChart, PermissionBanner, StageBadge, RouterLink],
+         ╵                                              ~~~~~~~~~~
+
+X [ERROR] TS2571: Object is of type 'unknown'. [plugin angular-compiler]
+
+    C:/dev/AngularProjectNF/mfe-projects/src/app/pages/proyecto-detalle/proyecto-detalle.ts:117:14:
+      117 │       inicio: this.intl.fecha(e.fechaInicio),
+          ╵               ~~~~~~~~~
+
+X [ERROR] TS2571: Object is of type 'unknown'. [plugin angular-compiler]
+
+    C:/dev/AngularProjectNF/mfe-projects/src/app/pages/proyecto-detalle/proyecto-detalle.ts:118:11:
+      118 │       fin: this.intl.fecha(e.fechaFin),
+          ╵            ~~~~~~~~~
+
+X [ERROR] TS2571: Object is of type 'unknown'. [plugin angular-compiler]
+
+    C:/dev/AngularProjectNF/mfe-projects/src/app/pages/proyecto-detalle/proyecto-detalle.ts:133:11:
+      133 │     return this.intl.monto(valor);
+          ╵            ~~~~~~~~~
+
+X [ERROR] TS2571: Object is of type 'unknown'. [plugin angular-compiler]
+
+    C:/dev/AngularProjectNF/mfe-projects/src/app/pages/proyecto-detalle/proyecto-detalle.ts:137:11:
+      137 │     return this.intl.porcentaje(valor);
+          ╵            ~~~~~~~~~
+
+X [ERROR] TS2571: Object is of type 'unknown'. [plugin angular-compiler]
+
+    C:/dev/AngularProjectNF/mfe-projects/src/app/pages/proyecto-detalle/proyecto-detalle.ts:141:11:
+      141 │     return this.intl.fecha(valor);
+          ╵            ~~~~~~~~~
+
+X [ERROR] TS2307: Cannot find module '@projecthub/ui' or its corresponding type declarations. [plugin angular-compiler]
+
+    C:/dev/AngularProjectNF/mfe-projects/src/app/pages/proyecto-form/proyecto-form.ts:10:44:
+      10 │ import { FormField, PermissionBanner } from '@projecthub/ui';
+         ╵                                             ~~~~~~~~~~~~~~~~
+
+X [ERROR] NG1010: 'imports' must be an array of components, directives, pipes, or NgModules.
+  Value could not be determined statically. [plugin angular-compiler]
+
+    C:/dev/AngularProjectNF/mfe-projects/src/app/pages/proyecto-form/proyecto-form.ts:21:12:
+      21 │   imports: [FormField, PermissionBanner],
+         ╵             ~~~~~~~~~
+
+  Unknown reference.
+
+    C:/dev/AngularProjectNF/mfe-projects/src/app/pages/proyecto-form/proyecto-form.ts:21:12:
+      21 │   imports: [FormField, PermissionBanner],
+         ╵             ~~~~~~~~~
+
+X [ERROR] NG1010: 'imports' must be an array of components, directives, pipes, or NgModules.
+  Value could not be determined statically. [plugin angular-compiler]
+
+    C:/dev/AngularProjectNF/mfe-projects/src/app/pages/proyecto-form/proyecto-form.ts:21:23:
+      21 │   imports: [FormField, PermissionBanner],
+         ╵                        ~~~~~~~~~~~~~~~~
+
+  Unknown reference.
+
+    C:/dev/AngularProjectNF/mfe-projects/src/app/pages/proyecto-form/proyecto-form.ts:21:23:
+      21 │   imports: [FormField, PermissionBanner],
+         ╵                        ~~~~~~~~~~~~~~~~
+
+X [ERROR] TS2307: Cannot find module '@projecthub/ui' or its corresponding type declarations. [plugin angular-compiler]
+
+    C:/dev/AngularProjectNF/mfe-projects/src/app/widgets/project-summary.widget.ts:3:60:
+      3 │ ...ntlFormat, SummaryTendencia, SummaryWidget } from '@projecthub/ui';
+        ╵                                                      ~~~~~~~~~~~~~~~~
+
+X [ERROR] NG1010: 'imports' must be an array of components, directives, pipes, or NgModules.
+  Value could not be determined statically. [plugin angular-compiler]
+
+    C:/dev/AngularProjectNF/mfe-projects/src/app/widgets/project-summary.widget.ts:13:12:
+      13 │   imports: [SummaryWidget],
+         ╵             ~~~~~~~~~~~~~
+
+  Unknown reference.
+
+    C:/dev/AngularProjectNF/mfe-projects/src/app/widgets/project-summary.widget.ts:13:12:
+      13 │   imports: [SummaryWidget],
+         ╵             ~~~~~~~~~~~~~
+
+X [ERROR] TS2571: Object is of type 'unknown'. [plugin angular-compiler]
+
+    C:/dev/AngularProjectNF/mfe-projects/src/app/widgets/project-summary.widget.ts:51:13:
+      51 │       valor: this.intl.porcentaje(r.avance),
+         ╵              ~~~~~~~~~
+
+X [ERROR] TS2571: Object is of type 'unknown'. [plugin angular-compiler]
+
+    C:/dev/AngularProjectNF/mfe-projects/src/app/widgets/project-summary.widget.ts:52:18:
+      52 │       detalle: `${this.intl.monto(r.presupuestoConsumido)} de ${th...
+         ╵                   ~~~~~~~~~
+
+X [ERROR] TS2571: Object is of type 'unknown'. [plugin angular-compiler]
+
+    C:/dev/AngularProjectNF/mfe-projects/src/app/widgets/project-summary.widget.ts:52:64:
+      52 │ ... `${this.intl.monto(r.presupuestoConsumido)} de ${this.intl.monto(
+         ╵                                                      ~~~~~~~~~
+
+ ERRR  Error building federation artifacts
+ ERRR  Federation rebuild failed!
+X [ERROR] TS2307: Cannot find module '@projecthub/ui' or its corresponding type declarations. [plugin angular-compiler]
+
+    C:/dev/AngularProjectNF/mfe-projects/src/app/pages/portafolio/portafolio.ts:14:67:
+      14 │ ..., DataTableColumn, IntlFormat, StageBadge } from '@projecthub/ui';
+         ╵                                                     ~~~~~~~~~~~~~~~~
+
+X [ERROR] NG1010: 'imports' must be an array of components, directives, pipes, or NgModules.
+  Value could not be determined statically. [plugin angular-compiler]
+
+    C:/dev/AngularProjectNF/mfe-projects/src/app/pages/portafolio/portafolio.ts:37:12:
+      37 │   imports: [DataTable, DataTableColumn, StageBadge, RouterLink],
+         ╵             ~~~~~~~~~
+
+  Unknown reference.
+
+    C:/dev/AngularProjectNF/mfe-projects/src/app/pages/portafolio/portafolio.ts:37:12:
+      37 │   imports: [DataTable, DataTableColumn, StageBadge, RouterLink],
+         ╵             ~~~~~~~~~
+
+X [ERROR] NG1010: 'imports' must be an array of components, directives, pipes, or NgModules.
+  Value could not be determined statically. [plugin angular-compiler]
+
+    C:/dev/AngularProjectNF/mfe-projects/src/app/pages/portafolio/portafolio.ts:37:23:
+      37 │   imports: [DataTable, DataTableColumn, StageBadge, RouterLink],
+         ╵                        ~~~~~~~~~~~~~~~
+
+  Unknown reference.
+
+    C:/dev/AngularProjectNF/mfe-projects/src/app/pages/portafolio/portafolio.ts:37:23:
+      37 │   imports: [DataTable, DataTableColumn, StageBadge, RouterLink],
+         ╵                        ~~~~~~~~~~~~~~~
+
+X [ERROR] NG1010: 'imports' must be an array of components, directives, pipes, or NgModules.
+  Value could not be determined statically. [plugin angular-compiler]
+
+    C:/dev/AngularProjectNF/mfe-projects/src/app/pages/portafolio/portafolio.ts:37:40:
+      37 │   imports: [DataTable, DataTableColumn, StageBadge, RouterLink],
+         ╵                                         ~~~~~~~~~~
+
+  Unknown reference.
+
+    C:/dev/AngularProjectNF/mfe-projects/src/app/pages/portafolio/portafolio.ts:37:40:
+      37 │   imports: [DataTable, DataTableColumn, StageBadge, RouterLink],
+         ╵                                         ~~~~~~~~~~
+
+X [ERROR] TS2571: Object is of type 'unknown'. [plugin angular-compiler]
+
+    C:/dev/AngularProjectNF/mfe-projects/src/app/pages/portafolio/portafolio.ts:84:11:
+      84 │     return this.intl.monto(valor);
+         ╵            ~~~~~~~~~
+
+X [ERROR] TS2571: Object is of type 'unknown'. [plugin angular-compiler]
+
+    C:/dev/AngularProjectNF/mfe-projects/src/app/pages/portafolio/portafolio.ts:88:11:
+      88 │     return this.intl.porcentaje(valor);
+         ╵            ~~~~~~~~~
+
+X [ERROR] TS2307: Cannot find module '@projecthub/ui' or its corresponding type declarations. [plugin angular-compiler]
+
+    C:/dev/AngularProjectNF/mfe-projects/src/app/pages/proyecto-detalle/proyecto-detalle.ts:23:7:
+      23 │ } from '@projecthub/ui';
+         ╵        ~~~~~~~~~~~~~~~~
+
+X [ERROR] NG1010: 'imports' must be an array of components, directives, pipes, or NgModules.
+  Value could not be determined statically. [plugin angular-compiler]
+
+    C:/dev/AngularProjectNF/mfe-projects/src/app/pages/proyecto-detalle/proyecto-detalle.ts:48:12:
+      48 │   imports: [DataTable, DataTableColumn, FormField, GanttChart, Per...
+         ╵             ~~~~~~~~~
+
+  Unknown reference.
+
+    C:/dev/AngularProjectNF/mfe-projects/src/app/pages/proyecto-detalle/proyecto-detalle.ts:48:12:
+      48 │   imports: [DataTable, DataTableColumn, FormField, GanttChart, Per...
+         ╵             ~~~~~~~~~
+
+X [ERROR] NG1010: 'imports' must be an array of components, directives, pipes, or NgModules.
+  Value could not be determined statically. [plugin angular-compiler]
+
+    C:/dev/AngularProjectNF/mfe-projects/src/app/pages/proyecto-detalle/proyecto-detalle.ts:48:23:
+      48 │   imports: [DataTable, DataTableColumn, FormField, GanttChart, Per...
+         ╵                        ~~~~~~~~~~~~~~~
+
+  Unknown reference.
+
+    C:/dev/AngularProjectNF/mfe-projects/src/app/pages/proyecto-detalle/proyecto-detalle.ts:48:23:
+      48 │   imports: [DataTable, DataTableColumn, FormField, GanttChart, Per...
+         ╵                        ~~~~~~~~~~~~~~~
+
+X [ERROR] NG1010: 'imports' must be an array of components, directives, pipes, or NgModules.
+  Value could not be determined statically. [plugin angular-compiler]
+
+    C:/dev/AngularProjectNF/mfe-projects/src/app/pages/proyecto-detalle/proyecto-detalle.ts:48:40:
+      48 │ ...ataTable, DataTableColumn, FormField, GanttChart, PermissionBan...
+         ╵                               ~~~~~~~~~
+
+  Unknown reference.
+
+    C:/dev/AngularProjectNF/mfe-projects/src/app/pages/proyecto-detalle/proyecto-detalle.ts:48:40:
+      48 │ ...ataTable, DataTableColumn, FormField, GanttChart, PermissionBan...
+         ╵                               ~~~~~~~~~
+
+X [ERROR] NG1010: 'imports' must be an array of components, directives, pipes, or NgModules.
+  Value could not be determined statically. [plugin angular-compiler]
+
+    C:/dev/AngularProjectNF/mfe-projects/src/app/pages/proyecto-detalle/proyecto-detalle.ts:48:51:
+      48 │ ...ataTableColumn, FormField, GanttChart, PermissionBanner, StageB...
+         ╵                               ~~~~~~~~~~
+
+  Unknown reference.
+
+    C:/dev/AngularProjectNF/mfe-projects/src/app/pages/proyecto-detalle/proyecto-detalle.ts:48:51:
+      48 │ ...ataTableColumn, FormField, GanttChart, PermissionBanner, StageB...
+         ╵                               ~~~~~~~~~~
+
+X [ERROR] NG1010: 'imports' must be an array of components, directives, pipes, or NgModules.
+  Value could not be determined statically. [plugin angular-compiler]
+
+    C:/dev/AngularProjectNF/mfe-projects/src/app/pages/proyecto-detalle/proyecto-detalle.ts:48:63:
+      48 │ ... FormField, GanttChart, PermissionBanner, StageBadge, RouterLink],
+         ╵                            ~~~~~~~~~~~~~~~~
+
+  Unknown reference.
+
+    C:/dev/AngularProjectNF/mfe-projects/src/app/pages/proyecto-detalle/proyecto-detalle.ts:48:63:
+      48 │ ... FormField, GanttChart, PermissionBanner, StageBadge, RouterLink],
+         ╵                            ~~~~~~~~~~~~~~~~
+
+X [ERROR] NG1010: 'imports' must be an array of components, directives, pipes, or NgModules.
+  Value could not be determined statically. [plugin angular-compiler]
+
+    C:/dev/AngularProjectNF/mfe-projects/src/app/pages/proyecto-detalle/proyecto-detalle.ts:48:81:
+      48 │ ... FormField, GanttChart, PermissionBanner, StageBadge, RouterLink],
+         ╵                                              ~~~~~~~~~~
+
+  Unknown reference.
+
+    C:/dev/AngularProjectNF/mfe-projects/src/app/pages/proyecto-detalle/proyecto-detalle.ts:48:81:
+      48 │ ... FormField, GanttChart, PermissionBanner, StageBadge, RouterLink],
+         ╵                                              ~~~~~~~~~~
+
+X [ERROR] TS2571: Object is of type 'unknown'. [plugin angular-compiler]
+
+    C:/dev/AngularProjectNF/mfe-projects/src/app/pages/proyecto-detalle/proyecto-detalle.ts:117:14:
+      117 │       inicio: this.intl.fecha(e.fechaInicio),
+          ╵               ~~~~~~~~~
+
+X [ERROR] TS2571: Object is of type 'unknown'. [plugin angular-compiler]
+
+    C:/dev/AngularProjectNF/mfe-projects/src/app/pages/proyecto-detalle/proyecto-detalle.ts:118:11:
+      118 │       fin: this.intl.fecha(e.fechaFin),
+          ╵            ~~~~~~~~~
+
+X [ERROR] TS2571: Object is of type 'unknown'. [plugin angular-compiler]
+
+    C:/dev/AngularProjectNF/mfe-projects/src/app/pages/proyecto-detalle/proyecto-detalle.ts:133:11:
+      133 │     return this.intl.monto(valor);
+          ╵            ~~~~~~~~~
+
+X [ERROR] TS2571: Object is of type 'unknown'. [plugin angular-compiler]
+
+    C:/dev/AngularProjectNF/mfe-projects/src/app/pages/proyecto-detalle/proyecto-detalle.ts:137:11:
+      137 │     return this.intl.porcentaje(valor);
+          ╵            ~~~~~~~~~
+
+X [ERROR] TS2571: Object is of type 'unknown'. [plugin angular-compiler]
+
+    C:/dev/AngularProjectNF/mfe-projects/src/app/pages/proyecto-detalle/proyecto-detalle.ts:141:11:
+      141 │     return this.intl.fecha(valor);
+          ╵            ~~~~~~~~~
+
+X [ERROR] TS2307: Cannot find module '@projecthub/ui' or its corresponding type declarations. [plugin angular-compiler]
+
+    C:/dev/AngularProjectNF/mfe-projects/src/app/pages/proyecto-form/proyecto-form.ts:10:44:
+      10 │ import { FormField, PermissionBanner } from '@projecthub/ui';
+         ╵                                             ~~~~~~~~~~~~~~~~
+
+X [ERROR] NG1010: 'imports' must be an array of components, directives, pipes, or NgModules.
+  Value could not be determined statically. [plugin angular-compiler]
+
+    C:/dev/AngularProjectNF/mfe-projects/src/app/pages/proyecto-form/proyecto-form.ts:21:12:
+      21 │   imports: [FormField, PermissionBanner],
+         ╵             ~~~~~~~~~
+
+  Unknown reference.
+
+    C:/dev/AngularProjectNF/mfe-projects/src/app/pages/proyecto-form/proyecto-form.ts:21:12:
+      21 │   imports: [FormField, PermissionBanner],
+         ╵             ~~~~~~~~~
+
+X [ERROR] NG1010: 'imports' must be an array of components, directives, pipes, or NgModules.
+  Value could not be determined statically. [plugin angular-compiler]
+
+    C:/dev/AngularProjectNF/mfe-projects/src/app/pages/proyecto-form/proyecto-form.ts:21:23:
+      21 │   imports: [FormField, PermissionBanner],
+         ╵                        ~~~~~~~~~~~~~~~~
+
+  Unknown reference.
+
+    C:/dev/AngularProjectNF/mfe-projects/src/app/pages/proyecto-form/proyecto-form.ts:21:23:
+      21 │   imports: [FormField, PermissionBanner],
+         ╵                        ~~~~~~~~~~~~~~~~
+
+X [ERROR] TS2307: Cannot find module '@projecthub/ui' or its corresponding type declarations. [plugin angular-compiler]
+
+    C:/dev/AngularProjectNF/mfe-projects/src/app/widgets/project-summary.widget.ts:3:60:
+      3 │ ...ntlFormat, SummaryTendencia, SummaryWidget } from '@projecthub/ui';
+        ╵                                                      ~~~~~~~~~~~~~~~~
+
+X [ERROR] NG1010: 'imports' must be an array of components, directives, pipes, or NgModules.
+  Value could not be determined statically. [plugin angular-compiler]
+
+    C:/dev/AngularProjectNF/mfe-projects/src/app/widgets/project-summary.widget.ts:13:12:
+      13 │   imports: [SummaryWidget],
+         ╵             ~~~~~~~~~~~~~
+
+  Unknown reference.
+
+    C:/dev/AngularProjectNF/mfe-projects/src/app/widgets/project-summary.widget.ts:13:12:
+      13 │   imports: [SummaryWidget],
+         ╵             ~~~~~~~~~~~~~
+
+X [ERROR] TS2571: Object is of type 'unknown'. [plugin angular-compiler]
+
+    C:/dev/AngularProjectNF/mfe-projects/src/app/widgets/project-summary.widget.ts:51:13:
+      51 │       valor: this.intl.porcentaje(r.avance),
+         ╵              ~~~~~~~~~
+
+X [ERROR] TS2571: Object is of type 'unknown'. [plugin angular-compiler]
+
+    C:/dev/AngularProjectNF/mfe-projects/src/app/widgets/project-summary.widget.ts:52:18:
+      52 │       detalle: `${this.intl.monto(r.presupuestoConsumido)} de ${th...
+         ╵                   ~~~~~~~~~
+
+X [ERROR] TS2571: Object is of type 'unknown'. [plugin angular-compiler]
+
+    C:/dev/AngularProjectNF/mfe-projects/src/app/widgets/project-summary.widget.ts:52:64:
+      52 │ ... `${this.intl.monto(r.presupuestoConsumido)} de ${this.intl.monto(
+         ╵                                                      ~~~~~~~~~
+
+ ERRR  Error building federation artifacts
+ ERRR  Federation rebuild failed!
+X [ERROR] TS2307: Cannot find module '@projecthub/ui' or its corresponding type declarations. [plugin angular-compiler]
+
+    C:/dev/AngularProjectNF/mfe-projects/src/app/pages/portafolio/portafolio.ts:14:67:
+      14 │ ..., DataTableColumn, IntlFormat, StageBadge } from '@projecthub/ui';
+         ╵                                                     ~~~~~~~~~~~~~~~~
+
+X [ERROR] NG1010: 'imports' must be an array of components, directives, pipes, or NgModules.
+  Value could not be determined statically. [plugin angular-compiler]
+
+    C:/dev/AngularProjectNF/mfe-projects/src/app/pages/portafolio/portafolio.ts:37:12:
+      37 │   imports: [DataTable, DataTableColumn, StageBadge, RouterLink],
+         ╵             ~~~~~~~~~
+
+  Unknown reference.
+
+    C:/dev/AngularProjectNF/mfe-projects/src/app/pages/portafolio/portafolio.ts:37:12:
+      37 │   imports: [DataTable, DataTableColumn, StageBadge, RouterLink],
+         ╵             ~~~~~~~~~
+
+X [ERROR] NG1010: 'imports' must be an array of components, directives, pipes, or NgModules.
+  Value could not be determined statically. [plugin angular-compiler]
+
+    C:/dev/AngularProjectNF/mfe-projects/src/app/pages/portafolio/portafolio.ts:37:23:
+      37 │   imports: [DataTable, DataTableColumn, StageBadge, RouterLink],
+         ╵                        ~~~~~~~~~~~~~~~
+
+  Unknown reference.
+
+    C:/dev/AngularProjectNF/mfe-projects/src/app/pages/portafolio/portafolio.ts:37:23:
+      37 │   imports: [DataTable, DataTableColumn, StageBadge, RouterLink],
+         ╵                        ~~~~~~~~~~~~~~~
+
+X [ERROR] NG1010: 'imports' must be an array of components, directives, pipes, or NgModules.
+  Value could not be determined statically. [plugin angular-compiler]
+
+    C:/dev/AngularProjectNF/mfe-projects/src/app/pages/portafolio/portafolio.ts:37:40:
+      37 │   imports: [DataTable, DataTableColumn, StageBadge, RouterLink],
+         ╵                                         ~~~~~~~~~~
+
+  Unknown reference.
+
+    C:/dev/AngularProjectNF/mfe-projects/src/app/pages/portafolio/portafolio.ts:37:40:
+      37 │   imports: [DataTable, DataTableColumn, StageBadge, RouterLink],
+         ╵                                         ~~~~~~~~~~
+
+X [ERROR] TS2571: Object is of type 'unknown'. [plugin angular-compiler]
+
+    C:/dev/AngularProjectNF/mfe-projects/src/app/pages/portafolio/portafolio.ts:84:11:
+      84 │     return this.intl.monto(valor);
+         ╵            ~~~~~~~~~
+
+X [ERROR] TS2571: Object is of type 'unknown'. [plugin angular-compiler]
+
+    C:/dev/AngularProjectNF/mfe-projects/src/app/pages/portafolio/portafolio.ts:88:11:
+      88 │     return this.intl.porcentaje(valor);
+         ╵            ~~~~~~~~~
+
+X [ERROR] TS2307: Cannot find module '@projecthub/ui' or its corresponding type declarations. [plugin angular-compiler]
+
+    C:/dev/AngularProjectNF/mfe-projects/src/app/pages/proyecto-detalle/proyecto-detalle.ts:23:7:
+      23 │ } from '@projecthub/ui';
+         ╵        ~~~~~~~~~~~~~~~~
+
+X [ERROR] NG1010: 'imports' must be an array of components, directives, pipes, or NgModules.
+  Value could not be determined statically. [plugin angular-compiler]
+
+    C:/dev/AngularProjectNF/mfe-projects/src/app/pages/proyecto-detalle/proyecto-detalle.ts:48:12:
+      48 │   imports: [DataTable, DataTableColumn, FormField, GanttChart, Per...
+         ╵             ~~~~~~~~~
+
+  Unknown reference.
+
+    C:/dev/AngularProjectNF/mfe-projects/src/app/pages/proyecto-detalle/proyecto-detalle.ts:48:12:
+      48 │   imports: [DataTable, DataTableColumn, FormField, GanttChart, Per...
+         ╵             ~~~~~~~~~
+
+X [ERROR] NG1010: 'imports' must be an array of components, directives, pipes, or NgModules.
+  Value could not be determined statically. [plugin angular-compiler]
+
+    C:/dev/AngularProjectNF/mfe-projects/src/app/pages/proyecto-detalle/proyecto-detalle.ts:48:23:
+      48 │   imports: [DataTable, DataTableColumn, FormField, GanttChart, Per...
+         ╵                        ~~~~~~~~~~~~~~~
+
+  Unknown reference.
+
+    C:/dev/AngularProjectNF/mfe-projects/src/app/pages/proyecto-detalle/proyecto-detalle.ts:48:23:
+      48 │   imports: [DataTable, DataTableColumn, FormField, GanttChart, Per...
+         ╵                        ~~~~~~~~~~~~~~~
+
+X [ERROR] NG1010: 'imports' must be an array of components, directives, pipes, or NgModules.
+  Value could not be determined statically. [plugin angular-compiler]
+
+    C:/dev/AngularProjectNF/mfe-projects/src/app/pages/proyecto-detalle/proyecto-detalle.ts:48:40:
+      48 │ ...ataTable, DataTableColumn, FormField, GanttChart, PermissionBan...
+         ╵                               ~~~~~~~~~
+
+  Unknown reference.
+
+    C:/dev/AngularProjectNF/mfe-projects/src/app/pages/proyecto-detalle/proyecto-detalle.ts:48:40:
+      48 │ ...ataTable, DataTableColumn, FormField, GanttChart, PermissionBan...
+         ╵                               ~~~~~~~~~
+
+X [ERROR] NG1010: 'imports' must be an array of components, directives, pipes, or NgModules.
+  Value could not be determined statically. [plugin angular-compiler]
+
+    C:/dev/AngularProjectNF/mfe-projects/src/app/pages/proyecto-detalle/proyecto-detalle.ts:48:51:
+      48 │ ...ataTableColumn, FormField, GanttChart, PermissionBanner, StageB...
+         ╵                               ~~~~~~~~~~
+
+  Unknown reference.
+
+    C:/dev/AngularProjectNF/mfe-projects/src/app/pages/proyecto-detalle/proyecto-detalle.ts:48:51:
+      48 │ ...ataTableColumn, FormField, GanttChart, PermissionBanner, StageB...
+         ╵                               ~~~~~~~~~~
+
+X [ERROR] NG1010: 'imports' must be an array of components, directives, pipes, or NgModules.
+  Value could not be determined statically. [plugin angular-compiler]
+
+    C:/dev/AngularProjectNF/mfe-projects/src/app/pages/proyecto-detalle/proyecto-detalle.ts:48:63:
+      48 │ ... FormField, GanttChart, PermissionBanner, StageBadge, RouterLink],
+         ╵                            ~~~~~~~~~~~~~~~~
+
+  Unknown reference.
+
+    C:/dev/AngularProjectNF/mfe-projects/src/app/pages/proyecto-detalle/proyecto-detalle.ts:48:63:
+      48 │ ... FormField, GanttChart, PermissionBanner, StageBadge, RouterLink],
+         ╵                            ~~~~~~~~~~~~~~~~
+
+X [ERROR] NG1010: 'imports' must be an array of components, directives, pipes, or NgModules.
+  Value could not be determined statically. [plugin angular-compiler]
+
+    C:/dev/AngularProjectNF/mfe-projects/src/app/pages/proyecto-detalle/proyecto-detalle.ts:48:81:
+      48 │ ... FormField, GanttChart, PermissionBanner, StageBadge, RouterLink],
+         ╵                                              ~~~~~~~~~~
+
+  Unknown reference.
+
+    C:/dev/AngularProjectNF/mfe-projects/src/app/pages/proyecto-detalle/proyecto-detalle.ts:48:81:
+      48 │ ... FormField, GanttChart, PermissionBanner, StageBadge, RouterLink],
+         ╵                                              ~~~~~~~~~~
+
+X [ERROR] TS2571: Object is of type 'unknown'. [plugin angular-compiler]
+
+    C:/dev/AngularProjectNF/mfe-projects/src/app/pages/proyecto-detalle/proyecto-detalle.ts:117:14:
+      117 │       inicio: this.intl.fecha(e.fechaInicio),
+          ╵               ~~~~~~~~~
+
+X [ERROR] TS2571: Object is of type 'unknown'. [plugin angular-compiler]
+
+    C:/dev/AngularProjectNF/mfe-projects/src/app/pages/proyecto-detalle/proyecto-detalle.ts:118:11:
+      118 │       fin: this.intl.fecha(e.fechaFin),
+          ╵            ~~~~~~~~~
+
+X [ERROR] TS2571: Object is of type 'unknown'. [plugin angular-compiler]
+
+    C:/dev/AngularProjectNF/mfe-projects/src/app/pages/proyecto-detalle/proyecto-detalle.ts:133:11:
+      133 │     return this.intl.monto(valor);
+          ╵            ~~~~~~~~~
+
+X [ERROR] TS2571: Object is of type 'unknown'. [plugin angular-compiler]
+
+    C:/dev/AngularProjectNF/mfe-projects/src/app/pages/proyecto-detalle/proyecto-detalle.ts:137:11:
+      137 │     return this.intl.porcentaje(valor);
+          ╵            ~~~~~~~~~
+
+X [ERROR] TS2571: Object is of type 'unknown'. [plugin angular-compiler]
+
+    C:/dev/AngularProjectNF/mfe-projects/src/app/pages/proyecto-detalle/proyecto-detalle.ts:141:11:
+      141 │     return this.intl.fecha(valor);
+          ╵            ~~~~~~~~~
+
+X [ERROR] TS2307: Cannot find module '@projecthub/ui' or its corresponding type declarations. [plugin angular-compiler]
+
+    C:/dev/AngularProjectNF/mfe-projects/src/app/pages/proyecto-form/proyecto-form.ts:10:44:
+      10 │ import { FormField, PermissionBanner } from '@projecthub/ui';
+         ╵                                             ~~~~~~~~~~~~~~~~
+
+X [ERROR] NG1010: 'imports' must be an array of components, directives, pipes, or NgModules.
+  Value could not be determined statically. [plugin angular-compiler]
+
+    C:/dev/AngularProjectNF/mfe-projects/src/app/pages/proyecto-form/proyecto-form.ts:21:12:
+      21 │   imports: [FormField, PermissionBanner],
+         ╵             ~~~~~~~~~
+
+  Unknown reference.
+
+    C:/dev/AngularProjectNF/mfe-projects/src/app/pages/proyecto-form/proyecto-form.ts:21:12:
+      21 │   imports: [FormField, PermissionBanner],
+         ╵             ~~~~~~~~~
+
+X [ERROR] NG1010: 'imports' must be an array of components, directives, pipes, or NgModules.
+  Value could not be determined statically. [plugin angular-compiler]
+
+    C:/dev/AngularProjectNF/mfe-projects/src/app/pages/proyecto-form/proyecto-form.ts:21:23:
+      21 │   imports: [FormField, PermissionBanner],
+         ╵                        ~~~~~~~~~~~~~~~~
+
+  Unknown reference.
+
+    C:/dev/AngularProjectNF/mfe-projects/src/app/pages/proyecto-form/proyecto-form.ts:21:23:
+      21 │   imports: [FormField, PermissionBanner],
+         ╵                        ~~~~~~~~~~~~~~~~
+
+X [ERROR] TS2307: Cannot find module '@projecthub/ui' or its corresponding type declarations. [plugin angular-compiler]
+
+    C:/dev/AngularProjectNF/mfe-projects/src/app/widgets/project-summary.widget.ts:3:60:
+      3 │ ...ntlFormat, SummaryTendencia, SummaryWidget } from '@projecthub/ui';
+        ╵                                                      ~~~~~~~~~~~~~~~~
+
+X [ERROR] NG1010: 'imports' must be an array of components, directives, pipes, or NgModules.
+  Value could not be determined statically. [plugin angular-compiler]
+
+    C:/dev/AngularProjectNF/mfe-projects/src/app/widgets/project-summary.widget.ts:13:12:
+      13 │   imports: [SummaryWidget],
+         ╵             ~~~~~~~~~~~~~
+
+  Unknown reference.
+
+    C:/dev/AngularProjectNF/mfe-projects/src/app/widgets/project-summary.widget.ts:13:12:
+      13 │   imports: [SummaryWidget],
+         ╵             ~~~~~~~~~~~~~
+
+X [ERROR] TS2571: Object is of type 'unknown'. [plugin angular-compiler]
+
+    C:/dev/AngularProjectNF/mfe-projects/src/app/widgets/project-summary.widget.ts:51:13:
+      51 │       valor: this.intl.porcentaje(r.avance),
+         ╵              ~~~~~~~~~
+
+X [ERROR] TS2571: Object is of type 'unknown'. [plugin angular-compiler]
+
+    C:/dev/AngularProjectNF/mfe-projects/src/app/widgets/project-summary.widget.ts:52:18:
+      52 │       detalle: `${this.intl.monto(r.presupuestoConsumido)} de ${th...
+         ╵                   ~~~~~~~~~
+
+X [ERROR] TS2571: Object is of type 'unknown'. [plugin angular-compiler]
+
+    C:/dev/AngularProjectNF/mfe-projects/src/app/widgets/project-summary.widget.ts:52:64:
+      52 │ ... `${this.intl.monto(r.presupuestoConsumido)} de ${this.intl.monto(
+         ╵                                                      ~~~~~~~~~
+
+ ERRR  Error building federation artifacts
+ ERRR  Federation rebuild failed!
+X [ERROR] TS2307: Cannot find module '@projecthub/shared' or its corresponding type declarations. [plugin angular-compiler]
+
+    C:/dev/AngularProjectNF/mfe-projects/src/app/pages/portafolio/portafolio.ts:13:7:
+      13 │ } from '@projecthub/shared';
+         ╵        ~~~~~~~~~~~~~~~~~~~~
+
+X [ERROR] TS2571: Object is of type 'unknown'. [plugin angular-compiler]
+
+    C:/dev/AngularProjectNF/mfe-projects/src/app/pages/portafolio/portafolio.ts:62:11:
+      62 │     return this.store
+         ╵            ~~~~~~~~~~
+
+X [ERROR] TS7006: Parameter 'r' implicitly has an 'any' type. [plugin angular-compiler]
+
+    C:/dev/AngularProjectNF/mfe-projects/src/app/pages/portafolio/portafolio.ts:64:15:
+      64 │       .filter((r) => (etapa === 'todas' ? true : r.proyecto.etapa ...
+         ╵                ^
+
+X [ERROR] TS7006: Parameter 'r' implicitly has an 'any' type. [plugin angular-compiler]
+
+    C:/dev/AngularProjectNF/mfe-projects/src/app/pages/portafolio/portafolio.ts:65:15:
+      65 │       .filter((r) => (estado === 'todos' ? true : r.proyecto.estad...
+         ╵                ^
+
+X [ERROR] TS7006: Parameter 'r' implicitly has an 'any' type. [plugin angular-compiler]
+
+    C:/dev/AngularProjectNF/mfe-projects/src/app/pages/portafolio/portafolio.ts:66:15:
+      66 │       .filter((r) => (termino ? r.proyecto.nombre.toLowerCase().in...
+         ╵                ^
+
+X [ERROR] TS7006: Parameter 'r' implicitly has an 'any' type. [plugin angular-compiler]
+
+    C:/dev/AngularProjectNF/mfe-projects/src/app/pages/portafolio/portafolio.ts:67:12:
+      67 │       .map((r) => this.aFila(r));
+         ╵             ^
+
+X [ERROR] TS2307: Cannot find module '@projecthub/shared' or its corresponding type declarations. [plugin angular-compiler]
+
+    C:/dev/AngularProjectNF/mfe-projects/src/app/pages/proyecto-detalle/proyecto-detalle.ts:14:7:
+      14 │ } from '@projecthub/shared';
+         ╵        ~~~~~~~~~~~~~~~~~~~~
+
+X [ERROR] TS2571: Object is of type 'unknown'. [plugin angular-compiler]
+
+    C:/dev/AngularProjectNF/mfe-projects/src/app/pages/proyecto-detalle/proyecto-detalle.ts:82:25:
+      82 │     this.proyectoId() ? (this.store.proyectoPorId(this.proyectoId(...
+         ╵                          ~~~~~~~~~~
+
+X [ERROR] TS2571: Object is of type 'unknown'. [plugin angular-compiler]
+
+    C:/dev/AngularProjectNF/mfe-projects/src/app/pages/proyecto-detalle/proyecto-detalle.ts:86:25:
+      86 │     this.proyectoId() ? (this.store.resumen(this.proyectoId()) ?? ...
+         ╵                          ~~~~~~~~~~
+
+X [ERROR] TS2571: Object is of type 'unknown'. [plugin angular-compiler]
+
+    C:/dev/AngularProjectNF/mfe-projects/src/app/pages/proyecto-detalle/proyecto-detalle.ts:90:24:
+      90 │     this.proyectoId() ? this.store.etapasDeProyecto(this.proyectoI...
+         ╵                         ~~~~~~~~~~
+
+X [ERROR] TS2571: Object is of type 'unknown'. [plugin angular-compiler]
+
+    C:/dev/AngularProjectNF/mfe-projects/src/app/pages/proyecto-detalle/proyecto-detalle.ts:94:24:
+      94 │     this.proyectoId() ? this.store.bitacoraDeProyecto(this.proyect...
+         ╵                         ~~~~~~~~~~
+
+X [ERROR] TS2571: Object is of type 'unknown'. [plugin angular-compiler]
+
+    C:/dev/AngularProjectNF/mfe-projects/src/app/pages/proyecto-detalle/proyecto-detalle.ts:98:24:
+      98 │     this.proyectoId() ? this.store.entregablesDeProyecto(this.proy...
+         ╵                         ~~~~~~~~~~
+
+X [ERROR] TS2571: Object is of type 'unknown'. [plugin angular-compiler]
+
+    C:/dev/AngularProjectNF/mfe-projects/src/app/pages/proyecto-detalle/proyecto-detalle.ts:154:6:
+      154 │       this.store.transicionar(this.proyectoId(), destino as never...
+          ╵       ~~~~~~~~~~
+
+X [ERROR] TS2571: Object is of type 'unknown'. [plugin angular-compiler]
+
+    C:/dev/AngularProjectNF/mfe-projects/src/app/pages/proyecto-detalle/proyecto-detalle.ts:168:6:
+      168 │       this.store.cancelarProyecto(this.proyectoId(), actor, comen...
+          ╵       ~~~~~~~~~~
+
+X [ERROR] TS2571: Object is of type 'unknown'. [plugin angular-compiler]
+
+    C:/dev/AngularProjectNF/mfe-projects/src/app/pages/proyecto-detalle/proyecto-detalle.ts:182:6:
+      182 │       this.store.cerrarProyecto(this.proyectoId(), actor, comenta...
+          ╵       ~~~~~~~~~~
+
+X [ERROR] TS2571: Object is of type 'unknown'. [plugin angular-compiler]
+
+    C:/dev/AngularProjectNF/mfe-projects/src/app/pages/proyecto-detalle/proyecto-detalle.ts:199:6:
+      199 │       this.store.registrarAvance(etapa.id, Number(texto), actor);
+          ╵       ~~~~~~~~~~
+
+X [ERROR] TS2571: Object is of type 'unknown'. [plugin angular-compiler]
+
+    C:/dev/AngularProjectNF/mfe-projects/src/app/pages/proyecto-detalle/proyecto-detalle.ts:216:6:
+      216 │       this.store.registrarConsumo(etapa.id, Number(texto), actor);
+          ╵       ~~~~~~~~~~
+
+X [ERROR] TS2571: Object is of type 'unknown'. [plugin angular-compiler]
+
+    C:/dev/AngularProjectNF/mfe-projects/src/app/pages/proyecto-detalle/proyecto-detalle.ts:232:6:
+      232 │       this.store.eliminarEtapa(etapa.id, actor);
+          ╵       ~~~~~~~~~~
+
+X [ERROR] TS7006: Parameter 'id' implicitly has an 'any' type. [plugin angular-compiler]
+
+    C:/dev/AngularProjectNF/mfe-projects/src/app/pages/proyecto-detalle/proyecto-detalle.ts:292:7:
+      292 │       (id) => this.etapas().find((e) => e.id === id)?.nombre ?? id,
+          ╵        ~~
+
+X [ERROR] TS2571: Object is of type 'unknown'. [plugin angular-compiler]
+
+    C:/dev/AngularProjectNF/mfe-projects/src/app/pages/proyecto-detalle/proyecto-detalle.ts:315:8:
+      315 │         this.store.editarEtapa(
+          ╵         ~~~~~~~~~~
+
+X [ERROR] TS2571: Object is of type 'unknown'. [plugin angular-compiler]
+
+    C:/dev/AngularProjectNF/mfe-projects/src/app/pages/proyecto-detalle/proyecto-detalle.ts:329:8:
+      329 │         this.store.crearEtapa(
+          ╵         ~~~~~~~~~~
+
+X [ERROR] TS18046: 'e' is of type 'unknown'. [plugin angular-compiler]
+
+    C:/dev/AngularProjectNF/mfe-projects/src/app/pages/proyecto-detalle/proyecto-detalle.ts:364:13:
+      364 │       return e.message;
+          ╵              ^
+
+X [ERROR] TS2307: Cannot find module '@projecthub/shared' or its corresponding type declarations. [plugin angular-compiler]
+
+    C:/dev/AngularProjectNF/mfe-projects/src/app/pages/proyecto-form/proyecto-form.ts:9:7:
+      9 │ } from '@projecthub/shared';
+        ╵        ~~~~~~~~~~~~~~~~~~~~
+
+X [ERROR] TS2571: Object is of type 'unknown'. [plugin angular-compiler]
+
+    C:/dev/AngularProjectNF/mfe-projects/src/app/pages/proyecto-form/proyecto-form.ts:55:38:
+      55 │       const p: Proyecto | undefined = this.store.proyectoPorId(id);
+         ╵                                       ~~~~~~~~~~
+
+X [ERROR] TS2571: Object is of type 'unknown'. [plugin angular-compiler]
+
+    C:/dev/AngularProjectNF/mfe-projects/src/app/pages/proyecto-form/proyecto-form.ts:90:8:
+      90 │         this.store.editarProyecto(
+         ╵         ~~~~~~~~~~
+
+X [ERROR] TS2571: Object is of type 'unknown'. [plugin angular-compiler]
+
+    C:/dev/AngularProjectNF/mfe-projects/src/app/pages/proyecto-form/proyecto-form.ts:101:23:
+      101 │         const creado = this.store.crearProyecto(
+          ╵                        ~~~~~~~~~~
+
+X [ERROR] TS18046: 'e' is of type 'unknown'. [plugin angular-compiler]
+
+    C:/dev/AngularProjectNF/mfe-projects/src/app/pages/proyecto-form/proyecto-form.ts:115:36:
+      115 │ ...   e instanceof ErrorDominio ? e.message : 'No fue posible gua...
+          ╵                                   ^
+
+X [ERROR] TS2307: Cannot find module '@projecthub/shared' or its corresponding type declarations. [plugin angular-compiler]
+
+    C:/dev/AngularProjectNF/mfe-projects/src/app/permisos-ui.ts:10:7:
+      10 │ } from '@projecthub/shared';
+         ╵        ~~~~~~~~~~~~~~~~~~~~
+
+X [ERROR] TS7006: Parameter 'destino' implicitly has an 'any' type. [plugin angular-compiler]
+
+    C:/dev/AngularProjectNF/mfe-projects/src/app/permisos-ui.ts:78:52:
+      78 │     return transicionesDisponibles(p.etapa).filter((destino) =>
+         ╵                                                     ~~~~~~~
+
+X [ERROR] TS2307: Cannot find module '@projecthub/shared' or its corresponding type declarations. [plugin angular-compiler]
+
+    C:/dev/AngularProjectNF/mfe-projects/src/app/widgets/project-summary.widget.ts:2:29:
+      2 │ import { ProjectStore } from '@projecthub/shared';
+        ╵                              ~~~~~~~~~~~~~~~~~~~~
+
+X [ERROR] TS2571: Object is of type 'unknown'. [plugin angular-compiler]
+
+    C:/dev/AngularProjectNF/mfe-projects/src/app/widgets/project-summary.widget.ts:43:14:
+      43 │     const r = this.store.resumen(this.proyectoId());
+         ╵               ~~~~~~~~~~
+
+ ERRR  Error building federation artifacts
+ ERRR  Federation rebuild failed!
+X [ERROR] TS2307: Cannot find module '@projecthub/shared' or its corresponding type declarations. [plugin angular-compiler]
+
+    C:/dev/AngularProjectNF/mfe-projects/src/app/pages/portafolio/portafolio.ts:13:7:
+      13 │ } from '@projecthub/shared';
+         ╵        ~~~~~~~~~~~~~~~~~~~~
+
+X [ERROR] TS2571: Object is of type 'unknown'. [plugin angular-compiler]
+
+    C:/dev/AngularProjectNF/mfe-projects/src/app/pages/portafolio/portafolio.ts:62:11:
+      62 │     return this.store
+         ╵            ~~~~~~~~~~
+
+X [ERROR] TS7006: Parameter 'r' implicitly has an 'any' type. [plugin angular-compiler]
+
+    C:/dev/AngularProjectNF/mfe-projects/src/app/pages/portafolio/portafolio.ts:64:15:
+      64 │       .filter((r) => (etapa === 'todas' ? true : r.proyecto.etapa ...
+         ╵                ^
+
+X [ERROR] TS7006: Parameter 'r' implicitly has an 'any' type. [plugin angular-compiler]
+
+    C:/dev/AngularProjectNF/mfe-projects/src/app/pages/portafolio/portafolio.ts:65:15:
+      65 │       .filter((r) => (estado === 'todos' ? true : r.proyecto.estad...
+         ╵                ^
+
+X [ERROR] TS7006: Parameter 'r' implicitly has an 'any' type. [plugin angular-compiler]
+
+    C:/dev/AngularProjectNF/mfe-projects/src/app/pages/portafolio/portafolio.ts:66:15:
+      66 │       .filter((r) => (termino ? r.proyecto.nombre.toLowerCase().in...
+         ╵                ^
+
+X [ERROR] TS7006: Parameter 'r' implicitly has an 'any' type. [plugin angular-compiler]
+
+    C:/dev/AngularProjectNF/mfe-projects/src/app/pages/portafolio/portafolio.ts:67:12:
+      67 │       .map((r) => this.aFila(r));
+         ╵             ^
+
+X [ERROR] TS2307: Cannot find module '@projecthub/shared' or its corresponding type declarations. [plugin angular-compiler]
+
+    C:/dev/AngularProjectNF/mfe-projects/src/app/pages/proyecto-detalle/proyecto-detalle.ts:14:7:
+      14 │ } from '@projecthub/shared';
+         ╵        ~~~~~~~~~~~~~~~~~~~~
+
+X [ERROR] TS2571: Object is of type 'unknown'. [plugin angular-compiler]
+
+    C:/dev/AngularProjectNF/mfe-projects/src/app/pages/proyecto-detalle/proyecto-detalle.ts:82:25:
+      82 │     this.proyectoId() ? (this.store.proyectoPorId(this.proyectoId(...
+         ╵                          ~~~~~~~~~~
+
+X [ERROR] TS2571: Object is of type 'unknown'. [plugin angular-compiler]
+
+    C:/dev/AngularProjectNF/mfe-projects/src/app/pages/proyecto-detalle/proyecto-detalle.ts:86:25:
+      86 │     this.proyectoId() ? (this.store.resumen(this.proyectoId()) ?? ...
+         ╵                          ~~~~~~~~~~
+
+X [ERROR] TS2571: Object is of type 'unknown'. [plugin angular-compiler]
+
+    C:/dev/AngularProjectNF/mfe-projects/src/app/pages/proyecto-detalle/proyecto-detalle.ts:90:24:
+      90 │     this.proyectoId() ? this.store.etapasDeProyecto(this.proyectoI...
+         ╵                         ~~~~~~~~~~
+
+X [ERROR] TS2571: Object is of type 'unknown'. [plugin angular-compiler]
+
+    C:/dev/AngularProjectNF/mfe-projects/src/app/pages/proyecto-detalle/proyecto-detalle.ts:94:24:
+      94 │     this.proyectoId() ? this.store.bitacoraDeProyecto(this.proyect...
+         ╵                         ~~~~~~~~~~
+
+X [ERROR] TS2571: Object is of type 'unknown'. [plugin angular-compiler]
+
+    C:/dev/AngularProjectNF/mfe-projects/src/app/pages/proyecto-detalle/proyecto-detalle.ts:98:24:
+      98 │     this.proyectoId() ? this.store.entregablesDeProyecto(this.proy...
+         ╵                         ~~~~~~~~~~
+
+X [ERROR] TS2571: Object is of type 'unknown'. [plugin angular-compiler]
+
+    C:/dev/AngularProjectNF/mfe-projects/src/app/pages/proyecto-detalle/proyecto-detalle.ts:154:6:
+      154 │       this.store.transicionar(this.proyectoId(), destino as never...
+          ╵       ~~~~~~~~~~
+
+X [ERROR] TS2571: Object is of type 'unknown'. [plugin angular-compiler]
+
+    C:/dev/AngularProjectNF/mfe-projects/src/app/pages/proyecto-detalle/proyecto-detalle.ts:168:6:
+      168 │       this.store.cancelarProyecto(this.proyectoId(), actor, comen...
+          ╵       ~~~~~~~~~~
+
+X [ERROR] TS2571: Object is of type 'unknown'. [plugin angular-compiler]
+
+    C:/dev/AngularProjectNF/mfe-projects/src/app/pages/proyecto-detalle/proyecto-detalle.ts:182:6:
+      182 │       this.store.cerrarProyecto(this.proyectoId(), actor, comenta...
+          ╵       ~~~~~~~~~~
+
+X [ERROR] TS2571: Object is of type 'unknown'. [plugin angular-compiler]
+
+    C:/dev/AngularProjectNF/mfe-projects/src/app/pages/proyecto-detalle/proyecto-detalle.ts:199:6:
+      199 │       this.store.registrarAvance(etapa.id, Number(texto), actor);
+          ╵       ~~~~~~~~~~
+
+X [ERROR] TS2571: Object is of type 'unknown'. [plugin angular-compiler]
+
+    C:/dev/AngularProjectNF/mfe-projects/src/app/pages/proyecto-detalle/proyecto-detalle.ts:216:6:
+      216 │       this.store.registrarConsumo(etapa.id, Number(texto), actor);
+          ╵       ~~~~~~~~~~
+
+X [ERROR] TS2571: Object is of type 'unknown'. [plugin angular-compiler]
+
+    C:/dev/AngularProjectNF/mfe-projects/src/app/pages/proyecto-detalle/proyecto-detalle.ts:232:6:
+      232 │       this.store.eliminarEtapa(etapa.id, actor);
+          ╵       ~~~~~~~~~~
+
+X [ERROR] TS7006: Parameter 'id' implicitly has an 'any' type. [plugin angular-compiler]
+
+    C:/dev/AngularProjectNF/mfe-projects/src/app/pages/proyecto-detalle/proyecto-detalle.ts:292:7:
+      292 │       (id) => this.etapas().find((e) => e.id === id)?.nombre ?? id,
+          ╵        ~~
+
+X [ERROR] TS2571: Object is of type 'unknown'. [plugin angular-compiler]
+
+    C:/dev/AngularProjectNF/mfe-projects/src/app/pages/proyecto-detalle/proyecto-detalle.ts:315:8:
+      315 │         this.store.editarEtapa(
+          ╵         ~~~~~~~~~~
+
+X [ERROR] TS2571: Object is of type 'unknown'. [plugin angular-compiler]
+
+    C:/dev/AngularProjectNF/mfe-projects/src/app/pages/proyecto-detalle/proyecto-detalle.ts:329:8:
+      329 │         this.store.crearEtapa(
+          ╵         ~~~~~~~~~~
+
+X [ERROR] TS18046: 'e' is of type 'unknown'. [plugin angular-compiler]
+
+    C:/dev/AngularProjectNF/mfe-projects/src/app/pages/proyecto-detalle/proyecto-detalle.ts:364:13:
+      364 │       return e.message;
+          ╵              ^
+
+X [ERROR] TS2307: Cannot find module '@projecthub/shared' or its corresponding type declarations. [plugin angular-compiler]
+
+    C:/dev/AngularProjectNF/mfe-projects/src/app/pages/proyecto-form/proyecto-form.ts:9:7:
+      9 │ } from '@projecthub/shared';
+        ╵        ~~~~~~~~~~~~~~~~~~~~
+
+X [ERROR] TS2571: Object is of type 'unknown'. [plugin angular-compiler]
+
+    C:/dev/AngularProjectNF/mfe-projects/src/app/pages/proyecto-form/proyecto-form.ts:55:38:
+      55 │       const p: Proyecto | undefined = this.store.proyectoPorId(id);
+         ╵                                       ~~~~~~~~~~
+
+X [ERROR] TS2571: Object is of type 'unknown'. [plugin angular-compiler]
+
+    C:/dev/AngularProjectNF/mfe-projects/src/app/pages/proyecto-form/proyecto-form.ts:90:8:
+      90 │         this.store.editarProyecto(
+         ╵         ~~~~~~~~~~
+
+X [ERROR] TS2571: Object is of type 'unknown'. [plugin angular-compiler]
+
+    C:/dev/AngularProjectNF/mfe-projects/src/app/pages/proyecto-form/proyecto-form.ts:101:23:
+      101 │         const creado = this.store.crearProyecto(
+          ╵                        ~~~~~~~~~~
+
+X [ERROR] TS18046: 'e' is of type 'unknown'. [plugin angular-compiler]
+
+    C:/dev/AngularProjectNF/mfe-projects/src/app/pages/proyecto-form/proyecto-form.ts:115:36:
+      115 │ ...   e instanceof ErrorDominio ? e.message : 'No fue posible gua...
+          ╵                                   ^
+
+X [ERROR] TS2307: Cannot find module '@projecthub/shared' or its corresponding type declarations. [plugin angular-compiler]
+
+    C:/dev/AngularProjectNF/mfe-projects/src/app/permisos-ui.ts:10:7:
+      10 │ } from '@projecthub/shared';
+         ╵        ~~~~~~~~~~~~~~~~~~~~
+
+X [ERROR] TS7006: Parameter 'destino' implicitly has an 'any' type. [plugin angular-compiler]
+
+    C:/dev/AngularProjectNF/mfe-projects/src/app/permisos-ui.ts:78:52:
+      78 │     return transicionesDisponibles(p.etapa).filter((destino) =>
+         ╵                                                     ~~~~~~~
+
+X [ERROR] TS2307: Cannot find module '@projecthub/shared' or its corresponding type declarations. [plugin angular-compiler]
+
+    C:/dev/AngularProjectNF/mfe-projects/src/app/widgets/project-summary.widget.ts:2:29:
+      2 │ import { ProjectStore } from '@projecthub/shared';
+        ╵                              ~~~~~~~~~~~~~~~~~~~~
+
+X [ERROR] TS2571: Object is of type 'unknown'. [plugin angular-compiler]
+
+    C:/dev/AngularProjectNF/mfe-projects/src/app/widgets/project-summary.widget.ts:43:14:
+      43 │     const r = this.store.resumen(this.proyectoId());
+         ╵               ~~~~~~~~~~
+
+ ERRR  Error building federation artifacts
+ ERRR  Federation rebuild failed!
+[31mX [41;31m[[41;97mERROR[41;31m][0m [1mTS2305: Module '"@projecthub/shared"' has no exported member 'ApiEnlaceService'.[0m [1m[35m[plugin angular-compiler][0m
+
+    C:/dev/AngularProjectNF/mfe-projects/src/app/app.config.ts:4:9:
+[37m      4 │ import { [32mApiEnlaceService[37m, ProjectStore, UsuarioStore, sincronizarS...
+        ╵          [32m~~~~~~~~~~~~~~~~[0m
+
+
+[31mX [41;31m[[41;97mERROR[41;31m][0m [1mTS2305: Module '"@projecthub/shared"' has no exported member 'sincronizarStores'.[0m [1m[35m[plugin angular-compiler][0m
+
+    C:/dev/AngularProjectNF/mfe-projects/src/app/app.config.ts:4:55:
+[37m      4 │ ...ectStore, UsuarioStore, [32msincronizarStores[37m } from '@projecthub/sh...
+        ╵                            [32m~~~~~~~~~~~~~~~~~[0m
+
+
+ WARN  Skipping federation artifacts because Angular build failed.
+X [ERROR] TS2307: Cannot find module '@projecthub/shared' or its corresponding type declarations. [plugin angular-compiler]
+
+    C:/dev/AngularProjectNF/mfe-projects/src/app/pages/portafolio/portafolio.ts:13:7:
+      13 │ } from '@projecthub/shared';
+         ╵        ~~~~~~~~~~~~~~~~~~~~
+
+X [ERROR] TS2571: Object is of type 'unknown'. [plugin angular-compiler]
+
+    C:/dev/AngularProjectNF/mfe-projects/src/app/pages/portafolio/portafolio.ts:62:11:
+      62 │     return this.store
+         ╵            ~~~~~~~~~~
+
+X [ERROR] TS7006: Parameter 'r' implicitly has an 'any' type. [plugin angular-compiler]
+
+    C:/dev/AngularProjectNF/mfe-projects/src/app/pages/portafolio/portafolio.ts:64:15:
+      64 │       .filter((r) => (etapa === 'todas' ? true : r.proyecto.etapa ...
+         ╵                ^
+
+X [ERROR] TS7006: Parameter 'r' implicitly has an 'any' type. [plugin angular-compiler]
+
+    C:/dev/AngularProjectNF/mfe-projects/src/app/pages/portafolio/portafolio.ts:65:15:
+      65 │       .filter((r) => (estado === 'todos' ? true : r.proyecto.estad...
+         ╵                ^
+
+X [ERROR] TS7006: Parameter 'r' implicitly has an 'any' type. [plugin angular-compiler]
+
+    C:/dev/AngularProjectNF/mfe-projects/src/app/pages/portafolio/portafolio.ts:66:15:
+      66 │       .filter((r) => (termino ? r.proyecto.nombre.toLowerCase().in...
+         ╵                ^
+
+X [ERROR] TS7006: Parameter 'r' implicitly has an 'any' type. [plugin angular-compiler]
+
+    C:/dev/AngularProjectNF/mfe-projects/src/app/pages/portafolio/portafolio.ts:67:12:
+      67 │       .map((r) => this.aFila(r));
+         ╵             ^
+
+X [ERROR] TS2307: Cannot find module '@projecthub/shared' or its corresponding type declarations. [plugin angular-compiler]
+
+    C:/dev/AngularProjectNF/mfe-projects/src/app/pages/proyecto-detalle/proyecto-detalle.ts:14:7:
+      14 │ } from '@projecthub/shared';
+         ╵        ~~~~~~~~~~~~~~~~~~~~
+
+X [ERROR] TS2571: Object is of type 'unknown'. [plugin angular-compiler]
+
+    C:/dev/AngularProjectNF/mfe-projects/src/app/pages/proyecto-detalle/proyecto-detalle.ts:82:25:
+      82 │     this.proyectoId() ? (this.store.proyectoPorId(this.proyectoId(...
+         ╵                          ~~~~~~~~~~
+
+X [ERROR] TS2571: Object is of type 'unknown'. [plugin angular-compiler]
+
+    C:/dev/AngularProjectNF/mfe-projects/src/app/pages/proyecto-detalle/proyecto-detalle.ts:86:25:
+      86 │     this.proyectoId() ? (this.store.resumen(this.proyectoId()) ?? ...
+         ╵                          ~~~~~~~~~~
+
+X [ERROR] TS2571: Object is of type 'unknown'. [plugin angular-compiler]
+
+    C:/dev/AngularProjectNF/mfe-projects/src/app/pages/proyecto-detalle/proyecto-detalle.ts:90:24:
+      90 │     this.proyectoId() ? this.store.etapasDeProyecto(this.proyectoI...
+         ╵                         ~~~~~~~~~~
+
+X [ERROR] TS2571: Object is of type 'unknown'. [plugin angular-compiler]
+
+    C:/dev/AngularProjectNF/mfe-projects/src/app/pages/proyecto-detalle/proyecto-detalle.ts:94:24:
+      94 │     this.proyectoId() ? this.store.bitacoraDeProyecto(this.proyect...
+         ╵                         ~~~~~~~~~~
+
+X [ERROR] TS2571: Object is of type 'unknown'. [plugin angular-compiler]
+
+    C:/dev/AngularProjectNF/mfe-projects/src/app/pages/proyecto-detalle/proyecto-detalle.ts:98:24:
+      98 │     this.proyectoId() ? this.store.entregablesDeProyecto(this.proy...
+         ╵                         ~~~~~~~~~~
+
+X [ERROR] TS2571: Object is of type 'unknown'. [plugin angular-compiler]
+
+    C:/dev/AngularProjectNF/mfe-projects/src/app/pages/proyecto-detalle/proyecto-detalle.ts:154:6:
+      154 │       this.store.transicionar(this.proyectoId(), destino as never...
+          ╵       ~~~~~~~~~~
+
+X [ERROR] TS2571: Object is of type 'unknown'. [plugin angular-compiler]
+
+    C:/dev/AngularProjectNF/mfe-projects/src/app/pages/proyecto-detalle/proyecto-detalle.ts:168:6:
+      168 │       this.store.cancelarProyecto(this.proyectoId(), actor, comen...
+          ╵       ~~~~~~~~~~
+
+X [ERROR] TS2571: Object is of type 'unknown'. [plugin angular-compiler]
+
+    C:/dev/AngularProjectNF/mfe-projects/src/app/pages/proyecto-detalle/proyecto-detalle.ts:182:6:
+      182 │       this.store.cerrarProyecto(this.proyectoId(), actor, comenta...
+          ╵       ~~~~~~~~~~
+
+X [ERROR] TS2571: Object is of type 'unknown'. [plugin angular-compiler]
+
+    C:/dev/AngularProjectNF/mfe-projects/src/app/pages/proyecto-detalle/proyecto-detalle.ts:199:6:
+      199 │       this.store.registrarAvance(etapa.id, Number(texto), actor);
+          ╵       ~~~~~~~~~~
+
+X [ERROR] TS2571: Object is of type 'unknown'. [plugin angular-compiler]
+
+    C:/dev/AngularProjectNF/mfe-projects/src/app/pages/proyecto-detalle/proyecto-detalle.ts:216:6:
+      216 │       this.store.registrarConsumo(etapa.id, Number(texto), actor);
+          ╵       ~~~~~~~~~~
+
+X [ERROR] TS2571: Object is of type 'unknown'. [plugin angular-compiler]
+
+    C:/dev/AngularProjectNF/mfe-projects/src/app/pages/proyecto-detalle/proyecto-detalle.ts:232:6:
+      232 │       this.store.eliminarEtapa(etapa.id, actor);
+          ╵       ~~~~~~~~~~
+
+X [ERROR] TS7006: Parameter 'id' implicitly has an 'any' type. [plugin angular-compiler]
+
+    C:/dev/AngularProjectNF/mfe-projects/src/app/pages/proyecto-detalle/proyecto-detalle.ts:292:7:
+      292 │       (id) => this.etapas().find((e) => e.id === id)?.nombre ?? id,
+          ╵        ~~
+
+X [ERROR] TS2571: Object is of type 'unknown'. [plugin angular-compiler]
+
+    C:/dev/AngularProjectNF/mfe-projects/src/app/pages/proyecto-detalle/proyecto-detalle.ts:315:8:
+      315 │         this.store.editarEtapa(
+          ╵         ~~~~~~~~~~
+
+X [ERROR] TS2571: Object is of type 'unknown'. [plugin angular-compiler]
+
+    C:/dev/AngularProjectNF/mfe-projects/src/app/pages/proyecto-detalle/proyecto-detalle.ts:329:8:
+      329 │         this.store.crearEtapa(
+          ╵         ~~~~~~~~~~
+
+X [ERROR] TS18046: 'e' is of type 'unknown'. [plugin angular-compiler]
+
+    C:/dev/AngularProjectNF/mfe-projects/src/app/pages/proyecto-detalle/proyecto-detalle.ts:364:13:
+      364 │       return e.message;
+          ╵              ^
+
+X [ERROR] TS2307: Cannot find module '@projecthub/shared' or its corresponding type declarations. [plugin angular-compiler]
+
+    C:/dev/AngularProjectNF/mfe-projects/src/app/pages/proyecto-form/proyecto-form.ts:9:7:
+      9 │ } from '@projecthub/shared';
+        ╵        ~~~~~~~~~~~~~~~~~~~~
+
+X [ERROR] TS2571: Object is of type 'unknown'. [plugin angular-compiler]
+
+    C:/dev/AngularProjectNF/mfe-projects/src/app/pages/proyecto-form/proyecto-form.ts:55:38:
+      55 │       const p: Proyecto | undefined = this.store.proyectoPorId(id);
+         ╵                                       ~~~~~~~~~~
+
+X [ERROR] TS2571: Object is of type 'unknown'. [plugin angular-compiler]
+
+    C:/dev/AngularProjectNF/mfe-projects/src/app/pages/proyecto-form/proyecto-form.ts:90:8:
+      90 │         this.store.editarProyecto(
+         ╵         ~~~~~~~~~~
+
+X [ERROR] TS2571: Object is of type 'unknown'. [plugin angular-compiler]
+
+    C:/dev/AngularProjectNF/mfe-projects/src/app/pages/proyecto-form/proyecto-form.ts:101:23:
+      101 │         const creado = this.store.crearProyecto(
+          ╵                        ~~~~~~~~~~
+
+X [ERROR] TS18046: 'e' is of type 'unknown'. [plugin angular-compiler]
+
+    C:/dev/AngularProjectNF/mfe-projects/src/app/pages/proyecto-form/proyecto-form.ts:115:36:
+      115 │ ...   e instanceof ErrorDominio ? e.message : 'No fue posible gua...
+          ╵                                   ^
+
+X [ERROR] TS2307: Cannot find module '@projecthub/shared' or its corresponding type declarations. [plugin angular-compiler]
+
+    C:/dev/AngularProjectNF/mfe-projects/src/app/permisos-ui.ts:10:7:
+      10 │ } from '@projecthub/shared';
+         ╵        ~~~~~~~~~~~~~~~~~~~~
+
+X [ERROR] TS7006: Parameter 'destino' implicitly has an 'any' type. [plugin angular-compiler]
+
+    C:/dev/AngularProjectNF/mfe-projects/src/app/permisos-ui.ts:78:52:
+      78 │     return transicionesDisponibles(p.etapa).filter((destino) =>
+         ╵                                                     ~~~~~~~
+
+X [ERROR] TS2307: Cannot find module '@projecthub/shared' or its corresponding type declarations. [plugin angular-compiler]
+
+    C:/dev/AngularProjectNF/mfe-projects/src/app/widgets/project-summary.widget.ts:2:29:
+      2 │ import { ProjectStore } from '@projecthub/shared';
+        ╵                              ~~~~~~~~~~~~~~~~~~~~
+
+X [ERROR] TS2571: Object is of type 'unknown'. [plugin angular-compiler]
+
+    C:/dev/AngularProjectNF/mfe-projects/src/app/widgets/project-summary.widget.ts:43:14:
+      43 │     const r = this.store.resumen(this.proyectoId());
+         ╵               ~~~~~~~~~~
+
+ ERRR  Error building federation artifacts
+ ERRR  Federation rebuild failed!
+X [ERROR] TS2307: Cannot find module '@projecthub/shared' or its corresponding type declarations. [plugin angular-compiler]
+
+    C:/dev/AngularProjectNF/mfe-projects/src/app/pages/portafolio/portafolio.ts:13:7:
+      13 │ } from '@projecthub/shared';
+         ╵        ~~~~~~~~~~~~~~~~~~~~
+
+X [ERROR] TS2571: Object is of type 'unknown'. [plugin angular-compiler]
+
+    C:/dev/AngularProjectNF/mfe-projects/src/app/pages/portafolio/portafolio.ts:62:11:
+      62 │     return this.store
+         ╵            ~~~~~~~~~~
+
+X [ERROR] TS7006: Parameter 'r' implicitly has an 'any' type. [plugin angular-compiler]
+
+    C:/dev/AngularProjectNF/mfe-projects/src/app/pages/portafolio/portafolio.ts:64:15:
+      64 │       .filter((r) => (etapa === 'todas' ? true : r.proyecto.etapa ...
+         ╵                ^
+
+X [ERROR] TS7006: Parameter 'r' implicitly has an 'any' type. [plugin angular-compiler]
+
+    C:/dev/AngularProjectNF/mfe-projects/src/app/pages/portafolio/portafolio.ts:65:15:
+      65 │       .filter((r) => (estado === 'todos' ? true : r.proyecto.estad...
+         ╵                ^
+
+X [ERROR] TS7006: Parameter 'r' implicitly has an 'any' type. [plugin angular-compiler]
+
+    C:/dev/AngularProjectNF/mfe-projects/src/app/pages/portafolio/portafolio.ts:66:15:
+      66 │       .filter((r) => (termino ? r.proyecto.nombre.toLowerCase().in...
+         ╵                ^
+
+X [ERROR] TS7006: Parameter 'r' implicitly has an 'any' type. [plugin angular-compiler]
+
+    C:/dev/AngularProjectNF/mfe-projects/src/app/pages/portafolio/portafolio.ts:67:12:
+      67 │       .map((r) => this.aFila(r));
+         ╵             ^
+
+X [ERROR] TS2307: Cannot find module '@projecthub/shared' or its corresponding type declarations. [plugin angular-compiler]
+
+    C:/dev/AngularProjectNF/mfe-projects/src/app/pages/proyecto-detalle/proyecto-detalle.ts:14:7:
+      14 │ } from '@projecthub/shared';
+         ╵        ~~~~~~~~~~~~~~~~~~~~
+
+X [ERROR] TS2571: Object is of type 'unknown'. [plugin angular-compiler]
+
+    C:/dev/AngularProjectNF/mfe-projects/src/app/pages/proyecto-detalle/proyecto-detalle.ts:82:25:
+      82 │     this.proyectoId() ? (this.store.proyectoPorId(this.proyectoId(...
+         ╵                          ~~~~~~~~~~
+
+X [ERROR] TS2571: Object is of type 'unknown'. [plugin angular-compiler]
+
+    C:/dev/AngularProjectNF/mfe-projects/src/app/pages/proyecto-detalle/proyecto-detalle.ts:86:25:
+      86 │     this.proyectoId() ? (this.store.resumen(this.proyectoId()) ?? ...
+         ╵                          ~~~~~~~~~~
+
+X [ERROR] TS2571: Object is of type 'unknown'. [plugin angular-compiler]
+
+    C:/dev/AngularProjectNF/mfe-projects/src/app/pages/proyecto-detalle/proyecto-detalle.ts:90:24:
+      90 │     this.proyectoId() ? this.store.etapasDeProyecto(this.proyectoI...
+         ╵                         ~~~~~~~~~~
+
+X [ERROR] TS2571: Object is of type 'unknown'. [plugin angular-compiler]
+
+    C:/dev/AngularProjectNF/mfe-projects/src/app/pages/proyecto-detalle/proyecto-detalle.ts:94:24:
+      94 │     this.proyectoId() ? this.store.bitacoraDeProyecto(this.proyect...
+         ╵                         ~~~~~~~~~~
+
+X [ERROR] TS2571: Object is of type 'unknown'. [plugin angular-compiler]
+
+    C:/dev/AngularProjectNF/mfe-projects/src/app/pages/proyecto-detalle/proyecto-detalle.ts:98:24:
+      98 │     this.proyectoId() ? this.store.entregablesDeProyecto(this.proy...
+         ╵                         ~~~~~~~~~~
+
+X [ERROR] TS2571: Object is of type 'unknown'. [plugin angular-compiler]
+
+    C:/dev/AngularProjectNF/mfe-projects/src/app/pages/proyecto-detalle/proyecto-detalle.ts:154:6:
+      154 │       this.store.transicionar(this.proyectoId(), destino as never...
+          ╵       ~~~~~~~~~~
+
+X [ERROR] TS2571: Object is of type 'unknown'. [plugin angular-compiler]
+
+    C:/dev/AngularProjectNF/mfe-projects/src/app/pages/proyecto-detalle/proyecto-detalle.ts:168:6:
+      168 │       this.store.cancelarProyecto(this.proyectoId(), actor, comen...
+          ╵       ~~~~~~~~~~
+
+X [ERROR] TS2571: Object is of type 'unknown'. [plugin angular-compiler]
+
+    C:/dev/AngularProjectNF/mfe-projects/src/app/pages/proyecto-detalle/proyecto-detalle.ts:182:6:
+      182 │       this.store.cerrarProyecto(this.proyectoId(), actor, comenta...
+          ╵       ~~~~~~~~~~
+
+X [ERROR] TS2571: Object is of type 'unknown'. [plugin angular-compiler]
+
+    C:/dev/AngularProjectNF/mfe-projects/src/app/pages/proyecto-detalle/proyecto-detalle.ts:199:6:
+      199 │       this.store.registrarAvance(etapa.id, Number(texto), actor);
+          ╵       ~~~~~~~~~~
+
+X [ERROR] TS2571: Object is of type 'unknown'. [plugin angular-compiler]
+
+    C:/dev/AngularProjectNF/mfe-projects/src/app/pages/proyecto-detalle/proyecto-detalle.ts:216:6:
+      216 │       this.store.registrarConsumo(etapa.id, Number(texto), actor);
+          ╵       ~~~~~~~~~~
+
+X [ERROR] TS2571: Object is of type 'unknown'. [plugin angular-compiler]
+
+    C:/dev/AngularProjectNF/mfe-projects/src/app/pages/proyecto-detalle/proyecto-detalle.ts:232:6:
+      232 │       this.store.eliminarEtapa(etapa.id, actor);
+          ╵       ~~~~~~~~~~
+
+X [ERROR] TS7006: Parameter 'id' implicitly has an 'any' type. [plugin angular-compiler]
+
+    C:/dev/AngularProjectNF/mfe-projects/src/app/pages/proyecto-detalle/proyecto-detalle.ts:292:7:
+      292 │       (id) => this.etapas().find((e) => e.id === id)?.nombre ?? id,
+          ╵        ~~
+
+X [ERROR] TS2571: Object is of type 'unknown'. [plugin angular-compiler]
+
+    C:/dev/AngularProjectNF/mfe-projects/src/app/pages/proyecto-detalle/proyecto-detalle.ts:315:8:
+      315 │         this.store.editarEtapa(
+          ╵         ~~~~~~~~~~
+
+X [ERROR] TS2571: Object is of type 'unknown'. [plugin angular-compiler]
+
+    C:/dev/AngularProjectNF/mfe-projects/src/app/pages/proyecto-detalle/proyecto-detalle.ts:329:8:
+      329 │         this.store.crearEtapa(
+          ╵         ~~~~~~~~~~
+
+X [ERROR] TS18046: 'e' is of type 'unknown'. [plugin angular-compiler]
+
+    C:/dev/AngularProjectNF/mfe-projects/src/app/pages/proyecto-detalle/proyecto-detalle.ts:364:13:
+      364 │       return e.message;
+          ╵              ^
+
+X [ERROR] TS2307: Cannot find module '@projecthub/shared' or its corresponding type declarations. [plugin angular-compiler]
+
+    C:/dev/AngularProjectNF/mfe-projects/src/app/pages/proyecto-form/proyecto-form.ts:9:7:
+      9 │ } from '@projecthub/shared';
+        ╵        ~~~~~~~~~~~~~~~~~~~~
+
+X [ERROR] TS2571: Object is of type 'unknown'. [plugin angular-compiler]
+
+    C:/dev/AngularProjectNF/mfe-projects/src/app/pages/proyecto-form/proyecto-form.ts:55:38:
+      55 │       const p: Proyecto | undefined = this.store.proyectoPorId(id);
+         ╵                                       ~~~~~~~~~~
+
+X [ERROR] TS2571: Object is of type 'unknown'. [plugin angular-compiler]
+
+    C:/dev/AngularProjectNF/mfe-projects/src/app/pages/proyecto-form/proyecto-form.ts:90:8:
+      90 │         this.store.editarProyecto(
+         ╵         ~~~~~~~~~~
+
+X [ERROR] TS2571: Object is of type 'unknown'. [plugin angular-compiler]
+
+    C:/dev/AngularProjectNF/mfe-projects/src/app/pages/proyecto-form/proyecto-form.ts:101:23:
+      101 │         const creado = this.store.crearProyecto(
+          ╵                        ~~~~~~~~~~
+
+X [ERROR] TS18046: 'e' is of type 'unknown'. [plugin angular-compiler]
+
+    C:/dev/AngularProjectNF/mfe-projects/src/app/pages/proyecto-form/proyecto-form.ts:115:36:
+      115 │ ...   e instanceof ErrorDominio ? e.message : 'No fue posible gua...
+          ╵                                   ^
+
+X [ERROR] TS2307: Cannot find module '@projecthub/shared' or its corresponding type declarations. [plugin angular-compiler]
+
+    C:/dev/AngularProjectNF/mfe-projects/src/app/permisos-ui.ts:10:7:
+      10 │ } from '@projecthub/shared';
+         ╵        ~~~~~~~~~~~~~~~~~~~~
+
+X [ERROR] TS7006: Parameter 'destino' implicitly has an 'any' type. [plugin angular-compiler]
+
+    C:/dev/AngularProjectNF/mfe-projects/src/app/permisos-ui.ts:78:52:
+      78 │     return transicionesDisponibles(p.etapa).filter((destino) =>
+         ╵                                                     ~~~~~~~
+
+X [ERROR] TS2307: Cannot find module '@projecthub/shared' or its corresponding type declarations. [plugin angular-compiler]
+
+    C:/dev/AngularProjectNF/mfe-projects/src/app/widgets/project-summary.widget.ts:2:29:
+      2 │ import { ProjectStore } from '@projecthub/shared';
+        ╵                              ~~~~~~~~~~~~~~~~~~~~
+
+X [ERROR] TS2571: Object is of type 'unknown'. [plugin angular-compiler]
+
+    C:/dev/AngularProjectNF/mfe-projects/src/app/widgets/project-summary.widget.ts:43:14:
+      43 │     const r = this.store.resumen(this.proyectoId());
+         ╵               ~~~~~~~~~~
+
+ ERRR  Error building federation artifacts
+ ERRR  Federation rebuild failed!
+[31mX [41;31m[[41;97mERROR[41;31m][0m [1mTS2305: Module '"@projecthub/shared"' has no exported member 'ApiEnlaceService'.[0m [1m[35m[plugin angular-compiler][0m
+
+    C:/dev/AngularProjectNF/mfe-projects/src/app/app.config.ts:5:2:
+[37m      5 │   [32mApiEnlaceService[37m,
+        ╵   [32m~~~~~~~~~~~~~~~~[0m
+
+
+[31mX [41;31m[[41;97mERROR[41;31m][0m [1mTS2305: Module '"@projecthub/shared"' has no exported member 'SincronizadorEscrituras'.[0m [1m[35m[plugin angular-compiler][0m
+
+    C:/dev/AngularProjectNF/mfe-projects/src/app/app.config.ts:7:2:
+[37m      7 │   [32mSincronizadorEscrituras[37m,
+        ╵   [32m~~~~~~~~~~~~~~~~~~~~~~~[0m
+
+
+[31mX [41;31m[[41;97mERROR[41;31m][0m [1mTS2305: Module '"@projecthub/shared"' has no exported member 'sincronizarStores'.[0m [1m[35m[plugin angular-compiler][0m
+
+    C:/dev/AngularProjectNF/mfe-projects/src/app/app.config.ts:9:2:
+[37m      9 │   [32msincronizarStores[37m,
+        ╵   [32m~~~~~~~~~~~~~~~~~[0m
+
+
+ WARN  Skipping federation artifacts because Angular build failed.
+[31mX [41;31m[[41;97mERROR[41;31m][0m [1mTS2305: Module '"@projecthub/shared"' has no exported member 'ApiEnlaceService'.[0m [1m[35m[plugin angular-compiler][0m
+
+    C:/dev/AngularProjectNF/mfe-projects/src/app/app.config.ts:5:2:
+[37m      5 │   [32mApiEnlaceService[37m,
+        ╵   [32m~~~~~~~~~~~~~~~~[0m
+
+
+[31mX [41;31m[[41;97mERROR[41;31m][0m [1mTS2305: Module '"@projecthub/shared"' has no exported member 'SincronizadorEscrituras'.[0m [1m[35m[plugin angular-compiler][0m
+
+    C:/dev/AngularProjectNF/mfe-projects/src/app/app.config.ts:7:2:
+[37m      7 │   [32mSincronizadorEscrituras[37m,
+        ╵   [32m~~~~~~~~~~~~~~~~~~~~~~~[0m
+
+
+[31mX [41;31m[[41;97mERROR[41;31m][0m [1mTS2305: Module '"@projecthub/shared"' has no exported member 'sincronizarStores'.[0m [1m[35m[plugin angular-compiler][0m
+
+    C:/dev/AngularProjectNF/mfe-projects/src/app/app.config.ts:9:2:
+[37m      9 │   [32msincronizarStores[37m,
+        ╵   [32m~~~~~~~~~~~~~~~~~[0m
+
+
+[31mX [41;31m[[41;97mERROR[41;31m][0m [1mTS2304: Cannot find name 'TestBed'.[0m [1m[35m[plugin angular-compiler][0m
+
+    C:/dev/AngularProjectNF/mfe-projects/src/app/app.config.ts:22:6:
+[37m      22 │       [32mTestBed[37m.inject(SincronizadorEscrituras).preparar();
+         ╵       [32m~~~~~~~[0m
+
+
+ WARN  Skipping federation artifacts because Angular build failed.
+[31mX [41;31m[[41;97mERROR[41;31m][0m [1mTS2305: Module '"@projecthub/shared"' has no exported member 'SincronizadorEscrituras'.[0m [1m[35m[plugin angular-compiler][0m
+
+    C:/dev/AngularProjectNF/mfe-projects/src/app/app.config.ts:6:2:
+[37m      6 │   [32mSincronizadorEscrituras[37m,
+        ╵   [32m~~~~~~~~~~~~~~~~~~~~~~~[0m
+
+
+[31mX [41;31m[[41;97mERROR[41;31m][0m [1mTS2305: Module '"@projecthub/shared"' has no exported member 'sincronizarStores'.[0m [1m[35m[plugin angular-compiler][0m
+
+    C:/dev/AngularProjectNF/mfe-projects/src/app/app.config.ts:8:2:
+[37m      8 │   [32msincronizarStores[37m,
+        ╵   [32m~~~~~~~~~~~~~~~~~[0m
+
+
+[31mX [41;31m[[41;97mERROR[41;31m][0m [1mTS2571: Object is of type 'unknown'.[0m [1m[35m[plugin angular-compiler][0m
+
+    C:/dev/AngularProjectNF/mfe-projects/src/app/app.config.ts:21:6:
+[37m      21 │       [32minject(SincronizadorEscrituras)[37m.preparar();
+         ╵       [32m~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~[0m
+
+
+ WARN  Skipping federation artifacts because Angular build failed.
+X [ERROR] TS2307: Cannot find module '@projecthub/shared' or its corresponding type declarations. [plugin angular-compiler]
+
+    C:/dev/AngularProjectNF/mfe-projects/src/app/pages/portafolio/portafolio.ts:13:7:
+      13 │ } from '@projecthub/shared';
+         ╵        ~~~~~~~~~~~~~~~~~~~~
+
+X [ERROR] TS2571: Object is of type 'unknown'. [plugin angular-compiler]
+
+    C:/dev/AngularProjectNF/mfe-projects/src/app/pages/portafolio/portafolio.ts:62:11:
+      62 │     return this.store
+         ╵            ~~~~~~~~~~
+
+X [ERROR] TS7006: Parameter 'r' implicitly has an 'any' type. [plugin angular-compiler]
+
+    C:/dev/AngularProjectNF/mfe-projects/src/app/pages/portafolio/portafolio.ts:64:15:
+      64 │       .filter((r) => (etapa === 'todas' ? true : r.proyecto.etapa ...
+         ╵                ^
+
+X [ERROR] TS7006: Parameter 'r' implicitly has an 'any' type. [plugin angular-compiler]
+
+    C:/dev/AngularProjectNF/mfe-projects/src/app/pages/portafolio/portafolio.ts:65:15:
+      65 │       .filter((r) => (estado === 'todos' ? true : r.proyecto.estad...
+         ╵                ^
+
+X [ERROR] TS7006: Parameter 'r' implicitly has an 'any' type. [plugin angular-compiler]
+
+    C:/dev/AngularProjectNF/mfe-projects/src/app/pages/portafolio/portafolio.ts:66:15:
+      66 │       .filter((r) => (termino ? r.proyecto.nombre.toLowerCase().in...
+         ╵                ^
+
+X [ERROR] TS7006: Parameter 'r' implicitly has an 'any' type. [plugin angular-compiler]
+
+    C:/dev/AngularProjectNF/mfe-projects/src/app/pages/portafolio/portafolio.ts:67:12:
+      67 │       .map((r) => this.aFila(r));
+         ╵             ^
+
+X [ERROR] TS2307: Cannot find module '@projecthub/shared' or its corresponding type declarations. [plugin angular-compiler]
+
+    C:/dev/AngularProjectNF/mfe-projects/src/app/pages/proyecto-detalle/proyecto-detalle.ts:14:7:
+      14 │ } from '@projecthub/shared';
+         ╵        ~~~~~~~~~~~~~~~~~~~~
+
+X [ERROR] TS2571: Object is of type 'unknown'. [plugin angular-compiler]
+
+    C:/dev/AngularProjectNF/mfe-projects/src/app/pages/proyecto-detalle/proyecto-detalle.ts:82:25:
+      82 │     this.proyectoId() ? (this.store.proyectoPorId(this.proyectoId(...
+         ╵                          ~~~~~~~~~~
+
+X [ERROR] TS2571: Object is of type 'unknown'. [plugin angular-compiler]
+
+    C:/dev/AngularProjectNF/mfe-projects/src/app/pages/proyecto-detalle/proyecto-detalle.ts:86:25:
+      86 │     this.proyectoId() ? (this.store.resumen(this.proyectoId()) ?? ...
+         ╵                          ~~~~~~~~~~
+
+X [ERROR] TS2571: Object is of type 'unknown'. [plugin angular-compiler]
+
+    C:/dev/AngularProjectNF/mfe-projects/src/app/pages/proyecto-detalle/proyecto-detalle.ts:90:24:
+      90 │     this.proyectoId() ? this.store.etapasDeProyecto(this.proyectoI...
+         ╵                         ~~~~~~~~~~
+
+X [ERROR] TS2571: Object is of type 'unknown'. [plugin angular-compiler]
+
+    C:/dev/AngularProjectNF/mfe-projects/src/app/pages/proyecto-detalle/proyecto-detalle.ts:94:24:
+      94 │     this.proyectoId() ? this.store.bitacoraDeProyecto(this.proyect...
+         ╵                         ~~~~~~~~~~
+
+X [ERROR] TS2571: Object is of type 'unknown'. [plugin angular-compiler]
+
+    C:/dev/AngularProjectNF/mfe-projects/src/app/pages/proyecto-detalle/proyecto-detalle.ts:98:24:
+      98 │     this.proyectoId() ? this.store.entregablesDeProyecto(this.proy...
+         ╵                         ~~~~~~~~~~
+
+X [ERROR] TS2571: Object is of type 'unknown'. [plugin angular-compiler]
+
+    C:/dev/AngularProjectNF/mfe-projects/src/app/pages/proyecto-detalle/proyecto-detalle.ts:154:6:
+      154 │       this.store.transicionar(this.proyectoId(), destino as never...
+          ╵       ~~~~~~~~~~
+
+X [ERROR] TS2571: Object is of type 'unknown'. [plugin angular-compiler]
+
+    C:/dev/AngularProjectNF/mfe-projects/src/app/pages/proyecto-detalle/proyecto-detalle.ts:168:6:
+      168 │       this.store.cancelarProyecto(this.proyectoId(), actor, comen...
+          ╵       ~~~~~~~~~~
+
+X [ERROR] TS2571: Object is of type 'unknown'. [plugin angular-compiler]
+
+    C:/dev/AngularProjectNF/mfe-projects/src/app/pages/proyecto-detalle/proyecto-detalle.ts:182:6:
+      182 │       this.store.cerrarProyecto(this.proyectoId(), actor, comenta...
+          ╵       ~~~~~~~~~~
+
+X [ERROR] TS2571: Object is of type 'unknown'. [plugin angular-compiler]
+
+    C:/dev/AngularProjectNF/mfe-projects/src/app/pages/proyecto-detalle/proyecto-detalle.ts:199:6:
+      199 │       this.store.registrarAvance(etapa.id, Number(texto), actor);
+          ╵       ~~~~~~~~~~
+
+X [ERROR] TS2571: Object is of type 'unknown'. [plugin angular-compiler]
+
+    C:/dev/AngularProjectNF/mfe-projects/src/app/pages/proyecto-detalle/proyecto-detalle.ts:216:6:
+      216 │       this.store.registrarConsumo(etapa.id, Number(texto), actor);
+          ╵       ~~~~~~~~~~
+
+X [ERROR] TS2571: Object is of type 'unknown'. [plugin angular-compiler]
+
+    C:/dev/AngularProjectNF/mfe-projects/src/app/pages/proyecto-detalle/proyecto-detalle.ts:232:6:
+      232 │       this.store.eliminarEtapa(etapa.id, actor);
+          ╵       ~~~~~~~~~~
+
+X [ERROR] TS7006: Parameter 'id' implicitly has an 'any' type. [plugin angular-compiler]
+
+    C:/dev/AngularProjectNF/mfe-projects/src/app/pages/proyecto-detalle/proyecto-detalle.ts:292:7:
+      292 │       (id) => this.etapas().find((e) => e.id === id)?.nombre ?? id,
+          ╵        ~~
+
+X [ERROR] TS2571: Object is of type 'unknown'. [plugin angular-compiler]
+
+    C:/dev/AngularProjectNF/mfe-projects/src/app/pages/proyecto-detalle/proyecto-detalle.ts:315:8:
+      315 │         this.store.editarEtapa(
+          ╵         ~~~~~~~~~~
+
+X [ERROR] TS2571: Object is of type 'unknown'. [plugin angular-compiler]
+
+    C:/dev/AngularProjectNF/mfe-projects/src/app/pages/proyecto-detalle/proyecto-detalle.ts:329:8:
+      329 │         this.store.crearEtapa(
+          ╵         ~~~~~~~~~~
+
+X [ERROR] TS18046: 'e' is of type 'unknown'. [plugin angular-compiler]
+
+    C:/dev/AngularProjectNF/mfe-projects/src/app/pages/proyecto-detalle/proyecto-detalle.ts:364:13:
+      364 │       return e.message;
+          ╵              ^
+
+X [ERROR] TS2307: Cannot find module '@projecthub/shared' or its corresponding type declarations. [plugin angular-compiler]
+
+    C:/dev/AngularProjectNF/mfe-projects/src/app/pages/proyecto-form/proyecto-form.ts:9:7:
+      9 │ } from '@projecthub/shared';
+        ╵        ~~~~~~~~~~~~~~~~~~~~
+
+X [ERROR] TS2571: Object is of type 'unknown'. [plugin angular-compiler]
+
+    C:/dev/AngularProjectNF/mfe-projects/src/app/pages/proyecto-form/proyecto-form.ts:55:38:
+      55 │       const p: Proyecto | undefined = this.store.proyectoPorId(id);
+         ╵                                       ~~~~~~~~~~
+
+X [ERROR] TS2571: Object is of type 'unknown'. [plugin angular-compiler]
+
+    C:/dev/AngularProjectNF/mfe-projects/src/app/pages/proyecto-form/proyecto-form.ts:90:8:
+      90 │         this.store.editarProyecto(
+         ╵         ~~~~~~~~~~
+
+X [ERROR] TS2571: Object is of type 'unknown'. [plugin angular-compiler]
+
+    C:/dev/AngularProjectNF/mfe-projects/src/app/pages/proyecto-form/proyecto-form.ts:101:23:
+      101 │         const creado = this.store.crearProyecto(
+          ╵                        ~~~~~~~~~~
+
+X [ERROR] TS18046: 'e' is of type 'unknown'. [plugin angular-compiler]
+
+    C:/dev/AngularProjectNF/mfe-projects/src/app/pages/proyecto-form/proyecto-form.ts:115:36:
+      115 │ ...   e instanceof ErrorDominio ? e.message : 'No fue posible gua...
+          ╵                                   ^
+
+X [ERROR] TS2307: Cannot find module '@projecthub/shared' or its corresponding type declarations. [plugin angular-compiler]
+
+    C:/dev/AngularProjectNF/mfe-projects/src/app/permisos-ui.ts:10:7:
+      10 │ } from '@projecthub/shared';
+         ╵        ~~~~~~~~~~~~~~~~~~~~
+
+X [ERROR] TS7006: Parameter 'destino' implicitly has an 'any' type. [plugin angular-compiler]
+
+    C:/dev/AngularProjectNF/mfe-projects/src/app/permisos-ui.ts:78:52:
+      78 │     return transicionesDisponibles(p.etapa).filter((destino) =>
+         ╵                                                     ~~~~~~~
+
+X [ERROR] TS2307: Cannot find module '@projecthub/shared' or its corresponding type declarations. [plugin angular-compiler]
+
+    C:/dev/AngularProjectNF/mfe-projects/src/app/widgets/project-summary.widget.ts:2:29:
+      2 │ import { ProjectStore } from '@projecthub/shared';
+        ╵                              ~~~~~~~~~~~~~~~~~~~~
+
+X [ERROR] TS2571: Object is of type 'unknown'. [plugin angular-compiler]
+
+    C:/dev/AngularProjectNF/mfe-projects/src/app/widgets/project-summary.widget.ts:43:14:
+      43 │     const r = this.store.resumen(this.proyectoId());
+         ╵               ~~~~~~~~~~
+
+ ERRR  Error building federation artifacts
+ ERRR  Federation rebuild failed!
+X [ERROR] TS2307: Cannot find module '@projecthub/shared' or its corresponding type declarations. [plugin angular-compiler]
+
+    C:/dev/AngularProjectNF/mfe-projects/src/app/pages/portafolio/portafolio.ts:13:7:
+      13 │ } from '@projecthub/shared';
+         ╵        ~~~~~~~~~~~~~~~~~~~~
+
+X [ERROR] TS2571: Object is of type 'unknown'. [plugin angular-compiler]
+
+    C:/dev/AngularProjectNF/mfe-projects/src/app/pages/portafolio/portafolio.ts:62:11:
+      62 │     return this.store
+         ╵            ~~~~~~~~~~
+
+X [ERROR] TS7006: Parameter 'r' implicitly has an 'any' type. [plugin angular-compiler]
+
+    C:/dev/AngularProjectNF/mfe-projects/src/app/pages/portafolio/portafolio.ts:64:15:
+      64 │       .filter((r) => (etapa === 'todas' ? true : r.proyecto.etapa ...
+         ╵                ^
+
+X [ERROR] TS7006: Parameter 'r' implicitly has an 'any' type. [plugin angular-compiler]
+
+    C:/dev/AngularProjectNF/mfe-projects/src/app/pages/portafolio/portafolio.ts:65:15:
+      65 │       .filter((r) => (estado === 'todos' ? true : r.proyecto.estad...
+         ╵                ^
+
+X [ERROR] TS7006: Parameter 'r' implicitly has an 'any' type. [plugin angular-compiler]
+
+    C:/dev/AngularProjectNF/mfe-projects/src/app/pages/portafolio/portafolio.ts:66:15:
+      66 │       .filter((r) => (termino ? r.proyecto.nombre.toLowerCase().in...
+         ╵                ^
+
+X [ERROR] TS7006: Parameter 'r' implicitly has an 'any' type. [plugin angular-compiler]
+
+    C:/dev/AngularProjectNF/mfe-projects/src/app/pages/portafolio/portafolio.ts:67:12:
+      67 │       .map((r) => this.aFila(r));
+         ╵             ^
+
+X [ERROR] TS2307: Cannot find module '@projecthub/shared' or its corresponding type declarations. [plugin angular-compiler]
+
+    C:/dev/AngularProjectNF/mfe-projects/src/app/pages/proyecto-detalle/proyecto-detalle.ts:14:7:
+      14 │ } from '@projecthub/shared';
+         ╵        ~~~~~~~~~~~~~~~~~~~~
+
+X [ERROR] TS2571: Object is of type 'unknown'. [plugin angular-compiler]
+
+    C:/dev/AngularProjectNF/mfe-projects/src/app/pages/proyecto-detalle/proyecto-detalle.ts:82:25:
+      82 │     this.proyectoId() ? (this.store.proyectoPorId(this.proyectoId(...
+         ╵                          ~~~~~~~~~~
+
+X [ERROR] TS2571: Object is of type 'unknown'. [plugin angular-compiler]
+
+    C:/dev/AngularProjectNF/mfe-projects/src/app/pages/proyecto-detalle/proyecto-detalle.ts:86:25:
+      86 │     this.proyectoId() ? (this.store.resumen(this.proyectoId()) ?? ...
+         ╵                          ~~~~~~~~~~
+
+X [ERROR] TS2571: Object is of type 'unknown'. [plugin angular-compiler]
+
+    C:/dev/AngularProjectNF/mfe-projects/src/app/pages/proyecto-detalle/proyecto-detalle.ts:90:24:
+      90 │     this.proyectoId() ? this.store.etapasDeProyecto(this.proyectoI...
+         ╵                         ~~~~~~~~~~
+
+X [ERROR] TS2571: Object is of type 'unknown'. [plugin angular-compiler]
+
+    C:/dev/AngularProjectNF/mfe-projects/src/app/pages/proyecto-detalle/proyecto-detalle.ts:94:24:
+      94 │     this.proyectoId() ? this.store.bitacoraDeProyecto(this.proyect...
+         ╵                         ~~~~~~~~~~
+
+X [ERROR] TS2571: Object is of type 'unknown'. [plugin angular-compiler]
+
+    C:/dev/AngularProjectNF/mfe-projects/src/app/pages/proyecto-detalle/proyecto-detalle.ts:98:24:
+      98 │     this.proyectoId() ? this.store.entregablesDeProyecto(this.proy...
+         ╵                         ~~~~~~~~~~
+
+X [ERROR] TS2571: Object is of type 'unknown'. [plugin angular-compiler]
+
+    C:/dev/AngularProjectNF/mfe-projects/src/app/pages/proyecto-detalle/proyecto-detalle.ts:154:6:
+      154 │       this.store.transicionar(this.proyectoId(), destino as never...
+          ╵       ~~~~~~~~~~
+
+X [ERROR] TS2571: Object is of type 'unknown'. [plugin angular-compiler]
+
+    C:/dev/AngularProjectNF/mfe-projects/src/app/pages/proyecto-detalle/proyecto-detalle.ts:168:6:
+      168 │       this.store.cancelarProyecto(this.proyectoId(), actor, comen...
+          ╵       ~~~~~~~~~~
+
+X [ERROR] TS2571: Object is of type 'unknown'. [plugin angular-compiler]
+
+    C:/dev/AngularProjectNF/mfe-projects/src/app/pages/proyecto-detalle/proyecto-detalle.ts:182:6:
+      182 │       this.store.cerrarProyecto(this.proyectoId(), actor, comenta...
+          ╵       ~~~~~~~~~~
+
+X [ERROR] TS2571: Object is of type 'unknown'. [plugin angular-compiler]
+
+    C:/dev/AngularProjectNF/mfe-projects/src/app/pages/proyecto-detalle/proyecto-detalle.ts:199:6:
+      199 │       this.store.registrarAvance(etapa.id, Number(texto), actor);
+          ╵       ~~~~~~~~~~
+
+X [ERROR] TS2571: Object is of type 'unknown'. [plugin angular-compiler]
+
+    C:/dev/AngularProjectNF/mfe-projects/src/app/pages/proyecto-detalle/proyecto-detalle.ts:216:6:
+      216 │       this.store.registrarConsumo(etapa.id, Number(texto), actor);
+          ╵       ~~~~~~~~~~
+
+X [ERROR] TS2571: Object is of type 'unknown'. [plugin angular-compiler]
+
+    C:/dev/AngularProjectNF/mfe-projects/src/app/pages/proyecto-detalle/proyecto-detalle.ts:232:6:
+      232 │       this.store.eliminarEtapa(etapa.id, actor);
+          ╵       ~~~~~~~~~~
+
+X [ERROR] TS7006: Parameter 'id' implicitly has an 'any' type. [plugin angular-compiler]
+
+    C:/dev/AngularProjectNF/mfe-projects/src/app/pages/proyecto-detalle/proyecto-detalle.ts:292:7:
+      292 │       (id) => this.etapas().find((e) => e.id === id)?.nombre ?? id,
+          ╵        ~~
+
+X [ERROR] TS2571: Object is of type 'unknown'. [plugin angular-compiler]
+
+    C:/dev/AngularProjectNF/mfe-projects/src/app/pages/proyecto-detalle/proyecto-detalle.ts:315:8:
+      315 │         this.store.editarEtapa(
+          ╵         ~~~~~~~~~~
+
+X [ERROR] TS2571: Object is of type 'unknown'. [plugin angular-compiler]
+
+    C:/dev/AngularProjectNF/mfe-projects/src/app/pages/proyecto-detalle/proyecto-detalle.ts:329:8:
+      329 │         this.store.crearEtapa(
+          ╵         ~~~~~~~~~~
+
+X [ERROR] TS18046: 'e' is of type 'unknown'. [plugin angular-compiler]
+
+    C:/dev/AngularProjectNF/mfe-projects/src/app/pages/proyecto-detalle/proyecto-detalle.ts:364:13:
+      364 │       return e.message;
+          ╵              ^
+
+X [ERROR] TS2307: Cannot find module '@projecthub/shared' or its corresponding type declarations. [plugin angular-compiler]
+
+    C:/dev/AngularProjectNF/mfe-projects/src/app/pages/proyecto-form/proyecto-form.ts:9:7:
+      9 │ } from '@projecthub/shared';
+        ╵        ~~~~~~~~~~~~~~~~~~~~
+
+X [ERROR] TS2571: Object is of type 'unknown'. [plugin angular-compiler]
+
+    C:/dev/AngularProjectNF/mfe-projects/src/app/pages/proyecto-form/proyecto-form.ts:55:38:
+      55 │       const p: Proyecto | undefined = this.store.proyectoPorId(id);
+         ╵                                       ~~~~~~~~~~
+
+X [ERROR] TS2571: Object is of type 'unknown'. [plugin angular-compiler]
+
+    C:/dev/AngularProjectNF/mfe-projects/src/app/pages/proyecto-form/proyecto-form.ts:90:8:
+      90 │         this.store.editarProyecto(
+         ╵         ~~~~~~~~~~
+
+X [ERROR] TS2571: Object is of type 'unknown'. [plugin angular-compiler]
+
+    C:/dev/AngularProjectNF/mfe-projects/src/app/pages/proyecto-form/proyecto-form.ts:101:23:
+      101 │         const creado = this.store.crearProyecto(
+          ╵                        ~~~~~~~~~~
+
+X [ERROR] TS18046: 'e' is of type 'unknown'. [plugin angular-compiler]
+
+    C:/dev/AngularProjectNF/mfe-projects/src/app/pages/proyecto-form/proyecto-form.ts:115:36:
+      115 │ ...   e instanceof ErrorDominio ? e.message : 'No fue posible gua...
+          ╵                                   ^
+
+X [ERROR] TS2307: Cannot find module '@projecthub/shared' or its corresponding type declarations. [plugin angular-compiler]
+
+    C:/dev/AngularProjectNF/mfe-projects/src/app/permisos-ui.ts:10:7:
+      10 │ } from '@projecthub/shared';
+         ╵        ~~~~~~~~~~~~~~~~~~~~
+
+X [ERROR] TS7006: Parameter 'destino' implicitly has an 'any' type. [plugin angular-compiler]
+
+    C:/dev/AngularProjectNF/mfe-projects/src/app/permisos-ui.ts:78:52:
+      78 │     return transicionesDisponibles(p.etapa).filter((destino) =>
+         ╵                                                     ~~~~~~~
+
+X [ERROR] TS2307: Cannot find module '@projecthub/shared' or its corresponding type declarations. [plugin angular-compiler]
+
+    C:/dev/AngularProjectNF/mfe-projects/src/app/widgets/project-summary.widget.ts:2:29:
+      2 │ import { ProjectStore } from '@projecthub/shared';
+        ╵                              ~~~~~~~~~~~~~~~~~~~~
+
+X [ERROR] TS2571: Object is of type 'unknown'. [plugin angular-compiler]
+
+    C:/dev/AngularProjectNF/mfe-projects/src/app/widgets/project-summary.widget.ts:43:14:
+      43 │     const r = this.store.resumen(this.proyectoId());
+         ╵               ~~~~~~~~~~
+
+ ERRR  Error building federation artifacts
+ ERRR  Federation rebuild failed!

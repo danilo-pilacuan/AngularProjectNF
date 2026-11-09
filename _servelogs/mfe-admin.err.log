@@ -1,0 +1,664 @@
+X [ERROR] TS2307: Cannot find module '@projecthub/ui' or its corresponding type declarations. [plugin angular-compiler]
+
+    C:/dev/AngularProjectNF/mfe-admin/src/app/pages/usuarios/usuarios.ts:10:72:
+      10 │ ...aTableColumn, FormField, PermissionBanner } from '@projecthub/ui';
+         ╵                                                     ~~~~~~~~~~~~~~~~
+
+X [ERROR] NG1010: 'imports' must be an array of components, directives, pipes, or NgModules.
+  Value could not be determined statically. [plugin angular-compiler]
+
+    C:/dev/AngularProjectNF/mfe-admin/src/app/pages/usuarios/usuarios.ts:31:12:
+      31 │   imports: [DataTable, DataTableColumn, FormField, PermissionBanner],
+         ╵             ~~~~~~~~~
+
+  Unknown reference.
+
+    C:/dev/AngularProjectNF/mfe-admin/src/app/pages/usuarios/usuarios.ts:31:12:
+      31 │   imports: [DataTable, DataTableColumn, FormField, PermissionBanner],
+         ╵             ~~~~~~~~~
+
+X [ERROR] NG1010: 'imports' must be an array of components, directives, pipes, or NgModules.
+  Value could not be determined statically. [plugin angular-compiler]
+
+    C:/dev/AngularProjectNF/mfe-admin/src/app/pages/usuarios/usuarios.ts:31:23:
+      31 │   imports: [DataTable, DataTableColumn, FormField, PermissionBanner],
+         ╵                        ~~~~~~~~~~~~~~~
+
+  Unknown reference.
+
+    C:/dev/AngularProjectNF/mfe-admin/src/app/pages/usuarios/usuarios.ts:31:23:
+      31 │   imports: [DataTable, DataTableColumn, FormField, PermissionBanner],
+         ╵                        ~~~~~~~~~~~~~~~
+
+X [ERROR] NG1010: 'imports' must be an array of components, directives, pipes, or NgModules.
+  Value could not be determined statically. [plugin angular-compiler]
+
+    C:/dev/AngularProjectNF/mfe-admin/src/app/pages/usuarios/usuarios.ts:31:40:
+      31 │   imports: [DataTable, DataTableColumn, FormField, PermissionBanner],
+         ╵                                         ~~~~~~~~~
+
+  Unknown reference.
+
+    C:/dev/AngularProjectNF/mfe-admin/src/app/pages/usuarios/usuarios.ts:31:40:
+      31 │   imports: [DataTable, DataTableColumn, FormField, PermissionBanner],
+         ╵                                         ~~~~~~~~~
+
+X [ERROR] NG1010: 'imports' must be an array of components, directives, pipes, or NgModules.
+  Value could not be determined statically. [plugin angular-compiler]
+
+    C:/dev/AngularProjectNF/mfe-admin/src/app/pages/usuarios/usuarios.ts:31:51:
+      31 │   imports: [DataTable, DataTableColumn, FormField, PermissionBanner],
+         ╵                                                    ~~~~~~~~~~~~~~~~
+
+  Unknown reference.
+
+    C:/dev/AngularProjectNF/mfe-admin/src/app/pages/usuarios/usuarios.ts:31:51:
+      31 │   imports: [DataTable, DataTableColumn, FormField, PermissionBanner],
+         ╵                                                    ~~~~~~~~~~~~~~~~
+
+ ERRR  Error building federation artifacts
+ ERRR  Federation rebuild failed!
+X [ERROR] TS2307: Cannot find module '@projecthub/ui' or its corresponding type declarations. [plugin angular-compiler]
+
+    C:/dev/AngularProjectNF/mfe-admin/src/app/pages/usuarios/usuarios.ts:10:72:
+      10 │ ...aTableColumn, FormField, PermissionBanner } from '@projecthub/ui';
+         ╵                                                     ~~~~~~~~~~~~~~~~
+
+X [ERROR] NG1010: 'imports' must be an array of components, directives, pipes, or NgModules.
+  Value could not be determined statically. [plugin angular-compiler]
+
+    C:/dev/AngularProjectNF/mfe-admin/src/app/pages/usuarios/usuarios.ts:31:12:
+      31 │   imports: [DataTable, DataTableColumn, FormField, PermissionBanner],
+         ╵             ~~~~~~~~~
+
+  Unknown reference.
+
+    C:/dev/AngularProjectNF/mfe-admin/src/app/pages/usuarios/usuarios.ts:31:12:
+      31 │   imports: [DataTable, DataTableColumn, FormField, PermissionBanner],
+         ╵             ~~~~~~~~~
+
+X [ERROR] NG1010: 'imports' must be an array of components, directives, pipes, or NgModules.
+  Value could not be determined statically. [plugin angular-compiler]
+
+    C:/dev/AngularProjectNF/mfe-admin/src/app/pages/usuarios/usuarios.ts:31:23:
+      31 │   imports: [DataTable, DataTableColumn, FormField, PermissionBanner],
+         ╵                        ~~~~~~~~~~~~~~~
+
+  Unknown reference.
+
+    C:/dev/AngularProjectNF/mfe-admin/src/app/pages/usuarios/usuarios.ts:31:23:
+      31 │   imports: [DataTable, DataTableColumn, FormField, PermissionBanner],
+         ╵                        ~~~~~~~~~~~~~~~
+
+X [ERROR] NG1010: 'imports' must be an array of components, directives, pipes, or NgModules.
+  Value could not be determined statically. [plugin angular-compiler]
+
+    C:/dev/AngularProjectNF/mfe-admin/src/app/pages/usuarios/usuarios.ts:31:40:
+      31 │   imports: [DataTable, DataTableColumn, FormField, PermissionBanner],
+         ╵                                         ~~~~~~~~~
+
+  Unknown reference.
+
+    C:/dev/AngularProjectNF/mfe-admin/src/app/pages/usuarios/usuarios.ts:31:40:
+      31 │   imports: [DataTable, DataTableColumn, FormField, PermissionBanner],
+         ╵                                         ~~~~~~~~~
+
+X [ERROR] NG1010: 'imports' must be an array of components, directives, pipes, or NgModules.
+  Value could not be determined statically. [plugin angular-compiler]
+
+    C:/dev/AngularProjectNF/mfe-admin/src/app/pages/usuarios/usuarios.ts:31:51:
+      31 │   imports: [DataTable, DataTableColumn, FormField, PermissionBanner],
+         ╵                                                    ~~~~~~~~~~~~~~~~
+
+  Unknown reference.
+
+    C:/dev/AngularProjectNF/mfe-admin/src/app/pages/usuarios/usuarios.ts:31:51:
+      31 │   imports: [DataTable, DataTableColumn, FormField, PermissionBanner],
+         ╵                                                    ~~~~~~~~~~~~~~~~
+
+ ERRR  Error building federation artifacts
+ ERRR  Federation rebuild failed!
+X [ERROR] TS2307: Cannot find module '@projecthub/ui' or its corresponding type declarations. [plugin angular-compiler]
+
+    C:/dev/AngularProjectNF/mfe-admin/src/app/pages/usuarios/usuarios.ts:10:72:
+      10 │ ...aTableColumn, FormField, PermissionBanner } from '@projecthub/ui';
+         ╵                                                     ~~~~~~~~~~~~~~~~
+
+X [ERROR] NG1010: 'imports' must be an array of components, directives, pipes, or NgModules.
+  Value could not be determined statically. [plugin angular-compiler]
+
+    C:/dev/AngularProjectNF/mfe-admin/src/app/pages/usuarios/usuarios.ts:31:12:
+      31 │   imports: [DataTable, DataTableColumn, FormField, PermissionBanner],
+         ╵             ~~~~~~~~~
+
+  Unknown reference.
+
+    C:/dev/AngularProjectNF/mfe-admin/src/app/pages/usuarios/usuarios.ts:31:12:
+      31 │   imports: [DataTable, DataTableColumn, FormField, PermissionBanner],
+         ╵             ~~~~~~~~~
+
+X [ERROR] NG1010: 'imports' must be an array of components, directives, pipes, or NgModules.
+  Value could not be determined statically. [plugin angular-compiler]
+
+    C:/dev/AngularProjectNF/mfe-admin/src/app/pages/usuarios/usuarios.ts:31:23:
+      31 │   imports: [DataTable, DataTableColumn, FormField, PermissionBanner],
+         ╵                        ~~~~~~~~~~~~~~~
+
+  Unknown reference.
+
+    C:/dev/AngularProjectNF/mfe-admin/src/app/pages/usuarios/usuarios.ts:31:23:
+      31 │   imports: [DataTable, DataTableColumn, FormField, PermissionBanner],
+         ╵                        ~~~~~~~~~~~~~~~
+
+X [ERROR] NG1010: 'imports' must be an array of components, directives, pipes, or NgModules.
+  Value could not be determined statically. [plugin angular-compiler]
+
+    C:/dev/AngularProjectNF/mfe-admin/src/app/pages/usuarios/usuarios.ts:31:40:
+      31 │   imports: [DataTable, DataTableColumn, FormField, PermissionBanner],
+         ╵                                         ~~~~~~~~~
+
+  Unknown reference.
+
+    C:/dev/AngularProjectNF/mfe-admin/src/app/pages/usuarios/usuarios.ts:31:40:
+      31 │   imports: [DataTable, DataTableColumn, FormField, PermissionBanner],
+         ╵                                         ~~~~~~~~~
+
+X [ERROR] NG1010: 'imports' must be an array of components, directives, pipes, or NgModules.
+  Value could not be determined statically. [plugin angular-compiler]
+
+    C:/dev/AngularProjectNF/mfe-admin/src/app/pages/usuarios/usuarios.ts:31:51:
+      31 │   imports: [DataTable, DataTableColumn, FormField, PermissionBanner],
+         ╵                                                    ~~~~~~~~~~~~~~~~
+
+  Unknown reference.
+
+    C:/dev/AngularProjectNF/mfe-admin/src/app/pages/usuarios/usuarios.ts:31:51:
+      31 │   imports: [DataTable, DataTableColumn, FormField, PermissionBanner],
+         ╵                                                    ~~~~~~~~~~~~~~~~
+
+ ERRR  Error building federation artifacts
+ ERRR  Federation rebuild failed!
+X [ERROR] TS2307: Cannot find module '@projecthub/ui' or its corresponding type declarations. [plugin angular-compiler]
+
+    C:/dev/AngularProjectNF/mfe-admin/src/app/pages/usuarios/usuarios.ts:10:72:
+      10 │ ...aTableColumn, FormField, PermissionBanner } from '@projecthub/ui';
+         ╵                                                     ~~~~~~~~~~~~~~~~
+
+X [ERROR] NG1010: 'imports' must be an array of components, directives, pipes, or NgModules.
+  Value could not be determined statically. [plugin angular-compiler]
+
+    C:/dev/AngularProjectNF/mfe-admin/src/app/pages/usuarios/usuarios.ts:31:12:
+      31 │   imports: [DataTable, DataTableColumn, FormField, PermissionBanner],
+         ╵             ~~~~~~~~~
+
+  Unknown reference.
+
+    C:/dev/AngularProjectNF/mfe-admin/src/app/pages/usuarios/usuarios.ts:31:12:
+      31 │   imports: [DataTable, DataTableColumn, FormField, PermissionBanner],
+         ╵             ~~~~~~~~~
+
+X [ERROR] NG1010: 'imports' must be an array of components, directives, pipes, or NgModules.
+  Value could not be determined statically. [plugin angular-compiler]
+
+    C:/dev/AngularProjectNF/mfe-admin/src/app/pages/usuarios/usuarios.ts:31:23:
+      31 │   imports: [DataTable, DataTableColumn, FormField, PermissionBanner],
+         ╵                        ~~~~~~~~~~~~~~~
+
+  Unknown reference.
+
+    C:/dev/AngularProjectNF/mfe-admin/src/app/pages/usuarios/usuarios.ts:31:23:
+      31 │   imports: [DataTable, DataTableColumn, FormField, PermissionBanner],
+         ╵                        ~~~~~~~~~~~~~~~
+
+X [ERROR] NG1010: 'imports' must be an array of components, directives, pipes, or NgModules.
+  Value could not be determined statically. [plugin angular-compiler]
+
+    C:/dev/AngularProjectNF/mfe-admin/src/app/pages/usuarios/usuarios.ts:31:40:
+      31 │   imports: [DataTable, DataTableColumn, FormField, PermissionBanner],
+         ╵                                         ~~~~~~~~~
+
+  Unknown reference.
+
+    C:/dev/AngularProjectNF/mfe-admin/src/app/pages/usuarios/usuarios.ts:31:40:
+      31 │   imports: [DataTable, DataTableColumn, FormField, PermissionBanner],
+         ╵                                         ~~~~~~~~~
+
+X [ERROR] NG1010: 'imports' must be an array of components, directives, pipes, or NgModules.
+  Value could not be determined statically. [plugin angular-compiler]
+
+    C:/dev/AngularProjectNF/mfe-admin/src/app/pages/usuarios/usuarios.ts:31:51:
+      31 │   imports: [DataTable, DataTableColumn, FormField, PermissionBanner],
+         ╵                                                    ~~~~~~~~~~~~~~~~
+
+  Unknown reference.
+
+    C:/dev/AngularProjectNF/mfe-admin/src/app/pages/usuarios/usuarios.ts:31:51:
+      31 │   imports: [DataTable, DataTableColumn, FormField, PermissionBanner],
+         ╵                                                    ~~~~~~~~~~~~~~~~
+
+ ERRR  Error building federation artifacts
+ ERRR  Federation rebuild failed!
+X [ERROR] TS2307: Cannot find module '@projecthub/shared' or its corresponding type declarations. [plugin angular-compiler]
+
+    C:/dev/AngularProjectNF/mfe-admin/src/app/pages/matriz/matriz.ts:15:7:
+      15 │ } from '@projecthub/shared';
+         ╵        ~~~~~~~~~~~~~~~~~~~~
+
+X [ERROR] TS7006: Parameter 'etapa' implicitly has an 'any' type. [plugin angular-compiler]
+
+    C:/dev/AngularProjectNF/mfe-admin/src/app/pages/matriz/matriz.ts:43:27:
+      43 │     ETAPAS_CICLO_VIDA.map((etapa) => ({
+         ╵                            ~~~~~
+
+X [ERROR] TS2307: Cannot find module '@projecthub/shared' or its corresponding type declarations. [plugin angular-compiler]
+
+    C:/dev/AngularProjectNF/mfe-admin/src/app/pages/usuarios/usuarios.ts:9:7:
+      9 │ } from '@projecthub/shared';
+        ╵        ~~~~~~~~~~~~~~~~~~~~
+
+X [ERROR] TS2571: Object is of type 'unknown'. [plugin angular-compiler]
+
+    C:/dev/AngularProjectNF/mfe-admin/src/app/pages/usuarios/usuarios.ts:54:4:
+      54 │     this.usuariosStore.usuarios().map((u) => ({
+         ╵     ~~~~~~~~~~~~~~~~~~
+
+X [ERROR] TS7006: Parameter 'u' implicitly has an 'any' type. [plugin angular-compiler]
+
+    C:/dev/AngularProjectNF/mfe-admin/src/app/pages/usuarios/usuarios.ts:54:39:
+      54 │     this.usuariosStore.usuarios().map((u) => ({
+         ╵                                        ^
+
+X [ERROR] TS7006: Parameter 'r' implicitly has an 'any' type. [plugin angular-compiler]
+
+    C:/dev/AngularProjectNF/mfe-admin/src/app/pages/usuarios/usuarios.ts:58:26:
+      58 │       roles: u.roles.map((r) => ETIQUETA_ROL[r]).join(', '),
+         ╵                           ^
+
+X [ERROR] TS2571: Object is of type 'unknown'. [plugin angular-compiler]
+
+    C:/dev/AngularProjectNF/mfe-admin/src/app/pages/usuarios/usuarios.ts:111:8:
+      111 │         this.usuariosStore.crearUsuario(datos, actor);
+          ╵         ~~~~~~~~~~~~~~~~~~
+
+X [ERROR] TS2571: Object is of type 'unknown'. [plugin angular-compiler]
+
+    C:/dev/AngularProjectNF/mfe-admin/src/app/pages/usuarios/usuarios.ts:113:8:
+      113 │         this.usuariosStore.editarUsuario(id, datos, actor);
+          ╵         ~~~~~~~~~~~~~~~~~~
+
+X [ERROR] TS2571: Object is of type 'unknown'. [plugin angular-compiler]
+
+    C:/dev/AngularProjectNF/mfe-admin/src/app/pages/usuarios/usuarios.ts:131:6:
+      131 │       this.usuariosStore.desactivarUsuario(u.id, actor);
+          ╵       ~~~~~~~~~~~~~~~~~~
+
+ ERRR  Error building federation artifacts
+ ERRR  Federation rebuild failed!
+X [ERROR] TS2307: Cannot find module '@projecthub/shared' or its corresponding type declarations. [plugin angular-compiler]
+
+    C:/dev/AngularProjectNF/mfe-admin/src/app/pages/matriz/matriz.ts:15:7:
+      15 │ } from '@projecthub/shared';
+         ╵        ~~~~~~~~~~~~~~~~~~~~
+
+X [ERROR] TS7006: Parameter 'etapa' implicitly has an 'any' type. [plugin angular-compiler]
+
+    C:/dev/AngularProjectNF/mfe-admin/src/app/pages/matriz/matriz.ts:43:27:
+      43 │     ETAPAS_CICLO_VIDA.map((etapa) => ({
+         ╵                            ~~~~~
+
+X [ERROR] TS2307: Cannot find module '@projecthub/shared' or its corresponding type declarations. [plugin angular-compiler]
+
+    C:/dev/AngularProjectNF/mfe-admin/src/app/pages/usuarios/usuarios.ts:9:7:
+      9 │ } from '@projecthub/shared';
+        ╵        ~~~~~~~~~~~~~~~~~~~~
+
+X [ERROR] TS2571: Object is of type 'unknown'. [plugin angular-compiler]
+
+    C:/dev/AngularProjectNF/mfe-admin/src/app/pages/usuarios/usuarios.ts:54:4:
+      54 │     this.usuariosStore.usuarios().map((u) => ({
+         ╵     ~~~~~~~~~~~~~~~~~~
+
+X [ERROR] TS7006: Parameter 'u' implicitly has an 'any' type. [plugin angular-compiler]
+
+    C:/dev/AngularProjectNF/mfe-admin/src/app/pages/usuarios/usuarios.ts:54:39:
+      54 │     this.usuariosStore.usuarios().map((u) => ({
+         ╵                                        ^
+
+X [ERROR] TS7006: Parameter 'r' implicitly has an 'any' type. [plugin angular-compiler]
+
+    C:/dev/AngularProjectNF/mfe-admin/src/app/pages/usuarios/usuarios.ts:58:26:
+      58 │       roles: u.roles.map((r) => ETIQUETA_ROL[r]).join(', '),
+         ╵                           ^
+
+X [ERROR] TS2571: Object is of type 'unknown'. [plugin angular-compiler]
+
+    C:/dev/AngularProjectNF/mfe-admin/src/app/pages/usuarios/usuarios.ts:111:8:
+      111 │         this.usuariosStore.crearUsuario(datos, actor);
+          ╵         ~~~~~~~~~~~~~~~~~~
+
+X [ERROR] TS2571: Object is of type 'unknown'. [plugin angular-compiler]
+
+    C:/dev/AngularProjectNF/mfe-admin/src/app/pages/usuarios/usuarios.ts:113:8:
+      113 │         this.usuariosStore.editarUsuario(id, datos, actor);
+          ╵         ~~~~~~~~~~~~~~~~~~
+
+X [ERROR] TS2571: Object is of type 'unknown'. [plugin angular-compiler]
+
+    C:/dev/AngularProjectNF/mfe-admin/src/app/pages/usuarios/usuarios.ts:131:6:
+      131 │       this.usuariosStore.desactivarUsuario(u.id, actor);
+          ╵       ~~~~~~~~~~~~~~~~~~
+
+ ERRR  Error building federation artifacts
+ ERRR  Federation rebuild failed!
+[31mX [41;31m[[41;97mERROR[41;31m][0m [1mTS2305: Module '"@projecthub/shared"' has no exported member 'ApiEnlaceService'.[0m [1m[35m[plugin angular-compiler][0m
+
+    C:/dev/AngularProjectNF/mfe-admin/src/app/app.config.ts:4:9:
+[37m      4 │ import { [32mApiEnlaceService[37m, ProjectStore, UsuarioStore, sincronizarS...
+        ╵          [32m~~~~~~~~~~~~~~~~[0m
+
+
+[31mX [41;31m[[41;97mERROR[41;31m][0m [1mTS2305: Module '"@projecthub/shared"' has no exported member 'sincronizarStores'.[0m [1m[35m[plugin angular-compiler][0m
+
+    C:/dev/AngularProjectNF/mfe-admin/src/app/app.config.ts:4:55:
+[37m      4 │ ...ectStore, UsuarioStore, [32msincronizarStores[37m } from '@projecthub/sh...
+        ╵                            [32m~~~~~~~~~~~~~~~~~[0m
+
+
+ WARN  Skipping federation artifacts because Angular build failed.
+X [ERROR] TS2307: Cannot find module '@projecthub/shared' or its corresponding type declarations. [plugin angular-compiler]
+
+    C:/dev/AngularProjectNF/mfe-admin/src/app/pages/matriz/matriz.ts:15:7:
+      15 │ } from '@projecthub/shared';
+         ╵        ~~~~~~~~~~~~~~~~~~~~
+
+X [ERROR] TS7006: Parameter 'etapa' implicitly has an 'any' type. [plugin angular-compiler]
+
+    C:/dev/AngularProjectNF/mfe-admin/src/app/pages/matriz/matriz.ts:43:27:
+      43 │     ETAPAS_CICLO_VIDA.map((etapa) => ({
+         ╵                            ~~~~~
+
+X [ERROR] TS2307: Cannot find module '@projecthub/shared' or its corresponding type declarations. [plugin angular-compiler]
+
+    C:/dev/AngularProjectNF/mfe-admin/src/app/pages/usuarios/usuarios.ts:9:7:
+      9 │ } from '@projecthub/shared';
+        ╵        ~~~~~~~~~~~~~~~~~~~~
+
+X [ERROR] TS2571: Object is of type 'unknown'. [plugin angular-compiler]
+
+    C:/dev/AngularProjectNF/mfe-admin/src/app/pages/usuarios/usuarios.ts:54:4:
+      54 │     this.usuariosStore.usuarios().map((u) => ({
+         ╵     ~~~~~~~~~~~~~~~~~~
+
+X [ERROR] TS7006: Parameter 'u' implicitly has an 'any' type. [plugin angular-compiler]
+
+    C:/dev/AngularProjectNF/mfe-admin/src/app/pages/usuarios/usuarios.ts:54:39:
+      54 │     this.usuariosStore.usuarios().map((u) => ({
+         ╵                                        ^
+
+X [ERROR] TS7006: Parameter 'r' implicitly has an 'any' type. [plugin angular-compiler]
+
+    C:/dev/AngularProjectNF/mfe-admin/src/app/pages/usuarios/usuarios.ts:58:26:
+      58 │       roles: u.roles.map((r) => ETIQUETA_ROL[r]).join(', '),
+         ╵                           ^
+
+X [ERROR] TS2571: Object is of type 'unknown'. [plugin angular-compiler]
+
+    C:/dev/AngularProjectNF/mfe-admin/src/app/pages/usuarios/usuarios.ts:111:8:
+      111 │         this.usuariosStore.crearUsuario(datos, actor);
+          ╵         ~~~~~~~~~~~~~~~~~~
+
+X [ERROR] TS2571: Object is of type 'unknown'. [plugin angular-compiler]
+
+    C:/dev/AngularProjectNF/mfe-admin/src/app/pages/usuarios/usuarios.ts:113:8:
+      113 │         this.usuariosStore.editarUsuario(id, datos, actor);
+          ╵         ~~~~~~~~~~~~~~~~~~
+
+X [ERROR] TS2571: Object is of type 'unknown'. [plugin angular-compiler]
+
+    C:/dev/AngularProjectNF/mfe-admin/src/app/pages/usuarios/usuarios.ts:131:6:
+      131 │       this.usuariosStore.desactivarUsuario(u.id, actor);
+          ╵       ~~~~~~~~~~~~~~~~~~
+
+ ERRR  Error building federation artifacts
+ ERRR  Federation rebuild failed!
+X [ERROR] TS2307: Cannot find module '@projecthub/shared' or its corresponding type declarations. [plugin angular-compiler]
+
+    C:/dev/AngularProjectNF/mfe-admin/src/app/pages/matriz/matriz.ts:15:7:
+      15 │ } from '@projecthub/shared';
+         ╵        ~~~~~~~~~~~~~~~~~~~~
+
+X [ERROR] TS7006: Parameter 'etapa' implicitly has an 'any' type. [plugin angular-compiler]
+
+    C:/dev/AngularProjectNF/mfe-admin/src/app/pages/matriz/matriz.ts:43:27:
+      43 │     ETAPAS_CICLO_VIDA.map((etapa) => ({
+         ╵                            ~~~~~
+
+X [ERROR] TS2307: Cannot find module '@projecthub/shared' or its corresponding type declarations. [plugin angular-compiler]
+
+    C:/dev/AngularProjectNF/mfe-admin/src/app/pages/usuarios/usuarios.ts:9:7:
+      9 │ } from '@projecthub/shared';
+        ╵        ~~~~~~~~~~~~~~~~~~~~
+
+X [ERROR] TS2571: Object is of type 'unknown'. [plugin angular-compiler]
+
+    C:/dev/AngularProjectNF/mfe-admin/src/app/pages/usuarios/usuarios.ts:54:4:
+      54 │     this.usuariosStore.usuarios().map((u) => ({
+         ╵     ~~~~~~~~~~~~~~~~~~
+
+X [ERROR] TS7006: Parameter 'u' implicitly has an 'any' type. [plugin angular-compiler]
+
+    C:/dev/AngularProjectNF/mfe-admin/src/app/pages/usuarios/usuarios.ts:54:39:
+      54 │     this.usuariosStore.usuarios().map((u) => ({
+         ╵                                        ^
+
+X [ERROR] TS7006: Parameter 'r' implicitly has an 'any' type. [plugin angular-compiler]
+
+    C:/dev/AngularProjectNF/mfe-admin/src/app/pages/usuarios/usuarios.ts:58:26:
+      58 │       roles: u.roles.map((r) => ETIQUETA_ROL[r]).join(', '),
+         ╵                           ^
+
+X [ERROR] TS2571: Object is of type 'unknown'. [plugin angular-compiler]
+
+    C:/dev/AngularProjectNF/mfe-admin/src/app/pages/usuarios/usuarios.ts:111:8:
+      111 │         this.usuariosStore.crearUsuario(datos, actor);
+          ╵         ~~~~~~~~~~~~~~~~~~
+
+X [ERROR] TS2571: Object is of type 'unknown'. [plugin angular-compiler]
+
+    C:/dev/AngularProjectNF/mfe-admin/src/app/pages/usuarios/usuarios.ts:113:8:
+      113 │         this.usuariosStore.editarUsuario(id, datos, actor);
+          ╵         ~~~~~~~~~~~~~~~~~~
+
+X [ERROR] TS2571: Object is of type 'unknown'. [plugin angular-compiler]
+
+    C:/dev/AngularProjectNF/mfe-admin/src/app/pages/usuarios/usuarios.ts:131:6:
+      131 │       this.usuariosStore.desactivarUsuario(u.id, actor);
+          ╵       ~~~~~~~~~~~~~~~~~~
+
+ ERRR  Error building federation artifacts
+ ERRR  Federation rebuild failed!
+[31mX [41;31m[[41;97mERROR[41;31m][0m [1mTS2305: Module '"@projecthub/shared"' has no exported member 'ApiEnlaceService'.[0m [1m[35m[plugin angular-compiler][0m
+
+    C:/dev/AngularProjectNF/mfe-admin/src/app/app.config.ts:5:2:
+[37m      5 │   [32mApiEnlaceService[37m,
+        ╵   [32m~~~~~~~~~~~~~~~~[0m
+
+
+[31mX [41;31m[[41;97mERROR[41;31m][0m [1mTS2305: Module '"@projecthub/shared"' has no exported member 'SincronizadorEscrituras'.[0m [1m[35m[plugin angular-compiler][0m
+
+    C:/dev/AngularProjectNF/mfe-admin/src/app/app.config.ts:7:2:
+[37m      7 │   [32mSincronizadorEscrituras[37m,
+        ╵   [32m~~~~~~~~~~~~~~~~~~~~~~~[0m
+
+
+[31mX [41;31m[[41;97mERROR[41;31m][0m [1mTS2305: Module '"@projecthub/shared"' has no exported member 'sincronizarStores'.[0m [1m[35m[plugin angular-compiler][0m
+
+    C:/dev/AngularProjectNF/mfe-admin/src/app/app.config.ts:9:2:
+[37m      9 │   [32msincronizarStores[37m,
+        ╵   [32m~~~~~~~~~~~~~~~~~[0m
+
+
+ WARN  Skipping federation artifacts because Angular build failed.
+[31mX [41;31m[[41;97mERROR[41;31m][0m [1mTS2305: Module '"@projecthub/shared"' has no exported member 'ApiEnlaceService'.[0m [1m[35m[plugin angular-compiler][0m
+
+    C:/dev/AngularProjectNF/mfe-admin/src/app/app.config.ts:5:2:
+[37m      5 │   [32mApiEnlaceService[37m,
+        ╵   [32m~~~~~~~~~~~~~~~~[0m
+
+
+[31mX [41;31m[[41;97mERROR[41;31m][0m [1mTS2305: Module '"@projecthub/shared"' has no exported member 'SincronizadorEscrituras'.[0m [1m[35m[plugin angular-compiler][0m
+
+    C:/dev/AngularProjectNF/mfe-admin/src/app/app.config.ts:7:2:
+[37m      7 │   [32mSincronizadorEscrituras[37m,
+        ╵   [32m~~~~~~~~~~~~~~~~~~~~~~~[0m
+
+
+[31mX [41;31m[[41;97mERROR[41;31m][0m [1mTS2305: Module '"@projecthub/shared"' has no exported member 'sincronizarStores'.[0m [1m[35m[plugin angular-compiler][0m
+
+    C:/dev/AngularProjectNF/mfe-admin/src/app/app.config.ts:9:2:
+[37m      9 │   [32msincronizarStores[37m,
+        ╵   [32m~~~~~~~~~~~~~~~~~[0m
+
+
+[31mX [41;31m[[41;97mERROR[41;31m][0m [1mTS2304: Cannot find name 'TestBed'.[0m [1m[35m[plugin angular-compiler][0m
+
+    C:/dev/AngularProjectNF/mfe-admin/src/app/app.config.ts:22:6:
+[37m      22 │       [32mTestBed[37m.inject(SincronizadorEscrituras).preparar();
+         ╵       [32m~~~~~~~[0m
+
+
+ WARN  Skipping federation artifacts because Angular build failed.
+[31mX [41;31m[[41;97mERROR[41;31m][0m [1mTS2305: Module '"@projecthub/shared"' has no exported member 'SincronizadorEscrituras'.[0m [1m[35m[plugin angular-compiler][0m
+
+    C:/dev/AngularProjectNF/mfe-admin/src/app/app.config.ts:6:2:
+[37m      6 │   [32mSincronizadorEscrituras[37m,
+        ╵   [32m~~~~~~~~~~~~~~~~~~~~~~~[0m
+
+
+[31mX [41;31m[[41;97mERROR[41;31m][0m [1mTS2305: Module '"@projecthub/shared"' has no exported member 'sincronizarStores'.[0m [1m[35m[plugin angular-compiler][0m
+
+    C:/dev/AngularProjectNF/mfe-admin/src/app/app.config.ts:8:2:
+[37m      8 │   [32msincronizarStores[37m,
+        ╵   [32m~~~~~~~~~~~~~~~~~[0m
+
+
+[31mX [41;31m[[41;97mERROR[41;31m][0m [1mTS2571: Object is of type 'unknown'.[0m [1m[35m[plugin angular-compiler][0m
+
+    C:/dev/AngularProjectNF/mfe-admin/src/app/app.config.ts:21:6:
+[37m      21 │       [32minject(SincronizadorEscrituras)[37m.preparar();
+         ╵       [32m~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~[0m
+
+
+ WARN  Skipping federation artifacts because Angular build failed.
+X [ERROR] TS2307: Cannot find module '@projecthub/shared' or its corresponding type declarations. [plugin angular-compiler]
+
+    C:/dev/AngularProjectNF/mfe-admin/src/app/pages/matriz/matriz.ts:15:7:
+      15 │ } from '@projecthub/shared';
+         ╵        ~~~~~~~~~~~~~~~~~~~~
+
+X [ERROR] TS7006: Parameter 'etapa' implicitly has an 'any' type. [plugin angular-compiler]
+
+    C:/dev/AngularProjectNF/mfe-admin/src/app/pages/matriz/matriz.ts:43:27:
+      43 │     ETAPAS_CICLO_VIDA.map((etapa) => ({
+         ╵                            ~~~~~
+
+X [ERROR] TS2307: Cannot find module '@projecthub/shared' or its corresponding type declarations. [plugin angular-compiler]
+
+    C:/dev/AngularProjectNF/mfe-admin/src/app/pages/usuarios/usuarios.ts:9:7:
+      9 │ } from '@projecthub/shared';
+        ╵        ~~~~~~~~~~~~~~~~~~~~
+
+X [ERROR] TS2571: Object is of type 'unknown'. [plugin angular-compiler]
+
+    C:/dev/AngularProjectNF/mfe-admin/src/app/pages/usuarios/usuarios.ts:54:4:
+      54 │     this.usuariosStore.usuarios().map((u) => ({
+         ╵     ~~~~~~~~~~~~~~~~~~
+
+X [ERROR] TS7006: Parameter 'u' implicitly has an 'any' type. [plugin angular-compiler]
+
+    C:/dev/AngularProjectNF/mfe-admin/src/app/pages/usuarios/usuarios.ts:54:39:
+      54 │     this.usuariosStore.usuarios().map((u) => ({
+         ╵                                        ^
+
+X [ERROR] TS7006: Parameter 'r' implicitly has an 'any' type. [plugin angular-compiler]
+
+    C:/dev/AngularProjectNF/mfe-admin/src/app/pages/usuarios/usuarios.ts:58:26:
+      58 │       roles: u.roles.map((r) => ETIQUETA_ROL[r]).join(', '),
+         ╵                           ^
+
+X [ERROR] TS2571: Object is of type 'unknown'. [plugin angular-compiler]
+
+    C:/dev/AngularProjectNF/mfe-admin/src/app/pages/usuarios/usuarios.ts:111:8:
+      111 │         this.usuariosStore.crearUsuario(datos, actor);
+          ╵         ~~~~~~~~~~~~~~~~~~
+
+X [ERROR] TS2571: Object is of type 'unknown'. [plugin angular-compiler]
+
+    C:/dev/AngularProjectNF/mfe-admin/src/app/pages/usuarios/usuarios.ts:113:8:
+      113 │         this.usuariosStore.editarUsuario(id, datos, actor);
+          ╵         ~~~~~~~~~~~~~~~~~~
+
+X [ERROR] TS2571: Object is of type 'unknown'. [plugin angular-compiler]
+
+    C:/dev/AngularProjectNF/mfe-admin/src/app/pages/usuarios/usuarios.ts:131:6:
+      131 │       this.usuariosStore.desactivarUsuario(u.id, actor);
+          ╵       ~~~~~~~~~~~~~~~~~~
+
+ ERRR  Error building federation artifacts
+ ERRR  Federation rebuild failed!
+X [ERROR] TS2307: Cannot find module '@projecthub/shared' or its corresponding type declarations. [plugin angular-compiler]
+
+    C:/dev/AngularProjectNF/mfe-admin/src/app/pages/matriz/matriz.ts:15:7:
+      15 │ } from '@projecthub/shared';
+         ╵        ~~~~~~~~~~~~~~~~~~~~
+
+X [ERROR] TS7006: Parameter 'etapa' implicitly has an 'any' type. [plugin angular-compiler]
+
+    C:/dev/AngularProjectNF/mfe-admin/src/app/pages/matriz/matriz.ts:43:27:
+      43 │     ETAPAS_CICLO_VIDA.map((etapa) => ({
+         ╵                            ~~~~~
+
+X [ERROR] TS2307: Cannot find module '@projecthub/shared' or its corresponding type declarations. [plugin angular-compiler]
+
+    C:/dev/AngularProjectNF/mfe-admin/src/app/pages/usuarios/usuarios.ts:9:7:
+      9 │ } from '@projecthub/shared';
+        ╵        ~~~~~~~~~~~~~~~~~~~~
+
+X [ERROR] TS2571: Object is of type 'unknown'. [plugin angular-compiler]
+
+    C:/dev/AngularProjectNF/mfe-admin/src/app/pages/usuarios/usuarios.ts:54:4:
+      54 │     this.usuariosStore.usuarios().map((u) => ({
+         ╵     ~~~~~~~~~~~~~~~~~~
+
+X [ERROR] TS7006: Parameter 'u' implicitly has an 'any' type. [plugin angular-compiler]
+
+    C:/dev/AngularProjectNF/mfe-admin/src/app/pages/usuarios/usuarios.ts:54:39:
+      54 │     this.usuariosStore.usuarios().map((u) => ({
+         ╵                                        ^
+
+X [ERROR] TS7006: Parameter 'r' implicitly has an 'any' type. [plugin angular-compiler]
+
+    C:/dev/AngularProjectNF/mfe-admin/src/app/pages/usuarios/usuarios.ts:58:26:
+      58 │       roles: u.roles.map((r) => ETIQUETA_ROL[r]).join(', '),
+         ╵                           ^
+
+X [ERROR] TS2571: Object is of type 'unknown'. [plugin angular-compiler]
+
+    C:/dev/AngularProjectNF/mfe-admin/src/app/pages/usuarios/usuarios.ts:111:8:
+      111 │         this.usuariosStore.crearUsuario(datos, actor);
+          ╵         ~~~~~~~~~~~~~~~~~~
+
+X [ERROR] TS2571: Object is of type 'unknown'. [plugin angular-compiler]
+
+    C:/dev/AngularProjectNF/mfe-admin/src/app/pages/usuarios/usuarios.ts:113:8:
+      113 │         this.usuariosStore.editarUsuario(id, datos, actor);
+          ╵         ~~~~~~~~~~~~~~~~~~
+
+X [ERROR] TS2571: Object is of type 'unknown'. [plugin angular-compiler]
+
+    C:/dev/AngularProjectNF/mfe-admin/src/app/pages/usuarios/usuarios.ts:131:6:
+      131 │       this.usuariosStore.desactivarUsuario(u.id, actor);
+          ╵       ~~~~~~~~~~~~~~~~~~
+
+ ERRR  Error building federation artifacts
+ ERRR  Federation rebuild failed!

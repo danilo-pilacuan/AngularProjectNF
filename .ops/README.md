@@ -24,11 +24,12 @@ Rulebook del proyecto: `AGENTS.md` en la raiz; alcance funcional: `docs/funciona
 | project/ | plan de fases, backlog, handoff y avance | [project/README.md](project/README.md) |
 | governance/ | RACI, control de cambios y riesgos | [governance/README.md](governance/README.md) |
 | qa/ | estrategia, trazabilidad REQ-BL-IMPL-QT y defectos | [qa/README.md](qa/README.md) |
+| security/ | registro de vulnerabilidades y hallazgos de seguridad | [security/README.md](security/README.md) |
 | implementations/ | especificaciones y verificacion por fase | [implementations/README.md](implementations/README.md) |
 | templates/ | plantilla base y plantillas por tipo de documento | [templates/README.md](templates/README.md) |
 
 Arboles bajo demanda (se crean al primer documento de su area): architecture/, decisions/,
-ux-and-interfaces/, security/, operations/, data/, development/.
+ux-and-interfaces/, operations/, data/, development/.
 
 ## Reglas del arbol
 

@@ -31,6 +31,27 @@ Si el servicio no esta corriendo, el grafo degrada a cache de consulta: trabaja 
 leyendo el codigo directamente; el kit funciona completo sin el y ninguna tarea se bloquea
 por el grafo.
 
+## Primera instalacion y arranque de sesion
+
+En un repo con el kit recien instalado (o al abrir sesion), verifica el indice antes de razonar sobre
+el codigo; esta secuencia es obligatoria en desarrollo agentico activo, no un paso opcional:
+
+1. `node tools/build-graphify.mjs status` — primero diagnostica, no adivines.
+2. Sin `graphify-out/graph.json`: si `status` reporta servicios caidos, `node tools/build-graphify.mjs up`
+   antes de indexar; despues `node tools/build-graphify.mjs extract` (las tools MCP fallan o devuelven
+   vacio sin grafo). En instalacion nueva el grafo NO se genera solo: sin este paso, graphify queda
+   en adorno (caso AngularNF con rc.7).
+3. Con `graph.json` existente: si el reporte de frescura muestra mas de ~1 h desde el ultimo
+   commit (o la sesion anterior toco codigo indexado), `node tools/build-graphify.mjs update`
+   (incremental, sin LLM). Criterio de `update`: tras CUALQUIER tarea que tocara codigo o docs
+   indexados, no solo "cambios grandes" — el grafo obsoleto hace que las respuestas citen
+   simbolos que ya no existen.
+
+Esta verificacion es parte del arranque, no una alternativa de degradacion: con servicios caidos
+`up` los levanta; solo si el repo no hospeda los servicios, degrada a leer directo. La version del
+kit instalada vive en `.github/KIT_VERSION` (escrita por el instalador); si falta, la instalacion
+fue manual: registra la version usada en `PROGRESS.md`.
+
 ## Como se conecta el kit
 
 El kit NO provisiona el servicio: se conecta a una instancia ya levantada y estable.
@@ -67,8 +88,9 @@ El kit NO provisiona el servicio: se conecta a una instancia ya levantada y esta
 
 ## Sincronizacion
 
-Tras cambios de codigo relevantes, re-genera el grafo antes de razonar sobre el (requiere el
-servicio levantado; ver `deploy/graphify/README.md`):
+Tras cualquier tarea que tocara codigo o docs indexados, re-genera el grafo antes de razonar sobre
+el (requiere el servicio levantado; ver `deploy/graphify/README.md`). No esperes a un "cambio
+grande": el criterio es por tarea tocada, no por tamano del diff.
 
 ```
 node tools/build-graphify.mjs update    # incremental (codigo, sin LLM)
@@ -77,6 +99,24 @@ node tools/build-graphify.mjs extract   # build completo con capa semantica (LLM
 
 El servidor recarga `graph.json` al cambiar (mtime + tamano): no hace falta reiniciarlo tras
 un `update`. Si el repo no tiene el servicio, omite este paso: el codigo sigue siendo la fuente.
+
+## Peso y frecuencia de las tools (presupuesto agentico)
+
+| Tool | Peso tipico | Frecuencia | Criterio |
+|---|---|---|---|
+| `build-graphify.mjs status` | segundos, 0 tokens LLM | arranque de sesion y ante cualquier sintoma | diagnostico barato: siempre primero, nunca adivinar |
+| `build-graphify.mjs up` | segundos, 0 tokens LLM | solo cuando `status` reporta servicios caidos | idempotente; el smoke final verifica el stack |
+| `build-graphify.mjs update` | segundos-minutos, 0 tokens LLM (codigo) | tras cada tarea que toco codigo o docs indexados | incremental y barato: el criterio es por tarea, no por tamano |
+| `build-graphify.mjs extract` | ~108K input / ~289K output tokens (capa semantica, ~140 archivos, 2 corridas medidas en cost.json); horas de reloj | solo si no existe `graphify-out/graph.json` | caro por diseno: nunca rutinario, nunca como remedio de una caida |
+| `ops-graph.mjs .ops` | segundos, 0 tokens LLM | tras crear/mover/renombrar docs de `.ops` y tras cualquier reinicio de Memgraph | Memgraph es in-memory: sin re-sincronizar, el grafo queda vacio |
+| tools MCP de consulta (query_graph, get_neighbors, graph_stats, ...) | decenas a miles de tokens por respuesta | bajo demanda, en lugar de re-leer archivos uno a uno | su proposito es ahorrar lectura masiva: usar antes de razonar |
+| `validate-kit.mjs` | segundos, 0 tokens LLM | por instalacion, en CI, y tras editar el kit | guarda de coherencia; no es herramienta de trabajo diaria |
+| `loop-guard.mjs` | trivial (exit 0/1/2) | por intento de una accion que pueda entrar en bucle | controla el presupuesto de esfuerzo del agente |
+
+Regla de frecuencia: `status` para diagnosticar, `update` por tarea tocada,
+`extract` solo al bootstrapear el grafo, re-sincronizar `.ops` tras tocarlo.
+La caida de un contenedor no borra `graph.json` (vive en el repo): remediar
+una caida es `status` -> `up`, no regenerar el grafo.
 
 ## Fallas tipicas
 
@@ -89,6 +129,28 @@ un `update`. Si el repo no tiene el servicio, omite este paso: el codigo sigue s
   parciales ("still truncated ... partial result kept" en el log de `extract`); son normales
   y la cache conserva lo completo. Re-ejecutar `extract` reintenta solo los chunks
   incompletos; dos pasadas suelen dejar la capa semantica estable.
+
+## Recuperacion tras caida (self-healing)
+
+Sintoma tipico: las tools del grafo fallan o responden vacio (el servidor MCP de graphify se
+cayo, o el grafo quedo detras del codigo). Diagnostica y sana en este orden exacto:
+
+1. `node tools/build-graphify.mjs status`: diagnostica, no adivines: reporta servicios caidos
+   y ejecuta el smoke; exit != 0 si graphify o el Bolt de Memgraph no responden.
+2. Si hay servicios caidos: `node tools/build-graphify.mjs up` (idempotente: relanza solo lo
+   que falte; el smoke final verifica graphify MCP y Bolt de Memgraph end-to-end).
+3. Si el sintoma era grafo vacio o desactualizado (no caida): `update` si existe
+   `graphify-out/graph.json` (incremental, sin LLM) o `extract` si no existe (build completo).
+4. Verifica con una tool real (p. ej. `graph_stats`): si sigue fallando, revisa
+   `docker compose logs graphify` desde `deploy/graphify/`.
+
+Regla de decision: la politica `restart: unless-stopped` cubre crashes del proceso del
+contenedor, pero NO kills manuales externos ni un host reiniciado sin Docker auto-start; el
+agente no debe esperar a que el contenedor "solo" se recupere: ante sintoma, `status` -> `up`
+es el remedio completo y cuesta segundos (el grafo vive en `graphify-out/graph.json` del repo,
+asi que la caida del contenedor no lo pierde: no hace falta regenerarlo salvo que este detras).
+Si el repo no hospeda los servicios, degrada a leer el codigo directamente (el kit funciona
+completo sin el grafo).
 
 ## Limites
 

@@ -1,0 +1,1580 @@
+X [ERROR] TS2571: Object is of type 'unknown'. [plugin angular-compiler]
+
+    C:/dev/AngularProjectNF/mfe-reports/src/app/pages/presupuesto/presupuesto.html:20:32:
+      20 │         <td class="num">{{ intl.monto(f.asignado) }}</td>
+         ╵                                 ~~~~~
+
+  Error occurs in the template of component Presupuesto.
+
+    C:/dev/AngularProjectNF/mfe-reports/src/app/pages/presupuesto/presupuesto.ts:22:15:
+      22 │   templateUrl: './presupuesto.html',
+         ╵                ~~~~~~~~~~~~~~~~~~~~
+
+X [ERROR] TS2571: Object is of type 'unknown'. [plugin angular-compiler]
+
+    C:/dev/AngularProjectNF/mfe-reports/src/app/pages/presupuesto/presupuesto.html:21:32:
+      21 │         <td class="num">{{ intl.monto(f.consumido) }}</td>
+         ╵                                 ~~~~~
+
+  Error occurs in the template of component Presupuesto.
+
+    C:/dev/AngularProjectNF/mfe-reports/src/app/pages/presupuesto/presupuesto.ts:22:15:
+      22 │   templateUrl: './presupuesto.html',
+         ╵                ~~~~~~~~~~~~~~~~~~~~
+
+X [ERROR] TS2571: Object is of type 'unknown'. [plugin angular-compiler]
+
+    C:/dev/AngularProjectNF/mfe-reports/src/app/pages/presupuesto/presupuesto.html:23:18:
+      23 │           {{ intl.monto(f.desviacion) }}
+         ╵                   ~~~~~
+
+  Error occurs in the template of component Presupuesto.
+
+    C:/dev/AngularProjectNF/mfe-reports/src/app/pages/presupuesto/presupuesto.ts:22:15:
+      22 │   templateUrl: './presupuesto.html',
+         ╵                ~~~~~~~~~~~~~~~~~~~~
+
+X [ERROR] TS2571: Object is of type 'unknown'. [plugin angular-compiler]
+
+    C:/dev/AngularProjectNF/mfe-reports/src/app/pages/presupuesto/presupuesto.html:35:30:
+      35 │       <td class="num">{{ intl.monto(totalAsignado()) }}</td>
+         ╵                               ~~~~~
+
+  Error occurs in the template of component Presupuesto.
+
+    C:/dev/AngularProjectNF/mfe-reports/src/app/pages/presupuesto/presupuesto.ts:22:15:
+      22 │   templateUrl: './presupuesto.html',
+         ╵                ~~~~~~~~~~~~~~~~~~~~
+
+X [ERROR] TS2571: Object is of type 'unknown'. [plugin angular-compiler]
+
+    C:/dev/AngularProjectNF/mfe-reports/src/app/pages/presupuesto/presupuesto.html:36:30:
+      36 │       <td class="num">{{ intl.monto(totalConsumido()) }}</td>
+         ╵                               ~~~~~
+
+  Error occurs in the template of component Presupuesto.
+
+    C:/dev/AngularProjectNF/mfe-reports/src/app/pages/presupuesto/presupuesto.ts:22:15:
+      22 │   templateUrl: './presupuesto.html',
+         ╵                ~~~~~~~~~~~~~~~~~~~~
+
+X [ERROR] TS2571: Object is of type 'unknown'. [plugin angular-compiler]
+
+    C:/dev/AngularProjectNF/mfe-reports/src/app/pages/presupuesto/presupuesto.html:37:30:
+      37 │       <td class="num">{{ intl.monto(totalConsumido() - totalAsigna...
+         ╵                               ~~~~~
+
+  Error occurs in the template of component Presupuesto.
+
+    C:/dev/AngularProjectNF/mfe-reports/src/app/pages/presupuesto/presupuesto.ts:22:15:
+      22 │   templateUrl: './presupuesto.html',
+         ╵                ~~~~~~~~~~~~~~~~~~~~
+
+X [ERROR] TS2307: Cannot find module '@projecthub/ui' or its corresponding type declarations. [plugin angular-compiler]
+
+    C:/dev/AngularProjectNF/mfe-reports/src/app/pages/presupuesto/presupuesto.ts:2:27:
+      2 │ import { IntlFormat } from '@projecthub/ui';
+        ╵                            ~~~~~~~~~~~~~~~~
+
+X [ERROR] TS2307: Cannot find module '@projecthub/ui' or its corresponding type declarations. [plugin angular-compiler]
+
+    C:/dev/AngularProjectNF/mfe-reports/src/app/pages/tablero-general/tablero-general.ts:2:42:
+      2 │ import { IntlFormat, SummaryWidget } from '@projecthub/ui';
+        ╵                                           ~~~~~~~~~~~~~~~~
+
+X [ERROR] NG1010: 'imports' must be an array of components, directives, pipes, or NgModules.
+  Value could not be determined statically. [plugin angular-compiler]
+
+    C:/dev/AngularProjectNF/mfe-reports/src/app/pages/tablero-general/tablero-general.ts:20:12:
+      20 │   imports: [SummaryWidget],
+         ╵             ~~~~~~~~~~~~~
+
+  Unknown reference.
+
+    C:/dev/AngularProjectNF/mfe-reports/src/app/pages/tablero-general/tablero-general.ts:20:12:
+      20 │   imports: [SummaryWidget],
+         ╵             ~~~~~~~~~~~~~
+
+X [ERROR] TS2307: Cannot find module '@projecthub/ui' or its corresponding type declarations. [plugin angular-compiler]
+
+    C:/dev/AngularProjectNF/mfe-reports/src/app/widgets/portfolio-kpi.widget.ts:3:42:
+      3 │ import { IntlFormat, SummaryWidget } from '@projecthub/ui';
+        ╵                                           ~~~~~~~~~~~~~~~~
+
+X [ERROR] NG1010: 'imports' must be an array of components, directives, pipes, or NgModules.
+  Value could not be determined statically. [plugin angular-compiler]
+
+    C:/dev/AngularProjectNF/mfe-reports/src/app/widgets/portfolio-kpi.widget.ts:13:12:
+      13 │   imports: [SummaryWidget],
+         ╵             ~~~~~~~~~~~~~
+
+  Unknown reference.
+
+    C:/dev/AngularProjectNF/mfe-reports/src/app/widgets/portfolio-kpi.widget.ts:13:12:
+      13 │   imports: [SummaryWidget],
+         ╵             ~~~~~~~~~~~~~
+
+ ERRR  Error building federation artifacts
+ ERRR  Federation rebuild failed!
+X [ERROR] TS2571: Object is of type 'unknown'. [plugin angular-compiler]
+
+    C:/dev/AngularProjectNF/mfe-reports/src/app/pages/presupuesto/presupuesto.html:20:32:
+      20 │         <td class="num">{{ intl.monto(f.asignado) }}</td>
+         ╵                                 ~~~~~
+
+  Error occurs in the template of component Presupuesto.
+
+    C:/dev/AngularProjectNF/mfe-reports/src/app/pages/presupuesto/presupuesto.ts:22:15:
+      22 │   templateUrl: './presupuesto.html',
+         ╵                ~~~~~~~~~~~~~~~~~~~~
+
+X [ERROR] TS2571: Object is of type 'unknown'. [plugin angular-compiler]
+
+    C:/dev/AngularProjectNF/mfe-reports/src/app/pages/presupuesto/presupuesto.html:21:32:
+      21 │         <td class="num">{{ intl.monto(f.consumido) }}</td>
+         ╵                                 ~~~~~
+
+  Error occurs in the template of component Presupuesto.
+
+    C:/dev/AngularProjectNF/mfe-reports/src/app/pages/presupuesto/presupuesto.ts:22:15:
+      22 │   templateUrl: './presupuesto.html',
+         ╵                ~~~~~~~~~~~~~~~~~~~~
+
+X [ERROR] TS2571: Object is of type 'unknown'. [plugin angular-compiler]
+
+    C:/dev/AngularProjectNF/mfe-reports/src/app/pages/presupuesto/presupuesto.html:23:18:
+      23 │           {{ intl.monto(f.desviacion) }}
+         ╵                   ~~~~~
+
+  Error occurs in the template of component Presupuesto.
+
+    C:/dev/AngularProjectNF/mfe-reports/src/app/pages/presupuesto/presupuesto.ts:22:15:
+      22 │   templateUrl: './presupuesto.html',
+         ╵                ~~~~~~~~~~~~~~~~~~~~
+
+X [ERROR] TS2571: Object is of type 'unknown'. [plugin angular-compiler]
+
+    C:/dev/AngularProjectNF/mfe-reports/src/app/pages/presupuesto/presupuesto.html:35:30:
+      35 │       <td class="num">{{ intl.monto(totalAsignado()) }}</td>
+         ╵                               ~~~~~
+
+  Error occurs in the template of component Presupuesto.
+
+    C:/dev/AngularProjectNF/mfe-reports/src/app/pages/presupuesto/presupuesto.ts:22:15:
+      22 │   templateUrl: './presupuesto.html',
+         ╵                ~~~~~~~~~~~~~~~~~~~~
+
+X [ERROR] TS2571: Object is of type 'unknown'. [plugin angular-compiler]
+
+    C:/dev/AngularProjectNF/mfe-reports/src/app/pages/presupuesto/presupuesto.html:36:30:
+      36 │       <td class="num">{{ intl.monto(totalConsumido()) }}</td>
+         ╵                               ~~~~~
+
+  Error occurs in the template of component Presupuesto.
+
+    C:/dev/AngularProjectNF/mfe-reports/src/app/pages/presupuesto/presupuesto.ts:22:15:
+      22 │   templateUrl: './presupuesto.html',
+         ╵                ~~~~~~~~~~~~~~~~~~~~
+
+X [ERROR] TS2571: Object is of type 'unknown'. [plugin angular-compiler]
+
+    C:/dev/AngularProjectNF/mfe-reports/src/app/pages/presupuesto/presupuesto.html:37:30:
+      37 │       <td class="num">{{ intl.monto(totalConsumido() - totalAsigna...
+         ╵                               ~~~~~
+
+  Error occurs in the template of component Presupuesto.
+
+    C:/dev/AngularProjectNF/mfe-reports/src/app/pages/presupuesto/presupuesto.ts:22:15:
+      22 │   templateUrl: './presupuesto.html',
+         ╵                ~~~~~~~~~~~~~~~~~~~~
+
+X [ERROR] TS2307: Cannot find module '@projecthub/ui' or its corresponding type declarations. [plugin angular-compiler]
+
+    C:/dev/AngularProjectNF/mfe-reports/src/app/pages/presupuesto/presupuesto.ts:2:27:
+      2 │ import { IntlFormat } from '@projecthub/ui';
+        ╵                            ~~~~~~~~~~~~~~~~
+
+X [ERROR] TS2307: Cannot find module '@projecthub/ui' or its corresponding type declarations. [plugin angular-compiler]
+
+    C:/dev/AngularProjectNF/mfe-reports/src/app/pages/tablero-general/tablero-general.ts:2:42:
+      2 │ import { IntlFormat, SummaryWidget } from '@projecthub/ui';
+        ╵                                           ~~~~~~~~~~~~~~~~
+
+X [ERROR] NG1010: 'imports' must be an array of components, directives, pipes, or NgModules.
+  Value could not be determined statically. [plugin angular-compiler]
+
+    C:/dev/AngularProjectNF/mfe-reports/src/app/pages/tablero-general/tablero-general.ts:20:12:
+      20 │   imports: [SummaryWidget],
+         ╵             ~~~~~~~~~~~~~
+
+  Unknown reference.
+
+    C:/dev/AngularProjectNF/mfe-reports/src/app/pages/tablero-general/tablero-general.ts:20:12:
+      20 │   imports: [SummaryWidget],
+         ╵             ~~~~~~~~~~~~~
+
+X [ERROR] TS2307: Cannot find module '@projecthub/ui' or its corresponding type declarations. [plugin angular-compiler]
+
+    C:/dev/AngularProjectNF/mfe-reports/src/app/widgets/portfolio-kpi.widget.ts:3:42:
+      3 │ import { IntlFormat, SummaryWidget } from '@projecthub/ui';
+        ╵                                           ~~~~~~~~~~~~~~~~
+
+X [ERROR] NG1010: 'imports' must be an array of components, directives, pipes, or NgModules.
+  Value could not be determined statically. [plugin angular-compiler]
+
+    C:/dev/AngularProjectNF/mfe-reports/src/app/widgets/portfolio-kpi.widget.ts:13:12:
+      13 │   imports: [SummaryWidget],
+         ╵             ~~~~~~~~~~~~~
+
+  Unknown reference.
+
+    C:/dev/AngularProjectNF/mfe-reports/src/app/widgets/portfolio-kpi.widget.ts:13:12:
+      13 │   imports: [SummaryWidget],
+         ╵             ~~~~~~~~~~~~~
+
+ ERRR  Error building federation artifacts
+ ERRR  Federation rebuild failed!
+X [ERROR] TS2571: Object is of type 'unknown'. [plugin angular-compiler]
+
+    C:/dev/AngularProjectNF/mfe-reports/src/app/pages/presupuesto/presupuesto.html:20:32:
+      20 │         <td class="num">{{ intl.monto(f.asignado) }}</td>
+         ╵                                 ~~~~~
+
+  Error occurs in the template of component Presupuesto.
+
+    C:/dev/AngularProjectNF/mfe-reports/src/app/pages/presupuesto/presupuesto.ts:22:15:
+      22 │   templateUrl: './presupuesto.html',
+         ╵                ~~~~~~~~~~~~~~~~~~~~
+
+X [ERROR] TS2571: Object is of type 'unknown'. [plugin angular-compiler]
+
+    C:/dev/AngularProjectNF/mfe-reports/src/app/pages/presupuesto/presupuesto.html:21:32:
+      21 │         <td class="num">{{ intl.monto(f.consumido) }}</td>
+         ╵                                 ~~~~~
+
+  Error occurs in the template of component Presupuesto.
+
+    C:/dev/AngularProjectNF/mfe-reports/src/app/pages/presupuesto/presupuesto.ts:22:15:
+      22 │   templateUrl: './presupuesto.html',
+         ╵                ~~~~~~~~~~~~~~~~~~~~
+
+X [ERROR] TS2571: Object is of type 'unknown'. [plugin angular-compiler]
+
+    C:/dev/AngularProjectNF/mfe-reports/src/app/pages/presupuesto/presupuesto.html:23:18:
+      23 │           {{ intl.monto(f.desviacion) }}
+         ╵                   ~~~~~
+
+  Error occurs in the template of component Presupuesto.
+
+    C:/dev/AngularProjectNF/mfe-reports/src/app/pages/presupuesto/presupuesto.ts:22:15:
+      22 │   templateUrl: './presupuesto.html',
+         ╵                ~~~~~~~~~~~~~~~~~~~~
+
+X [ERROR] TS2571: Object is of type 'unknown'. [plugin angular-compiler]
+
+    C:/dev/AngularProjectNF/mfe-reports/src/app/pages/presupuesto/presupuesto.html:35:30:
+      35 │       <td class="num">{{ intl.monto(totalAsignado()) }}</td>
+         ╵                               ~~~~~
+
+  Error occurs in the template of component Presupuesto.
+
+    C:/dev/AngularProjectNF/mfe-reports/src/app/pages/presupuesto/presupuesto.ts:22:15:
+      22 │   templateUrl: './presupuesto.html',
+         ╵                ~~~~~~~~~~~~~~~~~~~~
+
+X [ERROR] TS2571: Object is of type 'unknown'. [plugin angular-compiler]
+
+    C:/dev/AngularProjectNF/mfe-reports/src/app/pages/presupuesto/presupuesto.html:36:30:
+      36 │       <td class="num">{{ intl.monto(totalConsumido()) }}</td>
+         ╵                               ~~~~~
+
+  Error occurs in the template of component Presupuesto.
+
+    C:/dev/AngularProjectNF/mfe-reports/src/app/pages/presupuesto/presupuesto.ts:22:15:
+      22 │   templateUrl: './presupuesto.html',
+         ╵                ~~~~~~~~~~~~~~~~~~~~
+
+X [ERROR] TS2571: Object is of type 'unknown'. [plugin angular-compiler]
+
+    C:/dev/AngularProjectNF/mfe-reports/src/app/pages/presupuesto/presupuesto.html:37:30:
+      37 │       <td class="num">{{ intl.monto(totalConsumido() - totalAsigna...
+         ╵                               ~~~~~
+
+  Error occurs in the template of component Presupuesto.
+
+    C:/dev/AngularProjectNF/mfe-reports/src/app/pages/presupuesto/presupuesto.ts:22:15:
+      22 │   templateUrl: './presupuesto.html',
+         ╵                ~~~~~~~~~~~~~~~~~~~~
+
+X [ERROR] TS2307: Cannot find module '@projecthub/ui' or its corresponding type declarations. [plugin angular-compiler]
+
+    C:/dev/AngularProjectNF/mfe-reports/src/app/pages/presupuesto/presupuesto.ts:2:27:
+      2 │ import { IntlFormat } from '@projecthub/ui';
+        ╵                            ~~~~~~~~~~~~~~~~
+
+X [ERROR] TS2307: Cannot find module '@projecthub/ui' or its corresponding type declarations. [plugin angular-compiler]
+
+    C:/dev/AngularProjectNF/mfe-reports/src/app/pages/tablero-general/tablero-general.ts:2:42:
+      2 │ import { IntlFormat, SummaryWidget } from '@projecthub/ui';
+        ╵                                           ~~~~~~~~~~~~~~~~
+
+X [ERROR] NG1010: 'imports' must be an array of components, directives, pipes, or NgModules.
+  Value could not be determined statically. [plugin angular-compiler]
+
+    C:/dev/AngularProjectNF/mfe-reports/src/app/pages/tablero-general/tablero-general.ts:20:12:
+      20 │   imports: [SummaryWidget],
+         ╵             ~~~~~~~~~~~~~
+
+  Unknown reference.
+
+    C:/dev/AngularProjectNF/mfe-reports/src/app/pages/tablero-general/tablero-general.ts:20:12:
+      20 │   imports: [SummaryWidget],
+         ╵             ~~~~~~~~~~~~~
+
+X [ERROR] TS2307: Cannot find module '@projecthub/ui' or its corresponding type declarations. [plugin angular-compiler]
+
+    C:/dev/AngularProjectNF/mfe-reports/src/app/widgets/portfolio-kpi.widget.ts:3:42:
+      3 │ import { IntlFormat, SummaryWidget } from '@projecthub/ui';
+        ╵                                           ~~~~~~~~~~~~~~~~
+
+X [ERROR] NG1010: 'imports' must be an array of components, directives, pipes, or NgModules.
+  Value could not be determined statically. [plugin angular-compiler]
+
+    C:/dev/AngularProjectNF/mfe-reports/src/app/widgets/portfolio-kpi.widget.ts:13:12:
+      13 │   imports: [SummaryWidget],
+         ╵             ~~~~~~~~~~~~~
+
+  Unknown reference.
+
+    C:/dev/AngularProjectNF/mfe-reports/src/app/widgets/portfolio-kpi.widget.ts:13:12:
+      13 │   imports: [SummaryWidget],
+         ╵             ~~~~~~~~~~~~~
+
+ ERRR  Error building federation artifacts
+ ERRR  Federation rebuild failed!
+X [ERROR] TS2571: Object is of type 'unknown'. [plugin angular-compiler]
+
+    C:/dev/AngularProjectNF/mfe-reports/src/app/pages/presupuesto/presupuesto.html:20:32:
+      20 │         <td class="num">{{ intl.monto(f.asignado) }}</td>
+         ╵                                 ~~~~~
+
+  Error occurs in the template of component Presupuesto.
+
+    C:/dev/AngularProjectNF/mfe-reports/src/app/pages/presupuesto/presupuesto.ts:22:15:
+      22 │   templateUrl: './presupuesto.html',
+         ╵                ~~~~~~~~~~~~~~~~~~~~
+
+X [ERROR] TS2571: Object is of type 'unknown'. [plugin angular-compiler]
+
+    C:/dev/AngularProjectNF/mfe-reports/src/app/pages/presupuesto/presupuesto.html:21:32:
+      21 │         <td class="num">{{ intl.monto(f.consumido) }}</td>
+         ╵                                 ~~~~~
+
+  Error occurs in the template of component Presupuesto.
+
+    C:/dev/AngularProjectNF/mfe-reports/src/app/pages/presupuesto/presupuesto.ts:22:15:
+      22 │   templateUrl: './presupuesto.html',
+         ╵                ~~~~~~~~~~~~~~~~~~~~
+
+X [ERROR] TS2571: Object is of type 'unknown'. [plugin angular-compiler]
+
+    C:/dev/AngularProjectNF/mfe-reports/src/app/pages/presupuesto/presupuesto.html:23:18:
+      23 │           {{ intl.monto(f.desviacion) }}
+         ╵                   ~~~~~
+
+  Error occurs in the template of component Presupuesto.
+
+    C:/dev/AngularProjectNF/mfe-reports/src/app/pages/presupuesto/presupuesto.ts:22:15:
+      22 │   templateUrl: './presupuesto.html',
+         ╵                ~~~~~~~~~~~~~~~~~~~~
+
+X [ERROR] TS2571: Object is of type 'unknown'. [plugin angular-compiler]
+
+    C:/dev/AngularProjectNF/mfe-reports/src/app/pages/presupuesto/presupuesto.html:35:30:
+      35 │       <td class="num">{{ intl.monto(totalAsignado()) }}</td>
+         ╵                               ~~~~~
+
+  Error occurs in the template of component Presupuesto.
+
+    C:/dev/AngularProjectNF/mfe-reports/src/app/pages/presupuesto/presupuesto.ts:22:15:
+      22 │   templateUrl: './presupuesto.html',
+         ╵                ~~~~~~~~~~~~~~~~~~~~
+
+X [ERROR] TS2571: Object is of type 'unknown'. [plugin angular-compiler]
+
+    C:/dev/AngularProjectNF/mfe-reports/src/app/pages/presupuesto/presupuesto.html:36:30:
+      36 │       <td class="num">{{ intl.monto(totalConsumido()) }}</td>
+         ╵                               ~~~~~
+
+  Error occurs in the template of component Presupuesto.
+
+    C:/dev/AngularProjectNF/mfe-reports/src/app/pages/presupuesto/presupuesto.ts:22:15:
+      22 │   templateUrl: './presupuesto.html',
+         ╵                ~~~~~~~~~~~~~~~~~~~~
+
+X [ERROR] TS2571: Object is of type 'unknown'. [plugin angular-compiler]
+
+    C:/dev/AngularProjectNF/mfe-reports/src/app/pages/presupuesto/presupuesto.html:37:30:
+      37 │       <td class="num">{{ intl.monto(totalConsumido() - totalAsigna...
+         ╵                               ~~~~~
+
+  Error occurs in the template of component Presupuesto.
+
+    C:/dev/AngularProjectNF/mfe-reports/src/app/pages/presupuesto/presupuesto.ts:22:15:
+      22 │   templateUrl: './presupuesto.html',
+         ╵                ~~~~~~~~~~~~~~~~~~~~
+
+X [ERROR] TS2307: Cannot find module '@projecthub/ui' or its corresponding type declarations. [plugin angular-compiler]
+
+    C:/dev/AngularProjectNF/mfe-reports/src/app/pages/presupuesto/presupuesto.ts:2:27:
+      2 │ import { IntlFormat } from '@projecthub/ui';
+        ╵                            ~~~~~~~~~~~~~~~~
+
+X [ERROR] TS2307: Cannot find module '@projecthub/ui' or its corresponding type declarations. [plugin angular-compiler]
+
+    C:/dev/AngularProjectNF/mfe-reports/src/app/pages/tablero-general/tablero-general.ts:2:42:
+      2 │ import { IntlFormat, SummaryWidget } from '@projecthub/ui';
+        ╵                                           ~~~~~~~~~~~~~~~~
+
+X [ERROR] NG1010: 'imports' must be an array of components, directives, pipes, or NgModules.
+  Value could not be determined statically. [plugin angular-compiler]
+
+    C:/dev/AngularProjectNF/mfe-reports/src/app/pages/tablero-general/tablero-general.ts:20:12:
+      20 │   imports: [SummaryWidget],
+         ╵             ~~~~~~~~~~~~~
+
+  Unknown reference.
+
+    C:/dev/AngularProjectNF/mfe-reports/src/app/pages/tablero-general/tablero-general.ts:20:12:
+      20 │   imports: [SummaryWidget],
+         ╵             ~~~~~~~~~~~~~
+
+X [ERROR] TS2307: Cannot find module '@projecthub/ui' or its corresponding type declarations. [plugin angular-compiler]
+
+    C:/dev/AngularProjectNF/mfe-reports/src/app/widgets/portfolio-kpi.widget.ts:3:42:
+      3 │ import { IntlFormat, SummaryWidget } from '@projecthub/ui';
+        ╵                                           ~~~~~~~~~~~~~~~~
+
+X [ERROR] NG1010: 'imports' must be an array of components, directives, pipes, or NgModules.
+  Value could not be determined statically. [plugin angular-compiler]
+
+    C:/dev/AngularProjectNF/mfe-reports/src/app/widgets/portfolio-kpi.widget.ts:13:12:
+      13 │   imports: [SummaryWidget],
+         ╵             ~~~~~~~~~~~~~
+
+  Unknown reference.
+
+    C:/dev/AngularProjectNF/mfe-reports/src/app/widgets/portfolio-kpi.widget.ts:13:12:
+      13 │   imports: [SummaryWidget],
+         ╵             ~~~~~~~~~~~~~
+
+ ERRR  Error building federation artifacts
+ ERRR  Federation rebuild failed!
+X [ERROR] TS2307: Cannot find module '@projecthub/shared' or its corresponding type declarations. [plugin angular-compiler]
+
+    C:/dev/AngularProjectNF/mfe-reports/src/app/pages/presupuesto/presupuesto.ts:3:78:
+      3 │ ...Archivo, nombreConFecha, serializarCsv } from '@projecthub/shared';
+        ╵                                                  ~~~~~~~~~~~~~~~~~~~~
+
+X [ERROR] TS2571: Object is of type 'unknown'. [plugin angular-compiler]
+
+    C:/dev/AngularProjectNF/mfe-reports/src/app/pages/presupuesto/presupuesto.ts:30:4:
+      30 │     this.store
+         ╵     ~~~~~~~~~~
+
+X [ERROR] TS7006: Parameter 'r' implicitly has an 'any' type. [plugin angular-compiler]
+
+    C:/dev/AngularProjectNF/mfe-reports/src/app/pages/presupuesto/presupuesto.ts:32:12:
+      32 │       .map((r) => ({
+         ╵             ^
+
+X [ERROR] TS7006: Parameter 'a' implicitly has an 'any' type. [plugin angular-compiler]
+
+    C:/dev/AngularProjectNF/mfe-reports/src/app/pages/presupuesto/presupuesto.ts:40:13:
+      40 │       .sort((a, b) => b.desviacion - a.desviacion),
+         ╵              ^
+
+X [ERROR] TS7006: Parameter 'b' implicitly has an 'any' type. [plugin angular-compiler]
+
+    C:/dev/AngularProjectNF/mfe-reports/src/app/pages/presupuesto/presupuesto.ts:40:16:
+      40 │       .sort((a, b) => b.desviacion - a.desviacion),
+         ╵                 ^
+
+X [ERROR] TS2307: Cannot find module '@projecthub/shared' or its corresponding type declarations. [plugin angular-compiler]
+
+    C:/dev/AngularProjectNF/mfe-reports/src/app/pages/proyecto-widget/proyecto-widget.ts:4:29:
+      4 │ import { ProjectStore } from '@projecthub/shared';
+        ╵                              ~~~~~~~~~~~~~~~~~~~~
+
+X [ERROR] TS2571: Object is of type 'unknown'. [plugin angular-compiler]
+
+    C:/dev/AngularProjectNF/mfe-reports/src/app/pages/proyecto-widget/proyecto-widget.ts:66:33:
+      66 │   protected readonly proyectos = this.store.proyectos;
+         ╵                                  ~~~~~~~~~~
+
+X [ERROR] TS2571: Object is of type 'unknown'. [plugin angular-compiler]
+
+    C:/dev/AngularProjectNF/mfe-reports/src/app/pages/proyecto-widget/proyecto-widget.ts:67:41:
+      67 │ ...readonly proyectoId = signal(this.store.proyectos()[0]?.id ?? '');
+         ╵                                 ~~~~~~~~~~
+
+X [ERROR] TS2307: Cannot find module '@projecthub/shared' or its corresponding type declarations. [plugin angular-compiler]
+
+    C:/dev/AngularProjectNF/mfe-reports/src/app/pages/tablero-general/tablero-general.ts:11:7:
+      11 │ } from '@projecthub/shared';
+         ╵        ~~~~~~~~~~~~~~~~~~~~
+
+X [ERROR] TS2571: Object is of type 'unknown'. [plugin angular-compiler]
+
+    C:/dev/AngularProjectNF/mfe-reports/src/app/pages/tablero-general/tablero-general.ts:28:48:
+      28 │ ...ected readonly resumenes = computed(() => this.store.resumenes());
+         ╵                                              ~~~~~~~~~~
+
+X [ERROR] TS7006: Parameter 'r' implicitly has an 'any' type. [plugin angular-compiler]
+
+    C:/dev/AngularProjectNF/mfe-reports/src/app/pages/tablero-general/tablero-general.ts:33:35:
+      33 │ ...() => this.resumenes().filter((r) => r.proyecto.estado === 'Act...
+         ╵                                   ^
+
+X [ERROR] TS7006: Parameter 'acc' implicitly has an 'any' type. [plugin angular-compiler]
+
+    C:/dev/AngularProjectNF/mfe-reports/src/app/pages/tablero-general/tablero-general.ts:39:34:
+      39 │ ...return Math.round((rs.reduce((acc, r) => acc + r.avance, 0) / r...
+         ╵                                  ~~~
+
+X [ERROR] TS7006: Parameter 'r' implicitly has an 'any' type. [plugin angular-compiler]
+
+    C:/dev/AngularProjectNF/mfe-reports/src/app/pages/tablero-general/tablero-general.ts:39:39:
+      39 │ ...rn Math.round((rs.reduce((acc, r) => acc + r.avance, 0) / rs.le...
+         ╵                                   ^
+
+X [ERROR] TS7006: Parameter 'acc' implicitly has an 'any' type. [plugin angular-compiler]
+
+    C:/dev/AngularProjectNF/mfe-reports/src/app/pages/tablero-general/tablero-general.ts:43:29:
+      43 │     this.resumenes().reduce((acc, r) => acc + r.presupuestoAsignad...
+         ╵                              ~~~
+
+X [ERROR] TS7006: Parameter 'r' implicitly has an 'any' type. [plugin angular-compiler]
+
+    C:/dev/AngularProjectNF/mfe-reports/src/app/pages/tablero-general/tablero-general.ts:43:34:
+      43 │     this.resumenes().reduce((acc, r) => acc + r.presupuestoAsignad...
+         ╵                                   ^
+
+X [ERROR] TS7006: Parameter 'acc' implicitly has an 'any' type. [plugin angular-compiler]
+
+    C:/dev/AngularProjectNF/mfe-reports/src/app/pages/tablero-general/tablero-general.ts:47:29:
+      47 │     this.resumenes().reduce((acc, r) => acc + r.presupuestoConsumi...
+         ╵                              ~~~
+
+X [ERROR] TS7006: Parameter 'r' implicitly has an 'any' type. [plugin angular-compiler]
+
+    C:/dev/AngularProjectNF/mfe-reports/src/app/pages/tablero-general/tablero-general.ts:47:34:
+      47 │     this.resumenes().reduce((acc, r) => acc + r.presupuestoConsumi...
+         ╵                                   ^
+
+X [ERROR] TS7006: Parameter 'r' implicitly has an 'any' type. [plugin angular-compiler]
+
+    C:/dev/AngularProjectNF/mfe-reports/src/app/pages/tablero-general/tablero-general.ts:51:35:
+      51 │     () => this.resumenes().filter((r) => r.excedido).length,
+         ╵                                    ^
+
+X [ERROR] TS7006: Parameter 'etapa' implicitly has an 'any' type. [plugin angular-compiler]
+
+    C:/dev/AngularProjectNF/mfe-reports/src/app/pages/tablero-general/tablero-general.ts:55:27:
+      55 │     ETAPAS_CICLO_VIDA.map((etapa) => ({
+         ╵                            ~~~~~
+
+X [ERROR] TS7006: Parameter 'r' implicitly has an 'any' type. [plugin angular-compiler]
+
+    C:/dev/AngularProjectNF/mfe-reports/src/app/pages/tablero-general/tablero-general.ts:57:41:
+      57 │ ...idad: this.resumenes().filter((r) => r.proyecto.etapa === etapa...
+         ╵                                   ^
+
+X [ERROR] TS7006: Parameter 'r' implicitly has an 'any' type. [plugin angular-compiler]
+
+    C:/dev/AngularProjectNF/mfe-reports/src/app/pages/tablero-general/tablero-general.ts:64:41:
+      64 │ ...idad: this.resumenes().filter((r) => r.proyecto.estado === esta...
+         ╵                                   ^
+
+X [ERROR] TS7006: Parameter 'r' implicitly has an 'any' type. [plugin angular-compiler]
+
+    C:/dev/AngularProjectNF/mfe-reports/src/app/pages/tablero-general/tablero-general.ts:70:40:
+      70 │     const filas = this.resumenes().map((r) => ({
+         ╵                                         ^
+
+X [ERROR] TS2307: Cannot find module '@projecthub/shared' or its corresponding type declarations. [plugin angular-compiler]
+
+    C:/dev/AngularProjectNF/mfe-reports/src/app/widgets/portfolio-kpi.widget.ts:2:29:
+      2 │ import { ProjectStore } from '@projecthub/shared';
+        ╵                              ~~~~~~~~~~~~~~~~~~~~
+
+X [ERROR] TS2571: Object is of type 'unknown'. [plugin angular-compiler]
+
+    C:/dev/AngularProjectNF/mfe-reports/src/app/widgets/portfolio-kpi.widget.ts:44:46:
+      44 │ ...ivate readonly resumenes = computed(() => this.store.resumenes());
+         ╵                                              ~~~~~~~~~~
+
+X [ERROR] TS7006: Parameter 'r' implicitly has an 'any' type. [plugin angular-compiler]
+
+    C:/dev/AngularProjectNF/mfe-reports/src/app/widgets/portfolio-kpi.widget.ts:49:35:
+      49 │ ...() => this.resumenes().filter((r) => r.proyecto.estado === 'Act...
+         ╵                                   ^
+
+X [ERROR] TS7006: Parameter 'acc' implicitly has an 'any' type. [plugin angular-compiler]
+
+    C:/dev/AngularProjectNF/mfe-reports/src/app/widgets/portfolio-kpi.widget.ts:55:34:
+      55 │ ...return Math.round((rs.reduce((acc, r) => acc + r.avance, 0) / r...
+         ╵                                  ~~~
+
+X [ERROR] TS7006: Parameter 'r' implicitly has an 'any' type. [plugin angular-compiler]
+
+    C:/dev/AngularProjectNF/mfe-reports/src/app/widgets/portfolio-kpi.widget.ts:55:39:
+      55 │ ...rn Math.round((rs.reduce((acc, r) => acc + r.avance, 0) / rs.le...
+         ╵                                   ^
+
+X [ERROR] TS7006: Parameter 'r' implicitly has an 'any' type. [plugin angular-compiler]
+
+    C:/dev/AngularProjectNF/mfe-reports/src/app/widgets/portfolio-kpi.widget.ts:59:35:
+      59 │     () => this.resumenes().filter((r) => r.excedido).length,
+         ╵                                    ^
+
+ ERRR  Error building federation artifacts
+ ERRR  Federation rebuild failed!
+X [ERROR] TS2307: Cannot find module '@projecthub/shared' or its corresponding type declarations. [plugin angular-compiler]
+
+    C:/dev/AngularProjectNF/mfe-reports/src/app/pages/presupuesto/presupuesto.ts:3:78:
+      3 │ ...Archivo, nombreConFecha, serializarCsv } from '@projecthub/shared';
+        ╵                                                  ~~~~~~~~~~~~~~~~~~~~
+
+X [ERROR] TS2571: Object is of type 'unknown'. [plugin angular-compiler]
+
+    C:/dev/AngularProjectNF/mfe-reports/src/app/pages/presupuesto/presupuesto.ts:30:4:
+      30 │     this.store
+         ╵     ~~~~~~~~~~
+
+X [ERROR] TS7006: Parameter 'r' implicitly has an 'any' type. [plugin angular-compiler]
+
+    C:/dev/AngularProjectNF/mfe-reports/src/app/pages/presupuesto/presupuesto.ts:32:12:
+      32 │       .map((r) => ({
+         ╵             ^
+
+X [ERROR] TS7006: Parameter 'a' implicitly has an 'any' type. [plugin angular-compiler]
+
+    C:/dev/AngularProjectNF/mfe-reports/src/app/pages/presupuesto/presupuesto.ts:40:13:
+      40 │       .sort((a, b) => b.desviacion - a.desviacion),
+         ╵              ^
+
+X [ERROR] TS7006: Parameter 'b' implicitly has an 'any' type. [plugin angular-compiler]
+
+    C:/dev/AngularProjectNF/mfe-reports/src/app/pages/presupuesto/presupuesto.ts:40:16:
+      40 │       .sort((a, b) => b.desviacion - a.desviacion),
+         ╵                 ^
+
+X [ERROR] TS2307: Cannot find module '@projecthub/shared' or its corresponding type declarations. [plugin angular-compiler]
+
+    C:/dev/AngularProjectNF/mfe-reports/src/app/pages/proyecto-widget/proyecto-widget.ts:4:29:
+      4 │ import { ProjectStore } from '@projecthub/shared';
+        ╵                              ~~~~~~~~~~~~~~~~~~~~
+
+X [ERROR] TS2571: Object is of type 'unknown'. [plugin angular-compiler]
+
+    C:/dev/AngularProjectNF/mfe-reports/src/app/pages/proyecto-widget/proyecto-widget.ts:66:33:
+      66 │   protected readonly proyectos = this.store.proyectos;
+         ╵                                  ~~~~~~~~~~
+
+X [ERROR] TS2571: Object is of type 'unknown'. [plugin angular-compiler]
+
+    C:/dev/AngularProjectNF/mfe-reports/src/app/pages/proyecto-widget/proyecto-widget.ts:67:41:
+      67 │ ...readonly proyectoId = signal(this.store.proyectos()[0]?.id ?? '');
+         ╵                                 ~~~~~~~~~~
+
+X [ERROR] TS2307: Cannot find module '@projecthub/shared' or its corresponding type declarations. [plugin angular-compiler]
+
+    C:/dev/AngularProjectNF/mfe-reports/src/app/pages/tablero-general/tablero-general.ts:11:7:
+      11 │ } from '@projecthub/shared';
+         ╵        ~~~~~~~~~~~~~~~~~~~~
+
+X [ERROR] TS2571: Object is of type 'unknown'. [plugin angular-compiler]
+
+    C:/dev/AngularProjectNF/mfe-reports/src/app/pages/tablero-general/tablero-general.ts:28:48:
+      28 │ ...ected readonly resumenes = computed(() => this.store.resumenes());
+         ╵                                              ~~~~~~~~~~
+
+X [ERROR] TS7006: Parameter 'r' implicitly has an 'any' type. [plugin angular-compiler]
+
+    C:/dev/AngularProjectNF/mfe-reports/src/app/pages/tablero-general/tablero-general.ts:33:35:
+      33 │ ...() => this.resumenes().filter((r) => r.proyecto.estado === 'Act...
+         ╵                                   ^
+
+X [ERROR] TS7006: Parameter 'acc' implicitly has an 'any' type. [plugin angular-compiler]
+
+    C:/dev/AngularProjectNF/mfe-reports/src/app/pages/tablero-general/tablero-general.ts:39:34:
+      39 │ ...return Math.round((rs.reduce((acc, r) => acc + r.avance, 0) / r...
+         ╵                                  ~~~
+
+X [ERROR] TS7006: Parameter 'r' implicitly has an 'any' type. [plugin angular-compiler]
+
+    C:/dev/AngularProjectNF/mfe-reports/src/app/pages/tablero-general/tablero-general.ts:39:39:
+      39 │ ...rn Math.round((rs.reduce((acc, r) => acc + r.avance, 0) / rs.le...
+         ╵                                   ^
+
+X [ERROR] TS7006: Parameter 'acc' implicitly has an 'any' type. [plugin angular-compiler]
+
+    C:/dev/AngularProjectNF/mfe-reports/src/app/pages/tablero-general/tablero-general.ts:43:29:
+      43 │     this.resumenes().reduce((acc, r) => acc + r.presupuestoAsignad...
+         ╵                              ~~~
+
+X [ERROR] TS7006: Parameter 'r' implicitly has an 'any' type. [plugin angular-compiler]
+
+    C:/dev/AngularProjectNF/mfe-reports/src/app/pages/tablero-general/tablero-general.ts:43:34:
+      43 │     this.resumenes().reduce((acc, r) => acc + r.presupuestoAsignad...
+         ╵                                   ^
+
+X [ERROR] TS7006: Parameter 'acc' implicitly has an 'any' type. [plugin angular-compiler]
+
+    C:/dev/AngularProjectNF/mfe-reports/src/app/pages/tablero-general/tablero-general.ts:47:29:
+      47 │     this.resumenes().reduce((acc, r) => acc + r.presupuestoConsumi...
+         ╵                              ~~~
+
+X [ERROR] TS7006: Parameter 'r' implicitly has an 'any' type. [plugin angular-compiler]
+
+    C:/dev/AngularProjectNF/mfe-reports/src/app/pages/tablero-general/tablero-general.ts:47:34:
+      47 │     this.resumenes().reduce((acc, r) => acc + r.presupuestoConsumi...
+         ╵                                   ^
+
+X [ERROR] TS7006: Parameter 'r' implicitly has an 'any' type. [plugin angular-compiler]
+
+    C:/dev/AngularProjectNF/mfe-reports/src/app/pages/tablero-general/tablero-general.ts:51:35:
+      51 │     () => this.resumenes().filter((r) => r.excedido).length,
+         ╵                                    ^
+
+X [ERROR] TS7006: Parameter 'etapa' implicitly has an 'any' type. [plugin angular-compiler]
+
+    C:/dev/AngularProjectNF/mfe-reports/src/app/pages/tablero-general/tablero-general.ts:55:27:
+      55 │     ETAPAS_CICLO_VIDA.map((etapa) => ({
+         ╵                            ~~~~~
+
+X [ERROR] TS7006: Parameter 'r' implicitly has an 'any' type. [plugin angular-compiler]
+
+    C:/dev/AngularProjectNF/mfe-reports/src/app/pages/tablero-general/tablero-general.ts:57:41:
+      57 │ ...idad: this.resumenes().filter((r) => r.proyecto.etapa === etapa...
+         ╵                                   ^
+
+X [ERROR] TS7006: Parameter 'r' implicitly has an 'any' type. [plugin angular-compiler]
+
+    C:/dev/AngularProjectNF/mfe-reports/src/app/pages/tablero-general/tablero-general.ts:64:41:
+      64 │ ...idad: this.resumenes().filter((r) => r.proyecto.estado === esta...
+         ╵                                   ^
+
+X [ERROR] TS7006: Parameter 'r' implicitly has an 'any' type. [plugin angular-compiler]
+
+    C:/dev/AngularProjectNF/mfe-reports/src/app/pages/tablero-general/tablero-general.ts:70:40:
+      70 │     const filas = this.resumenes().map((r) => ({
+         ╵                                         ^
+
+X [ERROR] TS2307: Cannot find module '@projecthub/shared' or its corresponding type declarations. [plugin angular-compiler]
+
+    C:/dev/AngularProjectNF/mfe-reports/src/app/widgets/portfolio-kpi.widget.ts:2:29:
+      2 │ import { ProjectStore } from '@projecthub/shared';
+        ╵                              ~~~~~~~~~~~~~~~~~~~~
+
+X [ERROR] TS2571: Object is of type 'unknown'. [plugin angular-compiler]
+
+    C:/dev/AngularProjectNF/mfe-reports/src/app/widgets/portfolio-kpi.widget.ts:44:46:
+      44 │ ...ivate readonly resumenes = computed(() => this.store.resumenes());
+         ╵                                              ~~~~~~~~~~
+
+X [ERROR] TS7006: Parameter 'r' implicitly has an 'any' type. [plugin angular-compiler]
+
+    C:/dev/AngularProjectNF/mfe-reports/src/app/widgets/portfolio-kpi.widget.ts:49:35:
+      49 │ ...() => this.resumenes().filter((r) => r.proyecto.estado === 'Act...
+         ╵                                   ^
+
+X [ERROR] TS7006: Parameter 'acc' implicitly has an 'any' type. [plugin angular-compiler]
+
+    C:/dev/AngularProjectNF/mfe-reports/src/app/widgets/portfolio-kpi.widget.ts:55:34:
+      55 │ ...return Math.round((rs.reduce((acc, r) => acc + r.avance, 0) / r...
+         ╵                                  ~~~
+
+X [ERROR] TS7006: Parameter 'r' implicitly has an 'any' type. [plugin angular-compiler]
+
+    C:/dev/AngularProjectNF/mfe-reports/src/app/widgets/portfolio-kpi.widget.ts:55:39:
+      55 │ ...rn Math.round((rs.reduce((acc, r) => acc + r.avance, 0) / rs.le...
+         ╵                                   ^
+
+X [ERROR] TS7006: Parameter 'r' implicitly has an 'any' type. [plugin angular-compiler]
+
+    C:/dev/AngularProjectNF/mfe-reports/src/app/widgets/portfolio-kpi.widget.ts:59:35:
+      59 │     () => this.resumenes().filter((r) => r.excedido).length,
+         ╵                                    ^
+
+ ERRR  Error building federation artifacts
+ ERRR  Federation rebuild failed!
+[31mX [41;31m[[41;97mERROR[41;31m][0m [1mTS2305: Module '"@projecthub/shared"' has no exported member 'ApiEnlaceService'.[0m [1m[35m[plugin angular-compiler][0m
+
+    C:/dev/AngularProjectNF/mfe-reports/src/app/app.config.ts:4:9:
+[37m      4 │ import { [32mApiEnlaceService[37m, ProjectStore, UsuarioStore, sincronizarS...
+        ╵          [32m~~~~~~~~~~~~~~~~[0m
+
+
+[31mX [41;31m[[41;97mERROR[41;31m][0m [1mTS2305: Module '"@projecthub/shared"' has no exported member 'sincronizarStores'.[0m [1m[35m[plugin angular-compiler][0m
+
+    C:/dev/AngularProjectNF/mfe-reports/src/app/app.config.ts:4:55:
+[37m      4 │ ...ectStore, UsuarioStore, [32msincronizarStores[37m } from '@projecthub/sh...
+        ╵                            [32m~~~~~~~~~~~~~~~~~[0m
+
+
+ WARN  Skipping federation artifacts because Angular build failed.
+X [ERROR] TS2307: Cannot find module '@projecthub/shared' or its corresponding type declarations. [plugin angular-compiler]
+
+    C:/dev/AngularProjectNF/mfe-reports/src/app/pages/presupuesto/presupuesto.ts:3:78:
+      3 │ ...Archivo, nombreConFecha, serializarCsv } from '@projecthub/shared';
+        ╵                                                  ~~~~~~~~~~~~~~~~~~~~
+
+X [ERROR] TS2571: Object is of type 'unknown'. [plugin angular-compiler]
+
+    C:/dev/AngularProjectNF/mfe-reports/src/app/pages/presupuesto/presupuesto.ts:30:4:
+      30 │     this.store
+         ╵     ~~~~~~~~~~
+
+X [ERROR] TS7006: Parameter 'r' implicitly has an 'any' type. [plugin angular-compiler]
+
+    C:/dev/AngularProjectNF/mfe-reports/src/app/pages/presupuesto/presupuesto.ts:32:12:
+      32 │       .map((r) => ({
+         ╵             ^
+
+X [ERROR] TS7006: Parameter 'a' implicitly has an 'any' type. [plugin angular-compiler]
+
+    C:/dev/AngularProjectNF/mfe-reports/src/app/pages/presupuesto/presupuesto.ts:40:13:
+      40 │       .sort((a, b) => b.desviacion - a.desviacion),
+         ╵              ^
+
+X [ERROR] TS7006: Parameter 'b' implicitly has an 'any' type. [plugin angular-compiler]
+
+    C:/dev/AngularProjectNF/mfe-reports/src/app/pages/presupuesto/presupuesto.ts:40:16:
+      40 │       .sort((a, b) => b.desviacion - a.desviacion),
+         ╵                 ^
+
+X [ERROR] TS2307: Cannot find module '@projecthub/shared' or its corresponding type declarations. [plugin angular-compiler]
+
+    C:/dev/AngularProjectNF/mfe-reports/src/app/pages/proyecto-widget/proyecto-widget.ts:4:29:
+      4 │ import { ProjectStore } from '@projecthub/shared';
+        ╵                              ~~~~~~~~~~~~~~~~~~~~
+
+X [ERROR] TS2571: Object is of type 'unknown'. [plugin angular-compiler]
+
+    C:/dev/AngularProjectNF/mfe-reports/src/app/pages/proyecto-widget/proyecto-widget.ts:66:33:
+      66 │   protected readonly proyectos = this.store.proyectos;
+         ╵                                  ~~~~~~~~~~
+
+X [ERROR] TS2571: Object is of type 'unknown'. [plugin angular-compiler]
+
+    C:/dev/AngularProjectNF/mfe-reports/src/app/pages/proyecto-widget/proyecto-widget.ts:67:41:
+      67 │ ...readonly proyectoId = signal(this.store.proyectos()[0]?.id ?? '');
+         ╵                                 ~~~~~~~~~~
+
+X [ERROR] TS2307: Cannot find module '@projecthub/shared' or its corresponding type declarations. [plugin angular-compiler]
+
+    C:/dev/AngularProjectNF/mfe-reports/src/app/pages/tablero-general/tablero-general.ts:11:7:
+      11 │ } from '@projecthub/shared';
+         ╵        ~~~~~~~~~~~~~~~~~~~~
+
+X [ERROR] TS2571: Object is of type 'unknown'. [plugin angular-compiler]
+
+    C:/dev/AngularProjectNF/mfe-reports/src/app/pages/tablero-general/tablero-general.ts:28:48:
+      28 │ ...ected readonly resumenes = computed(() => this.store.resumenes());
+         ╵                                              ~~~~~~~~~~
+
+X [ERROR] TS7006: Parameter 'r' implicitly has an 'any' type. [plugin angular-compiler]
+
+    C:/dev/AngularProjectNF/mfe-reports/src/app/pages/tablero-general/tablero-general.ts:33:35:
+      33 │ ...() => this.resumenes().filter((r) => r.proyecto.estado === 'Act...
+         ╵                                   ^
+
+X [ERROR] TS7006: Parameter 'acc' implicitly has an 'any' type. [plugin angular-compiler]
+
+    C:/dev/AngularProjectNF/mfe-reports/src/app/pages/tablero-general/tablero-general.ts:39:34:
+      39 │ ...return Math.round((rs.reduce((acc, r) => acc + r.avance, 0) / r...
+         ╵                                  ~~~
+
+X [ERROR] TS7006: Parameter 'r' implicitly has an 'any' type. [plugin angular-compiler]
+
+    C:/dev/AngularProjectNF/mfe-reports/src/app/pages/tablero-general/tablero-general.ts:39:39:
+      39 │ ...rn Math.round((rs.reduce((acc, r) => acc + r.avance, 0) / rs.le...
+         ╵                                   ^
+
+X [ERROR] TS7006: Parameter 'acc' implicitly has an 'any' type. [plugin angular-compiler]
+
+    C:/dev/AngularProjectNF/mfe-reports/src/app/pages/tablero-general/tablero-general.ts:43:29:
+      43 │     this.resumenes().reduce((acc, r) => acc + r.presupuestoAsignad...
+         ╵                              ~~~
+
+X [ERROR] TS7006: Parameter 'r' implicitly has an 'any' type. [plugin angular-compiler]
+
+    C:/dev/AngularProjectNF/mfe-reports/src/app/pages/tablero-general/tablero-general.ts:43:34:
+      43 │     this.resumenes().reduce((acc, r) => acc + r.presupuestoAsignad...
+         ╵                                   ^
+
+X [ERROR] TS7006: Parameter 'acc' implicitly has an 'any' type. [plugin angular-compiler]
+
+    C:/dev/AngularProjectNF/mfe-reports/src/app/pages/tablero-general/tablero-general.ts:47:29:
+      47 │     this.resumenes().reduce((acc, r) => acc + r.presupuestoConsumi...
+         ╵                              ~~~
+
+X [ERROR] TS7006: Parameter 'r' implicitly has an 'any' type. [plugin angular-compiler]
+
+    C:/dev/AngularProjectNF/mfe-reports/src/app/pages/tablero-general/tablero-general.ts:47:34:
+      47 │     this.resumenes().reduce((acc, r) => acc + r.presupuestoConsumi...
+         ╵                                   ^
+
+X [ERROR] TS7006: Parameter 'r' implicitly has an 'any' type. [plugin angular-compiler]
+
+    C:/dev/AngularProjectNF/mfe-reports/src/app/pages/tablero-general/tablero-general.ts:51:35:
+      51 │     () => this.resumenes().filter((r) => r.excedido).length,
+         ╵                                    ^
+
+X [ERROR] TS7006: Parameter 'etapa' implicitly has an 'any' type. [plugin angular-compiler]
+
+    C:/dev/AngularProjectNF/mfe-reports/src/app/pages/tablero-general/tablero-general.ts:55:27:
+      55 │     ETAPAS_CICLO_VIDA.map((etapa) => ({
+         ╵                            ~~~~~
+
+X [ERROR] TS7006: Parameter 'r' implicitly has an 'any' type. [plugin angular-compiler]
+
+    C:/dev/AngularProjectNF/mfe-reports/src/app/pages/tablero-general/tablero-general.ts:57:41:
+      57 │ ...idad: this.resumenes().filter((r) => r.proyecto.etapa === etapa...
+         ╵                                   ^
+
+X [ERROR] TS7006: Parameter 'r' implicitly has an 'any' type. [plugin angular-compiler]
+
+    C:/dev/AngularProjectNF/mfe-reports/src/app/pages/tablero-general/tablero-general.ts:64:41:
+      64 │ ...idad: this.resumenes().filter((r) => r.proyecto.estado === esta...
+         ╵                                   ^
+
+X [ERROR] TS7006: Parameter 'r' implicitly has an 'any' type. [plugin angular-compiler]
+
+    C:/dev/AngularProjectNF/mfe-reports/src/app/pages/tablero-general/tablero-general.ts:70:40:
+      70 │     const filas = this.resumenes().map((r) => ({
+         ╵                                         ^
+
+X [ERROR] TS2307: Cannot find module '@projecthub/shared' or its corresponding type declarations. [plugin angular-compiler]
+
+    C:/dev/AngularProjectNF/mfe-reports/src/app/widgets/portfolio-kpi.widget.ts:2:29:
+      2 │ import { ProjectStore } from '@projecthub/shared';
+        ╵                              ~~~~~~~~~~~~~~~~~~~~
+
+X [ERROR] TS2571: Object is of type 'unknown'. [plugin angular-compiler]
+
+    C:/dev/AngularProjectNF/mfe-reports/src/app/widgets/portfolio-kpi.widget.ts:44:46:
+      44 │ ...ivate readonly resumenes = computed(() => this.store.resumenes());
+         ╵                                              ~~~~~~~~~~
+
+X [ERROR] TS7006: Parameter 'r' implicitly has an 'any' type. [plugin angular-compiler]
+
+    C:/dev/AngularProjectNF/mfe-reports/src/app/widgets/portfolio-kpi.widget.ts:49:35:
+      49 │ ...() => this.resumenes().filter((r) => r.proyecto.estado === 'Act...
+         ╵                                   ^
+
+X [ERROR] TS7006: Parameter 'acc' implicitly has an 'any' type. [plugin angular-compiler]
+
+    C:/dev/AngularProjectNF/mfe-reports/src/app/widgets/portfolio-kpi.widget.ts:55:34:
+      55 │ ...return Math.round((rs.reduce((acc, r) => acc + r.avance, 0) / r...
+         ╵                                  ~~~
+
+X [ERROR] TS7006: Parameter 'r' implicitly has an 'any' type. [plugin angular-compiler]
+
+    C:/dev/AngularProjectNF/mfe-reports/src/app/widgets/portfolio-kpi.widget.ts:55:39:
+      55 │ ...rn Math.round((rs.reduce((acc, r) => acc + r.avance, 0) / rs.le...
+         ╵                                   ^
+
+X [ERROR] TS7006: Parameter 'r' implicitly has an 'any' type. [plugin angular-compiler]
+
+    C:/dev/AngularProjectNF/mfe-reports/src/app/widgets/portfolio-kpi.widget.ts:59:35:
+      59 │     () => this.resumenes().filter((r) => r.excedido).length,
+         ╵                                    ^
+
+ ERRR  Error building federation artifacts
+ ERRR  Federation rebuild failed!
+X [ERROR] TS2307: Cannot find module '@projecthub/shared' or its corresponding type declarations. [plugin angular-compiler]
+
+    C:/dev/AngularProjectNF/mfe-reports/src/app/pages/presupuesto/presupuesto.ts:3:78:
+      3 │ ...Archivo, nombreConFecha, serializarCsv } from '@projecthub/shared';
+        ╵                                                  ~~~~~~~~~~~~~~~~~~~~
+
+X [ERROR] TS2571: Object is of type 'unknown'. [plugin angular-compiler]
+
+    C:/dev/AngularProjectNF/mfe-reports/src/app/pages/presupuesto/presupuesto.ts:30:4:
+      30 │     this.store
+         ╵     ~~~~~~~~~~
+
+X [ERROR] TS7006: Parameter 'r' implicitly has an 'any' type. [plugin angular-compiler]
+
+    C:/dev/AngularProjectNF/mfe-reports/src/app/pages/presupuesto/presupuesto.ts:32:12:
+      32 │       .map((r) => ({
+         ╵             ^
+
+X [ERROR] TS7006: Parameter 'a' implicitly has an 'any' type. [plugin angular-compiler]
+
+    C:/dev/AngularProjectNF/mfe-reports/src/app/pages/presupuesto/presupuesto.ts:40:13:
+      40 │       .sort((a, b) => b.desviacion - a.desviacion),
+         ╵              ^
+
+X [ERROR] TS7006: Parameter 'b' implicitly has an 'any' type. [plugin angular-compiler]
+
+    C:/dev/AngularProjectNF/mfe-reports/src/app/pages/presupuesto/presupuesto.ts:40:16:
+      40 │       .sort((a, b) => b.desviacion - a.desviacion),
+         ╵                 ^
+
+X [ERROR] TS2307: Cannot find module '@projecthub/shared' or its corresponding type declarations. [plugin angular-compiler]
+
+    C:/dev/AngularProjectNF/mfe-reports/src/app/pages/proyecto-widget/proyecto-widget.ts:4:29:
+      4 │ import { ProjectStore } from '@projecthub/shared';
+        ╵                              ~~~~~~~~~~~~~~~~~~~~
+
+X [ERROR] TS2571: Object is of type 'unknown'. [plugin angular-compiler]
+
+    C:/dev/AngularProjectNF/mfe-reports/src/app/pages/proyecto-widget/proyecto-widget.ts:66:33:
+      66 │   protected readonly proyectos = this.store.proyectos;
+         ╵                                  ~~~~~~~~~~
+
+X [ERROR] TS2571: Object is of type 'unknown'. [plugin angular-compiler]
+
+    C:/dev/AngularProjectNF/mfe-reports/src/app/pages/proyecto-widget/proyecto-widget.ts:67:41:
+      67 │ ...readonly proyectoId = signal(this.store.proyectos()[0]?.id ?? '');
+         ╵                                 ~~~~~~~~~~
+
+X [ERROR] TS2307: Cannot find module '@projecthub/shared' or its corresponding type declarations. [plugin angular-compiler]
+
+    C:/dev/AngularProjectNF/mfe-reports/src/app/pages/tablero-general/tablero-general.ts:11:7:
+      11 │ } from '@projecthub/shared';
+         ╵        ~~~~~~~~~~~~~~~~~~~~
+
+X [ERROR] TS2571: Object is of type 'unknown'. [plugin angular-compiler]
+
+    C:/dev/AngularProjectNF/mfe-reports/src/app/pages/tablero-general/tablero-general.ts:28:48:
+      28 │ ...ected readonly resumenes = computed(() => this.store.resumenes());
+         ╵                                              ~~~~~~~~~~
+
+X [ERROR] TS7006: Parameter 'r' implicitly has an 'any' type. [plugin angular-compiler]
+
+    C:/dev/AngularProjectNF/mfe-reports/src/app/pages/tablero-general/tablero-general.ts:33:35:
+      33 │ ...() => this.resumenes().filter((r) => r.proyecto.estado === 'Act...
+         ╵                                   ^
+
+X [ERROR] TS7006: Parameter 'acc' implicitly has an 'any' type. [plugin angular-compiler]
+
+    C:/dev/AngularProjectNF/mfe-reports/src/app/pages/tablero-general/tablero-general.ts:39:34:
+      39 │ ...return Math.round((rs.reduce((acc, r) => acc + r.avance, 0) / r...
+         ╵                                  ~~~
+
+X [ERROR] TS7006: Parameter 'r' implicitly has an 'any' type. [plugin angular-compiler]
+
+    C:/dev/AngularProjectNF/mfe-reports/src/app/pages/tablero-general/tablero-general.ts:39:39:
+      39 │ ...rn Math.round((rs.reduce((acc, r) => acc + r.avance, 0) / rs.le...
+         ╵                                   ^
+
+X [ERROR] TS7006: Parameter 'acc' implicitly has an 'any' type. [plugin angular-compiler]
+
+    C:/dev/AngularProjectNF/mfe-reports/src/app/pages/tablero-general/tablero-general.ts:43:29:
+      43 │     this.resumenes().reduce((acc, r) => acc + r.presupuestoAsignad...
+         ╵                              ~~~
+
+X [ERROR] TS7006: Parameter 'r' implicitly has an 'any' type. [plugin angular-compiler]
+
+    C:/dev/AngularProjectNF/mfe-reports/src/app/pages/tablero-general/tablero-general.ts:43:34:
+      43 │     this.resumenes().reduce((acc, r) => acc + r.presupuestoAsignad...
+         ╵                                   ^
+
+X [ERROR] TS7006: Parameter 'acc' implicitly has an 'any' type. [plugin angular-compiler]
+
+    C:/dev/AngularProjectNF/mfe-reports/src/app/pages/tablero-general/tablero-general.ts:47:29:
+      47 │     this.resumenes().reduce((acc, r) => acc + r.presupuestoConsumi...
+         ╵                              ~~~
+
+X [ERROR] TS7006: Parameter 'r' implicitly has an 'any' type. [plugin angular-compiler]
+
+    C:/dev/AngularProjectNF/mfe-reports/src/app/pages/tablero-general/tablero-general.ts:47:34:
+      47 │     this.resumenes().reduce((acc, r) => acc + r.presupuestoConsumi...
+         ╵                                   ^
+
+X [ERROR] TS7006: Parameter 'r' implicitly has an 'any' type. [plugin angular-compiler]
+
+    C:/dev/AngularProjectNF/mfe-reports/src/app/pages/tablero-general/tablero-general.ts:51:35:
+      51 │     () => this.resumenes().filter((r) => r.excedido).length,
+         ╵                                    ^
+
+X [ERROR] TS7006: Parameter 'etapa' implicitly has an 'any' type. [plugin angular-compiler]
+
+    C:/dev/AngularProjectNF/mfe-reports/src/app/pages/tablero-general/tablero-general.ts:55:27:
+      55 │     ETAPAS_CICLO_VIDA.map((etapa) => ({
+         ╵                            ~~~~~
+
+X [ERROR] TS7006: Parameter 'r' implicitly has an 'any' type. [plugin angular-compiler]
+
+    C:/dev/AngularProjectNF/mfe-reports/src/app/pages/tablero-general/tablero-general.ts:57:41:
+      57 │ ...idad: this.resumenes().filter((r) => r.proyecto.etapa === etapa...
+         ╵                                   ^
+
+X [ERROR] TS7006: Parameter 'r' implicitly has an 'any' type. [plugin angular-compiler]
+
+    C:/dev/AngularProjectNF/mfe-reports/src/app/pages/tablero-general/tablero-general.ts:64:41:
+      64 │ ...idad: this.resumenes().filter((r) => r.proyecto.estado === esta...
+         ╵                                   ^
+
+X [ERROR] TS7006: Parameter 'r' implicitly has an 'any' type. [plugin angular-compiler]
+
+    C:/dev/AngularProjectNF/mfe-reports/src/app/pages/tablero-general/tablero-general.ts:70:40:
+      70 │     const filas = this.resumenes().map((r) => ({
+         ╵                                         ^
+
+X [ERROR] TS2307: Cannot find module '@projecthub/shared' or its corresponding type declarations. [plugin angular-compiler]
+
+    C:/dev/AngularProjectNF/mfe-reports/src/app/widgets/portfolio-kpi.widget.ts:2:29:
+      2 │ import { ProjectStore } from '@projecthub/shared';
+        ╵                              ~~~~~~~~~~~~~~~~~~~~
+
+X [ERROR] TS2571: Object is of type 'unknown'. [plugin angular-compiler]
+
+    C:/dev/AngularProjectNF/mfe-reports/src/app/widgets/portfolio-kpi.widget.ts:44:46:
+      44 │ ...ivate readonly resumenes = computed(() => this.store.resumenes());
+         ╵                                              ~~~~~~~~~~
+
+X [ERROR] TS7006: Parameter 'r' implicitly has an 'any' type. [plugin angular-compiler]
+
+    C:/dev/AngularProjectNF/mfe-reports/src/app/widgets/portfolio-kpi.widget.ts:49:35:
+      49 │ ...() => this.resumenes().filter((r) => r.proyecto.estado === 'Act...
+         ╵                                   ^
+
+X [ERROR] TS7006: Parameter 'acc' implicitly has an 'any' type. [plugin angular-compiler]
+
+    C:/dev/AngularProjectNF/mfe-reports/src/app/widgets/portfolio-kpi.widget.ts:55:34:
+      55 │ ...return Math.round((rs.reduce((acc, r) => acc + r.avance, 0) / r...
+         ╵                                  ~~~
+
+X [ERROR] TS7006: Parameter 'r' implicitly has an 'any' type. [plugin angular-compiler]
+
+    C:/dev/AngularProjectNF/mfe-reports/src/app/widgets/portfolio-kpi.widget.ts:55:39:
+      55 │ ...rn Math.round((rs.reduce((acc, r) => acc + r.avance, 0) / rs.le...
+         ╵                                   ^
+
+X [ERROR] TS7006: Parameter 'r' implicitly has an 'any' type. [plugin angular-compiler]
+
+    C:/dev/AngularProjectNF/mfe-reports/src/app/widgets/portfolio-kpi.widget.ts:59:35:
+      59 │     () => this.resumenes().filter((r) => r.excedido).length,
+         ╵                                    ^
+
+ ERRR  Error building federation artifacts
+ ERRR  Federation rebuild failed!
+[31mX [41;31m[[41;97mERROR[41;31m][0m [1mTS2305: Module '"@projecthub/shared"' has no exported member 'ApiEnlaceService'.[0m [1m[35m[plugin angular-compiler][0m
+
+    C:/dev/AngularProjectNF/mfe-reports/src/app/app.config.ts:5:2:
+[37m      5 │   [32mApiEnlaceService[37m,
+        ╵   [32m~~~~~~~~~~~~~~~~[0m
+
+
+[31mX [41;31m[[41;97mERROR[41;31m][0m [1mTS2305: Module '"@projecthub/shared"' has no exported member 'SincronizadorEscrituras'.[0m [1m[35m[plugin angular-compiler][0m
+
+    C:/dev/AngularProjectNF/mfe-reports/src/app/app.config.ts:7:2:
+[37m      7 │   [32mSincronizadorEscrituras[37m,
+        ╵   [32m~~~~~~~~~~~~~~~~~~~~~~~[0m
+
+
+[31mX [41;31m[[41;97mERROR[41;31m][0m [1mTS2305: Module '"@projecthub/shared"' has no exported member 'sincronizarStores'.[0m [1m[35m[plugin angular-compiler][0m
+
+    C:/dev/AngularProjectNF/mfe-reports/src/app/app.config.ts:9:2:
+[37m      9 │   [32msincronizarStores[37m,
+        ╵   [32m~~~~~~~~~~~~~~~~~[0m
+
+
+ WARN  Skipping federation artifacts because Angular build failed.
+[31mX [41;31m[[41;97mERROR[41;31m][0m [1mTS2305: Module '"@projecthub/shared"' has no exported member 'ApiEnlaceService'.[0m [1m[35m[plugin angular-compiler][0m
+
+    C:/dev/AngularProjectNF/mfe-reports/src/app/app.config.ts:5:2:
+[37m      5 │   [32mApiEnlaceService[37m,
+        ╵   [32m~~~~~~~~~~~~~~~~[0m
+
+
+[31mX [41;31m[[41;97mERROR[41;31m][0m [1mTS2305: Module '"@projecthub/shared"' has no exported member 'SincronizadorEscrituras'.[0m [1m[35m[plugin angular-compiler][0m
+
+    C:/dev/AngularProjectNF/mfe-reports/src/app/app.config.ts:7:2:
+[37m      7 │   [32mSincronizadorEscrituras[37m,
+        ╵   [32m~~~~~~~~~~~~~~~~~~~~~~~[0m
+
+
+[31mX [41;31m[[41;97mERROR[41;31m][0m [1mTS2305: Module '"@projecthub/shared"' has no exported member 'sincronizarStores'.[0m [1m[35m[plugin angular-compiler][0m
+
+    C:/dev/AngularProjectNF/mfe-reports/src/app/app.config.ts:9:2:
+[37m      9 │   [32msincronizarStores[37m,
+        ╵   [32m~~~~~~~~~~~~~~~~~[0m
+
+
+[31mX [41;31m[[41;97mERROR[41;31m][0m [1mTS2304: Cannot find name 'TestBed'.[0m [1m[35m[plugin angular-compiler][0m
+
+    C:/dev/AngularProjectNF/mfe-reports/src/app/app.config.ts:22:6:
+[37m      22 │       [32mTestBed[37m.inject(SincronizadorEscrituras).preparar();
+         ╵       [32m~~~~~~~[0m
+
+
+ WARN  Skipping federation artifacts because Angular build failed.
+[31mX [41;31m[[41;97mERROR[41;31m][0m [1mTS2305: Module '"@projecthub/shared"' has no exported member 'SincronizadorEscrituras'.[0m [1m[35m[plugin angular-compiler][0m
+
+    C:/dev/AngularProjectNF/mfe-reports/src/app/app.config.ts:6:2:
+[37m      6 │   [32mSincronizadorEscrituras[37m,
+        ╵   [32m~~~~~~~~~~~~~~~~~~~~~~~[0m
+
+
+[31mX [41;31m[[41;97mERROR[41;31m][0m [1mTS2305: Module '"@projecthub/shared"' has no exported member 'sincronizarStores'.[0m [1m[35m[plugin angular-compiler][0m
+
+    C:/dev/AngularProjectNF/mfe-reports/src/app/app.config.ts:8:2:
+[37m      8 │   [32msincronizarStores[37m,
+        ╵   [32m~~~~~~~~~~~~~~~~~[0m
+
+
+[31mX [41;31m[[41;97mERROR[41;31m][0m [1mTS2571: Object is of type 'unknown'.[0m [1m[35m[plugin angular-compiler][0m
+
+    C:/dev/AngularProjectNF/mfe-reports/src/app/app.config.ts:21:6:
+[37m      21 │       [32minject(SincronizadorEscrituras)[37m.preparar();
+         ╵       [32m~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~[0m
+
+
+ WARN  Skipping federation artifacts because Angular build failed.
+X [ERROR] TS2307: Cannot find module '@projecthub/shared' or its corresponding type declarations. [plugin angular-compiler]
+
+    C:/dev/AngularProjectNF/mfe-reports/src/app/pages/presupuesto/presupuesto.ts:3:78:
+      3 │ ...Archivo, nombreConFecha, serializarCsv } from '@projecthub/shared';
+        ╵                                                  ~~~~~~~~~~~~~~~~~~~~
+
+X [ERROR] TS2571: Object is of type 'unknown'. [plugin angular-compiler]
+
+    C:/dev/AngularProjectNF/mfe-reports/src/app/pages/presupuesto/presupuesto.ts:30:4:
+      30 │     this.store
+         ╵     ~~~~~~~~~~
+
+X [ERROR] TS7006: Parameter 'r' implicitly has an 'any' type. [plugin angular-compiler]
+
+    C:/dev/AngularProjectNF/mfe-reports/src/app/pages/presupuesto/presupuesto.ts:32:12:
+      32 │       .map((r) => ({
+         ╵             ^
+
+X [ERROR] TS7006: Parameter 'a' implicitly has an 'any' type. [plugin angular-compiler]
+
+    C:/dev/AngularProjectNF/mfe-reports/src/app/pages/presupuesto/presupuesto.ts:40:13:
+      40 │       .sort((a, b) => b.desviacion - a.desviacion),
+         ╵              ^
+
+X [ERROR] TS7006: Parameter 'b' implicitly has an 'any' type. [plugin angular-compiler]
+
+    C:/dev/AngularProjectNF/mfe-reports/src/app/pages/presupuesto/presupuesto.ts:40:16:
+      40 │       .sort((a, b) => b.desviacion - a.desviacion),
+         ╵                 ^
+
+X [ERROR] TS2307: Cannot find module '@projecthub/shared' or its corresponding type declarations. [plugin angular-compiler]
+
+    C:/dev/AngularProjectNF/mfe-reports/src/app/pages/proyecto-widget/proyecto-widget.ts:4:29:
+      4 │ import { ProjectStore } from '@projecthub/shared';
+        ╵                              ~~~~~~~~~~~~~~~~~~~~
+
+X [ERROR] TS2571: Object is of type 'unknown'. [plugin angular-compiler]
+
+    C:/dev/AngularProjectNF/mfe-reports/src/app/pages/proyecto-widget/proyecto-widget.ts:66:33:
+      66 │   protected readonly proyectos = this.store.proyectos;
+         ╵                                  ~~~~~~~~~~
+
+X [ERROR] TS2571: Object is of type 'unknown'. [plugin angular-compiler]
+
+    C:/dev/AngularProjectNF/mfe-reports/src/app/pages/proyecto-widget/proyecto-widget.ts:67:41:
+      67 │ ...readonly proyectoId = signal(this.store.proyectos()[0]?.id ?? '');
+         ╵                                 ~~~~~~~~~~
+
+X [ERROR] TS2307: Cannot find module '@projecthub/shared' or its corresponding type declarations. [plugin angular-compiler]
+
+    C:/dev/AngularProjectNF/mfe-reports/src/app/pages/tablero-general/tablero-general.ts:11:7:
+      11 │ } from '@projecthub/shared';
+         ╵        ~~~~~~~~~~~~~~~~~~~~
+
+X [ERROR] TS2571: Object is of type 'unknown'. [plugin angular-compiler]
+
+    C:/dev/AngularProjectNF/mfe-reports/src/app/pages/tablero-general/tablero-general.ts:28:48:
+      28 │ ...ected readonly resumenes = computed(() => this.store.resumenes());
+         ╵                                              ~~~~~~~~~~
+
+X [ERROR] TS7006: Parameter 'r' implicitly has an 'any' type. [plugin angular-compiler]
+
+    C:/dev/AngularProjectNF/mfe-reports/src/app/pages/tablero-general/tablero-general.ts:33:35:
+      33 │ ...() => this.resumenes().filter((r) => r.proyecto.estado === 'Act...
+         ╵                                   ^
+
+X [ERROR] TS7006: Parameter 'acc' implicitly has an 'any' type. [plugin angular-compiler]
+
+    C:/dev/AngularProjectNF/mfe-reports/src/app/pages/tablero-general/tablero-general.ts:39:34:
+      39 │ ...return Math.round((rs.reduce((acc, r) => acc + r.avance, 0) / r...
+         ╵                                  ~~~
+
+X [ERROR] TS7006: Parameter 'r' implicitly has an 'any' type. [plugin angular-compiler]
+
+    C:/dev/AngularProjectNF/mfe-reports/src/app/pages/tablero-general/tablero-general.ts:39:39:
+      39 │ ...rn Math.round((rs.reduce((acc, r) => acc + r.avance, 0) / rs.le...
+         ╵                                   ^
+
+X [ERROR] TS7006: Parameter 'acc' implicitly has an 'any' type. [plugin angular-compiler]
+
+    C:/dev/AngularProjectNF/mfe-reports/src/app/pages/tablero-general/tablero-general.ts:43:29:
+      43 │     this.resumenes().reduce((acc, r) => acc + r.presupuestoAsignad...
+         ╵                              ~~~
+
+X [ERROR] TS7006: Parameter 'r' implicitly has an 'any' type. [plugin angular-compiler]
+
+    C:/dev/AngularProjectNF/mfe-reports/src/app/pages/tablero-general/tablero-general.ts:43:34:
+      43 │     this.resumenes().reduce((acc, r) => acc + r.presupuestoAsignad...
+         ╵                                   ^
+
+X [ERROR] TS7006: Parameter 'acc' implicitly has an 'any' type. [plugin angular-compiler]
+
+    C:/dev/AngularProjectNF/mfe-reports/src/app/pages/tablero-general/tablero-general.ts:47:29:
+      47 │     this.resumenes().reduce((acc, r) => acc + r.presupuestoConsumi...
+         ╵                              ~~~
+
+X [ERROR] TS7006: Parameter 'r' implicitly has an 'any' type. [plugin angular-compiler]
+
+    C:/dev/AngularProjectNF/mfe-reports/src/app/pages/tablero-general/tablero-general.ts:47:34:
+      47 │     this.resumenes().reduce((acc, r) => acc + r.presupuestoConsumi...
+         ╵                                   ^
+
+X [ERROR] TS7006: Parameter 'r' implicitly has an 'any' type. [plugin angular-compiler]
+
+    C:/dev/AngularProjectNF/mfe-reports/src/app/pages/tablero-general/tablero-general.ts:51:35:
+      51 │     () => this.resumenes().filter((r) => r.excedido).length,
+         ╵                                    ^
+
+X [ERROR] TS7006: Parameter 'etapa' implicitly has an 'any' type. [plugin angular-compiler]
+
+    C:/dev/AngularProjectNF/mfe-reports/src/app/pages/tablero-general/tablero-general.ts:55:27:
+      55 │     ETAPAS_CICLO_VIDA.map((etapa) => ({
+         ╵                            ~~~~~
+
+X [ERROR] TS7006: Parameter 'r' implicitly has an 'any' type. [plugin angular-compiler]
+
+    C:/dev/AngularProjectNF/mfe-reports/src/app/pages/tablero-general/tablero-general.ts:57:41:
+      57 │ ...idad: this.resumenes().filter((r) => r.proyecto.etapa === etapa...
+         ╵                                   ^
+
+X [ERROR] TS7006: Parameter 'r' implicitly has an 'any' type. [plugin angular-compiler]
+
+    C:/dev/AngularProjectNF/mfe-reports/src/app/pages/tablero-general/tablero-general.ts:64:41:
+      64 │ ...idad: this.resumenes().filter((r) => r.proyecto.estado === esta...
+         ╵                                   ^
+
+X [ERROR] TS7006: Parameter 'r' implicitly has an 'any' type. [plugin angular-compiler]
+
+    C:/dev/AngularProjectNF/mfe-reports/src/app/pages/tablero-general/tablero-general.ts:70:40:
+      70 │     const filas = this.resumenes().map((r) => ({
+         ╵                                         ^
+
+X [ERROR] TS2307: Cannot find module '@projecthub/shared' or its corresponding type declarations. [plugin angular-compiler]
+
+    C:/dev/AngularProjectNF/mfe-reports/src/app/widgets/portfolio-kpi.widget.ts:2:29:
+      2 │ import { ProjectStore } from '@projecthub/shared';
+        ╵                              ~~~~~~~~~~~~~~~~~~~~
+
+X [ERROR] TS2571: Object is of type 'unknown'. [plugin angular-compiler]
+
+    C:/dev/AngularProjectNF/mfe-reports/src/app/widgets/portfolio-kpi.widget.ts:44:46:
+      44 │ ...ivate readonly resumenes = computed(() => this.store.resumenes());
+         ╵                                              ~~~~~~~~~~
+
+X [ERROR] TS7006: Parameter 'r' implicitly has an 'any' type. [plugin angular-compiler]
+
+    C:/dev/AngularProjectNF/mfe-reports/src/app/widgets/portfolio-kpi.widget.ts:49:35:
+      49 │ ...() => this.resumenes().filter((r) => r.proyecto.estado === 'Act...
+         ╵                                   ^
+
+X [ERROR] TS7006: Parameter 'acc' implicitly has an 'any' type. [plugin angular-compiler]
+
+    C:/dev/AngularProjectNF/mfe-reports/src/app/widgets/portfolio-kpi.widget.ts:55:34:
+      55 │ ...return Math.round((rs.reduce((acc, r) => acc + r.avance, 0) / r...
+         ╵                                  ~~~
+
+X [ERROR] TS7006: Parameter 'r' implicitly has an 'any' type. [plugin angular-compiler]
+
+    C:/dev/AngularProjectNF/mfe-reports/src/app/widgets/portfolio-kpi.widget.ts:55:39:
+      55 │ ...rn Math.round((rs.reduce((acc, r) => acc + r.avance, 0) / rs.le...
+         ╵                                   ^
+
+X [ERROR] TS7006: Parameter 'r' implicitly has an 'any' type. [plugin angular-compiler]
+
+    C:/dev/AngularProjectNF/mfe-reports/src/app/widgets/portfolio-kpi.widget.ts:59:35:
+      59 │     () => this.resumenes().filter((r) => r.excedido).length,
+         ╵                                    ^
+
+ ERRR  Error building federation artifacts
+ ERRR  Federation rebuild failed!
+X [ERROR] TS2307: Cannot find module '@projecthub/shared' or its corresponding type declarations. [plugin angular-compiler]
+
+    C:/dev/AngularProjectNF/mfe-reports/src/app/pages/presupuesto/presupuesto.ts:3:78:
+      3 │ ...Archivo, nombreConFecha, serializarCsv } from '@projecthub/shared';
+        ╵                                                  ~~~~~~~~~~~~~~~~~~~~
+
+X [ERROR] TS2571: Object is of type 'unknown'. [plugin angular-compiler]
+
+    C:/dev/AngularProjectNF/mfe-reports/src/app/pages/presupuesto/presupuesto.ts:30:4:
+      30 │     this.store
+         ╵     ~~~~~~~~~~
+
+X [ERROR] TS7006: Parameter 'r' implicitly has an 'any' type. [plugin angular-compiler]
+
+    C:/dev/AngularProjectNF/mfe-reports/src/app/pages/presupuesto/presupuesto.ts:32:12:
+      32 │       .map((r) => ({
+         ╵             ^
+
+X [ERROR] TS7006: Parameter 'a' implicitly has an 'any' type. [plugin angular-compiler]
+
+    C:/dev/AngularProjectNF/mfe-reports/src/app/pages/presupuesto/presupuesto.ts:40:13:
+      40 │       .sort((a, b) => b.desviacion - a.desviacion),
+         ╵              ^
+
+X [ERROR] TS7006: Parameter 'b' implicitly has an 'any' type. [plugin angular-compiler]
+
+    C:/dev/AngularProjectNF/mfe-reports/src/app/pages/presupuesto/presupuesto.ts:40:16:
+      40 │       .sort((a, b) => b.desviacion - a.desviacion),
+         ╵                 ^
+
+X [ERROR] TS2307: Cannot find module '@projecthub/shared' or its corresponding type declarations. [plugin angular-compiler]
+
+    C:/dev/AngularProjectNF/mfe-reports/src/app/pages/proyecto-widget/proyecto-widget.ts:4:29:
+      4 │ import { ProjectStore } from '@projecthub/shared';
+        ╵                              ~~~~~~~~~~~~~~~~~~~~
+
+X [ERROR] TS2571: Object is of type 'unknown'. [plugin angular-compiler]
+
+    C:/dev/AngularProjectNF/mfe-reports/src/app/pages/proyecto-widget/proyecto-widget.ts:66:33:
+      66 │   protected readonly proyectos = this.store.proyectos;
+         ╵                                  ~~~~~~~~~~
+
+X [ERROR] TS2571: Object is of type 'unknown'. [plugin angular-compiler]
+
+    C:/dev/AngularProjectNF/mfe-reports/src/app/pages/proyecto-widget/proyecto-widget.ts:67:41:
+      67 │ ...readonly proyectoId = signal(this.store.proyectos()[0]?.id ?? '');
+         ╵                                 ~~~~~~~~~~
+
+X [ERROR] TS2307: Cannot find module '@projecthub/shared' or its corresponding type declarations. [plugin angular-compiler]
+
+    C:/dev/AngularProjectNF/mfe-reports/src/app/pages/tablero-general/tablero-general.ts:11:7:
+      11 │ } from '@projecthub/shared';
+         ╵        ~~~~~~~~~~~~~~~~~~~~
+
+X [ERROR] TS2571: Object is of type 'unknown'. [plugin angular-compiler]
+
+    C:/dev/AngularProjectNF/mfe-reports/src/app/pages/tablero-general/tablero-general.ts:28:48:
+      28 │ ...ected readonly resumenes = computed(() => this.store.resumenes());
+         ╵                                              ~~~~~~~~~~
+
+X [ERROR] TS7006: Parameter 'r' implicitly has an 'any' type. [plugin angular-compiler]
+
+    C:/dev/AngularProjectNF/mfe-reports/src/app/pages/tablero-general/tablero-general.ts:33:35:
+      33 │ ...() => this.resumenes().filter((r) => r.proyecto.estado === 'Act...
+         ╵                                   ^
+
+X [ERROR] TS7006: Parameter 'acc' implicitly has an 'any' type. [plugin angular-compiler]
+
+    C:/dev/AngularProjectNF/mfe-reports/src/app/pages/tablero-general/tablero-general.ts:39:34:
+      39 │ ...return Math.round((rs.reduce((acc, r) => acc + r.avance, 0) / r...
+         ╵                                  ~~~
+
+X [ERROR] TS7006: Parameter 'r' implicitly has an 'any' type. [plugin angular-compiler]
+
+    C:/dev/AngularProjectNF/mfe-reports/src/app/pages/tablero-general/tablero-general.ts:39:39:
+      39 │ ...rn Math.round((rs.reduce((acc, r) => acc + r.avance, 0) / rs.le...
+         ╵                                   ^
+
+X [ERROR] TS7006: Parameter 'acc' implicitly has an 'any' type. [plugin angular-compiler]
+
+    C:/dev/AngularProjectNF/mfe-reports/src/app/pages/tablero-general/tablero-general.ts:43:29:
+      43 │     this.resumenes().reduce((acc, r) => acc + r.presupuestoAsignad...
+         ╵                              ~~~
+
+X [ERROR] TS7006: Parameter 'r' implicitly has an 'any' type. [plugin angular-compiler]
+
+    C:/dev/AngularProjectNF/mfe-reports/src/app/pages/tablero-general/tablero-general.ts:43:34:
+      43 │     this.resumenes().reduce((acc, r) => acc + r.presupuestoAsignad...
+         ╵                                   ^
+
+X [ERROR] TS7006: Parameter 'acc' implicitly has an 'any' type. [plugin angular-compiler]
+
+    C:/dev/AngularProjectNF/mfe-reports/src/app/pages/tablero-general/tablero-general.ts:47:29:
+      47 │     this.resumenes().reduce((acc, r) => acc + r.presupuestoConsumi...
+         ╵                              ~~~
+
+X [ERROR] TS7006: Parameter 'r' implicitly has an 'any' type. [plugin angular-compiler]
+
+    C:/dev/AngularProjectNF/mfe-reports/src/app/pages/tablero-general/tablero-general.ts:47:34:
+      47 │     this.resumenes().reduce((acc, r) => acc + r.presupuestoConsumi...
+         ╵                                   ^
+
+X [ERROR] TS7006: Parameter 'r' implicitly has an 'any' type. [plugin angular-compiler]
+
+    C:/dev/AngularProjectNF/mfe-reports/src/app/pages/tablero-general/tablero-general.ts:51:35:
+      51 │     () => this.resumenes().filter((r) => r.excedido).length,
+         ╵                                    ^
+
+X [ERROR] TS7006: Parameter 'etapa' implicitly has an 'any' type. [plugin angular-compiler]
+
+    C:/dev/AngularProjectNF/mfe-reports/src/app/pages/tablero-general/tablero-general.ts:55:27:
+      55 │     ETAPAS_CICLO_VIDA.map((etapa) => ({
+         ╵                            ~~~~~
+
+X [ERROR] TS7006: Parameter 'r' implicitly has an 'any' type. [plugin angular-compiler]
+
+    C:/dev/AngularProjectNF/mfe-reports/src/app/pages/tablero-general/tablero-general.ts:57:41:
+      57 │ ...idad: this.resumenes().filter((r) => r.proyecto.etapa === etapa...
+         ╵                                   ^
+
+X [ERROR] TS7006: Parameter 'r' implicitly has an 'any' type. [plugin angular-compiler]
+
+    C:/dev/AngularProjectNF/mfe-reports/src/app/pages/tablero-general/tablero-general.ts:64:41:
+      64 │ ...idad: this.resumenes().filter((r) => r.proyecto.estado === esta...
+         ╵                                   ^
+
+X [ERROR] TS7006: Parameter 'r' implicitly has an 'any' type. [plugin angular-compiler]
+
+    C:/dev/AngularProjectNF/mfe-reports/src/app/pages/tablero-general/tablero-general.ts:70:40:
+      70 │     const filas = this.resumenes().map((r) => ({
+         ╵                                         ^
+
+X [ERROR] TS2307: Cannot find module '@projecthub/shared' or its corresponding type declarations. [plugin angular-compiler]
+
+    C:/dev/AngularProjectNF/mfe-reports/src/app/widgets/portfolio-kpi.widget.ts:2:29:
+      2 │ import { ProjectStore } from '@projecthub/shared';
+        ╵                              ~~~~~~~~~~~~~~~~~~~~
+
+X [ERROR] TS2571: Object is of type 'unknown'. [plugin angular-compiler]
+
+    C:/dev/AngularProjectNF/mfe-reports/src/app/widgets/portfolio-kpi.widget.ts:44:46:
+      44 │ ...ivate readonly resumenes = computed(() => this.store.resumenes());
+         ╵                                              ~~~~~~~~~~
+
+X [ERROR] TS7006: Parameter 'r' implicitly has an 'any' type. [plugin angular-compiler]
+
+    C:/dev/AngularProjectNF/mfe-reports/src/app/widgets/portfolio-kpi.widget.ts:49:35:
+      49 │ ...() => this.resumenes().filter((r) => r.proyecto.estado === 'Act...
+         ╵                                   ^
+
+X [ERROR] TS7006: Parameter 'acc' implicitly has an 'any' type. [plugin angular-compiler]
+
+    C:/dev/AngularProjectNF/mfe-reports/src/app/widgets/portfolio-kpi.widget.ts:55:34:
+      55 │ ...return Math.round((rs.reduce((acc, r) => acc + r.avance, 0) / r...
+         ╵                                  ~~~
+
+X [ERROR] TS7006: Parameter 'r' implicitly has an 'any' type. [plugin angular-compiler]
+
+    C:/dev/AngularProjectNF/mfe-reports/src/app/widgets/portfolio-kpi.widget.ts:55:39:
+      55 │ ...rn Math.round((rs.reduce((acc, r) => acc + r.avance, 0) / rs.le...
+         ╵                                   ^
+
+X [ERROR] TS7006: Parameter 'r' implicitly has an 'any' type. [plugin angular-compiler]
+
+    C:/dev/AngularProjectNF/mfe-reports/src/app/widgets/portfolio-kpi.widget.ts:59:35:
+      59 │     () => this.resumenes().filter((r) => r.excedido).length,
+         ╵                                    ^
+
+ ERRR  Error building federation artifacts
+ ERRR  Federation rebuild failed!

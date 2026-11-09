@@ -10,9 +10,16 @@ puertos, convenciones) va en su `AGENTS.md` (u otro rulebook) y en su documentac
 Usa la skill `ops-lifecycle` para crear, verificar o actualizar los documentos de `.ops/`: define
 plantillas, estados y trazabilidad. Si el repo no tiene `.ops/`, ejecuta su bootstrap antes de la
 primera tarea de desarrollo: `.ops` es donde se registra lo encontrado por cada rol en cada sesion
-agentica; sin `.ops` no queda documentado nada. Para contar intentos del presupuesto de esfuerzo,
-usa `tools/loop-guard.mjs` (opcional; su ledger es estado de sesion, no documentacion).
+agentica; sin `.ops` no queda documentado nada. Para contar intentos usa `tools/loop-guard.mjs`
+(opcional). El kit reporta su version: `.github/KIT_VERSION`, escrita por el instalador; si falta,
+apuntala en `PROGRESS.md`.
 
+Si el repo tiene MCP de grafos configurados (graphify o mcp-memgraph en `.vscode/mcp.json`), en la
+primera sesion tras instalar o actualizar el kit verifica sus indices y alinealos antes de razonar
+sobre codigo o `.ops`: `node tools/build-graphify.mjs status` (sin `graphify-out/graph.json`: `up`
+si no hay servicios y `extract`; con grafo de mas de ~1 h o tarea previa que tocara codigo: `update`) y
+`node .github/tools/ops-graph.mjs .ops` tras cambios de `.ops`. Sin servicios nada se bloquea:
+`graphify-ops`/`graph-ops` degradan a leer directo.
 ## Idioma
 
 - **Respuestas al usuario:** responde en el idioma del ultimo mensaje del usuario.

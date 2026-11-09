@@ -1,0 +1,106 @@
+ INFO  Removed unused dependencies.
+ INFO  [Federation SSE] Local reloader initialized with endpoint /@angular-architects/native-federation:build-notifications
+ INFO  Building federation artifacts
+ NOTE  Skip packages you don't want to share in your federation config
+ INFO  Bundling external npm packages with bundle type 'browser-shared'
+ INFO  Checksum of browser-shared matched, re-using cached externals.
+ INFO  Checksum of browser-angular_common matched, re-using cached externals.
+ INFO  Checksum of browser-angular_core matched, re-using cached externals.
+ INFO  Checksum of browser-angular_platform_browser matched, re-using cached externals.
+ INFO  Checksum of browser-angular_router matched, re-using cached externals.
+ INFO  Checksum of browser-rxjs matched, re-using cached externals.
+ INFO  Checksum of browser-tslib matched, re-using cached externals.
+ INFO  Bundling exposed modules
+> Building...
+√ Building...
+Initial chunk files | Names         |  Raw size
+styles.css          | styles        | 599 bytes | 
+main.js             | main          | 366 bytes | 
+polyfills.js        | polyfills     | 152 bytes | 
+
+                    | Initial total |   1.12 kB
+
+Lazy chunk files    | Names         |  Raw size
+chunk-JYGISWKQ.js   | bootstrap     |  38.85 kB | 
+
+Application bundle generation complete. [2.567 seconds] - 2026-11-06T08:19:24.153Z
+
+Watch mode enabled. Watching for file changes...
+NOTE: Raw file sizes do not reflect development server per-request transformations.
+  [32m➜[39m  [1mLocal[22m:   [36mhttp://localhost:[1m4302[22m/[39m
+ INFO  Re-bundling all internal libraries and exposed modules..'
+ INFO  Bundling exposed modules
+ INFO  Detected change in linked shared package(s); re-bundling 'browser-shared'.
+ INFO  Bundling external npm packages with bundle type 'browser-shared'
+ INFO  Checksum of browser-angular_common matched, re-using cached externals.
+ INFO  Checksum of browser-angular_core matched, re-using cached externals.
+ INFO  Checksum of browser-angular_platform_browser matched, re-using cached externals.
+ INFO  Checksum of browser-angular_router matched, re-using cached externals.
+ INFO  Checksum of browser-rxjs matched, re-using cached externals.
+ INFO  Checksum of browser-tslib matched, re-using cached externals.
+ INFO  Re-bundling all internal libraries and exposed modules..'
+ INFO  Bundling exposed modules
+ INFO  Re-bundling all internal libraries and exposed modules..'
+ INFO  Bundling exposed modules
+ INFO  Detected change in linked shared package(s); re-bundling 'browser-shared'.
+ INFO  Bundling external npm packages with bundle type 'browser-shared'
+ INFO  Checksum of browser-angular_common matched, re-using cached externals.
+ INFO  Checksum of browser-angular_core matched, re-using cached externals.
+ INFO  Checksum of browser-angular_platform_browser matched, re-using cached externals.
+ INFO  Checksum of browser-angular_router matched, re-using cached externals.
+ INFO  Checksum of browser-rxjs matched, re-using cached externals.
+ INFO  Checksum of browser-tslib matched, re-using cached externals.
+ INFO  Re-bundling all internal libraries and exposed modules..'
+ INFO  Bundling exposed modules
+ INFO  Re-bundling all internal libraries and exposed modules..'
+ INFO  Bundling exposed modules
+ INFO  Detected change in linked shared package(s); re-bundling 'browser-shared'.
+ INFO  Bundling external npm packages with bundle type 'browser-shared'
+ INFO  Checksum of browser-angular_common matched, re-using cached externals.
+ INFO  Checksum of browser-angular_core matched, re-using cached externals.
+ INFO  Checksum of browser-angular_platform_browser matched, re-using cached externals.
+ INFO  Checksum of browser-angular_router matched, re-using cached externals.
+ INFO  Checksum of browser-rxjs matched, re-using cached externals.
+ INFO  Checksum of browser-tslib matched, re-using cached externals.
+ INFO  Re-bundling all internal libraries and exposed modules..'
+ INFO  Bundling exposed modules
+> Changes detected. Rebuilding...
+√ Changes detected. Rebuilding...
+Application bundle generation failed. [0.509 seconds] - 2026-11-06T09:28:14.065Z
+
+ INFO  Re-bundling all internal libraries and exposed modules..'
+ INFO  Bundling exposed modules
+ INFO  Detected change in linked shared package(s); re-bundling 'browser-shared'.
+ INFO  Bundling external npm packages with bundle type 'browser-shared'
+ INFO  Checksum of browser-angular_common matched, re-using cached externals.
+ INFO  Checksum of browser-angular_core matched, re-using cached externals.
+ INFO  Checksum of browser-angular_platform_browser matched, re-using cached externals.
+ INFO  Checksum of browser-angular_router matched, re-using cached externals.
+ INFO  Checksum of browser-rxjs matched, re-using cached externals.
+ INFO  Checksum of browser-tslib matched, re-using cached externals.
+ INFO  Re-bundling all internal libraries and exposed modules..'
+ INFO  Bundling exposed modules
+> Changes detected. Rebuilding...
+√ Changes detected. Rebuilding...
+Application bundle generation failed. [0.784 seconds] - 2026-11-06T09:38:58.382Z
+
+> Changes detected. Rebuilding...
+√ Changes detected. Rebuilding...
+Application bundle generation failed. [5.077 seconds] - 2026-11-06T10:02:41.399Z
+
+> Changes detected. Rebuilding...
+√ Changes detected. Rebuilding...
+Application bundle generation failed. [0.252 seconds] - 2026-11-06T10:03:40.285Z
+
+ INFO  Re-bundling all internal libraries and exposed modules..'
+ INFO  Bundling exposed modules
+ INFO  Detected change in linked shared package(s); re-bundling 'browser-shared'.
+ INFO  Bundling external npm packages with bundle type 'browser-shared'
+ INFO  Checksum of browser-angular_common matched, re-using cached externals.
+ INFO  Checksum of browser-angular_core matched, re-using cached externals.
+ INFO  Checksum of browser-angular_platform_browser matched, re-using cached externals.
+ INFO  Checksum of browser-angular_router matched, re-using cached externals.
+ INFO  Checksum of browser-rxjs matched, re-using cached externals.
+ INFO  Checksum of browser-tslib matched, re-using cached externals.
+ INFO  Re-bundling all internal libraries and exposed modules..'
+ INFO  Bundling exposed modules

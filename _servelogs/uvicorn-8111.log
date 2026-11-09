@@ -1,0 +1,7 @@
+INFO:     127.0.0.1:49866 - "GET /api/salud HTTP/1.1" 200 OK
+INFO:     127.0.0.1:49866 - "GET /api/sincronizacion HTTP/1.1" 200 OK
+INFO:     127.0.0.1:51270 - "GET /api/sincronizacion HTTP/1.1" 200 OK
+INFO:     127.0.0.1:51270 - "GET /api/proyectos HTTP/1.1" 200 OK
+INFO:     127.0.0.1:61090 - "PUT /api/sincronizacion HTTP/1.1" 200 OK
+INFO:     127.0.0.1:61110 - "PUT /api/sincronizacion HTTP/1.1" 404 Not Found
+INFO:     127.0.0.1:61113 - "GET /api/sincronizacion HTTP/1.1" 200 OK

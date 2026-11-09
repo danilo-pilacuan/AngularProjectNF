@@ -1,0 +1,50 @@
+﻿node.exe :  WARN  Ignoring patch for '@angular/material/*': it matches no shared package (unknown dependency, skipped, 
+not selected by filter(), or a secondary entry point).
+En línea: 1 Carácter: 1
++ & "C:\nvm4w\nodejs/node.exe" "C:\nvm4w\nodejs/node_modules/npm/bin/np ...
++ ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+    + CategoryInfo          : NotSpecified: ( WARN  Ignoring...y entry point).:String) [], RemoteException
+    + FullyQualifiedErrorId : NativeCommandError
+ 
+ WARN  Ignoring patch for '@angular/cdk/*': it matches no shared package (unknown dependency, skipped, not selected by 
+filter(), or a secondary entry point).
+ INFO  Removed unused dependencies.
+ INFO  Building federation artifacts
+ NOTE  Skip packages you don't want to share in your federation config
+ INFO  Bundling external npm packages with bundle type 'browser-shared'
+ INFO  Checksum of browser-shared matched, re-using cached externals.
+ INFO  Checksum of browser-angular_common matched, re-using cached externals.
+ INFO  Checksum of browser-angular_core matched, re-using cached externals.
+ INFO  Checksum of browser-angular_material matched, re-using cached externals.
+ INFO  Checksum of browser-angular_platform_browser matched, re-using cached externals.
+ INFO  Checksum of browser-angular_router matched, re-using cached externals.
+ INFO  Checksum of browser-rxjs matched, re-using cached externals.
+ INFO  Checksum of browser-tslib matched, re-using cached externals.
+X [ERROR] Could not resolve "node:path/posix"
+
+    node_modules/@schematics/angular/utility/ng-ast-utils.js:17:24:
+      17 │ const posix_1 = require("node:path/posix");
+         ╵                         ~~~~~~~~~~~~~~~~~
+
+  The package "node:path/posix" wasn't found on the file system but is built into node. Are you trying to bundle for 
+node? You can use "platform: 'node'" to do that, which will remove this error.
+
+1 of 32 errors shown (disable the message limit with --log-limit=0)
+ ERRR  Error bundling shared npm package
+ ERRR  Build failed with 32 errors:
+(disabled):node_modules/source-map-support/source-map-support.js:2:19: ERROR: Could not resolve "path"
+node_modules/@angular-devkit/core/node/host.js:11:26: ERROR: Could not resolve "node:fs"
+node_modules/@angular-devkit/core/node/host.js:12:28: ERROR: Could not resolve "node:path"
+node_modules/@angular-devkit/core/src/json/schema/registry.js:49:34: ERROR: Could not resolve "node:http"
+node_modules/@angular-devkit/core/src/json/schema/registry.js:50:35: ERROR: Could not resolve "node:https"
+...
+ NOTE  Usually a shared Node.js package; Native Federation builds for the browser. Move it to devDependencies or add it to 'skip'.
+ NOTE  All entry points of '@angular/cdk' are published, used or not (keepAll or 'ignoreUnusedDeps: false'). One of them may import an uninstalled package, e.g. an optional peer. Add it to 'skip'.
+ NOTE  Run in verbose mode for the full error. More details: https://bit.ly/nf-issue
+ ERRR  Build failed with 32 errors:
+(disabled):node_modules/source-map-support/source-map-support.js:2:19: ERROR: Could not resolve "path"
+node_modules/@angular-devkit/core/node/host.js:11:26: ERROR: Could not resolve "node:fs"
+node_modules/@angular-devkit/core/node/host.js:12:28: ERROR: Could not resolve "node:path"
+node_modules/@angular-devkit/core/src/json/schema/registry.js:49:34: ERROR: Could not resolve "node:http"
+node_modules/@angular-devkit/core/src/json/schema/registry.js:50:35: ERROR: Could not resolve "node:https"
+...

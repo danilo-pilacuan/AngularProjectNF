@@ -1,7 +1,9 @@
 #!/usr/bin/env node
 // Importer del grafo de trazabilidad de .ops hacia Memgraph (skill graph-ops).
 // Node >= 18, sin dependencias: driver Bolt minimo (Bolt v1 + PackStream 1).
-// Uso: node ops-graph.mjs <raiz-de-.ops> [--bolt bolt://localhost:7687]
+// Uso: node ops-graph.mjs <raiz-de-.ops> [--bolt bolt://host:puerto]
+// Destino Bolt: --bolt manda; si falta, MEMGRAPH_BOLT_PORT del .env (subiendo desde
+// la carpeta de .ops); default bolt://localhost:7687.
 // Idempotente: borra el grafo anterior y lo reconstruye desde el Markdown.
 // Memgraph es indice derivado de solo-lectura; la fuente de verdad es el Markdown en git.
 
@@ -11,9 +13,42 @@ import { join, dirname, resolve, relative } from 'node:path';
 
 const args = process.argv.slice(2);
 const opsRootArg = args.find((a) => !a.startsWith('--'));
-const boltIdx = args.indexOf('--bolt');
-const boltUrl = boltIdx >= 0 ? args[boltIdx + 1] : 'bolt://localhost:7687';
 const opsRoot = resolve(opsRootArg ?? '.ops');
+const boltIdx = args.indexOf('--bolt');
+const boltFlag = boltIdx >= 0 ? args[boltIdx + 1] : null;
+
+// Lectura uniforme de KEY=valor de un .env (mismo patron que build-graphify.mjs).
+function readEnvValue(path, key) {
+  if (!path || !existsSync(path)) return null;
+  const re = new RegExp(`^\\s*${key}\\s*=\\s*(\\S.*)$`);
+  for (const line of readFileSync(path, 'utf8').split(/\r?\n/)) {
+    const m = re.exec(line);
+    if (m) return m[1].trim().replace(/^["']|["']$/g, '');
+  }
+  return null;
+}
+
+function findEnvFile(startDir) {
+  let dir = resolve(startDir);
+  for (;;) {
+    const candidate = join(dir, '.env');
+    if (existsSync(candidate)) return candidate;
+    const parent = dirname(dir);
+    if (parent === dir) return null;
+    dir = parent;
+  }
+}
+
+// Destino Bolt: --bolt manda; si no, MEMGRAPH_BOLT_PORT del .env hallado subiendo
+// desde la carpeta que contiene la raiz de .ops (convencion del kit); default 7687.
+let boltUrl = boltFlag;
+let boltSource = 'flag --bolt';
+if (!boltUrl) {
+  const envFile = findEnvFile(dirname(opsRoot));
+  const envPort = envFile ? readEnvValue(envFile, 'MEMGRAPH_BOLT_PORT') : null;
+  boltUrl = envPort ? `bolt://localhost:${envPort}` : 'bolt://localhost:7687';
+  boltSource = envPort ? `MEMGRAPH_BOLT_PORT del .env (${envFile})` : 'default (sin .env con MEMGRAPH_BOLT_PORT)';
+}
 
 if (!existsSync(opsRoot)) {
   console.error(`no existe ${opsRoot}; el kit funciona sin .ops, este importer lo requiere`);
@@ -354,7 +389,7 @@ async function main() {
       `MATCH (a:Doc {id: $from}), (b:Doc {id: $to}) CREATE (a)-[:${e.type}]->(b)`,
       { from: e.from, to: e.to });
   }
-  console.log(`cargado en Memgraph (${boltUrl})`);
+  console.log(`cargado en Memgraph (${boltUrl}; destino resuelto por ${boltSource})`);
 
   // Queries de valor
   // Impacto: solo si se define OPS_IMPACT_ID (id del documento a analizar).

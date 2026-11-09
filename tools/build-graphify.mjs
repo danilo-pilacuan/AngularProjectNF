@@ -25,6 +25,16 @@ const repoRoot = basename(toolsParent) === '.github' ? dirname(toolsParent) : to
 const deploySrc = join(repoRoot, 'deploy', 'graphify');
 const deployOut = join(deploySrc, 'dist');
 
+// Lectura uniforme de KEY=valor de un .env (resolvePorts la usa; checkEnv
+// mantiene sus propios regex para distinguir falta de archivo de falta de valor).
+function readEnvValue(path, key) {
+  if (!path || !existsSync(path)) return null;
+  const line = readFileSync(path, 'utf8').split(/\r?\n/)
+    .find((l) => new RegExp(`^\\s*${key}\\s*=\\s*(\\S.*)$`).test(l));
+  if (!line) return null;
+  return line.match(new RegExp(`^\\s*${key}\\s*=\\s*(\\S.*)$`))[1].trim().replace(/^["']|["']$/g, '');
+}
+
 // Puertos para el smoke: los del .env resuelto mandan (compose los usa para
 // publicar); el entorno del proceso es el fallback.
 function resolvePorts() {
@@ -193,19 +203,21 @@ async function smoke() {
     console.error(`memgraph MCP no responde en :${memgraphPort}/mcp/ (000 con reintentos): revisa docker compose logs mcp-memgraph`);
     process.exit(1);
   }
-  // Verificacion de conexion real: el MCP puede estar vivo pero apuntando a un
-  // Bolt equivocado (default de imagen host.docker.internal, otro memgraph del
-  // host). list_databases solo responde si hay Bolt detras.
-  const boltOk = await probeMcpTool(memgraphPort, 'list_databases');
+  // Verificacion de conexion real (Bolt end-to-end): el MCP puede estar vivo
+  // pero sin Bolt detras. `list_databases` NO sirve como prueba: es una tool
+  // enlatada que responde isError=false con [{"name":"memgraph","current":true}]
+  // incluso con memgraph Exited 137 (verificado en laboratorio). La unica prueba
+  // real es ejecutar una query trivial contra Bolt: error de conexion => sin Bolt.
+  const boltOk = await probeMcpTool(memgraphPort, 'run_cypher_query', { query: 'RETURN 1' });
   if (!boltOk) {
-    console.error(`memgraph MCP vivo en :${memgraphPort} pero sin Bolt alcanzable (revisa MEMGRAPH_URL en deploy/graphify/docker-compose.yml)`);
+    console.error(`memgraph MCP vivo en :${memgraphPort} pero sin Bolt alcanzable (revisa MEMGRAPH_URL en deploy/graphify/docker-compose.yml; levanta con "node tools/build-graphify.mjs up")`);
     process.exit(1);
   }
 }
 
 // Handshake MCP minimo (initialize -> initialized -> tools/call) contra el MCP
 // de memgraph; devuelve true si la tool respondio sin error de protocolo.
-async function probeMcpTool(memgraphPort, toolName) {
+async function probeMcpTool(memgraphPort, toolName, toolArgs = {}) {
   const post = async (body, sid) => {
     const headers = { 'Content-Type': 'application/json', Accept: 'application/json, text/event-stream' };
     if (sid) headers['mcp-session-id'] = sid;
@@ -218,7 +230,7 @@ async function probeMcpTool(memgraphPort, toolName) {
     const init = await post({ jsonrpc: '2.0', id: 1, method: 'initialize', params: { protocolVersion: '2025-03-26', capabilities: {}, clientInfo: { name: 'smoke', version: '0' } } });
     if (!init.sid) return false;
     await post({ jsonrpc: '2.0', method: 'notifications/initialized' }, init.sid);
-    const call = await post({ jsonrpc: '2.0', id: 2, method: 'tools/call', params: { name: toolName, arguments: {} } }, init.sid);
+    const call = await post({ jsonrpc: '2.0', id: 2, method: 'tools/call', params: { name: toolName, arguments: toolArgs } }, init.sid);
     return !call.text.includes('"isError":true') && !call.text.includes('"error"');
   } catch {
     return false;
@@ -258,5 +270,22 @@ if (cmd === 'up') {
 } else if (cmd === 'status') {
   emitDist();
   compose(['ps']);
+  // Frescura del grafo: sin esto, status solo dice "servicios vivos" y el grafo
+  // puede estar semanas detras del codigo sin que nadie lo note (el MCP sirve
+  // el archivo que hay, aunque este obsoleto). Mide la antiguedad del
+  // graph.json y la compara con el ultimo commit del repo indexado.
+  const graphPath = join(repoRoot, 'graphify-out', 'graph.json');
+  if (existsSync(graphPath)) {
+    const ageH = ((Date.now() - statSync(graphPath).mtimeMs) / 3600000).toFixed(1);
+    console.log(`grafo: graphify-out/graph.json presente, generado hace ${ageH} h`);
+    try {
+      const head = spawnSync('git', ['-C', repoRoot, 'log', '-1', '--format=%h %cs'], { encoding: 'utf8' });
+      if (head.status === 0 && head.stdout.trim()) {
+        console.log(`grafo: ultimo commit del workspace: ${head.stdout.trim()} (corre "node tools/build-graphify.mjs update" si el grafo quedo detras)`);
+      }
+    } catch { /* git ausente o no es repo: la antiguedad ya se reporto */ }
+  } else {
+    console.log('grafo: SIN graphify-out/graph.json (corre "node tools/build-graphify.mjs extract")');
+  }
   await smoke();
 }

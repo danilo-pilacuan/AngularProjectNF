@@ -2,13 +2,15 @@
 // Validador del kit de personalizacion. Node >= 18, sin dependencias.
 // Comprueba: frontmatter de SKILL.md (spec Agent Skills), ids unicos, enlaces
 // internos, tokens de proyectos ajenos, tamano del nucleo, dependencia dura de
-// AGENTS.md (el kit funciona sin el), citas fragiles a reglas por numero y
-// formato estandarizado de `fecha`.
+// AGENTS.md (el kit funciona sin el), citas fragiles a reglas por numero,
+// formato estandarizado de `fecha`, espejos tools/.github-tools sincronizados y
+// formato de archivos (K-12).
 // Limitacion conocida: los checks de frontmatter (id, fecha) y dependencias son
 // regex sobre texto plano, no parseo YAML completo; si cambia la estructura del
 // frontmatter, revisalos a mano.
 
-import { readFileSync, readdirSync, existsSync } from 'node:fs';
+import { readFileSync, readdirSync, existsSync, statSync } from 'node:fs';
+import { spawnSync } from 'node:child_process';
 import { join, dirname, resolve, basename, relative, sep } from 'node:path';
 import { fileURLToPath } from 'node:url';
 
@@ -267,9 +269,61 @@ for (const f of walk(kitRoot)) {
   }
 }
 
+// 9. Guarda anti-drift de espejos (solo repo fuente del kit): los .mjs de
+// my-custom-kit/tools/ y sus copias en .github/tools/ del repo deben ser
+// identicos con EOL normalizado (git autocrlf oculta diffs solo-EOL y dejo un
+// validador viejo empaquetado; leccion del drift 8d61434).
+{
+  const kitTools = join(kitRoot, 'tools');
+  const mirrorTools = resolve(kitRoot, '..', '.github', 'tools');
+  if (existsSync(mirrorTools) && resolve(mirrorTools) !== resolve(kitTools)) {
+    const normText = (p) => readFileSync(p, 'utf8').replace(/\r\n/g, '\n');
+    for (const f of readdirSync(kitTools)) {
+      if (!f.endsWith('.mjs')) continue;
+      const mirrorPath = join(mirrorTools, f);
+      if (!existsSync(mirrorPath)) continue;
+      if (normText(join(kitTools, f)) !== normText(mirrorPath)) {
+        errors.push(`espejo desincronizado: tools/${f} difiere de .github/tools/${f} (EOL-normalizado); propaga la copia con node fs.copyFileSync`);
+      }
+    }
+  }
+}
+
+// Version del kit: .github/KIT_VERSION (estampada por el instalador) en un
+// destino instalado; kit.json en el repositorio fuente. Informativo, no fatal.
+const kitVersionPath = join(kitRoot, 'KIT_VERSION');
+const kitJsonPath = join(kitRoot, 'kit.json');
+if (existsSync(kitVersionPath)) {
+  console.log(`[info] version del kit instalado: ${read(kitVersionPath).split(/\r?\n/)[0].trim()}`);
+} else if (existsSync(kitJsonPath)) {
+  console.log(`[info] version del kit (repositorio fuente): ${JSON.parse(read(kitJsonPath)).version}`);
+} else {
+  console.log('[info] KIT_VERSION no encontrada: no se puede verificar la version del kit (instalacion manual?)');
+}
+
 if (errors.length) {
   console.error(`validacion del kit: ${errors.length} error(es)`);
   for (const e of errors) console.error(`  - ${e}`);
   process.exit(1);
 }
 console.log(`validacion del kit OK: ${mdFiles.length} archivos .md revisados`);
+
+// Frescura del grafo de conocimiento (informativo, nunca fatal): el MCP sirve
+// el graph.json que haya, aunque este semanas detras del codigo. Sin este
+// aviso, nadie nota que el grafo obsoleto hasta que las respuestas del agente
+// empiezan a citar simbolos que ya no existen.
+const graphPath = join(kitRoot, '..', 'graphify-out', 'graph.json');
+if (existsSync(graphPath)) {
+  const ageH = Math.round((Date.now() - statSync(graphPath).mtimeMs) / 3600000);
+  let headLine = null;
+  try {
+    const head = spawnSync('git', ['-C', kitRoot, 'log', '-1', '--format=%h %cs'], { encoding: 'utf8' });
+    if (head.status === 0 && head.stdout.trim()) headLine = head.stdout.trim();
+  } catch { /* git ausente o no es repo: solo se reporta la antiguedad */ }
+  console.log(`[info] grafo de conocimiento: graphify-out/graph.json generado hace ~${ageH} h${headLine ? `, ultimo commit del repo: ${headLine}` : ''}`);
+  if (ageH > 336) {
+    console.log('[info] grafo posiblemente obsoleto (>14 dias): corre "node tools/build-graphify.mjs update" (incremental, sin LLM) o "extract"');
+  }
+} else {
+  console.log('[info] grafo de conocimiento: no existe graphify-out/graph.json (opcional; el kit funciona sin el)');
+}

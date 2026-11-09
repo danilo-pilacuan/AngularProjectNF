@@ -56,3 +56,5 @@ Thumbs.db
 
 # Nested multirepo workspaces (DEC-003): registrados como submodulos Git
 # (ver .gitmodules); ya no se ignoran porque el padre los rastrea por gitlink.
+_servelogs/
+

@@ -1,0 +1,14 @@
+INFO:     127.0.0.1:59914 - "GET /api/salud HTTP/1.1" 200 OK
+INFO:     127.0.0.1:59929 - "POST /api/auth/login HTTP/1.1" 200 OK
+INFO:     127.0.0.1:59930 - "PUT /api/auth/contrasena HTTP/1.1" 200 OK
+INFO:     127.0.0.1:59931 - "POST /api/auth/login HTTP/1.1" 200 OK
+INFO:     127.0.0.1:59932 - "POST /api/auth/login HTTP/1.1" 401 Unauthorized
+INFO:     127.0.0.1:59933 - "PUT /api/auth/contrasena HTTP/1.1" 200 OK
+INFO:     127.0.0.1:59945 - "POST /api/auth/login HTTP/1.1" 200 OK
+INFO:     127.0.0.1:59946 - "PUT /api/auth/this-was-redacted-contrasena HTTP/1.1" 404 Not Found
+INFO:     127.0.0.1:59952 - "POST /api/auth/login HTTP/1.1" 200 OK
+INFO:     127.0.0.1:59953 - "PUT /api/auth/clave HTTP/1.1" 404 Not Found
+INFO:     127.0.0.1:59954 - "POST /api/auth/login HTTP/1.1" 401 Unauthorized
+INFO:     127.0.0.1:59959 - "POST /api/auth/login HTTP/1.1" 200 OK
+INFO:     127.0.0.1:59960 - "PUT /api/auth/contrasena HTTP/1.1" 200 OK
+INFO:     127.0.0.1:59961 - "POST /api/auth/login HTTP/1.1" 200 OK

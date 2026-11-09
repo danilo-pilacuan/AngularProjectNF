@@ -29,6 +29,15 @@ Si Memgraph no esta corriendo, el grafo degrada a cache de consulta: trabaja com
 los archivos de `.ops` directamente; el kit funciona completo sin el y ninguna tarea se bloquea
 por el grafo.
 
+## Primera instalacion y arranque de sesion
+
+En un repo con el kit recien instalado (o al abrir sesion), alinea el indice antes de razonar sobre
+`.ops`: si Memgraph esta corriendo y el grafo esta vacio (ningun nodo `:Doc`), corre el importer
+`node .github/tools/ops-graph.mjs .ops` para cargarlo; tras crear, mover o renombrar documentos,
+re-sincroniza (cuesta segundos). Esta verificacion es parte del arranque en desarrollo agentico
+activo, no un paso opcional. La version del kit instalada vive en `.github/KIT_VERSION` (escrita
+por el instalador); si falta, la instalacion fue manual: registra la version usada en `PROGRESS.md`.
+
 ## Modelo del grafo
 
 - Nodo `(:Doc {id, tipo, estado, title, file})`: un documento de `.ops` con `id` en frontmatter.
@@ -40,13 +49,37 @@ por el grafo.
 ## Sincronizacion
 
 Tras crear, mover o renombrar documentos de `.ops`, re-sincroniza el indice (requiere Memgraph
-corriendo en `bolt://localhost:7687`, p. ej. via Docker):
+corriendo; el importer resuelve el destino como `--bolt` si viene, si no `MEMGRAPH_BOLT_PORT`
+del `.env` del repo, si no `bolt://localhost:7687` — misma precedencia que el resto del kit):
 
 ```
 node .github/tools/ops-graph.mjs .ops
 ```
 
+La salida imprime el destino resuelto y su origen (`MEMGRAPH_BOLT_PORT del .env` o `default`).
 Si el repo no tiene Memgraph, omite este paso: el Markdown sigue siendo la fuente.
+
+## Recuperacion tras caida (self-healing)
+
+Sintoma tipico: el MCP de Memgraph falla o el editor reporta la herramienta como no disponible
+(en Memgraph los datos viven en memoria: si el contenedor se reinicio, el grafo de `.ops` se
+perdio aunque los servicios esten de nuevo arriba). Diagnostica y sana en este orden exacto:
+
+1. `node tools/build-graphify.mjs status`: diagnostica, no adivines: reporta servicios caidos
+   y ejecuta el smoke (incluye una query Bolt real contra Memgraph; exit != 0 si algo fallo).
+2. Si hay servicios caidos (o el smoke reporta sin Bolt): `node tools/build-graphify.mjs up`
+   (idempotente: relanza solo lo que falte; el smoke final verifica el stack completo).
+3. **Siempre** re-sincroniza el grafo: `node .github/tools/ops-graph.mjs .ops`. Memgraph es
+   in-memory: cualquier reinicio del contenedor borra el grafo aunque `up` lo haya levantado;
+   sin re-sincronizar, las consultas devuelven vacio como si no hubiera trazabilidad.
+4. Verifica con una query real (p. ej. el inventario de "Queries utiles"); si devuelve vacio
+   despues de sincronizar, revisa `docker compose logs mcp-memgraph` desde `deploy/graphify/`.
+
+Regla de decision: la politica `restart` de Docker cubre crashes del proceso, pero NO kills
+manuales externos ni un host reiniciado sin Docker auto-start; el agente no debe esperar a que
+el contenedor "solo" se recupere: ante sintoma, `status` -> `up` -> re-sincronizar es el
+remedio completo y cuesta segundos. Si el repo no hospeda los servicios, degrada a leer los
+archivos de `.ops` directamente (el kit funciona completo sin Memgraph).
 
 ## Queries utiles
 
