@@ -1,4 +1,37 @@
-## 2026-11-09 (iteracion 61: invariantes de dominio en el re-sync de estado)
+
+## 2026-11-09 (iteracion 62: integridad referencial solo en entradas nuevas de bitacora)
+
+Objetivo: cerrar VULN-006 - el re-sync quedaba bloqueado en bucle cuando el
+push eliminaba proyectos con historial vigente.
+
+- Causa raiz confirmada con repro manual: _fusionar_bitacora conserva las
+  entradas vigentes (append-only VULN-001) pero _validar_invariantes_dominio
+  validaba referencias de TODA la bitacora entrante; tras un push que
+  reemplaza proyectos, las entradas del servidor quedan huerfanas y el
+  siguiente GET->PUT responde 422 "referencia al proyecto X, que no existe",
+  sin camino de vuelta (la bitacora no se puede borrar). Repro: bitacora
+  5->9 al crear proyecto p7 + push de semilla; PUT posterior 422 por b-...-2
+  -> p-...-1.
+- Fix de disenio (backend bce5470): la validacion referencial de bitacora se
+  mueve de _validar_invariantes_dominio a _fusionar_bitacora y solo se exige
+  en entradas NUEVAS contra el estado entrante (proyectoId entre proyectos
+  que quedan; autorId entre usuarios entrantes). Las vigentes son historial
+  inmutable (3.5) y pueden referenciar proyectos eliminados en pushes
+  posteriores: revalidarlas bloquearia el re-sync para siempre.
+- Tests: los 2 casos de bitacora de test_escribir_estado_referencias_rotas
+  ahora usan ids nuevos (b-ref-rotas-1/2) y prueban la validacion referencial
+  real; nuevo test_escribir_estado_bitacora_historial_sobrevive_eliminacion_200
+  (push que elimina p6 conservando b5 -> 200; roundtrip posterior -> 200).
+- Diagnostico colateral: los 5 fallos cruzados de test_api (roundtrip,
+  autoaprobacion, escalada, append_propio, re_sync) venian del envenenamiento
+  por huérfanas tras el push de _push_estado_limpio del test de flujo;
+  verificado por bisect (ningun test individual rompe el roundtrip) y trazas
+  de sincronizacion. conftest.py: revertido el hook experimental de
+  restauracion de semilla (era un no-op: GETs sin actor -> 422); vuelve a
+  fijar solo DATABASE_URL="".
+- Registro: fila VULN-006 en .ops/security/vulns.md.
+- Evidencia: pytest 146 passed + 4 skipped (43/43 test_api), ruff limpio.
+- Puntero: root -> backend bce5470.## 2026-11-09 (iteracion 61: invariantes de dominio en el re-sync de estado)
 
 Objetivo: cerrar VULN-005 - el PUT /api/sincronizacion confiaba ciegamente en
 el cliente para los invariantes que si aplica el canal normal de casos de uso.

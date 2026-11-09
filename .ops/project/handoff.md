@@ -37,11 +37,11 @@ las secciones 2-8; la estructura y las reglas son reutilizables tal cual.
 
 ---
 
-## Estado actual (2026-11-09, iteracion 61: invariantes de dominio en el re-sync)
+## Estado actual (2026-11-09, iteracion 62: bitacora huerfana no bloquea el re-sync)
 
 > Fecha: 2026-11-09. Rama: n/a en la raiz (orquestador); cada repo del multirepo tiene la suya
 > (RC4/dev). Estado: fases 0-8 + 13 + 14 + 14.5 + rutas planas + migracion Angular Material
-> (12.5) implementadas. Seguridad: VULN-001/002/003/004/005 mitigadas (ver .ops/security/vulns.md);
+> (12.5) implementadas. Seguridad: VULN-001/002/003/004/005/006 mitigadas (ver .ops/security/vulns.md);
 > iteracion 53 cerro la parte pendiente de VULN-001: PUT /api/sincronizacion ya no reemplaza la
 > bitacora, la fusiona por id (append-only con conservacion: omision = no-op, modificacion 422,
 > append ajeno 422); cliente filtra bitacora ajena no confirmada. it55 elimino el selector mock "Usuario activo" (sesion real unicamente); it56 barrido integral verde + RUNBOOK de deploy; it57 corrigio el NG0203 del bootstrap prod (shared-lib 522c78e) y anadio no-cache a remoteEntry.json del shell (deploy ea0867d); it58 aplico el mismo patron a AutenticacionService.resincronizarStores (shared-lib 77bb148): tras un login exitoso ahora si se descarga el estado autoritativo. it60 borro los ultimos
@@ -53,6 +53,11 @@ las secciones 2-8; la estructura y las reglas son reutilizables tal cual.
 > (avance 0-100, presupuesto finito >= 0, fechas ordenadas, no autoaprobacion) igual que el canal
 > normal; pytest 144/144+4sk. Regla nueva: NO correr sondas standalone que importen app.main
 > (riesgo de tocar el Postgres demo via load_dotenv); usar pytest para caracterizacion.
+> it62 cerro VULN-006 (backend bce5470): el re-sync ya no se bloquea cuando un push elimina
+> proyectos con historial vigente; la validacion referencial de bitacora solo se exige en
+> entradas NUEVAS dentro de _fusionar_bitacora (las vigentes son historial inmutable 3.5);
+> pytest 146/146+4sk (43/43 test_api; los 5 fallos cruzados por envenenamiento de bitacora
+> huerfana desaparecieron).
 > API y db Postgres dockerizadas en el compose demo (deploy 1deb0b8): 8100 con login JWT y
 > persistencia real, demo reconstruida con Material y E2E 12/12 con 0 recursos 404 en 4400-4404.
 > Pendiente: revision humana de estados
@@ -325,6 +330,7 @@ las secciones 2-8; la estructura y las reglas son reutilizables tal cual.
 | 19 | 2026-11-08 | E2E de flujos de escritura por UI (e2e-flujos, 14/14): crear proyecto -> etapa -> entregable en /governance -> autoaprobacion rechazada (mensaje de dominio) -> aprobacion por Sergio (Sponsor) -> gate visible -> proteccion sin sesion -> F5 y consola limpia. Hallazgos: ruta real de Documentos es /governance (path '' del remote; /governance/documentos cae al fallback del shell); quirks Playwright+Material (aria-disabled en mat-option); sin bug de producto | hecho: bateria escritura 14/14, regresion bitacora 11/11 durante diagnostico; scripts en files/ de sesion | Agente |
 | 2026-11-08 (iteracion 20) | E2E de gate de etapa por UI (files/e2e-transiciones.mjs, 19/19): proyecto nuevo -> gate cerrado con mensaje de dominio -> acta cargada -> autoaprobacion rechazada -> aprobacion Sponsor -> transicion Planteamiento->Iniciativa -> bitacora -> gate recalculado (Falta entregable: Documento de iniciativa) -> sin retroceso -> F5 persiste -> consola limpia. Fixes NG0956: track \ en transiciones/faltantes/pendientesAprobacion (proyecto-detalle) y en roles de user-switcher (shell). Commits: mfe-projects 033d300, shell 05eb519. Script E2E en files/ de sesion (no commiteado por politico). | hecho |
 | 2026-11-08 (iteracion 21, cortada por reinicio) | E2E de filtros de listas (files/e2e-filtros.mjs en files/ de sesion): script creado y 2 fixes de asercion aplicados; primera corrida 7/9 con fallos del script (no de producto); lint de los 7 repos frontend en verde | pendiente: relanzar dev servers 4300-4304 (npm start) y backend 8100 (docker compose en deploy/), rerun e2e-filtros.mjs y cerrar la iteracion |
+| 2026-11-09 (iteracion 62: VULN-006) | Causa raiz de los 5 fallos cruzados de test_api: bitacora huerfana por fusion append-only + validacion referencial de todo el estado entrante; fix de disenio: referencias de bitacora exigidas solo en entradas NUEVAS dentro de _fusionar_bitacora; casos de test con ids nuevos + regresion p6/b5; hook experimental de conftest revertido | hecho: pytest 146/146+4sk (43/43 test_api), ruff limpio; commit backend bce5470; fila VULN-006 en vulns.md; PROGRESS.md y handoff actualizados |
 | 22 | 2026-11-08 | Nombres de usuario resueltos en la UI (portafolio/detalle/CSV) via UsuarioStore, ID tecnico como tooltip, ph-pill con input title opcional; verificado con tests, lint, builds y navegador integrado (login -> portafolio -> detalle p1) | hecho: ui-lib 40/40, mfe-projects 29/29, build+lint exit 0; commits mfe-projects 11020cb + e989b70, ui-lib 583281e; docs 2.2/2.4 | Agente |
 | 23 | 2026-11-08 | Regresion E2E de flujos de escritura (files/e2e-flujos.mjs) tras el cambio de UI de la iteracion 22: proyecto + etapa + F5 + entregable + autoaprobacion rechazada + aprobacion Sponsor + gate + proteccion sin sesion + consola limpia | hecho: 14/14 OK, 0 recursos >= 400; sin cambios de codigo; commit raiz docs | Agente |
 | 24 | 2026-11-08 | Regresion E2E de transiciones de etapa (files/e2e-transiciones.mjs) tras iteracion 22: gate cerrado rechaza avance, acta cargada + autoaprobacion rechazada + aprobacion Sponsor, transicion a Iniciativa, gate destino recalculado, sin retroceso, F5 persiste, consola limpia | hecho: 19/19 OK, 0 recursos >= 400; sin cambios de codigo; commit raiz docs | Agente |
