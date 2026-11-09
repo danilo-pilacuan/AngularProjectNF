@@ -7,7 +7,7 @@ description: Documento de soporte para pasar contexto completo a una sesion nuev
 estado: vigente
 dueno: rol:agente
 fecha: 2026-11-05T19:55:00Z
-updated: 2026-11-09T01:15:00Z
+updated: 2026-11-09T06:30:00Z
 relaciona: [ops-readme, project-readme]
 status: stable
 ---
@@ -37,11 +37,11 @@ las secciones 2-8; la estructura y las reglas son reutilizables tal cual.
 
 ---
 
-## Estado actual (2026-11-09, iteracion 62: bitacora huerfana no bloquea el re-sync)
+## Estado actual (2026-11-09, iteracion 63: fin de la herencia mock + VULN-007)
 
 > Fecha: 2026-11-09. Rama: n/a en la raiz (orquestador); cada repo del multirepo tiene la suya
 > (RC4/dev). Estado: fases 0-8 + 13 + 14 + 14.5 + rutas planas + migracion Angular Material
-> (12.5) implementadas. Seguridad: VULN-001/002/003/004/005/006 mitigadas (ver .ops/security/vulns.md);
+> (12.5) implementadas. Seguridad: VULN-001..007 mitigadas (ver .ops/security/vulns.md);
 > iteracion 53 cerro la parte pendiente de VULN-001: PUT /api/sincronizacion ya no reemplaza la
 > bitacora, la fusiona por id (append-only con conservacion: omision = no-op, modificacion 422,
 > append ajeno 422); cliente filtra bitacora ajena no confirmada. it55 elimino el selector mock "Usuario activo" (sesion real unicamente); it56 barrido integral verde + RUNBOOK de deploy; it57 corrigio el NG0203 del bootstrap prod (shared-lib 522c78e) y anadio no-cache a remoteEntry.json del shell (deploy ea0867d); it58 aplico el mismo patron a AutenticacionService.resincronizarStores (shared-lib 77bb148): tras un login exitoso ahora si se descarga el estado autoritativo. it60 borro los ultimos
@@ -58,6 +58,11 @@ las secciones 2-8; la estructura y las reglas son reutilizables tal cual.
 > entradas NUEVAS dentro de _fusionar_bitacora (las vigentes son historial inmutable 3.5);
 > pytest 146/146+4sk (43/43 test_api; los 5 fallos cruzados por envenenamiento de bitacora
 > huerfana desaparecieron).
+> it63 cerro la herencia mock del navbar (verificacion + 4 textos residuales: shell f2c4dbe,
+> mfe-admin f9cbf8c, mfe-governance c5840b0) y VULN-007 (backend 4c4e81e): el re-sync ya no
+> acepta proyectos con nombre duplicado (409 case-insensitive, espejo de _existe_nombre);
+> pytest 147/147+4sk; dedupe chips (it14) confirmado cerrado en it16 y etapas del ciclo de
+> vida en entregables verificadas sin deuda.
 > API y db Postgres dockerizadas en el compose demo (deploy 1deb0b8): 8100 con login JWT y
 > persistencia real, demo reconstruida con Material y E2E 12/12 con 0 recursos 404 en 4400-4404.
 > Pendiente: revision humana de estados
@@ -364,4 +369,6 @@ las secciones 2-8; la estructura y las reglas son reutilizables tal cual.
 | 58 | 2026-11-09 | Mismo patron NG0203 en AutenticacionService.resincronizarStores (tras el login la descarga del estado autoritativo moria en silencio); fix Injector capturado + runInInjectionContext (shared-lib 77bb148); spec de login actualizado (los tests de login exitoso responden las 5 lecturas de sync: antes validaban el bug) | hecho: vitest 177/177, build shared-lib + shell, rebuild shell demo, e2e 9/9 + 8/8 + 10/10, BD sin residuos | Agente |
 | 59 | 2026-11-09 | Barrido integral de regresion tras it58 (sin codigo de produccion): vitest 7 repos (177/29/29/13/20/6/40), pytest 140+4sk, ruff 0, eslint 7 repos, build raiz 7 repos; spec de login del shell corregido con el helper de sync (shell f4f992d) | hecho: commits shell f4f992d + raiz punteros; 10 repos clean | Agente |
 | 60 | 2026-11-09 | Fin del era mock: UserSwitcher -> SesionUsuario (shell 7cc4133) y constante unica API_BASE_URL_POR_DEFECTO + urlApiPorDefecto() con 50 literales 8100 eliminados de 5 specs (shared-lib 18fd4d8); verificado con vitest 314/314 (7 repos), lint raiz, build raiz, bundle prod sin strings mock y demo HTTP (manifest, remoteEntry x5, chunk limpio, login diana 200/200/200) | hecho: commits shared-lib 18fd4d8, shell 7cc4133, root punteros 96bd359 + docs; 10 repos clean | Agente |
+| 63 | 2026-11-09 | Fin de la herencia mock: verificado que SesionUsuario no tiene select (solo el selector de proyecto del dashboard, legitimo); 3 textos de estados sin sesion y sin-permisos ya no remiten al selector eliminado; dedupe chips confirmado cerrado en it16; VULN-007 mitigada (unicidad de nombre de proyecto en el re-sync, backend 4c4e81e, 409 case-insensitive); etapas del ciclo de vida en entregables verificadas sin deuda (selector, columna, gate) | hecho: commits shell f2c4dbe, mfe-admin f9cbf8c, mfe-governance c5840b0, backend 4c4e81e + puntero b16e716; vitest 29+13+20, pytest 147+4sk, ruff 0 | Agente |
+| 62 | 2026-11-09 | VULN-006: validacion referencial de bitacora solo en entradas nuevas dentro de _fusionar_bitacora (append-only 3.5: las vigentes son historial y pueden referenciar proyectos eliminados); repro manual + restauracion del estado demo; sondas HTTP seguras con snapshot (422/200/200) | hecho: commit backend bce5470, fila VULN-006 en vulns.md; pytest 146/146+4sk; puntero root 3360ba4; contenedor demo recreado con up -d (build solo no basta) | Agente |
 | 61 | 2026-11-09 | VULN-005: invariantes de dominio en escribir_estado_completo (avance 0-100, presupuesto finito >= 0, fechas ordenadas, no autoaprobacion); huecos NaN en crear_proyecto y registrar_consumo; 4 tests nuevos; BD demo verificada intacta tras incidente de sondas standalone | hecho: commit backend 8a9de54, fila VULN-005 en vulns.md, PROGRESS + handoff; pytest 144/144+4sk, ruff 0 | Agente |

@@ -1,4 +1,44 @@
 
+## 2026-11-09 (iteracion 63: fin de la herencia mock + VULN-007 nombres duplicados en el re-sync)
+
+Objetivo: prioridad del usuario - verificar y eliminar el select de usuario
+activo y todo residuo hardcodeado de la era mock; continuar con la deuda
+pendiente de it14/it62.
+
+- Verificacion del navbar del shell (7cc4133): SesionUsuario solo muestra
+  usuario real, roles y acciones de perfil/cierre; NO hay select. El unico
+  mat-select del shell es el selector de PROYECTO del dashboard (legitimo,
+  8.6). Spec del shell ya aserta la ausencia del selector de usuario.
+- Barrido integral de residuos mock: 3 textos de estados sin sesion remitian
+  al selector eliminado ("Selecciona/Seleccione un usuario en el selector de
+  sesion/shell"): usuarios.html de mfe-admin, documentos.html y bitacora.html
+  de mfe-governance -> ahora piden iniciar sesion; sin-permisos.ts del shell
+  (docstring + 2 mensajes) ya no ofrece "cambiar de usuario sin recargar" ->
+  autenticarse con otras credenciales (10.2). Docstring de SesionUsuario
+  corregido ("que si dejo" -> "que dejo"). Ningun mock queda en codigo de
+  produccion: el resto de coincidencias son HttpTestingController/vi.spyOn
+  de tests y la semilla de referencia 1.6/11.6 decidida en it60.
+- Chips del gate (pendiente it14): YA cerrado en it16 (commit 482ed4b,
+  "eliminados los ultimos estilos .chip hand-rolled"); solo queda .chips
+  contenedor flex de proyecto-detalle, sin deuda.
+- VULN-007 (backend 4c4e81e): el re-sync aceptaba coleccion de proyectos con
+  nombre duplicado; crear/editar lo rechazan con 409. _validar_invariantes_
+  dominio exige nombres unicos (lower, espejo de _existe_nombre) y el push
+  colaba duplicados que la API normal nunca permite. Test de regresion:
+  duplicado exacto, case-insensitive, estado intacto tras rechazo y push con
+  nombre unico aceptado.
+- Etapas del ciclo de vida en entregables: verificado sin deuda - el modelo
+  Entregable ya tiene etapa: EtapaCicloVida; documentos.ts/html de
+  mfe-governance cubren selector de etapa, columna en tabla, gate por etapa
+  y permiso por matriz (1.5).
+- Evidencia: shell 29/29 + admin 13/13 + governance 20/20 (vitest), lint
+  exit 0 en los 3; backend pytest 147/147 + 4 skipped, ruff limpio; sondas
+  HTTP contra la API demo 8100 (rebuild + up): entrada nueva con proyecto
+  inexistente -> 422 VALIDACION, push que elimina p6 conservando b5 -> 200,
+  roundtrip -> 200, restauracion exacta del estado demo desde snapshot.
+- Commits: shell f2c4dbe, mfe-admin f9cbf8c, mfe-governance c5840b0,
+  backend 4c4e81e; docs VULN-007 a5457da; puntero backend b16e716.
+
 ## 2026-11-09 (iteracion 62: integridad referencial solo en entradas nuevas de bitacora)
 
 Objetivo: cerrar VULN-006 - el re-sync quedaba bloqueado en bucle cuando el
