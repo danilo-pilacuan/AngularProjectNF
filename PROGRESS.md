@@ -45,6 +45,11 @@ la migracion del backend a Go.
 - it10 (OpenAPI espejo): docs/openapi.json en backend-go con 25 paths
   documentados (mismos metodos/paths del Python), esquemas camelCase,
   enums de catalogo, codigos de error y seguridad. Commit 9aa5f8e pushed.
+- it11 (regresion integral del stack y del modulo Go): 7 contenedores
+  projecthub arriba (api Go con Postgres activo), remoteEntry 200 en
+  4400-4404, salud 200; suite Go completa en verde (almacen, api, auth,
+  domain, semilla, servicio); BD demo consistente (7 usuarios, 7
+  proyectos: 6 semilla + 1 de la sonda E2E cancelado).
 - Siguientes iteraciones: loop de mejora continua (revisar CI en verde,
   recomprobar demo, auditar nuevos cambios).
 
