@@ -25,3 +25,6 @@
 [submodule "backend"]
 	path = backend
 	url = https://github.com/danilo-pilacuan/backend.git
+[submodule "backend-go"]
+	path = backend-go
+	url = https://github.com/danilo-pilacuan/ph-backend-go.git
