@@ -95,6 +95,10 @@ la migracion del backend a Go.
   semilla, build+smoke de imagen). Primer run fallo en gofmt (golden_test.go
   sin formatear tras el CRLF); corregido y segundo run en verde (run 2
   success). La CI del submodulo ahora protege la paridad con cada push.
+- it18 (barrido de vistas contra el Go): reportes correctos (7 proyectos,
+  5 activos, avance promedio 7,7%, conteos por etapa/estado coherentes con
+  las mutaciones E2E), admin/usuarios con los 7 usuarios y roles. Sin
+  errores de consola ni recursos fallidos.
 - Siguientes iteraciones: loop de mejora continua.
 
 ## 2026-11-19 (iteraciones 1-4 del loop RC5: paridad de seguridad y cutover del backend Go)
