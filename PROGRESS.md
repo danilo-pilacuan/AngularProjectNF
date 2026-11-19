@@ -24,9 +24,22 @@ la migracion del backend a Go.
   PERMISO_DENEGADO; proyecto de prueba cancelado para dejar la demo limpia.
 - it6 (docs): seccion 15 en docs/funcionalidades.md (15.1-15.6) y este
   registro (root 09be20a).
-- Siguientes iteraciones: E2E de navegador del frontend contra el backend
-  Go (login, transiciones con gate, re-push del sincronizador), revision de
-  suposiciones del contrato en el frontend, OpenAPI espejo opcional.
+- it7 (E2E de navegador contra el backend Go, stack demo 4400/8100): login
+  real por UI con JWT del Go (navbar Diana Admin), dashboard con 3 widgets
+  federados y datos de Postgres, portafolio con 7 proyectos, detalle p1
+  completo (Gantt con dependencias SVG, gate abierto, entregables,
+  bitacora), mutacion real "registrar avance 35" en e3 -> "Avance
+  registrado" + avance ponderado 50,4%, F5 en ruta profunda: sesion
+  restaurada y avance persistido. 422 de lecturas sin sesion solo antes
+  del login (esperado). Sin errores NG0*.
+- it8 (verificacion integral del frontend sobre RC5): vitest 317 en verde
+  (shared-lib 180, ui-lib 40, mfe-projects 29, shell 29, mfe-governance 20,
+  mfe-admin 13, mfe-reports 6), lint raiz exit 0, build raiz exit 0 (7
+  repos). El frontend no requiere cambios para el backend Go: el contrato
+  camelCase y el canal 13.4 son identicos.
+- Siguientes iteraciones: revisar mejoras del backlog menor (dedupe
+  NavGovernance en mfe-governance, step=any en inputs numericos) y
+  evaluar OpenAPI espejo del backend Go.
 
 ## 2026-11-19 (iteraciones 1-4 del loop RC5: paridad de seguridad y cutover del backend Go)
 
