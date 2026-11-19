@@ -68,6 +68,10 @@ la migracion del backend a Go.
   reconstruida: login persistido, dashboard con datos de Postgres, 40 s de
   estancia con conexiones a 8100 estables (5->5, sin explosion de timers
   del sondeo de salud). Widget QA desactivado con ?qa-widget=0.
+- it14 (higiene del codigo Go): gofmt en todo el modulo (34 archivos
+  reordenados, solo formato), build/vet/tests en verde tras formatear
+  (commit 3193f7b). El CI ya ejecuta vet; gofmt -l anadido al barrido
+  manual de calidad.
 - Siguientes iteraciones: loop de mejora continua.
 
 ## 2026-11-19 (iteraciones 1-4 del loop RC5: paridad de seguridad y cutover del backend Go)
