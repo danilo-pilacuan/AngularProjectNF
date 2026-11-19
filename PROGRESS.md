@@ -81,6 +81,15 @@ la migracion del backend a Go.
   malformado en el backend Go, fuga exponencial de timers en el frontend),
   12 gaps de seguridad cerrados con tests, 317 tests frontend + suite Go
   completa en verde, demo dockerizada verificada end to end.
+- it16 (E2E del ciclo de gobernanza completo contra el backend Go):
+  flujo de gate de primera clase verificado por navegador: (1) p3 en PoC
+  con gate cerrado -> transicion rechazada con el mensaje correcto ("El
+  gate de PoC esta cerrado: faltan 0 entregable(s) y hay 1 sin aprobar");
+  (2) aprobacion del entregable por Diana Admin (autor Andres Analista,
+  regla de no autoaprobacion respetada) -> gate Abierto con aprobados
+  1/0/0; (3) transicion PoC -> Validacion de PoC exitosa ("Transicion
+  registrada en la bitacora") con entrada en bitacora con autor y fecha.
+  Todo persistido en Postgres via backend Go.
 - Siguientes iteraciones: loop de mejora continua.
 
 ## 2026-11-19 (iteraciones 1-4 del loop RC5: paridad de seguridad y cutover del backend Go)
