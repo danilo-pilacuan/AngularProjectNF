@@ -24,9 +24,14 @@ documentos para un grafo de busqueda de acuerdos, adendas y relaciones
   la relacion creada por HTTP, grafo SVG con la arista "Modifica (adenda)",
   grados 1/1, banner de solo lectura en proyecto cancelado). Demo
   reconstruida. docs/funcionalidades.md seccion 16 (root acb10c6).
+- it24 (trazabilidad en el grafo, 71fa53e): panel de conexiones al hacer
+  clic en un nodo (vecinos con direccion entrante/saliente y tipo, aristas
+  del nodo resaltadas) y buscador de camino mas corto dirigido entre dos
+  documentos (resultado encadenado "Acta de avance de ejecucion ->
+  Contrato o acta de compromisos" verificado en la demo reconstruida).
+  28/28 en mfe-governance, build y lint verdes.
 - Siguientes iteraciones: continuar el loop con mas utilidad para proyectos
-  reales (busqueda por grafo/camino en la UI, exportar grafo, notificaciones
-  de adendas).
+  reales (exportar grafo, notificaciones de adendas).
 
 Rama RC5/dev creada y pusheada en los 11 repos. Loop autonomo tras completar
 la migracion del backend a Go.
