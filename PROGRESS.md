@@ -1,33 +1,34 @@
-## 2026-11-19 (iteraciones 1-4 del loop RC5: paridad de seguridad y cutover del backend Go)
+## 2026-11-19 (iteraciones 1-6 del loop RC5: paridad de seguridad, JWT critico, golden del estado real y E2E del canal)
 
-Rama RC5/dev creada y pusheada en los 11 repos. Objetivo: loop autonomo de
-desarrollo tras completar la migracion del backend a Go.
+Rama RC5/dev creada y pusheada en los 11 repos. Loop autonomo tras completar
+la migracion del backend a Go.
 
 - it1 (paridad de seguridad del re-sync Go): auditoria en
-  backend-go/docs/auditoria-paridad-resync.md (VS-Go-001..012). El espejo Go
-  se escribio antes de VULN-005..011 de Python y tenia 12 gaps: etapas/
-  proyectos sin validar en el push, referencias fantasma, entregables con
-  autoaprobacion/version 0, ids duplicados, prefijos de id incompatibles con
-  la forma semilla (ent-1) y diff de usuarios que exigia Admin siempre
-  (rompia el contrato 13.4 del empuje post-mutacion). Cerrados todos con
-  tests espejo de los pytest (10 tests nuevos en resync_test.go + 1 de API
-  actualizado). Commits backend-go en RC5/dev.
-- it2 (tests de auth Go + hallazgo critico): CrearToken emitia el payload
-  JWT SIN codificar base64url (token invalido para PyJWT y para el
-  frontend) y LeerToken leia el payload sin decodificar. Corregido; golden
-  de paridad bidireccional con token real de PyJWT (verifica en Go y
-  viceversa). 14 tests nuevos de PBKDF2/JWT/credenciales.
-- it3 (rebuild demo con backend Go): imagenes reconstruidas, stack
-  4400-4404 + API Go 8100 contra el Postgres demo existente. Sondas: salud
-  200, login diana 200 con JWT de 149 chars, /me y /api/sincronizacion con
-  Bearer 200 (7/6/6/11/14 colecciones del estado demo), login malo 401, sin
-  auth 422, remoteEntry 200 en los 5, SPA / y /governance 200.
-- it4 (docs): docs/funcionalidades.md seccion 15 nueva (migracion Go
-  completada, 15.1-15.6 con evidencia); este registro.
-- Pendiente para siguientes iteraciones: E2E de navegador sobre la demo con
-  backend Go (login, transiciones, re-push del frontend contra el canal Go),
-  revisar frontend por cualquier suposicion del contrato no cubierta,
-  OpenAPI espejo opcional.
+  backend-go/docs/auditoria-paridad-resync.md (VS-Go-001..012); 12 gaps
+  frente a VULN-001..011 de Python cerrados con tests espejo (commit 1ffb4e9).
+- it2 (auth + hallazgo critico): CrearToken emitia el payload JWT SIN
+  codificar base64url y LeerToken no decodificaba el payload: todo token Go
+  era invalido. Corregido; golden de paridad bidireccional con token real
+  de PyJWT; 14 tests de PBKDF2/JWT/credenciales (commit 3d480a6).
+- it3 (golden del estado real demo): fixture del estado capturado por HTTP
+  (testdata/estado_demo.json). Hallazgo: el push del propio estado fallaba
+  con falso ciclo de dependencias; el re-sync Go validaba TODAS las etapas
+  mientras Python solo valida las que tienen dependencias en orden de
+  insercion. Fix y golden (commit 1899f27). Push a origin/RC5/dev.
+- it4 (rebuild demo): imagenes reconstruidas con el fix; stack 4400-4404 +
+  API Go 8100 contra Postgres demo. Sondas: salud 200, login JWT 200/401,
+  lecturas con Bearer 200, sin auth 422, remoteEntry 200 x5, SPA 200.
+- it5 (E2E del canal 13.4 contra el Go vivo): GET->PUT roundtrip del estado
+  completo 200; creacion de proyecto 201 persistida en Postgres y relectura
+  200; duplicado case-insensitive 409; analista sin permiso 409
+  PERMISO_DENEGADO; proyecto de prueba cancelado para dejar la demo limpia.
+- it6 (docs): seccion 15 en docs/funcionalidades.md (15.1-15.6) y este
+  registro (root 09be20a).
+- Siguientes iteraciones: E2E de navegador del frontend contra el backend
+  Go (login, transiciones con gate, re-push del sincronizador), revision de
+  suposiciones del contrato en el frontend, OpenAPI espejo opcional.
+
+## 2026-11-19 (iteraciones 1-4 del loop RC5: paridad de seguridad y cutover del backend Go)
 
 ## 2026-11-09 (iteracion 68: release 1 de QA funcional promovido)
 
