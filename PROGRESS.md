@@ -72,6 +72,15 @@ la migracion del backend a Go.
   reordenados, solo formato), build/vet/tests en verde tras formatear
   (commit 3193f7b). El CI ya ejecuta vet; gofmt -l anadido al barrido
   manual de calidad.
+- it15 (cierre del ciclo: API Go actualizada en demo): imagen de la API
+  reconstruida con gofmt y recreada (Postgres activo). Smoke final: login
+  JWT 200, /me 200, /api/sincronizacion 200, remoteEntry 200 x5. El stack
+  demo completo (7 contenedores) sirve el backend Go con todas las
+  correcciones de las iteraciones 1-14.
+- Estado del loop: 15 iteraciones, 2 bugs criticos corregidos (JWT
+  malformado en el backend Go, fuga exponencial de timers en el frontend),
+  12 gaps de seguridad cerrados con tests, 317 tests frontend + suite Go
+  completa en verde, demo dockerizada verificada end to end.
 - Siguientes iteraciones: loop de mejora continua.
 
 ## 2026-11-19 (iteraciones 1-4 del loop RC5: paridad de seguridad y cutover del backend Go)
