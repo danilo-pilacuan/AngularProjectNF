@@ -62,6 +62,12 @@ la migracion del backend a Go.
   78c316b, 29/29 + build verde. Punteros root 6f3a17a/eb0ff64.
   Pendiente del dueno (no tocado): ideas.md (grafo tipo obsidian para
   bitacora/documentos) y .vscode/settings.json (config personal).
+- it13 (rebuild demo con el fix del sondeo + verificacion en vivo):
+  imagenes de los 5 frontends reconstruidas con shared-lib f0df025 y stack
+  recreado (remoteEntry 200 x5). Sesion de navegador contra la demo
+  reconstruida: login persistido, dashboard con datos de Postgres, 40 s de
+  estancia con conexiones a 8100 estables (5->5, sin explosion de timers
+  del sondeo de salud). Widget QA desactivado con ?qa-widget=0.
 - Siguientes iteraciones: loop de mejora continua.
 
 ## 2026-11-19 (iteraciones 1-4 del loop RC5: paridad de seguridad y cutover del backend Go)
