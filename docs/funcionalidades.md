@@ -149,11 +149,21 @@ Estado: `☐` pendiente · `◐` en progreso · `☑` hecho
 9. **Integración y cierre** (11.1–11.5): tests, build, verificación de federación.
 10. **Backend y persistencia** (13.1–13.4, 10.3): FastAPI, PostgreSQL en Docker, HttpClient en stores.
 11. **Autenticacion real** (14.1–14.7): login JWT en backend, pantalla de login en el shell, Bearer en el enlace HTTP.
+12. **Migracion del backend a Go** (seccion 15): cutover del FastAPI al backend Go.
 
 ## Fuera de alcance por ahora
 
-- Backend, API, base de datos, autenticación real (10.3).
-- Persistencia entre recargas.
 - Notificaciones, correos, integraciones externas.
 - Multi-idioma (la UI es en español).
 - Multi-tenant.
+
+## 15. Migración del backend a Go — COMPLETADA
+
+**DECISIÓN (2026-11-19): el backend se migra de FastAPI/Python a Go** (orden del dueño). Requisitos acordados: mismos contratos JSON (el frontend Angular no cambia), misma base de datos (PostgreSQL 17 JSONB, tablas `usuarios`/`proyectos`/`etapas`/`entregables`/`bitacora`/`credenciales`) y repositorio nuevo como submódulo. Estimación original: 11-16 días-hombre en 6 fases (backend-go/docs/migracion.md).
+
+- ☑ 15.1 Fase 0-2: dominio puro, repositorios (memoria y Postgres), servicio con re-sync total, tests espejo de test_dominio.py/test_dependencias.py y paridad de semilla (golden test JSON canónico idéntico a la semilla Python).
+- ☑ 15.2 Fase 3: API HTTP de 21 rutas con los mismos métodos/paths/códigos de estado; actor por Bearer JWT o X-Actor-Id (mismos 401/403/422); CORS por ALLOWED_ORIGINS; rate limit de login (429 LIMITE_INTENTOS); body de error `{codigo, mensaje}`; cmd/server con DATABASE_URL y fallback a memoria.
+- ☑ 15.3 Fase 4: paridad contracto-a-contracto verificada en vivo contra el backend Python: paridad semántica total en entidades de semilla compartidas por /api/sincronizacion (diferencias solo por estado mutado de la sesión demo, no de contrato). Golden de JWT bidireccional (token de PyJWT verifica en Go y viceversa).
+- ☑ 15.4 Fase 5: cutover — Dockerfile multi-stage (distroless nonroot), CI (build/vet/test con Postgres como servicio, golden de semilla, smoke de imagen), compose demo apuntando al backend Go (deploy 689a5a2), backend Python deprecado (backend 67bc933) y submódulo backend-go registrado (root c9b4ac6, remoto ph-backend-go).
+- ☑ 15.5 Auditoría de paridad de seguridad del re-sync Go (docs/auditoria-paridad-resync.md, VS-Go-001..012): los 12 gaps frente a VULN-001..011 de Python cerrados con tests espejo (2026-11-19, iteraciones 1-2 del loop RC5). Hallazgo crítico corregido: CrearToken emitía el payload JWT sin codificar base64url (token inválido); ahora el formato es idéntico a PyJWT.
+- ☑ 15.6 Demo dockerizada verificada con el backend Go (2026-11-19): salud 200, login JWT 200/401, lecturas con Bearer 200, sin auth 422, remoteEntry 200 en 4400-4404, SPA con historial.
