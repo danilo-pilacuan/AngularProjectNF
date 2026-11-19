@@ -37,9 +37,13 @@ la migracion del backend a Go.
   mfe-admin 13, mfe-reports 6), lint raiz exit 0, build raiz exit 0 (7
   repos). El frontend no requiere cambios para el backend Go: el contrato
   camelCase y el canal 13.4 son identicos.
-- Siguientes iteraciones: revisar mejoras del backlog menor (dedupe
-  NavGovernance en mfe-governance, step=any en inputs numericos) y
-  evaluar OpenAPI espejo del backend Go.
+- it9 (dedupe de navegacion en mfe-governance): ENLACES_NAV_GOBERNANZA
+  como unica fuente (nav-gobernanza.ts), eliminada la definicion duplicada
+  en documentos y bitacora (pendiente del backlog desde it13). Tests 20/20,
+  build y lint verdes. Commits mfe-governance fb53a8e, root 369087f.
+  Nota: step="any" (pendiente it36) ya estaba resuelto en ambos formularios.
+- Siguientes iteraciones: revisar el pendiente de OpenAPI espejo del
+  backend Go y seguir el loop de mejora continua.
 
 ## 2026-11-19 (iteraciones 1-4 del loop RC5: paridad de seguridad y cutover del backend Go)
 
