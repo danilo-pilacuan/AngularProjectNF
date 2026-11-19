@@ -1,4 +1,32 @@
-## 2026-11-19 (iteraciones 1-6 del loop RC5: paridad de seguridad, JWT critico, golden del estado real y E2E del canal)
+## 2026-11-19 (iteraciones 19-23 del loop RC5: relaciones entre documentos y grafo de busqueda)
+
+Implementada la idea del dueno de ideas.md: relaciones tipo obsidian entre
+documentos para un grafo de busqueda de acuerdos, adendas y relaciones
+(seccion 16 de docs/funcionalidades.md, 16.1-16.4).
+
+- it19 (backend Go, 3ba10b3): coleccion RelacionDocumento con 5 tipos
+  (derivaDe, modifica/adenda, anula, relacionado, aclara), tabla relaciones
+  JSONB en Postgres, validacion (tipo del catalogo, no autoenlace, par
+  unico ambas direcciones, documentos existentes, nota <= 500), grafo puro
+  (grados, huerfanas ignoradas, vecinos ambas direcciones, camino BFS
+  dirigido), API de 5 rutas y re-sync con la coleccion OPCIONAL (push sin
+  ella conserva; clientes viejos sin cambios). 18 tests nuevos.
+- it20 (shared-lib, 723655a): modelo TS, catalogo con etiquetas, reglas
+  espejo (validarRelacion, vecinosDe, caminoEntre), stores con alta/retiro
+  optimistas y push 13.4 con la coleccion. 8 specs nuevos, 188/188.
+- it21-22 (mfe-governance, 402dc9a + 531d67d): ruta /governance/relaciones
+  con tabla (tipo etiquetado, nota, retiro solo Admin via estado Activo),
+  formulario con validacion en cliente y grafo SVG propio (nodos en
+  circulo, aprobados verdes, aristas curvas etiquetadas, anula rojo
+  discontinuo). 6 specs, 26/26, lint y build verdes. Fix de nav duplicado.
+- it23 (QA end to end): HTTP (creacion 201 con nota, duplicado 409,
+  autoenlace 422, grafo con aristas/grados) y navegador (pagina renderiza
+  la relacion creada por HTTP, grafo SVG con la arista "Modifica (adenda)",
+  grados 1/1, banner de solo lectura en proyecto cancelado). Demo
+  reconstruida. docs/funcionalidades.md seccion 16 (root acb10c6).
+- Siguientes iteraciones: continuar el loop con mas utilidad para proyectos
+  reales (busqueda por grafo/camino en la UI, exportar grafo, notificaciones
+  de adendas).
 
 Rama RC5/dev creada y pusheada en los 11 repos. Loop autonomo tras completar
 la migracion del backend a Go.
