@@ -90,6 +90,11 @@ la migracion del backend a Go.
   1/0/0; (3) transicion PoC -> Validacion de PoC exitosa ("Transicion
   registrada en la bitacora") con entrada en bitacora con autor y fecha.
   Todo persistido en Postgres via backend Go.
+- it17 (CI propia del repo ph-backend-go): workflow .github/workflows/
+  ci.yml (gofmt, build, vet, test con Postgres 17 como servicio, golden de
+  semilla, build+smoke de imagen). Primer run fallo en gofmt (golden_test.go
+  sin formatear tras el CRLF); corregido y segundo run en verde (run 2
+  success). La CI del submodulo ahora protege la paridad con cada push.
 - Siguientes iteraciones: loop de mejora continua.
 
 ## 2026-11-19 (iteraciones 1-4 del loop RC5: paridad de seguridad y cutover del backend Go)
