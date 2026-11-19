@@ -42,8 +42,11 @@ la migracion del backend a Go.
   en documentos y bitacora (pendiente del backlog desde it13). Tests 20/20,
   build y lint verdes. Commits mfe-governance fb53a8e, root 369087f.
   Nota: step="any" (pendiente it36) ya estaba resuelto en ambos formularios.
-- Siguientes iteraciones: revisar el pendiente de OpenAPI espejo del
-  backend Go y seguir el loop de mejora continua.
+- it10 (OpenAPI espejo): docs/openapi.json en backend-go con 25 paths
+  documentados (mismos metodos/paths del Python), esquemas camelCase,
+  enums de catalogo, codigos de error y seguridad. Commit 9aa5f8e pushed.
+- Siguientes iteraciones: loop de mejora continua (revisar CI en verde,
+  recomprobar demo, auditar nuevos cambios).
 
 ## 2026-11-19 (iteraciones 1-4 del loop RC5: paridad de seguridad y cutover del backend Go)
 
